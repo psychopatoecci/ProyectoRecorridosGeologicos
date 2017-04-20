@@ -26,32 +26,65 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
+	<?= $this->Html->script('jquery-3.2.0.min') ?>
+    <?= $this->Html->script('bootstrap.min') ?>		
+    <?= $this->Html->css('bootstrap.min') ?>
     <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
-            </ul>
-        </div>
-    </nav>
+   <div class="background">
+	<header class="row ">
+		<div class="row header-title" >
+			<div class="col-sm-12 col-md-12 "></div> 
+		</div>
+	</header>
+
+	<div class="container-fluid">  
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse-4">
+					<ul class="nav navbar-nav navbar-left">
+						<li class = "active"><?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'index1','action'=> 'index2'],['escape' => false]);?></li>
+						<li><?= $this->Html->link ('<span class="glyphicon glyphicon-info-sign">&#8194;</span>Información',['controller'=>'informacion','action'=> 'index1'],['escape' => false]);?></li>
+						<li class="dropdown" id="accountmenu">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-map-marker">&#8194;</span>Recorridos<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Descripción general',['controller'=>'recorrido','action'=> 'descripcion'],['escape' => false]);?></li>
+									<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 1',['controller'=>'recorrido','action'=> 'recorrido1'],['escape' => false]);?></li>
+									<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 2',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
+								</ul>
+						</li>
+						<li><?= $this->Html->link ('<span class="glyphicon glyphicon-picture">&#8194;</span>Galería',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
+						<li><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
+					</ul>
+				</div>
+		  </div>
+		</nav>
+	</div>
+
+
     <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
-    </div>
-    <footer>
-    </footer>
+
+		<article>
+			<div style="min-height: 65vh;"> 
+				<?= $this->fetch('content') ?>
+			</div>
+		</article>
+	<footer class="row mdl-mega-footer ">
+	</footer>
+	
+</div>
 </body>
 </html>
