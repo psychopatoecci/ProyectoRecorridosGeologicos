@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class CreateContent extends AbstractMigration
+class CreateUsers extends AbstractMigration
 {
     /**
      * Change Method.
@@ -12,23 +12,24 @@ class CreateContent extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('content', [id => false, 'primary_key' => ['id']]);
-        $table->addColumn('id', 'string', [
+        $table = $this->table('users', ['id' => false, 'primary_key' => ['username']]);
+
+        // Cake pide que se llame username.
+        $table->addColumn('username', 'string', [
+            'default' => null,
+            'limit' => 50,
+            'null' => false,
+        ]);
+        
+        $table->addColumn('email', 'string', [
             'default' => null,
             'limit' => 255,
             'null' => false,
         ]);
-        $table->addColumn('id_page', 'string', [
+        
+        $table->addColumn('password', 'string', [
             'default' => null,
             'limit' => 255,
-            'null' => false,
-        ]);
-        $table->addColumn('link_path', 'text', [
-            'default' => null,
-            'null' => false,
-        ]);
-        $table->addColumn('description', 'text', [
-            'default' => null,
             'null' => false,
         ]);
         $table->create();
