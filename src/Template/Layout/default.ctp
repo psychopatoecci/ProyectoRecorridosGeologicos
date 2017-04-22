@@ -17,6 +17,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,56 +36,98 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
+
 <body>
    <div class="background">
-	<header class="row ">
-		<div class="row header-title" >
-			<div class="col-sm-12 col-md-12 "></div> 
-		</div>
-	</header>
+		<header class="row ">
+			<div class="row header-title" >
+				<div class="col-sm-12 col-md-12 ">
+					   <a title="Universidad de Costa Rica" href="https://www.ucr.ac.cr/"><img src="/img/logo_ucr.png" alt="logo_ucr"  align="left" /></a>
+					   <a title="A traves de la historia geológica" href="/"><img src="/img/logo_aplicacion.png" alt="logo_aplicacion" align="right" /></a>
+				</div> 
+			</div>
+		</header>
 
-	<div class="container-fluid">  
-		<nav class="navbar navbar-inverse">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
+		<div class="container-fluid">  
+			<nav class="navbar navbar-inverse">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="navbar-collapse-4">
+						<ul class="nav navbar-nav navbar-left">
+							<li class = "active"><?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'index1','action'=> 'index2'],['escape' => false]);?></li>
+							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-info-sign">&#8194;</span>Información',['controller'=>'informacion','action'=> 'index1'],['escape' => false]);?></li>
+							<li class="dropdown" id="accountmenu">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-map-marker">&#8194;</span>Recorridos<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Descripción general',['controller'=>'recorrido','action'=> 'descripcion'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 1',['controller'=>'recorrido','action'=> 'recorrido1'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 2',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
+									</ul>
+							</li>
+							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-picture">&#8194;</span>Galería',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
+							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
+						</ul>
+					</div>
 				</div>
-				<div class="collapse navbar-collapse" id="navbar-collapse-4">
-					<ul class="nav navbar-nav navbar-left">
-						<li class = "active"><?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'index1','action'=> 'index2'],['escape' => false]);?></li>
-						<li><?= $this->Html->link ('<span class="glyphicon glyphicon-info-sign">&#8194;</span>Información',['controller'=>'informacion','action'=> 'index1'],['escape' => false]);?></li>
-						<li class="dropdown" id="accountmenu">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-map-marker">&#8194;</span>Recorridos<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Descripción general',['controller'=>'recorrido','action'=> 'descripcion'],['escape' => false]);?></li>
-									<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 1',['controller'=>'recorrido','action'=> 'recorrido1'],['escape' => false]);?></li>
-									<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 2',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
-								</ul>
-						</li>
-						<li><?= $this->Html->link ('<span class="glyphicon glyphicon-picture">&#8194;</span>Galería',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
-						<li><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
-					</ul>
-				</div>
-		  </div>
-		</nav>
-	</div>
+			</nav>
+		</div>
 
 
     <?= $this->Flash->render() ?>
 
-		<article>
-			<div style="min-height: 65vh;"> 
-				<?= $this->fetch('content') ?>
+	<article>
+		<div style="min-height: 65vh;"> 
+			<?= $this->fetch('content') ?>
+		</div>
+	</article>
+
+
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<br>
+				<div class="col-md-4">
+					<center>
+						<a title="Centro de Investigaciones en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
+						<br>
+						<h4 class="footertext">Centro de Investigaciones en Ciencias Geológicas</h4>
+						<p class="footertext">Unidad de investigación dedicada al estudio de los procesos geológicos.<br>
+					</center>
+					<p>&nbsp;</p>
+				</div>
+				<div class="col-md-4">
+					<center>
+						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
+						<br>
+						<h4 class="footertext">Museo de la Universidad de Costa Rica</h4>
+						<p class="footertext"> Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.<br>
+					</center>
+					<p>&nbsp;</p>
+				</div>
+				  
+				<div class="col-md-4">
+					<center>
+						<a title="Facebook" href="/"><img src="/img/logo_facebook.png" alt="facebook" /></a>
+						<a title="Twitter" href="/"><img src="/img/logo_twitter.png" alt="twitter" /></a>
+						<br>
+						<h4 class="footertext">Redes Sociales </h4>
+						<p class="footertext">Puede seguinos en redes sociales como Facebook y Twitter.<br>
+						<br>
+					</center>
+				</div>
+				 
 			</div>
-		</article>
-	<footer class="row mdl-mega-footer ">
-	</footer>
-	
+		</div>
+		<div class = "derechos"> &#9400;&#8194;2017 Centro de Investigaciones en Ciencias Geológicas </div>
+	</div>
 </div>
 </body>
+
 </html>
