@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class CreateComponents extends AbstractMigration
+class CreatePages extends AbstractMigration
 {
     /**
      * Change Method.
@@ -12,18 +12,10 @@ class CreateComponents extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('components', ['id' => false, 'primary_key' => ['id']]);
+        $table = $this->table('pages', ['id' => false, 'primary_key' => ['id']]);
         $table->addColumn('id', 'string', [
             'default' => null,
             'limit' => 255,
-            'null' => false,
-        ]);
-        $table->addColumn('descripcion', 'text', [
-            'default' => null,
-            'null' => false,
-        ]);
-        $table->addColumn('informacion', 'text', [
-            'default' => null,
             'null' => false,
         ]);
         $table->create();
