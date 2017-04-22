@@ -1,13 +1,22 @@
+/*------------------------------------------------- Estilos generales ------------------------------------------------- */
+
 body{
 	color: black;
 	font-family: 'Roboto', sans-serif;
 }
 
-/*Encabezado*/
+/*-------------------------------------------- Encabezado de la aplicación -------------------------------------------- */
 header{
 	padding: 0px;
 	color: black;
-	background-color: #006666;
+	background: rgba(238,227,73,1);
+	background: -moz-linear-gradient(left, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(238,227,73,1)), color-stop(100%, rgba(255,240,107,1)));
+	background: -webkit-linear-gradient(left, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
+	background: -o-linear-gradient(left, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
+	background: -ms-linear-gradient(left, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
+	background: linear-gradient(to right, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eee349', endColorstr='#fff06b', GradientType=1 );
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	font-weight: bold;
 	text-align: center; 
@@ -15,10 +24,9 @@ header{
 }
 
 .header-title{
-	font-size: 3em;
-	padding-top: 2%;
-	padding-bottom: 2%;
-	min-height:15vh;
+	font-size: 5em;
+    margin-bottom: 12px;
+    margin-top: 12px;
 	max-height:25vh;
 }
 
@@ -44,6 +52,12 @@ header{
 	font-size: 15px;
 	font-weight: bold;
 }
+
+.navbar-inverse
+{
+    margin-bottom: 0px;
+}
+
 /* Color de la letra de los enlace principales*/
 .navbar-inverse .navbar-nav > li > a
 {
@@ -87,29 +101,56 @@ header{
 	background-color: #18538D;
 }
 
+/* Fondo cuando se mantiene pulsado el icono de navegacion en modo responsive*/
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover
 {
 	background-color: #18538D;
 }
 
+/* Borde del icono de navegacion*/
 .navbar-inverse .navbar-toggle
 {
     border-color: white;
 }
 
-/* Pie de la pagina*/
-.mdl-mega-footer {
-    padding: 80px 40px;
-    color: #9e9e9e;
-    background-color: black;
+/*-------------------------------------------- Pie de página de la aplicación -------------------------------------------- */
+
+/* Bloque principal del pie*/
+#footer {
+
+  width: 100%;
+  padding-left:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-top:0;
+  margin-bottom:0;
+  height: auto;
+  background-color:#e0e0e0;
+  background: 
+  /* color overlay */ 
+    linear-gradient(
+      rgba(240, 212, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ),
+    /* image to overlay */
+    // url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);
+
 }
 
-/* Estilos de logos del footer*/
-.mdl-mega-footer__middle-section img{
-	width: 100%;
-	margin-left: 5%;
+/* Bloque de los derechos de la aplicación*/
+.background .derechos{
+	
+	width:100%; 
+	padding:10px; 
+	color:white;
+	background-color:#003366; 
+	text-align:center;
+	
 }
 
-.mdl-mega-footer__middle-section img:hover {
-	box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+/*----------------------------------------------- Estilos para el carrusel --------------------------------------------- */
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
 }
+
