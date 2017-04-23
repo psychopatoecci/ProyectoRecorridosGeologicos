@@ -7,8 +7,10 @@ use Cake\ORM\Entity;
  * Page Entity
  *
  * @property string $id
- */
-class Page extends Entity
+ *
+ * @property \App\Model\Entity\Content[] $contents
+ * @property \App\Model\Entity\MapPoint[] $map_points
+ */class Page extends Entity
 {
 
     /**

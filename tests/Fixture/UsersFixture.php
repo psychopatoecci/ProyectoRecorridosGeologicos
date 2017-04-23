@@ -37,7 +37,7 @@ class UsersFixture extends TestFixture
      */
     public $records = [
         [
-            'username' => 'd9a63681-1980-482f-89df-3ff5a3eca161',
+            'username' => '99b1756b-1740-49fa-9ffb-b35b04cce7e2',
             'email' => 'Lorem ipsum dolor sit amet',
             'password' => 'Lorem ipsum dolor sit amet'
         ],

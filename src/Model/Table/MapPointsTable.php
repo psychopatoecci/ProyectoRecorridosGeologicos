@@ -18,8 +18,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\MapPoint patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\MapPoint[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\MapPoint findOrCreate($search, callable $callback = null, $options = [])
- */
-class MapPointsTable extends Table
+ */class MapPointsTable extends Table
 {
 
     /**
@@ -51,21 +50,13 @@ class MapPointsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('path')
-            ->allowEmpty('path', 'create');
-
+            ->integer('path')            ->allowEmpty('path', 'create');
         $validator
-            ->integer('sequence_number')
-            ->allowEmpty('sequence_number', 'create');
-
+            ->integer('sequence_number')            ->allowEmpty('sequence_number', 'create');
         $validator
-            ->requirePresence('latitude', 'create')
-            ->notEmpty('latitude');
-
+            ->requirePresence('latitude', 'create')            ->notEmpty('latitude');
         $validator
-            ->requirePresence('longitude', 'create')
-            ->notEmpty('longitude');
-
+            ->requirePresence('longitude', 'create')            ->notEmpty('longitude');
         return $validator;
     }
 

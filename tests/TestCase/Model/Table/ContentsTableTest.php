@@ -12,10 +12,8 @@ class ContentsTableTest extends TestCase
 {
 
     /**
-     * Test subject
-     *
-     * @var \App\Model\Table\ContentsTable
-     */
+     * Test subject     *
+     * @var \App\Model\Table\ContentsTable     */
     public $Contents;
 
     /**
@@ -24,7 +22,9 @@ class ContentsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.contents'
+        'app.contents',
+        'app.pages',
+        'app.map_points'
     ];
 
     /**
@@ -35,9 +35,7 @@ class ContentsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Contents') ? [] : ['className' => 'App\Model\Table\ContentsTable'];
-        $this->Contents = TableRegistry::get('Contents', $config);
-    }
+        $config = TableRegistry::exists('Contents') ? [] : ['className' => 'App\Model\Table\ContentsTable'];        $this->Contents = TableRegistry::get('Contents', $config);    }
 
     /**
      * tearDown method
@@ -67,6 +65,16 @@ class ContentsTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

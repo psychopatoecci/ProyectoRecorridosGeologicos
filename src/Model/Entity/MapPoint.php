@@ -11,8 +11,9 @@ use Cake\ORM\Entity;
  * @property string $page_id
  * @property string $latitude
  * @property string $longitude
- */
-class MapPoint extends Entity
+ *
+ * @property \App\Model\Entity\Page $page
+ */class MapPoint extends Entity
 {
 
     /**

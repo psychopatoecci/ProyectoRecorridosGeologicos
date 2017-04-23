@@ -16,8 +16,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null, $options = [])
- */
-class UsersTable extends Table
+ */class UsersTable extends Table
 {
 
     /**
@@ -45,16 +44,10 @@ class UsersTable extends Table
     {
         $validator
             ->allowEmpty('username', 'create');
-
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
+            ->email('email')            ->requirePresence('email', 'create')            ->notEmpty('email');
         $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
-
+            ->requirePresence('password', 'create')            ->notEmpty('password');
         return $validator;
     }
 

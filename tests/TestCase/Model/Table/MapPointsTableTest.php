@@ -12,10 +12,8 @@ class MapPointsTableTest extends TestCase
 {
 
     /**
-     * Test subject
-     *
-     * @var \App\Model\Table\MapPointsTable
-     */
+     * Test subject     *
+     * @var \App\Model\Table\MapPointsTable     */
     public $MapPoints;
 
     /**
@@ -24,7 +22,9 @@ class MapPointsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.map_points'
+        'app.map_points',
+        'app.pages',
+        'app.contents'
     ];
 
     /**
@@ -35,9 +35,7 @@ class MapPointsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('MapPoints') ? [] : ['className' => 'App\Model\Table\MapPointsTable'];
-        $this->MapPoints = TableRegistry::get('MapPoints', $config);
-    }
+        $config = TableRegistry::exists('MapPoints') ? [] : ['className' => 'App\Model\Table\MapPointsTable'];        $this->MapPoints = TableRegistry::get('MapPoints', $config);    }
 
     /**
      * tearDown method
@@ -67,6 +65,16 @@ class MapPointsTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

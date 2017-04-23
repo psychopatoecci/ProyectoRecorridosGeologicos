@@ -35,7 +35,7 @@ class PagesFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => 'fe275774-86d3-485c-8667-b5c430730cff'
+            'id' => '4a27c3fe-a815-4176-9f15-9a238b5b172a'
         ],
     ];
 }

@@ -12,10 +12,8 @@ class PagesTableTest extends TestCase
 {
 
     /**
-     * Test subject
-     *
-     * @var \App\Model\Table\PagesTable
-     */
+     * Test subject     *
+     * @var \App\Model\Table\PagesTable     */
     public $Pages;
 
     /**
@@ -24,7 +22,9 @@ class PagesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.pages'
+        'app.pages',
+        'app.contents',
+        'app.map_points'
     ];
 
     /**
@@ -35,9 +35,7 @@ class PagesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Pages') ? [] : ['className' => 'App\Model\Table\PagesTable'];
-        $this->Pages = TableRegistry::get('Pages', $config);
-    }
+        $config = TableRegistry::exists('Pages') ? [] : ['className' => 'App\Model\Table\PagesTable'];        $this->Pages = TableRegistry::get('Pages', $config);    }
 
     /**
      * tearDown method

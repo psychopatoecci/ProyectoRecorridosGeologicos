@@ -10,8 +10,9 @@ use Cake\ORM\Entity;
  * @property string $page_id
  * @property string $link_path
  * @property string $description
- */
-class Content extends Entity
+ *
+ * @property \App\Model\Entity\Page $page
+ */class Content extends Entity
 {
 
     /**

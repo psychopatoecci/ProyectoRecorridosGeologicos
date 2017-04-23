@@ -19,8 +19,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Page patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Page[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Page findOrCreate($search, callable $callback = null, $options = [])
- */
-class PagesTable extends Table
+ */class PagesTable extends Table
 {
 
     /**
@@ -55,7 +54,6 @@ class PagesTable extends Table
     {
         $validator
             ->allowEmpty('id', 'create');
-
         return $validator;
     }
 }

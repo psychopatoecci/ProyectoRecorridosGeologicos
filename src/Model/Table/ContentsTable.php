@@ -18,8 +18,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Content patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Content[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Content findOrCreate($search, callable $callback = null, $options = [])
- */
-class ContentsTable extends Table
+ */class ContentsTable extends Table
 {
 
     /**
@@ -51,17 +50,11 @@ class ContentsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
+            ->integer('id')            ->allowEmpty('id', 'create');
         $validator
-            ->requirePresence('link_path', 'create')
-            ->notEmpty('link_path');
-
+            ->requirePresence('link_path', 'create')            ->notEmpty('link_path');
         $validator
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
-
+            ->requirePresence('description', 'create')            ->notEmpty('description');
         return $validator;
     }
 
