@@ -154,3 +154,45 @@ header{
     margin: 0 auto;
 }
 
+/*----------------------------------------------- Estilos para la introducción ----------------------------------------- */
+
+#wrapper_pantalla {
+	width: 100%;
+	text-align: center;
+}
+
+#wrapper_introduccion {
+	width: 95%;
+	margin: 0 auto;
+	margin: 30px;
+	text-align: left;
+}
+
+.barra { 
+	align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+	width: 100%;
+    border-style: groove;
+    border-width: 2px;
+	border-color: #9D9E7B;
+}
+
+#wrapper_introduccion_texto {
+	background-color: rgba(238,227,73,1);
+	width: 98%;
+	margin: 20px auto;
+	text-align: center;
+	padding: 10px;
+	border: 6px groove #9D9E7B;
+}
+
+#container_texto_titulo {
+	text-align: center;
+    padding: 10px;
+}
+
+#container_texto_texto{
+	text-align: justify;
+    margin: 20px;
+}
