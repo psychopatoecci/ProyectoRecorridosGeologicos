@@ -61,18 +61,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					</div>
 					<div class="collapse navbar-collapse" id="navbar-collapse-4">
 						<ul class="nav navbar-nav navbar-left">
-							<li class = "active"><?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'index1','action'=> 'index2'],['escape' => false]);?></li>
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-info-sign">&#8194;</span>Información',['controller'=>'informacion','action'=> 'index1'],['escape' => false]);?></li>
+							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'pages','action'=> 'home'],['escape' => false]);?></li>
+							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-info-sign">&#8194;</span>Información',['controller'=>'pages','action'=> 'information'],['escape' => false]);?></li>
 							<li class="dropdown" id="accountmenu">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-map-marker">&#8194;</span>Recorridos<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Descripción general',['controller'=>'recorrido','action'=> 'descripcion'],['escape' => false]);?></li>
-										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 1',['controller'=>'recorrido','action'=> 'recorrido1'],['escape' => false]);?></li>
-										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 2',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Descripción general',['controller'=>'pages','action'=> 'description'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 1',['controller'=>'pages','action'=> 'first_tout'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 2',['controller'=>'pages','action'=> 'second_tour'],['escape' => false]);?></li>
 									</ul>
 							</li>
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-picture">&#8194;</span>Galería',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'recorrido','action'=> 'recorrido2'],['escape' => false]);?></li>
+							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-picture">&#8194;</span>Galería',['controller'=>'pages','action'=> 'gallery'],['escape' => false]);?></li>
+							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'pages','action'=> 'contact'],['escape' => false]);?></li>
 						</ul>
 					</div>
 				</div>
@@ -131,3 +131,4 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </body>
 
 </html>
+
