@@ -9,14 +9,7 @@ body{
 header{
 	padding: 0px;
 	color: black;
-	background: rgba(238,227,73,1);
-	background: -moz-linear-gradient(left, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(238,227,73,1)), color-stop(100%, rgba(255,240,107,1)));
-	background: -webkit-linear-gradient(left, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
-	background: -o-linear-gradient(left, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
-	background: -ms-linear-gradient(left, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
-	background: linear-gradient(to right, rgba(238,227,73,1) 0%, rgba(255,240,107,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eee349', endColorstr='#fff06b', GradientType=1 );
+	background-color: white;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	font-weight: bold;
 	text-align: center; 
@@ -27,13 +20,15 @@ header{
 	font-size: 5em;
     margin-bottom: 12px;
     margin-top: 12px;
-	max-height:25vh;
+	height:auto;
 }
 
 /* Evitar en desplizamiento sobre el header*/
 .row {
    margin-right: 0;/*-15px;*/
-   margin-left: 0;/*-15px;*/
+   margin-left: 0;/*-15px;*/   
+   margin-top: 1;/*-15px;*/
+   margin-bottom: 1;/*-15px;*/
 }
 
 /*Barra de navegacion*/
@@ -47,7 +42,7 @@ header{
 
 /* Fondo de la barra principal y tamaño de la letra*/
 .navbar{
-	background-color: #003366;
+	background-color: #F37021;
 	border-radius: 0;
 	font-size: 15px;
 	font-weight: bold;
@@ -67,44 +62,44 @@ header{
 /* Fondo y letra de los enlaces principales cuando el mouse se encuentra encima */
 .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover{
 	color: white;
-	background-color: #18538D;
+	background-color: #F37021;
 }
 
 /* Fondo y letra de los enlace que tienen menu desplegable cuando se da click encima */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover{
 	color: white;
-	background-color: #18538D;
+	background-color: #F37021;
 }
 
 /* Fondo del menu desplegable*/
 .dropdown-menu{
-	background-color:#003366;
+	background-color:#F99D1C;
 
 }
 
 /* Fondo y letra de los enlaces dentro del menu desplegable cuando el mouse no se encuentra encima*/
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
 	color: white;
-	background-color: #003366;
+	background-color: #F99D1C;
 }
 
 /* Fondo y letra de los enlaces dentro del menu desplegable cuando el mouse se encuentra encima */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open .dropdown-menu>li>a :focus, .navbar-inverse .navbar-nav > .open .dropdown-menu>li>a:hover{
 	color: white;
-	background-color: #18538D;
+	background-color: #F37021;
 }
 
 /* Fondo y letra para poner los activos*/
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
 {
 	color: white;
-	background-color: #18538D;
+	background-color: #F37021;
 }
 
 /* Fondo cuando se mantiene pulsado el icono de navegacion en modo responsive*/
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover
 {
-	background-color: #18538D;
+	background-color: #F37021;
 }
 
 /* Borde del icono de navegacion*/
@@ -137,16 +132,20 @@ header{
 
 }
 
-/* Bloque de los derechos de la aplicación*/
-.background .derechos{
-	
-	width:100%; 
-	padding:10px; 
-	color:white;
-	background-color:#003366; 
-	text-align:center;
-	
+/* Bloque principal del pie*/
+#derechos {
+
+  width: 100%;
+  padding-left:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-top:0;
+  margin-bottom:0;
+  height: auto;
+  background-color: #F37021;
+
 }
+
 
 /*----------------------------------------------- Estilos para el carrusel --------------------------------------------- */
 
@@ -155,6 +154,13 @@ header{
 }
 
 /*----------------------------------------------- Estilos para la introducción ----------------------------------------- */
+
+i {
+    float: right;
+    color: black;
+    position: right;
+    right: 10px;
+}  
 
 #wrapper_pantalla {
 	width: 100%;
@@ -195,4 +201,41 @@ header{
 #container_texto_texto{
 	text-align: justify;
     margin: 20px;
+}
+
+/* Estilos responsive logos dedl header y footer*/
+
+@media (min-width: 493px) { 
+	.row .header-title a img.img_ucr
+	{
+		float:left;
+	}
+
+	.row .header-title a img.img_cicg
+	{
+		float:right;
+	}
+
+}
+
+@media (min-width: 992px) { 
+	.row .col-md-6 .centering a img {
+		float:right;
+	}
+	
+	.row .col-md-6 .footertext 
+	{
+		text-align: left;		
+	}
+}
+
+@media (max-width: 991px) { 
+	.row .col-md-6 .centering a img {
+		text-align: center;
+	}
+	
+	.row .col-md-6 .footertext 
+	{
+		text-align: center;		
+	}
 }

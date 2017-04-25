@@ -41,9 +41,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
    <div class="background">
 		<header class="row ">
 			<div class="row header-title" >
-				<div class="col-sm-12 col-md-12 ">
-					   <a title="Universidad de Costa Rica" href="https://www.ucr.ac.cr/"><img src="/img/logo_ucr.png" alt="logo_ucr"  align="left" /></a>
-					   <a title="A traves de la historia geológica" href="/"><img src="/img/logo_aplicacion.png" alt="logo_aplicacion" align="right" /></a>
+				<div class="col-sm-12 col-md-12">
+					   <a class "hola1" title="Universidad de Costa Rica" href="https://www.ucr.ac.cr/"><img class ="img_ucr"src="/img/logo_ucr.png" alt="logo_ucr" /></a>
+					   <a class "hola2" title="Universidad de Costa Rica" href="https://www.ucr.ac.cr/"><img class ="img_ucr"src="/img/logo_ucr_letras.png" alt="logo_ucr" /></a>
+					   <a class "hola4" title="A traves de la historia geológica" href="/"><img class ="img_cicg" src="/img/logo_recorridos.png" alt="logo_aplicacion_part2"/></a>
+					   <a class "hola3" title="A traves de la historia geológica" href="/"><img class ="img_cicg" src="/img/logo_a-traves.png" alt="logo_aplicacion_part1"/></a>
 				</div> 
 			</div>
 		</header>
@@ -95,13 +97,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				<br>
 				<div class="col-md-4">
 					<center>
+						<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
+						<br>
+						<h4 class="footertext">Vicerrectoría de Investigación</h4>
+						<p class="footertext"> Ente responsable de supervisar, coordinar, estimular y divulgar la investigación en la Universidad de Costa Rica.<br>
+					</center>
+					<p>&nbsp;</p>
+				</div>
+				<div class="col-md-4">
+					<center>
 						<a title="Centro de Investigaciones en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
 						<br>
-						<h4 class="footertext">Centro de Investigaciones en Ciencias Geológicas</h4>
+						<h4 class="footertext">Centro de Investigación en Ciencias Geológicas</h4>
 						<p class="footertext">Unidad de investigación dedicada al estudio de los procesos geológicos.<br>
 					</center>
 					<p>&nbsp;</p>
 				</div>
+				  
 				<div class="col-md-4">
 					<center>
 						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
@@ -109,23 +121,30 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 						<h4 class="footertext">Museo de la Universidad de Costa Rica</h4>
 						<p class="footertext"> Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.<br>
 					</center>
-					<p>&nbsp;</p>
-				</div>
-				  
-				<div class="col-md-4">
-					<center>
-						<a title="Facebook" href="/"><img src="/img/logo_facebook.png" alt="facebook" /></a>
-						<a title="Twitter" href="/"><img src="/img/logo_twitter.png" alt="twitter" /></a>
-						<br>
-						<h4 class="footertext">Redes Sociales </h4>
-						<p class="footertext">Puede seguinos en redes sociales como Facebook y Twitter.<br>
-						<br>
-					</center>
 				</div>
 				 
 			</div>
 		</div>
-		<div class = "derechos"> &#9400;&#8194;2017 Centro de Investigaciones en Ciencias Geológicas </div>
+
+	<div id="derechos">
+		<div class="container">
+			<div class="row">
+				<br>
+				<div class="col-md-6" style="padding-top: 6px;">
+						<p class="footertext"> &#9400;<em>&#8194;2017 Centro de Investigaciones en Ciencias Geológicas </em>
+				</div>
+				<div class="col-md-6" style="padding-bottom: 10px;">
+				<center class="centering">	
+					<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_facebook.png" alt="logo_museo"/></a>
+					<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_twitter.png" alt="logo_museo"  /></a>
+					<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_youtube.png" alt="logo_museo"/></a>
+				</center>
+				</div>
+
+				 
+			</div>
+		</div>
+
 	</div>
 </div>
 </body>
