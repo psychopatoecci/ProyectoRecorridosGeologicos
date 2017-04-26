@@ -4,35 +4,15 @@
 USE recorridos_geologicosdb;
 
 -- Update 'contents' table
-UPDATE contents 
-SET page_id = 'home', link_path = 'resources/home/carousel/01.png', content_type = 'image'
-WHERE id = 1;
-
-UPDATE contents 
-SET page_id = 'home', link_path = 'resources/home/carousel/02.png', content_type = 'image'
-WHERE id = 2;
-
-UPDATE contents 
-SET page_id = 'home', link_path = 'resources/home/carousel/03.png', content_type = 'image'
-WHERE id = 3;
-
-UPDATE contents 
-SET page_id = 'home', link_path = 'resources/home/carousel/04.png', content_type = 'image'
-WHERE id = 4;
-
-UPDATE contents 
-SET page_id = 'home', link_path = 'resources/home/carousel/arco_en_roca.png', content_type = 'image'
-WHERE id = 5;
-
-UPDATE contents 
-SET page_id = 'home', link_path = 'resources/home/carousel/el_gallito.png', content_type = 'image'
-WHERE id = 6;
-
-UPDATE contents 
-SET page_id = 'home', link_path = 'resources/home/carousel/estratos_descartes.png', content_type = 'image'
-WHERE id = 7;
 
 -- Insertions
+INSERT INTO contents VALUES (1, 'home', 'resources/home/carousel/01.png', '', 'image', 0);
+INSERT INTO contents VALUES (2, 'home', 'resources/home/carousel/02.png', '', 'image', 0);
+INSERT INTO contents VALUES (3, 'home', 'resources/home/carousel/03.png', '', 'image', 0);
+INSERT INTO contents VALUES (4, 'home', 'resources/home/carousel/04.png', '', 'image', 0);
+INSERT INTO contents VALUES (5, 'home', 'resources/home/carousel/arco_en_roca.png', '', 'image', 0);
+INSERT INTO contents VALUES (6, 'home', 'resources/home/carousel/el_gallito.png', '', 'image', 0);
+INSERT INTO contents VALUES (7, 'home', 'resources/home/carousel/estratos_descartes.png', '', 'image', 0);
 INSERT INTO contents VALUES (8, 'home', 'resources/home/carousel/macizo_orosi.png', '', 'image', 0);
 INSERT INTO contents VALUES (9, 'home', 'resources/home/main_message.txt', 'El litoral Pacífico Norte de Costa Rica ofrece sitios turísticos de importancia geológica, como lo son la Isla Bolaños y la Península de Santa Elena, con diversos orígenes y lugares por conocer.', 'text', 1);
 INSERT INTO contents VALUES (11, 'introduction', 'resources/intro/parrafo1.txt','La geología es la ciencia que estudia las rocas, desde el punto de vista de composición, origen, procesos que las afectan antes, durante y después de su formación y edad. Además, de estudios aplicados como su capacidad hídrica y geomecánica. Costa Rica presenta rocas de diversos orígenes, con edades que abarcan desde 163 – 170 millones de años (Jurásico Medio) hasta la actualidad (Cuaternario).', 'text', 1);

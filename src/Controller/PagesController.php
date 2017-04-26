@@ -21,11 +21,12 @@ class PagesController extends AppController
         $action = $this->request->params['action'];
         //Obtiene los datos de las imagenes del carrusel.
         $contents = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => $action)
+            'conditions' => array('Contents.page_id' => 'home')
         ));
 
         $contentsLength = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => $action)
+            'conditions' => array('Contents.page_id' => 'home', 
+                                  'Contents.content_type' => 'image')
         ))->count();        
 
         //Envía los datos a la vista
