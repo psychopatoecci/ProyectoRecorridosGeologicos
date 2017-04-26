@@ -43,11 +43,9 @@ class <?= $name ?> extends AbstractMigration
 <?php if ($columnMethod === 'removeColumn'): ?>
 <?php foreach ($columns['fields'] as $column => $config): ?>
         <?= "\$table->$columnMethod('" . $column . "');"; ?>
-
 <?php endforeach; ?>
 <?php foreach ($columns['indexes'] as $column => $config): ?>
         <?= "\$table->$indexMethod([" . $this->Migration->stringifyList($config['columns']) . ");"; ?>
-
 <?php endforeach; ?>
 <?php else : ?>
 <?php foreach ($columns['fields'] as $column => $config): ?>
