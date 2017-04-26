@@ -39,7 +39,7 @@ CREATE TABLE `contents` (
 
 LOCK TABLES `contents` WRITE;
 /*!40000 ALTER TABLE `contents` DISABLE KEYS */;
-INSERT INTO `contents` VALUES (1,'carousel','Arco_Isla_San_Jose.jpg',''),(2,'carousel','Cabo_Santa_Elena.jpg',''),(3,'carousel','El_Gallito.jpg',''),(4,'carousel','Estratos_Formacion_Descartes.jpg',''),(5,'carousel','Macizo_Orosi_Cacao.jpg',''),(6,'home','main_message.txt',''),(7,'intro','information.txt','');
+INSERT INTO `contents` VALUES (1,'home','01.png',''),(2,'home','02.png',''),(3,'home','03.png',''),(4,'home','04.png',''),(5,'home','arco_en_roca.png',''),(6,'home','el_gallito.png',''), (7,'home','estratos_descartes.png',''),(8,'home','macizo_orosi.png',''),(9,'home','main_message.txt',''),(10,'intro','information.txt','');
 /*!40000 ALTER TABLE `contents` ENABLE KEYS */;
 UNLOCK TABLES;
 

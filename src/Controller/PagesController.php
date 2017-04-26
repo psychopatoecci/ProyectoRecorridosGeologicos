@@ -17,6 +17,22 @@ class PagesController extends AppController
      */
     public function home()
     {
+
+        $action = $this->request->params['action'];
+        //Obtiene los datos de las imagenes del carrusel.
+        $contents = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => $action)
+        ));
+
+        $contentsLength = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => $action)
+        ))->count();        
+
+        //Envía los datos a la vista
+        $this->set([
+            'contents' => $contents,
+            'contentsLength' => $contentsLength,                    
+        ]);
     }
 	
 	    /**

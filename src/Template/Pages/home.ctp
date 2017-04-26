@@ -14,52 +14,27 @@
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
-?>
+?>    
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
   <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="/img/Cabo Santa Elena.jpg" alt="Chania" align="center">
-      <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-      </div>
-    </div>
-
+<ol class="carousel-indicators">
+  <?php for( $i=0; $i<$contentsLength; $i++ ): ?>
+      <li data-target="#myCarousel" data-slide-to="<?= $i; ?>"></li>    
+  <?php endfor; ?>
+</ol>
+  
+<!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">  
+<?php foreach ($contents as $content): ?>
     <div class="item">
-      <img src="/img/Cabo Santa Elena.jpg" alt="Chania">
-      <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+      <img src="<?= '/resources/carousel/'.h($content->link_path);?>" alt="Chania" align="center">
+      <div class="carousel-caption">        
+        <p><?= h($content->description);?>.</p>
       </div>
     </div>
-
-    <div class="item">
-      <img src="/img/Cabo Santa Elena.jpg" alt="Flower">
-      <div class="carousel-caption">
-        <h3>Flowers</h3>
-        <p>Beatiful flowers in Kolymbari, Crete.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="/img/Cabo Santa Elena.jpg" alt="Flower">
-      <div class="carousel-caption">
-        <h3>Flowers</h3>
-        <p>Beatiful flowers in Kolymbari, Crete.</p>
-      </div>
-    </div>
-  </div>
-
+<?php endforeach; ?>
+</div>
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -70,3 +45,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+<script>
+//Pone la primera imagen de la ruta como activa
+$(document).ready(function () {
+  $('#myCarousel').find('.item').first().addClass('active');
+});
+</script>
