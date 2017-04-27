@@ -62,44 +62,44 @@ header{
 /* Fondo y letra de los enlaces principales cuando el mouse se encuentra encima */
 .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover{
 	color: white;
-	background-color: #F37021;
+	background-color: #F09050;
 }
 
 /* Fondo y letra de los enlace que tienen menu desplegable cuando se da click encima */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover{
 	color: white;
-	background-color: #F37021;
+	background-color: #F09050;
 }
 
 /* Fondo del menu desplegable*/
 .dropdown-menu{
-	background-color:#F99D1C;
+	background-color:#F37021;
 
 }
 
 /* Fondo y letra de los enlaces dentro del menu desplegable cuando el mouse no se encuentra encima*/
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
 	color: white;
-	background-color: #F99D1C;
+	background-color: #F37021;
 }
 
 /* Fondo y letra de los enlaces dentro del menu desplegable cuando el mouse se encuentra encima */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open .dropdown-menu>li>a :focus, .navbar-inverse .navbar-nav > .open .dropdown-menu>li>a:hover{
 	color: white;
-	background-color: #F37021;
+	background-color: #F09050;
 }
 
 /* Fondo y letra para poner los activos*/
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
 {
 	color: white;
-	background-color: #F37021;
+	background-color: #F09050;
 }
 
 /* Fondo cuando se mantiene pulsado el icono de navegacion en modo responsive*/
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover
 {
-	background-color: #F37021;
+	background-color: #F09050;
 }
 
 /* Borde del icono de navegacion*/
@@ -121,14 +121,7 @@ header{
   margin-bottom:0;
   height: auto;
   background-color:#e0e0e0;
-  background: 
-  /* color overlay */ 
-    linear-gradient(
-      rgba(240, 212, 0, 0.45), 
-      rgba(0, 0, 0, 0.45)
-    ),
-    /* image to overlay */
-    // url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);
+
 
 }
 
@@ -203,7 +196,7 @@ i {
     margin: 20px;
 }
 
-/* Estilos responsive logos dedl header y footer*/
+/* Estilos responsive logos del header y footer*/
 
 @media (min-width: 493px) { 
 	.row .header-title a img.img_ucr
