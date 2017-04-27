@@ -35,6 +35,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
+    <?= $this->Html->script('jquery-3.2.0.min') ?>
+
 </head>
 
 <body>
@@ -63,8 +66,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					</div>
 					<div class="collapse navbar-collapse" id="navbar-collapse-4">
 						<ul class="nav navbar-nav navbar-left">
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'pages','action'=> 'home'],['escape' => false]);?></li>
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-info-sign">&#8194;</span>Información',['controller'=>'pages','action'=> 'information'],['escape' => false]);?></li>
+							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/home' || $_SERVER['REQUEST_URI'] === '/' ) {echo "active"; } else  {echo "noactive";}?>"> <?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'pages','action'=> 'home'],['escape' => false]);?></li>
+							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/information' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-info-sign">&#8194;</span>Información',['controller'=>'pages','action'=> 'information'],['escape' => false]);?></li>
 							<li class="dropdown" id="accountmenu">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-map-marker">&#8194;</span>Recorridos<b class="caret"></b></a>
 									<ul class="dropdown-menu">
@@ -73,8 +76,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Recorrido 2',['controller'=>'pages','action'=> 'second_tour'],['escape' => false]);?></li>
 									</ul>
 							</li>
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-picture">&#8194;</span>Galería',['controller'=>'pages','action'=> 'gallery'],['escape' => false]);?></li>
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'pages','action'=> 'contact'],['escape' => false]);?></li>
+							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/gallery' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-picture">&#8194;</span>Galería',['controller'=>'pages','action'=> 'gallery'],['escape' => false]);?></li>
+							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/contact' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'pages','action'=> 'contact'],['escape' => false]);?></li>
 						</ul>
 					</div>
 				</div>
@@ -106,7 +109,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				</div>
 				<div class="col-md-4">
 					<center>
-						<a title="Centro de Investigaciones en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
+						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
 						<br>
 						<h4 class="footertext">Centro de Investigación en Ciencias Geológicas</h4>
 						<p class="footertext">Unidad de investigación dedicada al estudio de los procesos geológicos.<br>
@@ -135,9 +138,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				</div>
 				<div class="col-md-6" style="padding-bottom: 10px;">
 				<center class="centering">	
-					<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_facebook.png" alt="logo_museo"/></a>
-					<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_twitter.png" alt="logo_museo"  /></a>
-					<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_youtube.png" alt="logo_museo"/></a>
+					<a title="Museo de la Universidad de Costa Rica" href="/"><img src="/img/logo_facebook.png" alt="logo_museo"/></a>
+					<a title="Museo de la Universidad de Costa Rica" href="/"><img src="/img/logo_twitter.png" alt="logo_museo"  /></a>
+					<a title="Museo de la Universidad de Costa Rica" href="/"><img src="/img/logo_youtube.png" alt="logo_museo"/></a>
 				</center>
 				</div>
 
@@ -150,4 +153,5 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </body>
 
 </html>
+
 
