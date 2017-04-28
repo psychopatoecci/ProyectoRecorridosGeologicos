@@ -10,7 +10,6 @@ header{
 	padding: 0px;
 	color: black;
 	background-color: white;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	font-weight: bold;
 	text-align: center; 
 	overflow: auto;
@@ -25,13 +24,14 @@ header{
 
 /* Evitar en desplizamiento sobre el header*/
 .row {
-   margin-right: 0;/*-15px;*/
-   margin-left: 0;/*-15px;*/   
-   margin-top: 1;/*-15px;*/
-   margin-bottom: 1;/*-15px;*/
+   margin-right: 0px;
+   margin-left: 0px;
+   margin-top: 7px;
+   margin-bottom: 7px;
 }
 
-/*Barra de navegacion*/
+/*-------------------------------------------- Barra de navegación  -------------------------------------------- */
+
 /* Provoca que la barra sea continua*/
 .container-fluid {
     padding-right: 0px;
@@ -125,7 +125,7 @@ header{
 
 }
 
-/* Bloque principal del pie*/
+/* Bloque de los derechos del pie*/
 #derechos {
 
   width: 100%;
@@ -139,66 +139,10 @@ header{
 
 }
 
+/*----------------------------------------------- Estilos responsive --------------------------------------------- */
 
-/*----------------------------------------------- Estilos para el carrusel --------------------------------------------- */
-
-.carousel-inner > .item > img {
-    margin: 0 auto;
-}
-
-/*----------------------------------------------- Estilos para la introducción ----------------------------------------- */
-
-i {
-    float: right;
-    color: black;
-    position: right;
-    right: 10px;
-}  
-
-#wrapper_pantalla {
-	width: 100%;
-	text-align: center;
-}
-
-#wrapper_introduccion {
-	width: 95%;
-	margin: 0 auto;
-	margin: 30px;
-	text-align: left;
-}
-
-.barra { 
-	align: center;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-	width: 100%;
-    border-style: groove;
-    border-width: 2px;
-	border-color: #9D9E7B;
-}
-
-#wrapper_introduccion_texto {
-	background-color: rgba(238,227,73,1);
-	width: 98%;
-	margin: 20px auto;
-	text-align: center;
-	padding: 10px;
-	border: 6px groove #9D9E7B;
-}
-
-#container_texto_titulo {
-	text-align: center;
-    padding: 10px;
-}
-
-#container_texto_texto{
-	text-align: justify;
-    margin: 20px;
-}
-
-/* Estilos responsive logos del header y footer*/
-
-@media (min-width: 493px) { 
+/* Estilos responsive del header */
+@media (min-width: 846px) { 
 	.row .header-title a img.img_ucr
 	{
 		float:left;
@@ -209,10 +153,81 @@ i {
 		float:right;
 	}
 
+	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
 }
 
+/* Estilos responsive del header */
+@media (max-width: 846px) and (min-width: 671px) { 
+
+	.row .header-title a img.img_ucr
+	{
+		float:left;
+		width:65%;
+	}
+
+	.row .header-title a img.img_cicg
+	{
+		float:right;
+		width:29%;
+	}
+
+	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+
+}
+
+/* Estilos responsive del header */
+@media (max-width: 670px) and (min-width: 571px) { 
+
+	.row .header-title a img.img_ucr{}
+
+	.row .header-title a img.img_cicg{}
+
+	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del header */
+@media (max-width: 570px) and (min-width: 481px) { 
+
+	.row .header-title a img.img_ucr
+	{
+		width: 97%;
+	}
+
+	.row .header-title a img.img_cicg {  }
+
+	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del header */
+@media (max-width: 480px) { 
+
+	.row .header-title a img.img_ucr
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_cicg {  }
+
+	.row .header-title a img.img_ucr_responsive {  }
+}
+
+/* Estilos responsive del footer */
 @media (min-width: 992px) { 
-	.row .col-md-6 .centering a img {
+
+	.row .col-md-6 .centering a img
+	{
 		float:right;
 	}
 	
@@ -222,8 +237,11 @@ i {
 	}
 }
 
+/* Estilos responsive del footer */
 @media (max-width: 991px) { 
-	.row .col-md-6 .centering a img {
+	
+	.row .col-md-6 .centering a img 
+	{
 		text-align: center;
 	}
 	
