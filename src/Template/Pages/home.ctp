@@ -14,7 +14,9 @@
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
-?>    
+?>
+
+<?= $this->Html->css('carrusel.css') ?>    
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
   <!-- Indicators -->
