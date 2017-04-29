@@ -136,7 +136,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<div class="row">
 				<br>
 				<div class="col-md-6" style="padding-top: 6px;">
-						<p class="footertext"> &#9400;<em>&#8194;2017 Centro de Investigación en Ciencias Geológicas </em>
+						<p class="footertext"> &copy;<em>&#8194;2017 Centro de Investigación en Ciencias Geológicas </em>
 				</div>
 				<div class="col-md-6" style="padding-bottom: 10px;">
 				<center class="centering">	
