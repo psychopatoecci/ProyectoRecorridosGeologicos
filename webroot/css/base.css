@@ -46,6 +46,8 @@ header{
 	border-radius: 0;
 	font-size: 15px;
 	font-weight: bold;
+	border-style: solid;
+    border-color: #404040 #F37021 #404040 #F37021 ;
 }
 
 .navbar-inverse
@@ -142,13 +144,13 @@ header{
 /*----------------------------------------------- Estilos responsive --------------------------------------------- */
 
 /* Estilos responsive del header */
-@media (min-width: 846px) { 
+@media (min-width: 1046px) { 
 	.row .header-title a img.img_ucr
 	{
 		float:left;
 	}
 
-	.row .header-title a img.img_cicg
+	.row .header-title a img.img_app
 	{
 		float:right;
 	}
@@ -157,21 +159,26 @@ header{
 	{
 		display: none;
 	}
+
+	.row .header-title a img.img_app_responsive
+	{
+		display: none;
+	}
 }
 
 /* Estilos responsive del header */
-@media (max-width: 846px) and (min-width: 671px) { 
+@media (max-width: 1046px) and (min-width: 720px) { 
 
 	.row .header-title a img.img_ucr
 	{
 		float:left;
-		width:65%;
+		width:55%;
 	}
 
-	.row .header-title a img.img_cicg
+	.row .header-title a img.img_app
 	{
 		float:right;
-		width:29%;
+		width:43%;
 	}
 
 	.row .header-title a img.img_ucr_responsive
@@ -179,16 +186,26 @@ header{
 		display: none;
 	}
 
+	.row .header-title a img.img_app_responsive
+	{
+		display: none;
+	}
+
 }
 
 /* Estilos responsive del header */
-@media (max-width: 670px) and (min-width: 571px) { 
+@media (max-width: 719px) and (min-width: 571px) { 
 
 	.row .header-title a img.img_ucr{}
 
-	.row .header-title a img.img_cicg{}
+	.row .header-title a img.img_app{}
 
 	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive
 	{
 		display: none;
 	}
@@ -199,29 +216,67 @@ header{
 
 	.row .header-title a img.img_ucr
 	{
-		width: 97%;
+		width: 98%;
 	}
 
-	.row .header-title a img.img_cicg {  }
+	.row .header-title a img.img_app
+	{  
+		width: 87%;
+	}
 
 	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive
 	{
 		display: none;
 	}
 }
 
 /* Estilos responsive del header */
-@media (max-width: 480px) { 
+@media (max-width: 480px) and (min-width: 360px) { 
 
 	.row .header-title a img.img_ucr
 	{
 		display: none;
 	}
+	.row .header-title a img.img_app
+	{
+		display: none;
+	}
 
-	.row .header-title a img.img_cicg {  }
+	.row .header-title a img.img_app_responsive {  }
 
 	.row .header-title a img.img_ucr_responsive {  }
 }
+
+
+/* Estilos responsive del header */
+@media (max-width: 360px) { 
+
+	.row .header-title a img.img_ucr
+	{
+		display: none;
+	}
+	.row .header-title a img.img_app
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive 
+	{ 
+		width: 82%;
+	}
+
+	.row .header-title a img.img_ucr_responsive 
+	{ 
+		width: 82%;
+	}
+}
+
+
 
 /* Estilos responsive del footer */
 @media (min-width: 992px) { 
