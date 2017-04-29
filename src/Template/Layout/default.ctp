@@ -46,9 +46,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<header class="row ">
 			<div class="row header-title" >
 				<div class="col-sm-12 col-md-12">
-						<a  title="Universidad de Costa Rica" href="https://www.ucr.ac.cr/"><img class ="img_ucr_responsive" src="/img/logo_ucr_full_responsive.png" alt="logo_aplicacion_part2"/></a>
+						<a  title="Universidad de Costa Rica" href="https://www.ucr.ac.cr/"><img class ="img_ucr_responsive" src="/img/logo_ucr_full_responsive.png" alt="logo_aplicacion"/></a>
+						<a  title="A traves de la historia geológica" href="/"><img class ="img_app_responsive" src="/img/logo_aplicacion_full_responsive.png" alt="logo_aplicacion"/></a>
 					   <a title="Universidad de Costa Rica" href="https://www.ucr.ac.cr/"><img class ="img_ucr" src="/img/logo_ucr.png" alt="logo_ucr" /></a>
-					   <a title="A traves de la historia geológica" href="/"><img class ="img_cicg" src="/img/logo_aplicacion.png" alt="logo_aplicacion_part2"/></a>
+					   <a title="A traves de la historia geológica" href="/"><img class ="img_app" src="/img/logo_aplicacion.png" alt="logo_ucr"/></a>
 
 				</div> 
 			</div>
