@@ -1,4 +1,8 @@
 <?php
+/**
+ * MapPoints Model.
+ * Used to represent a location in a path.
+ */
 namespace App\Model\Table;
 
 use Cake\ORM\Query;

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Users Model.
+ * Used for authentication, doesn't have relations (FK) to/from other tables.
+ */
 namespace App\Model\Table;
 
 use Cake\ORM\Query;

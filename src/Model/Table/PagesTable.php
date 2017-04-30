@@ -1,4 +1,8 @@
 <?php
+/**
+ * Pages Model.
+ * Corresponds to each "tab" or "page" in the client's browser.
+ */
 namespace App\Model\Table;
 
 use Cake\ORM\Query;

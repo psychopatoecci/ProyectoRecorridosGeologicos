@@ -1,4 +1,8 @@
 <?php
+/**
+ * Contents Model.
+ * Stores general info about files for content administration.
+ */
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
