@@ -85,10 +85,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				</div>
 			</nav>
 		</div>
-
-
+		
     <?= $this->Flash->render() ?>
-
+	
 	<article>
 		<div style="min-height: 65vh;"> 
 			<?= $this->fetch('content') ?>

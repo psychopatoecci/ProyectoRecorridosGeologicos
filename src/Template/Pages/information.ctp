@@ -15,40 +15,15 @@
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
+
+<?= $this->Html->css('information.css') ?> 
+
 <!DOCTYPE html>
 <html>
 
 <body>
-	<div id="wrapper_pantalla">
-		<div id="wrapper_introduccion">
-			<div style="margin: 20px;">
-				<h1>
-					Introducción
-				</h1>
-			</div>
-			<div>
-				<hr class="barra">
-			</div>
-			<div id="wrapper_introduccion_texto">
-				<div id="container_texto_titulo">
-					Recorridos a través de la historia geológica del noroeste de Costa Rica
-				</div>
-				<div id="container_texto_texto">
-					<p>
-						La Geología es un elemento primordial del paisaje, cuyo conocimiento permite desarrollar proyectos de educación, explotación turística, divulgación y concienciación muy acordes con las tendencias actuales de disfrute y protección del medioambiente, tanto aquellos vigentes en la actualidad como los que se han de desarrollar en el futuro.
-					</p>
-					<p>
-						A pesar de la evidente penetración de las nuevas tendencias educativas, de difusión y turísticas, la Geología sigue siendo una gran desconocida en estos sectores. Con un proyecto como este se pretende sentar las bases para el desarrollo futuro de la Geología como ente potenciador del conocimiento dentro del marco de los parques nacionales.
-					</p>
-					<p>
-						El ACG contiene varios parques o áreas de conservación y sectores, como son: Santa Rosa, Santa Elena, Isla Bolaños, Archipiélago Murciélago, bahía Santa Elena, entre muchos. Además, es un sitio Patrimonio de la Humanidad, como fue declarado por UNESCO en 1999, id N°928. Además de los aspectos biológicos, contiene un valor altísimo de paisaje geológico y patrimonio histórico científico.
-					</p>
-					<p>
-						Desde un punto de vista geológico la península de Santa Elena es una de las localidades geológicas más interesantes, por contener trozos del manto terrestre. Sin embargo en todos los otros sectores se pueden recorrer fragmentos de la historia geológica de Costa Rica.
-					</p>
-				</div>
-			</div>
-		</div>
+	<div class="help-tip">
+		<p>En esta página usted encontrará información general acerca de los Recorridos en el litoral de la costa noroeste de Costa Rica.</p>
 	</div>
 </body>
 
