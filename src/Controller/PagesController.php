@@ -49,7 +49,27 @@ class PagesController extends AppController
      */
     public function information()
     {
-		
+        $action = $this->request->params['action'];
+
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'introduction',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'introduction',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+
+        $this->set([
+            'text' => $text,              
+            'images' => $images,              
+        ]);
     }
 	
 	/**
