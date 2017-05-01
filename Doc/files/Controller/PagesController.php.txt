@@ -1,17 +1,22 @@
 <?php
+/**
+ * Pages Controller.
+ * Controller used in all pages as for now.
+ */
 namespace App\Controller;
 
 use App\Controller\AppController;
 
 /**
- * Pages Controller
+ * Pages Controller.
  *
  * @property \App\Model\Table\PagesTable $Pages */
 class PagesController extends AppController
 {
 
     /**
-     * Home method
+     * Home method.
+     * Used for the main / page.
      *
      * @return \Cake\Network\Response|null
      */
@@ -36,8 +41,9 @@ class PagesController extends AppController
         ]);
     }
 	
-	    /**
-     * Information method
+	/**
+     * Information method.
+     * As of now it doesn't need logic.
      *
      * @return \Cake\Network\Response|null
      */
@@ -47,7 +53,8 @@ class PagesController extends AppController
     }
 	
 	/**
-     * Gallery method
+     * Gallery method.
+     * As of now it doesn't need logic.
      *
      * @return \Cake\Network\Response|null
      */
@@ -56,8 +63,9 @@ class PagesController extends AppController
 		
     }
 	
-		    /**
-     *Contact method
+	/**
+     * Contact method.
+     * As of now it doesn't need logic.
      *
      * @return \Cake\Network\Response|null
      */
