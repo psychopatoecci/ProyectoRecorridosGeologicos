@@ -34,8 +34,15 @@ class PagesController extends AppController
                                   'Contents.content_type' => 'image')
         ))->count();        
 
+			//query para el main message
+				$textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'home',
+                                'Contents.content_type' => 'text',)
+        ));
+			$text   = $textQuery->toArray();
         //Envía los datos a la vista
         $this->set([
+						'text' => $text,
             'contents' => $contents,
             'contentsLength' => $contentsLength,                    
         ]);
