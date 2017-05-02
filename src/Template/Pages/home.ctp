@@ -49,7 +49,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <span class="sr-only">Next</span>
   </a>
 </div>
-
+<div id="container_texto2">
+	<p class="main-msg" >
+		 <br>El litoral Pacífico Norte de Costa Rica ofrece sitios turísticos de importancia geológica,<br> como lo son la Isla Bolaños y la Península de Santa Elena, con diversos orígenes y lugares por conocer. </p>
+</div>
 <script>
 //Pone la primera imagen de la ruta como activa
 $(document).ready(function () {

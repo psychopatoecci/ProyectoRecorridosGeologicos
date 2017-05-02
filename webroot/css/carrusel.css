@@ -4,3 +4,33 @@
     margin: 0 auto;
     width: 100%;
 }
+
+.main-msg {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+    color: #404041;
+    font-weight:bold;
+    text-align: center;
+}
+
+.main-msg:hover {
+    color:black;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    from {color: #404041;font-size: 16px;}
+    to {color: black;font-weight:bold;font-size: 17px;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    from {color: #404041;}
+    to {color: black;font-weight:bold;font-size: 17px;}
+}
