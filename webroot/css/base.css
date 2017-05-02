@@ -141,6 +141,15 @@ header{
 
 }
 
+/* Bloque de los derechos del pie*/
+#derechos .container .row {
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+}
+
 /*----------------------------------------------- Estilos responsive --------------------------------------------- */
 
 /* Estilos responsive del header */
@@ -276,7 +285,38 @@ header{
 	}
 }
 
+/* Estilos responsive de la barra de navegación */
+@media  (min-width: 780px) { 
 
+	/* Fondo y letra de los enlaces principales cuando el mouse se encuentra encima */
+	.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover{
+		color: white;
+		background-color: #F09050;
+		height: 48px;
+	}
+
+	/* Fondo y letra de los enlace que tienen menu desplegable cuando se da click encima */
+	.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover{
+		color: white;
+		background-color: #F09050;
+		height: 48px;
+	}
+
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+	    position: absolute;
+	    left: 25px;
+
+	}
+
+	/* Fondo y letra para poner los activos*/
+	.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
+	{
+		color: white;
+		background-color: #F09050;
+		height: 48px;
+	}
+
+}
 
 /* Estilos responsive del footer */
 @media (min-width: 992px) { 
@@ -305,3 +345,4 @@ header{
 		text-align: center;		
 	}
 }
+
