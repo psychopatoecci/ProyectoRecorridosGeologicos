@@ -5,9 +5,10 @@
     width: 100%;
 }
 
+/*----------------------------------------------- Estilos para el mensaje principal --------------------------------------------- */
 .main-msg {
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 26px;
     line-height: 27px;
     color: #404041;
     font-weight:bold;
@@ -19,20 +20,35 @@
 .main-msg:hover {
     color:black;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
     animation-name: example;
-    animation-duration: 4s;
+    animation-duration: 3s;
     animation-fill-mode: forwards;
+}
+
+/*----------------------------------------------- Estilos para cuadro del mensaje --------------------------------------------- */
+.main-msgdiv {
+    background-color: black;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    background:#F37021;
+    margin: 0 0 25px;
+    overflow: hidden;
+    border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 35px 0px 35px 0px;
+    -webkit-border-radius: 35px 0px 35px 0px;
+    border: 5px solid #ff5f00;
 }
 
 /* Safari 4.0 - 8.0  */
 @-webkit-keyframes example {
-    from {color: #404041;font-size: 16px;}
-    to {color: black;font-weight:bold;font-size: 17px;}
+    from {color: #404041;font-size: 26px;}
+    to {color: black;font-weight:bold;font-size: 26.5px;}
 }
 
 /* Standard syntax */
 @keyframes example {
     from {color: #404041;}
-    to {color: black;font-weight:bold;font-size: 17px;}
+    to {color: black;font-weight:bold;font-size: 26.5px;}
 }

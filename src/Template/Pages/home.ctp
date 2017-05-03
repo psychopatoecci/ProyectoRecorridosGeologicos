@@ -48,11 +48,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
-<div id="container_texto2">
+</div><br><br>
+<div id="container_texto2" class="main-msgdiv">
 	<p class="main-msg" >
 		<?php echo $text[0]->description; ?>
-</div>
+</div><br><br>
 <script>
 //Pone la primera imagen de la ruta como activa
 $(document).ready(function () {
