@@ -5,6 +5,9 @@
     width: 100%;
 }
 
+
+
+
 /*----------------------------------------------- Estilos para el mensaje principal --------------------------------------------- */
 .main-msg {
     font-family: 'Roboto', sans-serif;
@@ -13,26 +16,67 @@
     color: #404041;
     font-weight:bold;
     text-align: center;
-    margin-left: 6em;
-    margin-right: 6em;
+    margin-left: 3em;
+    margin-right: 3em;
+    padding-top: 1cm;
+    padding-bottom: 1cm;
 }
 
-.main-msg:hover {
+ p {
+  animation-duration: 4s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) { 
+	
+		.main-msg 
+		{
+      margin-left: 0.6cm;
+      margin-right: 0.6cm;
+      font-size: 20px;
+		}
+}
+
+@media (max-width: 400px) { 
+	
+		.main-msg 
+		{
+      margin-left: 0.2cm;
+      margin-right: 0.2cm;
+      font-size: 14px;
+      padding-top: 0.5cm;
+      padding-bottom: 0.5cm;
+		}
+}
+
+
+/*.main-msg:hover {
     color:black;
-    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 
     animation-name: example;
     animation-duration: 3s;
     animation-fill-mode: forwards;
-}
+}*/
 
 /*----------------------------------------------- Estilos para cuadro del mensaje --------------------------------------------- */
 .main-msgdiv {
-    background-color: black;
     font-family: sans-serif;
     font-size: 18px;
     font-weight: 400;
-    background:#F37021;
+    background:#FBA069;
     margin: 0 0 25px;
     overflow: hidden;
     border-radius: 35px 0px 35px 0px;
@@ -41,14 +85,20 @@
     border: 5px solid #ff5f00;
 }
 
-/* Safari 4.0 - 8.0  */
+.main-div2 {
+    padding-left: 1cm;
+    padding-right: 1cm;
+  
+}
+
+/* Safari 4.0 - 8.0  
 @-webkit-keyframes example {
     from {color: #404041;font-size: 26px;}
     to {color: black;font-weight:bold;font-size: 26.5px;}
 }
 
-/* Standard syntax */
+ Standard syntax 
 @keyframes example {
     from {color: #404041;}
     to {color: black;font-weight:bold;font-size: 26.5px;}
-}
+}*/
