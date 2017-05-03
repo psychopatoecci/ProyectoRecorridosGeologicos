@@ -195,7 +195,6 @@
 	#estilo4 {
 		
 	}
-
 	@media (max-width: 991px) { 
 	
 		.row .col-md-4 
@@ -223,4 +222,25 @@
 		    background-color: transparent;
 		}
 
+	}
+
+	@media (max-width: 1300px) { 
+	
+		.row .col-md-4 
+		{
+			text-align: center;
+		}
+
+		.wrapper {
+			padding: 10px;
+			background-repeat: no-repeat;
+			background-position: center;
+			-webkit-background-size: 100%;
+			-webkit-background-size: cover;
+			-moz-background-size: 100%;
+			-moz-background-size: cover;
+			background-size: 100%;
+			background-size: cover;
+		}
+		
 	}
