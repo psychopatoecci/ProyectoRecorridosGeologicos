@@ -20,11 +20,8 @@
     margin-right: 3em;
     padding-top: 1cm;
     padding-bottom: 1cm;
-}
-
- p {
-  animation-duration: 4s;
-  animation-name: slidein;
+    animation-duration: 4s;
+    animation-name: slidein;
 }
 
 @keyframes slidein {
