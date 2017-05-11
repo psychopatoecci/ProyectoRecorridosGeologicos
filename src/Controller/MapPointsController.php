@@ -36,9 +36,9 @@ class MapPointsController extends AppController
      */
     public function view($numRecorrido)
     {
-        if ($numRecorrido != 0 && $numRecorrido != 1) {
+        if ($numRecorrido != 1 && $numRecorrido != 2) {
             // Evitar que se caiga si se envian datos erroneos.
-            $numRecorrido = 0;
+            $numRecorrido = 1;
         }
         $mapPoint = $this->MapPoints->find('all', [
             'conditions' => ['MapPoints.path' => $numRecorrido]]);
