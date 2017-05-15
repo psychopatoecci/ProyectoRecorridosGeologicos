@@ -12,12 +12,12 @@ use App\Controller\AppController;
 class MapPointsController extends AppController
 {
 
-    /**
+    /*
      * Index method
      * > Left for content administration, not used as of now.
      *
      * @return \Cake\Network\Response|null
-     */
+     *
     public function index()
     {
         $this->paginate = [
@@ -27,7 +27,7 @@ class MapPointsController extends AppController
 
         $this->set(compact('mapPoints'));
         $this->set('_serialize', ['mapPoints']);
-    }
+    }*/
 
     /**
      * View method
@@ -43,11 +43,12 @@ class MapPointsController extends AppController
             // Evitar que se caiga si se envian datos erroneos.
             $tourNum = 1;
         }
-        $mapPoint = $this->MapPoints->find('all', [
-            'conditions' => ['MapPoints.path' => $tourNum]]);
+        $mapPoints = $this->MapPoints->find('all', [
+            'conditions' => ['MapPoints.path' => $tourNum]]
+        ) -> contain (['Pages.Contents']);
 
-        $this->set('mapPoint', $mapPoint);
-        $this->set('_serialize', ['mapPoint']);
+        $this->set('mapPoints', $mapPoints);
+        //$this->set('_serialize', ['mapPoints']);
     }
 
     /**
