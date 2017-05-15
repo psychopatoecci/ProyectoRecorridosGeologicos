@@ -79,6 +79,85 @@ class PagesController extends AppController
         ]);
     }
 	
+	
+	/**
+     * tour_santa_elena method.
+     * Created by Josin Madrigal.
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function tour_santa_elena()
+    {
+		$action = $this->request->params['action'];
+
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tour_santa_elena',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tour_santa_elena',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        $urlQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tour_santa_elena',
+                                'Contents.content_type' => 'url',)
+        ));
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images,
+            'url'       => $url,              
+        ]);
+    }
+	
+	/**
+     * tour_bolanos method.
+     * Created by Isavel Chaves.
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function tour_bolanos()
+    {
+		$action = $this->request->params['action'];
+
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tour_bolanos',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tour_bolanos',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        $urlQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tour_bolanos',
+                                'Contents.content_type' => 'url',)
+        ));
+
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images,
+            'url'       => $url,              
+        ]);
+    }
+	
+	
 	/**
      * Gallery method.
      * As of now it doesn't need logic.
