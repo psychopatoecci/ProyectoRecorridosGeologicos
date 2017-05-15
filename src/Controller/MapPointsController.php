@@ -5,17 +5,19 @@ use App\Controller\AppController;
 
 /**
  * MapPoints Controller
+ * > Corresponds to the tour tabs (Recorrido 1 & Recorrido 2).
  *
  * @property \App\Model\Table\MapPointsTable $MapPoints
  */
 class MapPointsController extends AppController
 {
 
-    /**
+    /*
      * Index method
+     * > Left for content administration, not used as of now.
      *
      * @return \Cake\Network\Response|null
-     */
+     *
     public function index()
     {
         $this->paginate = [
@@ -25,30 +27,33 @@ class MapPointsController extends AppController
 
         $this->set(compact('mapPoints'));
         $this->set('_serialize', ['mapPoints']);
-    }
+    }*/
 
     /**
      * View method
+     * > 
      *
-     * @param string|null $id Map Point id.
+     * @param int $tourNum whether the first (1) or second (2) tour.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($numRecorrido)
+    public function view($tourNum)
     {
-        if ($numRecorrido != 1 && $numRecorrido != 2) {
+        if ($tourNum != 1 && $tourNum != 2) {
             // Evitar que se caiga si se envian datos erroneos.
-            $numRecorrido = 1;
+            $tourNum = 1;
         }
-        $mapPoint = $this->MapPoints->find('all', [
-            'conditions' => ['MapPoints.path' => $numRecorrido]]);
+        $mapPoints = $this->MapPoints->find('all', [
+            'conditions' => ['MapPoints.path' => $tourNum]]
+        ) -> contain (['Pages.Contents']);
 
-        $this->set('mapPoint', $mapPoint);
-        $this->set('_serialize', ['mapPoint']);
+        $this->set('mapPoints', $mapPoints);
+        //$this->set('_serialize', ['mapPoints']);
     }
 
     /**
      * Add method
+     * > Left for content administration, not used as of now.
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -71,6 +76,7 @@ class MapPointsController extends AppController
 
     /**
      * Edit method
+     * > Left for content administration, not used as of now.
      *
      * @param string|null $id Map Point id.
      * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
@@ -97,6 +103,7 @@ class MapPointsController extends AppController
 
     /**
      * Delete method
+     * > Left for content administration, not used as of now.
      *
      * @param string|null $id Map Point id.
      * @return \Cake\Network\Response|null Redirects to index.
