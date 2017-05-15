@@ -86,7 +86,7 @@ class PagesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function tour_santa_elena()
+    public function tourSantaElena()
     {
 		$action = $this->request->params['action'];
 
