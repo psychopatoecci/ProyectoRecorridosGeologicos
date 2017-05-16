@@ -22,10 +22,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
+    	<?php echo $title; ?>
+	</title>
+
     <?= $this->Html->meta('icon') ?>
 
 	<?= $this->Html->script('jquery-3.2.0.min') ?>

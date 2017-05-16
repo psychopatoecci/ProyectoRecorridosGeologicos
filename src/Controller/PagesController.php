@@ -22,6 +22,7 @@ class PagesController extends AppController
      */
     public function home()
     {
+        $this->set('title', 'Inicio');
 
         $action = $this->request->params['action'];
         //Obtiene los datos de las imagenes del carrusel.
@@ -56,6 +57,8 @@ class PagesController extends AppController
      */
     public function information()
     {
+        $this->set('title', 'Información General');
+
         $action = $this->request->params['action'];
 
         //Crea el objeto query con la consulta especificada.
@@ -88,6 +91,8 @@ class PagesController extends AppController
      */
     public function tourSantaElena()
     {
+        $this->set('title', 'Recorrido Península de Santa Elena');
+
 		$action = $this->request->params['action'];
 
         //Crea el objeto query con la consulta especificada.
@@ -126,6 +131,8 @@ class PagesController extends AppController
      */
     public function tourBolanos()
     {
+        $this->set('title', 'Recorrido Isla Bolaños');
+
 		$action = $this->request->params['action'];
 
         //Crea el objeto query con la consulta especificada.
