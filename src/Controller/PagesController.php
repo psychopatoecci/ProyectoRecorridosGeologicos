@@ -124,7 +124,7 @@ class PagesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function tour_bolanos()
+    public function tourBolanos()
     {
 		$action = $this->request->params['action'];
 
