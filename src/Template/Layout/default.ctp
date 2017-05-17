@@ -75,8 +75,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-map-marker">&#8194;</span>Recorridos<b class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Descripción general',['controller'=>'pages','action'=> 'description'],['escape' => false]);?></li>
-										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Península de Santa Elena',['controller'=>'pages','action'=> 'tourSantaElena'],['escape' => false]);?></li>
-										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Isla Bolaños',['controller'=>'pages','action'=> 'tourBolanos'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Península de Santa Elena',['2', 'controller'=>'pages','action'=> 'tour'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Isla Bolaños',['1', 'controller'=>'pages','action'=> 'tour'],['escape' => false]);?></li>
 									</ul>
 							</li>
 							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/gallery' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-picture">&#8194;</span>Galería',['controller'=>'pages','action'=> 'gallery'],['escape' => false]);?></li>
