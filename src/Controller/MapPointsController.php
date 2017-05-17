@@ -121,4 +121,49 @@ class MapPointsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+
+    public function loadImage(){
+
+      if ($this->request->isPost()) {
+        if( $this->request->is('ajax') ) {
+
+        $action = $this->request->data['point'];
+
+        $imagesQuery = $this->MapPoints->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => $action,
+                                'Contents.content_type' => 'image',),'fields'=>array('Contents.link_path')
+        ));
+
+        $images = $imagesQuery->toArray();
+        echo json_encode($images);
+        exit();
+        }
+
+
+      }
+   }
+
+    public function loadVideo(){
+
+      if ($this->request->isPost()) {
+        if( $this->request->is('ajax') ) {
+
+        $action = $this->request->data['point'];
+
+        $imagesQuery = $this->MapPoints->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => $action,
+                                'Contents.content_type' => 'video',),'fields'=>array('Contents.link_path')
+        ));
+
+        $images = $imagesQuery->toArray();
+        echo json_encode($images);
+        exit();
+        }
+
+
+      }
+   }
+
 }
