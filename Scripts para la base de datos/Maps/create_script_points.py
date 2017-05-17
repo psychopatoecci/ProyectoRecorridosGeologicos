@@ -36,6 +36,7 @@ def read_data(name_document, sheet_name):
                     elif j == 3:
                         tupla.append(str(cell.value))
                     else:
+                        print cell.value
                         tupla.append(float(cell.value))
                 j = j + 1
 
