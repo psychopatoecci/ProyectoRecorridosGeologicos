@@ -53,6 +53,13 @@ $cakeDescription = 'Recorrido Isla Bolaños';
 							</p>
 						</div>
 					</div>
+					<div class="row">
+							<div class="col-md-4 pull-left">
+							<p>
+								<?= $this->Html->link ('Ver Mapa',['1', 'controller'=>'pages','action'=> 'tour'],['escape' => false]);?>
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 

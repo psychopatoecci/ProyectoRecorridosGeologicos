@@ -49,6 +49,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							</p>
 						</div>
 					</div>
+					<div class="row">
+							<div class="col-md-4 pull-left">
+							<p>
+								<?= $this->Html->link ('Ver Mapa',['2', 'controller'=>'pages','action'=> 'tour'],['escape' => false]);?>
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 
