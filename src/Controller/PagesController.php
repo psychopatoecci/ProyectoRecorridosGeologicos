@@ -97,17 +97,17 @@ class PagesController extends AppController
 
         //Crea el objeto query con la consulta especificada.
         $textQuery = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'tour_santa_elena',
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
                                 'Contents.content_type' => 'text',)
         ));
 
         $imagesQuery = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'tour_santa_elena',
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
                                 'Contents.content_type' => 'image',)
         ));
 
         $urlQuery = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'tour_santa_elena',
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
                                 'Contents.content_type' => 'url',)
         ));
 
@@ -137,17 +137,17 @@ class PagesController extends AppController
 
         //Crea el objeto query con la consulta especificada.
         $textQuery = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'tour_bolanos',
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
                                 'Contents.content_type' => 'text',)
         ));
 
         $imagesQuery = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'tour_bolanos',
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
                                 'Contents.content_type' => 'image',)
         ));
 
         $urlQuery = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'tour_bolanos',
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
                                 'Contents.content_type' => 'url',)
         ));
 
