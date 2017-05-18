@@ -31,9 +31,9 @@ class MapPointsController extends AppController
 
     /**
      * View method
-     * > 
+     * > Shows the map with the respective markers of the respective tour.
      *
-     * @param int $tourNum whether the first (1) or second (2) tour.
+     * @param int $tourNum > whether the first (1) or second (2) tour.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
@@ -43,6 +43,7 @@ class MapPointsController extends AppController
             // Evitar que se caiga si se envian datos erroneos.
             $tourNum = 1;
         }
+        $this -> set ('title', 'Recorrido '.($tourNum == 1 ? 'Isla Bola&ntilde;os' : 'Santa Elena'));
         $mapPoints = $this->MapPoints->find('all', [
             'conditions' => ['MapPoints.path' => $tourNum]]
         ) -> contain (['Pages.Contents']);
