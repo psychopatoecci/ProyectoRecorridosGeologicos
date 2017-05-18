@@ -33,11 +33,11 @@ $cakeDescription = 'Descripción de los Recorridos';
 		<div class=main-div2>
 			<p>Esperamos que el recorrido sea de su agrado, algunas recomendaciones de seguridad:</p><br>
 				<ol id="lista2">
-				    <li>Utilizar sombrero o gorra y chaleco flotador</li>
-				    <li>Proteger la piel con bloqueador solar</li>
-				    <li>Mantenerse en su asiento durante el viaje</li>
-				    <li>Evitar sacar los brazos o piernas del bote</li>
-				    <li>Bajarse del bote solo si el botero se lo indica</li> 
+				    <li><?php echo $text[1]->description; ?></li>
+				    <li><?php echo $text[2]->description; ?></li>
+				    <li><?php echo $text[3]->description; ?></li>
+				    <li><?php echo $text[4]->description; ?></li>
+				    <li><?php echo $text[5]->description; ?></li> 
 				</ol>
 		</div>
 	
