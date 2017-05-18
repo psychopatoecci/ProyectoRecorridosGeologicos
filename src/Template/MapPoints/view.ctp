@@ -166,8 +166,9 @@
 */
 
 // map center
-var center = new google.maps.LatLng(11.021101, -85.705462);
-
+<?php 
+    echo "var center = new google.maps.LatLng($latLong);";
+?>
 
 function initialize() {
   var mapOptions = {

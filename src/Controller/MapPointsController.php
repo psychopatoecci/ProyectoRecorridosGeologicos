@@ -44,6 +44,8 @@ class MapPointsController extends AppController
             $tourNum = 1;
         }
         $this -> set ('title', 'Recorrido '.($tourNum == 1 ? 'Isla Bola&ntilde;os' : 'Santa Elena'));
+        $this -> set ('tourNumber', $tourNum == 1 ? 'Isla Bolanos' : 'Santa Elena');
+        $this -> set ('latLong', $tourNum == 1 ? '11.021101, -85.705462' : '10.905865, -85.760166');
         $mapPoints = $this->MapPoints->find('all', [
             'conditions' => ['MapPoints.path' => $tourNum]]
         ) -> contain (['Pages.Contents']);
