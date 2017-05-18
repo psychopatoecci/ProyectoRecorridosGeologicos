@@ -1,5 +1,5 @@
 -- Project: A través de la historia geológica 
--- Update of contents in the DB. 
+-- Update of contents in t he DB. 
 
 USE recorridos_geologicosdb; 
 
