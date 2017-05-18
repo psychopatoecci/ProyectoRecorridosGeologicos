@@ -163,6 +163,46 @@ class PagesController extends AppController
             'url'       => $url,              
         ]);
     }
+    
+    	/**
+     * toursDescription method.
+     * Created by Jean Carlo Lara.
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function description()
+    {
+        $this->set('title', 'Descripción General de los Recorridos');
+
+		$action = $this->request->params['action'];
+
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        $urlQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'url',)
+        ));
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images,
+            'url'       => $url,              
+        ]);
+    }
 	
 	
 	/**

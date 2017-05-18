@@ -58,6 +58,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/pages/gallery', ['controller' => 'Pages', 'action' => 'gallery']);
     $routes->connect('/pages/contact', ['controller' => 'Pages', 'action' => 'contact']);
     $routes->connect('/pages/tour/*', ['controller' => 'MapPoints', 'action' => 'view']);
+    $routes->connect('/pages/description', ['controller' => 'Pages', 'action' => 'description']);
     /**
      * Connect catchall routes for all controllers.
      *
