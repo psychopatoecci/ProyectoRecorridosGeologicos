@@ -173,7 +173,7 @@ function initialize() {
   var mapOptions = {
     center: center,
     zoom: 12,    
-    mapTypeId: 'satellite'
+    mapTypeId: 'terrain'
   };
 
   var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
@@ -211,6 +211,7 @@ function initialize() {
   var marker = new google.maps.Marker({
     position: factory,
     map: map,
+    optimized: false,
                     icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
                 shadow: pinShadow
   });
