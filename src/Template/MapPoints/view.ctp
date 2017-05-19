@@ -1,3 +1,17 @@
+
+<?php
+    foreach ($mapPoints as $point) {
+        echo 'latitud: '.$point ['latitude'].', longitud: '.$point ['longitude'].', nombre: '.$point ['name'].'<br />';
+        foreach ($point ['images'] as $image) {
+            echo implode ($image).'<br />';
+        }
+        foreach ($point ['videos'] as $video) {
+            echo implode ($video).'<br />';
+        }
+        foreach ($point ['texts'] as $text) {
+            echo implode ($text).'<br />';
+        }
+    } ?>
 <?php
 /**
   * @var \App\View\AppView $this

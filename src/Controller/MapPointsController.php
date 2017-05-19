@@ -49,8 +49,37 @@ class MapPointsController extends AppController
         $mapPoints = $this->MapPoints->find('all', [
             'conditions' => ['MapPoints.path' => $tourNum]]
         ) -> contain (['Pages.Contents']);
+        $pointsToSend = [];
+        foreach ($mapPoints as $point) {
+            $images = [];
+            $videos = [];
+            $texts  = [];
+            foreach ($point ['page']['contents'] as $content) {
+                switch ($content ['content_type']) {
+                    case 'image':
+                        $images [] = [$content ['link_path'], $content ['description'], $content['sequence_in_page']];
+                        break;
+                    case 'video':
+                        $videos [] = [$content ['link_path'], $content ['description'], $content['sequence_in_page']];
+                        break;
+                    case 'text':
+                        $texts [] = [$content ['link_path'], $content ['description'], $content['sequence_in_page']];
+                        break;
+                    default:
+                        assert (false);
+                }
+            }
+            $pointsToSend [] = [
+                'latitude'  => $point ['latitude'],
+                'longitude' => $point ['longitude'],
+                'name'      => $point ['name'],
+                'images'    => $images,
+                'videos'    => $videos,
+                'texts'     => $texts
+            ];
+        }
 
-        $this->set('mapPoints', $mapPoints);
+        $this->set('mapPoints', $pointsToSend);
         //$this->set('_serialize', ['mapPoints']);
     }
 
