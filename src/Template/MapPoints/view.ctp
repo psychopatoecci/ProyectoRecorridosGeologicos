@@ -1,5 +1,6 @@
 
 <?php
+    /* Para probar $mapPoints
     foreach ($mapPoints as $point) {
         echo 'latitud: '.$point ['latitude'].', longitud: '.$point ['longitude'].', nombre: '.$point ['name'].'<br />';
         foreach ($point ['images'] as $image) {
@@ -11,7 +12,8 @@
         foreach ($point ['texts'] as $text) {
             echo implode ($text).'<br />';
         }
-    } ?>
+    } */
+?>
 <?php
 /**
   * @var \App\View\AppView $this
@@ -199,9 +201,9 @@ function initialize() {
   <?php foreach ($mapPoints as $point): ?>
   // InfoWindow content
 
-  var $n = "<?= h($point->page_id); ?>";
+  var $n = "<?= h($point ['page_id']); ?>";
   var $content = '<div id="iw-container">' +
-                    '<div class="iw-title"><?= $point->sequence_number; ?>. Quaerat voluptatem</div>' +
+                    '<div class="iw-title"><?= $point ['sequence_number']; ?>. Quaerat voluptatem</div>' +
                     '<div class="iw-content">' +
                       '<div class="iw-subTitle">History</div>' +
                       '<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
@@ -221,7 +223,7 @@ function initialize() {
  // A new Info Window is created and set content
   var infowindow = new google.maps.InfoWindow();
   //infowindow.setContent($content[0]);
-  var factory = new google.maps.LatLng(<?= $point->longitude; ?>, <?= $point->latitude; ?>);   
+  var factory = new google.maps.LatLng(<?= $point ['longitude']; ?>, <?= $point ['latitude']; ?>);   
   // marker options
   var marker = new google.maps.Marker({
     position: factory,

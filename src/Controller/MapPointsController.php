@@ -70,12 +70,14 @@ class MapPointsController extends AppController
                 }
             }
             $pointsToSend [] = [
-                'latitude'  => $point ['latitude'],
-                'longitude' => $point ['longitude'],
-                'name'      => $point ['name'],
-                'images'    => $images,
-                'videos'    => $videos,
-                'texts'     => $texts
+                'latitude'        => $point ['latitude'],
+                'longitude'       => $point ['longitude'],
+                'name'            => $point ['name'],
+                'page_id'         => $point ['page_id'],
+                'sequence_number' => $point ['sequence_number'],
+                'images'          => $images,
+                'videos'          => $videos,
+                'texts'           => $texts
             ];
         }
 
