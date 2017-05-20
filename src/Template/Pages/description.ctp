@@ -20,7 +20,7 @@ $cakeDescription = 'Descripción de los Recorridos';
     <?php echo $title; ?>
 </title>
 
-<?= $this->Html->css('information.css') ?> 
+<?= $this->Html->css('description.css') ?> 
 	<div class="tip-video">
 		<div>
 		<iframe class="video" src="https://www.youtube.com/embed/tS5jzLqhCzI?autoplay=1&amp;rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -31,7 +31,12 @@ $cakeDescription = 'Descripción de los Recorridos';
 			</div>
 		</div>
 		<div class=main-div2>
+			
 			<p><?php echo $text[0]->description; ?></p><br>
+			<div class="imagen">
+				<img class="img" src="<?php echo $images[0]->link_path;?>" alt="Sugerencias de seguridad" height="340" width="400">
+			</div>
+			<div  class="lista">
 				<ol id="lista2">
 				    <li><?php echo $text[1]->description; ?></li>
 				    <li><?php echo $text[2]->description; ?></li>
@@ -39,6 +44,7 @@ $cakeDescription = 'Descripción de los Recorridos';
 				    <li><?php echo $text[4]->description; ?></li>
 				    <li><?php echo $text[5]->description; ?></li> 
 				</ol>
+				</div>
 		</div>
-	
 	</div>
+

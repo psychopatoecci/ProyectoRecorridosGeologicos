@@ -25,3 +25,4 @@ INSERT INTO contents VALUES (113, 'toursDescription', '../resources/travel/gener
 INSERT INTO contents VALUES (114, 'toursDescription', '../resources/travel/general/sugerencia3.txt', 'Mantenerse en su asiento durante el viaje.', 'text', 0);
 INSERT INTO contents VALUES (115, 'toursDescription', '../resources/travel/general/sugerencia4.txt', 'Evitar sacar los brazos o piernas del bote.', 'text', 0);
 INSERT INTO contents VALUES (116, 'toursDescription', '../resources/travel/general/sugerencia5.txt', 'Bajarse del bote solo si el botero se lo indica.', 'text', 0);
+INSERT INTO contents VALUES (117, 'toursDescription', '../resources/travel/general/security.png', '', 'image', 0);
