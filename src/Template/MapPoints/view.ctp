@@ -1,3 +1,19 @@
+
+<?php
+    /* Para probar $mapPoints
+    foreach ($mapPoints as $point) {
+        echo 'latitud: '.$point ['latitude'].', longitud: '.$point ['longitude'].', nombre: '.$point ['name'].'<br />';
+        foreach ($point ['images'] as $image) {
+            echo implode ($image).'<br />';
+        }
+        foreach ($point ['videos'] as $video) {
+            echo implode ($video).'<br />';
+        }
+        foreach ($point ['texts'] as $text) {
+            echo implode ($text).'<br />';
+        }
+    } */
+?>
 <?php
 /**
   * @var \App\View\AppView $this
@@ -153,6 +169,7 @@
 
     </style>
         
+        <h1><?php echo $title; ?></h1>
     <div id="map-canvas">
     </div>
 
@@ -185,16 +202,22 @@ function initialize() {
   <?php foreach ($mapPoints as $point): ?>
   // InfoWindow content
 
-  var $n = "<?= h($point->page_id); ?>";
+  var $n = "<?= h($point ['page_id']); ?>";
   var $content = '<div id="iw-container">' +
-                    '<div class="iw-title"><?= $point->sequence_number; ?>. Quaerat voluptatem</div>' +
+                    '<div class="iw-title"><?= $point ['sequence_number']; ?>. Quaerat voluptatem</div>' +
                     '<div class="iw-content">' +
                       '<div class="iw-subTitle">History</div>' +
                       '<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
-                      '<p>Founded in 1824, the Porcelain Factory of Vista Alegre was the first industrial unit dedicated to porcelain production in Portugal. For the foundation and success of this risky industrial development was crucial the spirit of persistence of its founder, José Ferreira Pinto Basto. Leading figure in Portuguese society of the nineteenth century farm owner, daring dealer, wisely incorporated the liberal ideas of the century, having become "the first example of free enterprise" in Portugal.</p>' +
-                      '<button class = "btn btn-warning" id=\"'+$n+'\" onclick = \"show_content_image(this.id);\" style = "height: 45px;"><p class"marker_options" ><i class="glyphicon glyphicon-picture" id="iconoImagen"></i> Ver imágenes</p></button>'+'&nbsp&nbsp&nbsp'+
-                      '<button class = "btn btn-primary" id=\"'+$n+'\" onclick = \"show_content_video(this.id);\" style = "height: 45px;"><p class"marker_options" ><i class="glyphicon glyphicon-film" id="iconoImagen"></i> Ver videos</p></button>'+
-                    '</div>' +
+                      '<p>Founded in 1824, the Porcelain Factory of Vista Alegre was the first industrial unit dedicated to porcelain production in Portugal. For the foundation and success of this risky industrial development was crucial the spirit of persistence of its founder, José Ferreira Pinto Basto. Leading figure in Portuguese society of the nineteenth century farm owner, daring dealer, wisely incorporated the liberal ideas of the century, having become "the first example of free enterprise" in Portugal.</p>'
+                        <?php
+                            if (count ($point ['images']) > 0) {
+                                echo '+ \'<button class = \\"btn btn-warning\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_image(this.id);\\" style = \\"height: 45px;\\"><p class=\\"marker_options\\" ><i class=\\"glyphicon glyphicon-picture\\" id=\\"iconoImagen\\"></i> Ver imágenes</p></button>\'+\'&nbsp&nbsp&nbsp\'';
+                            }
+                            if (count ($point ['videos']) > 0) {
+                                echo '+ \'<button class = \\"btn btn-primary\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_video(this.id);\\" style = \\"height: 45px;\\"><p class =\\"marker_options\\" ><i class=\\"glyphicon glyphicon-film\\" id=\\"iconoImagen\\"></i> Ver videos</p></button>\'';
+                            }
+                        ?>
+                    + '</div>' +
                     '<div class="iw-bottom-gradient"></div>' +
                   '</div>';
 
@@ -207,7 +230,7 @@ function initialize() {
  // A new Info Window is created and set content
   var infowindow = new google.maps.InfoWindow();
   //infowindow.setContent($content[0]);
-  var factory = new google.maps.LatLng(<?= $point->longitude; ?>, <?= $point->latitude; ?>);   
+  var factory = new google.maps.LatLng(<?= $point ['longitude']; ?>, <?= $point ['latitude']; ?>);   
   // marker options
   var marker = new google.maps.Marker({
     position: factory,
