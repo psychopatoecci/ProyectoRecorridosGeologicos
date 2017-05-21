@@ -173,7 +173,7 @@
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfpStLLTf3UeMblxDulglE9fMhTy4peMA
-&callback=initMap"></script>
+&callback=initMap&language=es"></script>
     <script>
     /*
  * 5 ways to customize the Google Maps infowindow
