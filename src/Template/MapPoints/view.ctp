@@ -1,4 +1,3 @@
-
 <?php
     /* Para probar $mapPoints
     foreach ($mapPoints as $point) {
@@ -196,8 +195,9 @@ function initialize() {
 
   var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
-  //Marcador
-  var i = 0;
+  
+   // A new Info Window is created and set content
+  var infowindow = new google.maps.InfoWindow();
 
   <?php foreach ($mapPoints as $point): ?>
   // InfoWindow content
@@ -227,8 +227,6 @@ function initialize() {
         new google.maps.Point(0, 0),
         new google.maps.Point(12, 35));
 
- // A new Info Window is created and set content
-  var infowindow = new google.maps.InfoWindow();
   //infowindow.setContent($content[0]);
   var factory = new google.maps.LatLng(<?= $point ['longitude']; ?>, <?= $point ['latitude']; ?>);   
   // marker options
@@ -242,7 +240,7 @@ function initialize() {
 
 
  google.maps.event.addListener(marker,'click', (function(marker,$content,infowindow){ 
-    return function() {
+    return function() {                
         infowindow.setContent($content);
         infowindow.open(map,marker);
     };
@@ -250,7 +248,7 @@ function initialize() {
 
   // Event that closes the Info Window with a click on the map
   google.maps.event.addListener(map, 'click', function() {
-    infowindow.close();
+      infowindow.close();
   });
 
 
@@ -286,37 +284,6 @@ function initialize() {
 
   <?php endforeach; ?>
 
-
-
-//}
-  // *
-  // START INFOWINDOW CUSTOMIZE.
-  // The google.maps.event.addListener() event expects
-  // the creation of the infowindow HTML structure 'domready'
-  // and before the opening of the infowindow, defined styles are applied.
-  // *
-
-  //google.maps.event.addListener(infowindow, 'domready', function() {
-
-    // Reference to the DIV that wraps the bottom of infowindow
-    //var iwOuter = $('.gm-style-iw');
-
-    /* Since this div is in a position prior to .gm-div style-iw.
-     * We use jQuery and create a iwBackground variable,
-     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
-    */
-    //var iwBackground = iwOuter.prev();
-
-
-    // Removes background shadow DIV
-    //iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-
-    // Removes white background DIV
-    //iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-
-
-    // Apply the desired effect to the close button
-  //});
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
