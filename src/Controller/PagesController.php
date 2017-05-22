@@ -17,7 +17,8 @@ class PagesController extends AppController
     /**
      * Home method.
      * Used for the main / page.
-     *
+     * This method show a carousel and a little text box
+     * with some information.
      * @return \Cake\Network\Response|null
      */
     public function home()
@@ -51,8 +52,9 @@ class PagesController extends AppController
 	
 	/**
      * Information method.
-     * As of now it doesn't need logic.
-     *
+     * Created by Josin Madrigal
+     * This method get some content from 
+     * the database and send it to the view.
      * @return \Cake\Network\Response|null
      */
     public function information()
@@ -86,7 +88,8 @@ class PagesController extends AppController
 	/**
      * tour_santa_elena method.
      * Created by Josin Madrigal.
-     *
+     * This method get the Santa Elena information paths from 
+     * the database to get content and send it to the view.
      * @return \Cake\Network\Response|null
      */
     public function tourSantaElena()
@@ -125,8 +128,9 @@ class PagesController extends AppController
 	
 	/**
      * tour_bolanos method.
-     * Created by Isavel Chaves.
-     *
+     * Created by Isabel Chaves.
+     * This method get the Isla Bolaños information paths from 
+     * the database to get content and send it to the view.
      * @return \Cake\Network\Response|null
      */
     public function tourBolanos()
@@ -167,12 +171,13 @@ class PagesController extends AppController
     	/**
      * toursDescription method.
      * Created by Jean Carlo Lara.
-     *
+     * This method get the general tours information paths from 
+     * the database to get content and send it to the view.
      * @return \Cake\Network\Response|null
      */
     public function description()
     {
-        $this->set('title', 'Descripción General de los Recorridos');
+        $this->set('title', 'Descripción General');
 
 		$action = $this->request->params['action'];
 
