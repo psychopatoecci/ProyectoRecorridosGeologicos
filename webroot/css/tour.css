@@ -31,7 +31,7 @@
 
 .help-tip p{	/* The tooltip */
 	display: none;
-	text-align: left;
+	text-align: justify;
 	background-color: #1E2021;
 	padding: 20px;
 	width: 300px;
@@ -86,57 +86,6 @@
 	100% { opacity:100%; }
 }
 
-
-
-
-		/*----------------------------------------------- Estilos para la navegacion ----------------------------------------- */
-
-	/*necesario para scrollspy*/
-	body {
-		position: relative;
-	}
-
-
-	a.nav_item:before {
-		content: "•"; 
-		color: rgba(0,0,0,0.5); 
-		font-size: 25px; 
-		line-height: 5px; 
-		display: inline-block;
-	}
-
-	a.nav_item {
-		width: 40px;
-		height: 30px;
-		margin: 0px;
-		display: block;
-		left: -3px;
-	}
-
-	ul.nav-pills {
-		top: 30%;//320px;
-		right: 0;
-		position: fixed;
-		-webkit-border-radius: 5px;
-		-moz-border-radius: 5px;
-		border-radius: 5px;
-		width: 35px;
-		background-color: rgba(0,0,0,0.5);
-	}
-
-  	.nav-pills>li.active>a.nav_item:before, .nav-pills>li.active>a.nav_item:focus:before, .nav-pills>li.active>a.nav_item:hover:before {
-       color: rgba(255,255,255,0.5) !important;
-	} 
-
-    .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-       background-color: transparent;
-  } 
-
-  .nav-pills>li>a:focus, .nav-pills>li>a:hover {
-      background-color: transparent;
-  }
-
-
 	/*----------------------------------------------- Estilos para el contenido ----------------------------------------- */
 
 	#wrapper_pantalla {
@@ -144,62 +93,81 @@
 		text-align: center;
 	}
 
-	.wrapper .container .row {height: 230px;}
-
-	.wrapper .titulo .container .row {
+	#row_titulo {
 		height: 40px;
-		margin-bottom: 100px;
+		margin-bottom: 150px;
 	}
 
-
 	.wrapper p {
-		text-align: left;
+		text-align: justify;
 		color: white;
 		font-size: large;
-		background-color: rgba(0,0,0,0.3);
+		background-color: rgba(0,0,0,0.5);
 		border-radius: 10px;
 		padding: 10px;
 	}
 
 
+	.container_titulo {
+		width: 100%;
+		padding-bottom: 130px;
+		padding-left: 0;
+	}
+
 	#titulo {
-		color: white;
-	    background-color: rgba(0,0,0,0.3);
-	    display: inline;
-	    padding: 5px;
+		color: #504E4E;
+	    background-color: rgba(255,255,255,0.5);
+	    padding-left: 25px;
+	    border-radius: 0px 10px 10px 0px;
+	    text-align: left;
+	    text-shadow: 2px 2px #B3AFAF; /* Le pone sombra más clara a los títulos*/
+	    font-size: 25px
+	}
+
+	#subtitulo {
+		color: #504E4E;
+	    background-color: rgba(255,255,255,0.5);
 	    border-radius: 10px;
-	    text-align: center;
+	    text-align: left;
+	    text-shadow: 2px 2px #B3AFAF;
+	    font-size: 20px
+	}
+
+	#col_titulo{
+		padding-left: 0;
+	}
+
+	.links a, a:visited {
+		color: white;
+	}
+
+	.links a:hover, a:active{
+	    color: #f7d358;
 	}
 
 	.wrapper {
-		padding: 250px;
 		background-repeat: no-repeat;
-		background-position: center;
 		-webkit-background-size: 100%;
 		-webkit-background-size: cover;
 		-moz-background-size: 100%;
 		-moz-background-size: cover;
 		background-size: 100%;
 		background-size: cover;
-		padding-left: 0;
 	}
 
 	#estilo1{
+		padding: 100px 250px 100px 0;
+	}
 
-	}
-	#estilo2 p{
-		text-align: right;
-	}
-	
+
 	@media (max-width: 991px) { 
 	
 		.row .col-md-4 
 		{
-			text-align: center;
+			text-align: justify;
 		}
 
 		.wrapper {
-			padding: 10px;
 			background-repeat: no-repeat;
 			background-position: center;
 			-webkit-background-size: 100%;
@@ -210,21 +178,25 @@
 			background-size: cover;
 		}
 
-		#titulo {
-			color: white;
-		    display: inline;
-		    padding: 5px;
-		    text-align: center;
-		    background-color: transparent;
+		.container_titulo {
+			padding-top: 50px;
+			padding-bottom: 0px;
 		}
 
+		#estilo1{
+			padding: 10px 25px 10px 0px;
+		}
+
+		#titulo {
+		    padding-left: 40px;
+		}
 	}
 
 	@media (max-width: 1300px) { 
 	
 		.row .col-md-4 
 		{
-			text-align: center;
+			text-align: justify;
 		}
 
 		.wrapper {

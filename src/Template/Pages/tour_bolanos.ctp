@@ -20,79 +20,47 @@ $cakeDescription = 'Recorrido Isla Bolaños';
     <?php echo $title; ?>
 </title>
 
-<?= $this->Html->css('information.css') ?> 
+<?= $this->Html->css('tour.css') ?> 
 
-	<div class="help-tip">
-		<p>En esta página usted encontrará información general acerca de la Isla Bolaños y alrededores.</p>
-	</div>
+<div class="help-tip">
+	<p>En esta página usted encontrará acerca de la Isla Bolaños y alrededores. Además, podrá obtener enlaces a documentos de interés y visualizar un mapa interactivo con los puntos del recorrido.</p>
+</div>
 
-	<div id="wrapper_pantalla">
-		<div id="wrapper_introduccion">
+<div id="wrapper_pantalla">
+	<section class="wrapper" id="estilo1" style="background-image: url(<?=h($images[0]->link_path)?>);">
 
-			<!--Elemento lateral de navegacion-->
-			<nav class="col-sm-3" id="scroll_item">
-				<ul class="nav nav-pills nav-stacked">
-					<li><a class="nav_item" href="#estilo1"></a></li>
-					<li><a class="nav_item" href="#estilo2"></a></li>
-				</ul>
-			</nav>
-
-		<div class="wrapper_introduccion_texto">
-
-			<section class="wrapper" id="estilo1" style="background-image: url(<?=h($images[0]->link_path)?>);">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4" id="titulo">
-							<h3>
-								Isla Bolaños y alrededores
-							</h3>
-						</div>
-						<div class="col-md-4 pull-right">
-							<p>
-								<?php echo $text[0]->description; ?>
-							</p>
-						</div>
-					</div>
-					<div class="row">
-							<div class="col-md-4 pull-left">
-							<p>
-								<?= $this->Html->link ('Ver Mapa',['1', 'controller'=>'pages','action'=> 'tour'],['escape' => false]);?>
-							</p>
-						</div>
-					</div>
+		<div class="container container_titulo">
+			<div class="row">
+				<div class="col-md-4" id="col_titulo">
+					<p id="titulo">
+							Isla Bolaños y alrededores
+					</p>
 				</div>
-			</section>
-
-			<!-- Pendiente de hablar
-			<section class="wrapper" id="estilo2" style="background-image: url(<?=h($images[1]->link_path)?>);">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4 pull-right">
-							<p>
-								<?php echo $text[1]->description; ?>
-							</p>
-						</div>
-					</div>		
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 pull-right">
+					<p>
+						<?php echo $text[0]->description; ?>
+					</p>
 				</div>
-			</section>-->
-
+			</div>
+			<div class="row">
+					<div class="col-md-4 links">
+						<p>
+							<span class="glyphicon glyphicon-globe"></span>
+							<?= $this->Html->link ('Ir al mapa',['1', 'controller'=>'pages','action'=> 'tour'],['escape' => false]);?>
+						</p>
+						<p id="subtitulo">
+							Documentos relacionados
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-file"></span>
+							<a href="<?php echo $url[0]->link_path; ?>" target='_blank'><?php echo $url[0]->description; ?></a> 
+						</p>
+					</div>
+			</div>
 		</div>
-		</div>
-	</div>
-
-	<script>
-	$(document).ready(function(){
-  		// Añadir scrollspy al <body>
-  		$('body').scrollspy({target: "#scroll_item", offset: 200}); 
-
-  		//smooth scrolling
-		$("#scroll_item a").click(function() {
-
-			var h = String(this.href).match(/#\w+\d/);
-			var seccion = String(h);
-			$('html,body').animate({
-    		scrollTop: $(seccion).offset().top},
-    		'slow');
-		});
-	});
-	</script>
+	</section>
+</div>

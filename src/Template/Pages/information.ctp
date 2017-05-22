@@ -36,15 +36,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 		<div class="wrapper_introduccion_texto">
 
-			<section class="wrapper" id="estilo1" style="background-image: url(<?=h($images[0]->link_path)?>);">
-				<div class="container">
+			<section class="wrapper" id="estilo1" style="background-image: url(<?=h($images[0]->link_path)?>)">
+				<div class="container-fluid container_titulo">
 					<div class="row">
-						<div class="col-md-4" id="titulo">
-							<h3>
+						<div class="col-md-8" id="col_titulo">
+							<p id="titulo">
 								Recorridos a través de la historia geológica del noroeste de Costa Rica
-							</h3>
+							</p>
 						</div>
-						<div class="col-md-4 pull-right">
+					</div>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-4" id="estilo1_row2">
 							<p>
 								<?php echo $text[0]->description; ?>
 							</p>
@@ -54,9 +58,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</section>
 
 			<section class="wrapper" id="estilo2" style="background-image: url(<?=h($images[1]->link_path)?>);">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-4 pull-right">
+						<div class="col-md-4 pull-left">
 							<p>
 								<?php echo $text[1]->description; ?>
 							</p>
@@ -66,13 +70,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</section>
 
 			<section class="wrapper" id="estilo3" style="background-image: url(<?=h($images[2]->link_path)?>);">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-6 col-md-offset-6">
 							<p> 
 								<?php echo $text[2]->description; ?>
 							</p>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-md-4 pull-right">
 							<p>
 								<?php echo $text[3]->description; ?>
@@ -83,7 +89,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</section>
 
 			<section class="wrapper" id="estilo4" style="background-image: url(<?=h($images[3]->link_path)?>);">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-4">
 							<p>
