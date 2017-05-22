@@ -31,7 +31,7 @@
 
 .help-tip p{	/* The tooltip */
 	display: none;
-	text-align: left;
+	text-align: justify;
 	background-color: #1E2021;
 	padding: 20px;
 	width: 300px;
@@ -85,8 +85,6 @@
 	0% { opacity:0; }
 	100% { opacity:100%; }
 }
-
-
 
 
 		/*----------------------------------------------- Estilos para la navegacion ----------------------------------------- */
@@ -146,65 +144,72 @@
 
 	.wrapper .container .row {height: 230px;}
 
-	.wrapper .titulo .container .row {
+	#row_titulo {
 		height: 40px;
-		margin-bottom: 100px;
+		margin-bottom: 150px;
 	}
 
-
 	.wrapper p {
-		text-align: left;
+		text-align: justify;
 		color: white;
 		font-size: large;
-		background-color: rgba(0,0,0,0.3);
+		background-color: rgba(0,0,0,0.5);
 		border-radius: 10px;
 		padding: 10px;
 	}
 
 
+	.container_titulo {
+		//width: 100%;
+		padding-bottom: 130px;
+	}
+
 	#titulo {
-		color: white;
-	    background-color: rgba(0,0,0,0.3);
-	    display: inline;
-	    padding: 5px;
-	    border-radius: 10px;
-	    text-align: center;
+		color: #504E4E;
+	    background-color: rgba(255,255,255,0.5);
+	    padding-left: 25px;
+	    border-radius: 0px 10px 10px 0px;
+	    text-align: left;
+	    text-shadow: 2px 2px #B3AFAF; /* Le pone sombra más clara a los títulos*/
+	    font-size: 25px
+	}
+
+	#col_titulo{
+		padding-left: 0;
 	}
 
 	.wrapper {
-		padding: 250px;
 		background-repeat: no-repeat;
-		background-position: center;
+		//background-position: center;
 		-webkit-background-size: 100%;
 		-webkit-background-size: cover;
 		-moz-background-size: 100%;
 		-moz-background-size: cover;
 		background-size: 100%;
 		background-size: cover;
-		padding-left: 0;
 	}
 
 	#estilo1{
-
+		padding: 100px 250px 200px 0;
 	}
-	#estilo2 p{
-		text-align: right;
+	#estilo2{
+		padding: 250px 250px 250px 0;
 	}
 	#estilo3 {
-		
+		padding: 150px 250px 150px 0;
 	}
 	#estilo4 {
-		
+		padding: 300px 250px 300px 0;
 	}
+
 	@media (max-width: 991px) { 
 	
 		.row .col-md-4 
 		{
-			text-align: center;
+			text-align: justify;
 		}
 
 		.wrapper {
-			padding: 10px;
 			background-repeat: no-repeat;
 			background-position: center;
 			-webkit-background-size: 100%;
@@ -215,21 +220,38 @@
 			background-size: cover;
 		}
 
-		#titulo {
-			color: white;
-		    display: inline;
-		    padding: 5px;
-		    text-align: center;
-		    background-color: transparent;
+		.container_titulo {
+			padding-top: 50px;
+			padding-bottom: 0px;
 		}
 
+		#estilo1{
+			padding: 10px 25px 10px 0px;
+		}
+		#estilo1_row2{
+			padding-left: 25px;
+		}
+		#estilo2{
+			padding: 10px 25px 10px 10px;
+		}
+		#estilo3 {
+			padding: 10px 25px 10px 10px;
+		}
+
+		#estilo4 {
+			padding: 10px 25px 10px 10px;
+		}
+
+		#titulo {
+		    padding-left: 35px;
+		}
 	}
 
 	@media (max-width: 1300px) { 
 	
 		.row .col-md-4 
 		{
-			text-align: center;
+			text-align: justify;
 		}
 
 		.wrapper {
@@ -247,5 +269,166 @@
 	}
 	
 	
+	/*----------------------------------------------- Estilos para montrar video junto con help tip ----------------------------------------- */
 	
+	/*-----------contiene el help tip---------- */
+	.help-tip2 {
+		position:absolute;
+    	top:0;
+    	right:0;
+	}
+	
+	/*-----------contiene el video---------- */
+	.video {
+		width: 100%;
+    	height:760px;
+	}
+	
+	/*-----------contiene el video y el help-tip---------- */
+	.tip-video {
+		position:relative;
+	}
+	
+	
+	
+	/*----------------------------------------------- Estilos para cuadro del mensaje de seguridad --------------------------------------------- */
 
+
+.main-div2 {
+	font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    line-height: 27px;
+    color: #404041;
+    font-weight:bold;
+    text-align: left;
+    margin-left: 3em;
+    margin-right: 3em;
+    padding-top: 1.5cm;
+    padding-bottom: 1.5cm;
+    padding-left: 1cm;
+    margin: 3em;
+    background:#FBA069;
+    overflow: hidden;
+    border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 35px 0px 35px 0px;
+    -webkit-border-radius: 35px 0px 35px 0px;
+    border: 5px solid #ff5f00;
+  
+}
+
+.main-div2  p{
+	font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 27px;
+    color: #404041;
+    font-weight:bold;
+    text-align: left;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  
+}
+
+
+
+@media (max-width: 700px) { 
+	
+		.main-div2 
+		{
+      margin-left: 0.4cm;
+      margin-right: 0.4cm;
+      padding: 1cm;
+      font-size: 18px;
+		}
+		
+		.main-div2 br {
+    		display: none;
+		}
+		
+		#lista2 li{
+    padding: 1cm;
+    margin: .4em 0; 
+}
+}
+
+@media (max-width: 480px) { 
+	
+		.main-div2 
+		{
+      margin-left: 0.2cm;
+      margin-right: 0.2cm;
+      font-size: 14px;
+      padding: 0.5cm;
+		}
+		
+		.main-div2 br {
+    		display: none;
+		}
+		
+		#lista2 li{
+			margin: 0.5cm;
+			padding: 0.5cm;
+		}
+}
+
+@media (max-width: 700px) { 
+	
+		.main-div2 p 
+		{
+      margin-left: 0.6cm;
+      margin-right: 0.6cm;
+      font-size: 18px;
+		}
+}
+
+@media (max-width: 480px) { 
+	
+		.main-div2 p
+		{
+      margin-left: 0.2cm;
+      margin-right: 0.2cm;
+      font-size: 14px;
+      padding-top: 0cm;
+      padding-bottom: 0cm;
+		}
+}
+
+
+#lista2 {
+    counter-reset: li; 
+    list-style: none; 
+    *list-style: decimal;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+#lista2 ol {
+    margin: 0 0 0 2em; 
+}
+
+#lista2 li{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 4em;
+    *padding: .4em;
+    margin: .7em 0;
+    background: #FBA069;
+    color: #404041;
+    text-decoration: none;
+    border-radius: .3em; 
+}
+
+#lista2 li:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: 0.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #FBA069;
+    height: 2em;
+    width: 2em;
+    line-height: 1.5em;
+    border: .2em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+}
