@@ -125,7 +125,7 @@
     padding-top: 1.5cm;
     padding-bottom: 1.5cm;
     padding-left: 1cm;
-    background:#D6C6BA;
+    background:#E0E0E0;
     overflow: hidden;
     border-radius: 35px 0px 35px 0px;
     -moz-border-radius: 35px 0px 35px 0px;
@@ -139,7 +139,7 @@
 	font-family: 'Roboto', sans-serif;
     font-size: 24px;
     line-height: 27px;
-    color: #FF3C00;
+    color: black;
     font-weight:bold;
     text-align: left;
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -168,8 +168,8 @@
     padding: .4em .4em .4em 4em;
     *padding: .4em;
     margin: .7em 0;
-    background: #D6C6BA;
-    color: #FF3C00;
+    background: #E0E0E0;
+    color: black;
     text-decoration: none;
     border-radius: .3em; 
 }
@@ -181,7 +181,7 @@
     left: 0.3em;
     top: 50%;
     margin-top: -1.3em;
-    background: #D6C6BA;
+    background: #E0E0E0;
     height: 2em;
     width: 2em;
     line-height: 1.5em;

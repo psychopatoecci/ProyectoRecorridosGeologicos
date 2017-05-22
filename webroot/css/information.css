@@ -31,7 +31,7 @@
 
 .help-tip p{	/* The tooltip */
 	display: none;
-	text-align: justify;
+	text-align: left;
 	background-color: #1E2021;
 	padding: 20px;
 	width: 300px;
@@ -150,7 +150,7 @@
 	}
 
 	.wrapper p {
-		text-align: justify;
+		text-align: left;
 		color: white;
 		font-size: large;
 		background-color: rgba(0,0,0,0.5);
@@ -206,7 +206,7 @@
 	
 		.row .col-md-4 
 		{
-			text-align: justify;
+			text-align: left;
 		}
 
 		.wrapper {
@@ -251,7 +251,7 @@
 	
 		.row .col-md-4 
 		{
-			text-align: justify;
+			text-align: left;
 		}
 
 		.wrapper {
