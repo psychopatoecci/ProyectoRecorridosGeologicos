@@ -34,7 +34,7 @@ $cakeDescription = 'Descripción de los Recorridos';
 			
 			<p><?php echo $text[0]->description; ?></p><br>
 			<div class="imagen">
-				<img class="img" src="<?php echo $images[0]->link_path;?>" alt="Sugerencias de seguridad" height="340" width="400">
+				<img class="img" src="<?php echo $images[0]->link_path;?>" alt="Sugerencias de seguridad" height="340" width="300">
 			</div>
 			<div  class="lista">
 				<ol id="lista2">
