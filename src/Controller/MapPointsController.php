@@ -5,35 +5,19 @@ use App\Controller\AppController;
 
 /**
  * MapPoints Controller
- * > Corresponds to the tour tabs (Recorrido 1 & Recorrido 2).
+ * > Corresponds to the map tour tabs (Isla Bolaños & Peninsula de Santa Elena).
  *
  * @property \App\Model\Table\MapPointsTable $MapPoints
  */
 class MapPointsController extends AppController
 {
 
-    /*
-     * Index method
-     * > Left for content administration, not used as of now.
-     *
-     * @return \Cake\Network\Response|null
-     *
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Pages']
-        ];
-        $mapPoints = $this->paginate($this->MapPoints);
-
-        $this->set(compact('mapPoints'));
-        $this->set('_serialize', ['mapPoints']);
-    }*/
-
     /**
      * View method
+     * Created by Christian Durán and Adrián Madrigal
      * > Shows the map with the respective markers of the respective tour.
      *
-     * @param int $tourNum > whether the first (1) or second (2) tour.
+     * @param int $tourNum > whether the first (1) tour is Isla Bolaños or second (2) tour is Peninsula de Santa Elena.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
@@ -86,78 +70,11 @@ class MapPointsController extends AppController
     }
 
     /**
-     * Add method
-     * > Left for content administration, not used as of now.
-     *
-     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
+     * loadImage method
+     * Created by José Daniel Sánchez and Andreína Alvarado.
+     * > This method lets load an image to show in the pop-up window.
+     * @return \Cake\Network\Response|null
      */
-    public function add()
-    {
-        $mapPoint = $this->MapPoints->newEntity();
-        if ($this->request->is('post')) {
-            $mapPoint = $this->MapPoints->patchEntity($mapPoint, $this->request->getData());
-            if ($this->MapPoints->save($mapPoint)) {
-                $this->Flash->success(__('The map point has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The map point could not be saved. Please, try again.'));
-        }
-        $pages = $this->MapPoints->Pages->find('list', ['limit' => 200]);
-        $this->set(compact('mapPoint', 'pages'));
-        $this->set('_serialize', ['mapPoint']);
-    }
-
-    /**
-     * Edit method
-     * > Left for content administration, not used as of now.
-     *
-     * @param string|null $id Map Point id.
-     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $mapPoint = $this->MapPoints->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $mapPoint = $this->MapPoints->patchEntity($mapPoint, $this->request->getData());
-            if ($this->MapPoints->save($mapPoint)) {
-                $this->Flash->success(__('The map point has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The map point could not be saved. Please, try again.'));
-        }
-        $pages = $this->MapPoints->Pages->find('list', ['limit' => 200]);
-        $this->set(compact('mapPoint', 'pages'));
-        $this->set('_serialize', ['mapPoint']);
-    }
-
-    /**
-     * Delete method
-     * > Left for content administration, not used as of now.
-     *
-     * @param string|null $id Map Point id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $mapPoint = $this->MapPoints->get($id);
-        if ($this->MapPoints->delete($mapPoint)) {
-            $this->Flash->success(__('The map point has been deleted.'));
-        } else {
-            $this->Flash->error(__('The map point could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
-    }
-
-
-
     public function loadImage(){
 
       if ($this->request->isPost()) {
@@ -177,8 +94,14 @@ class MapPointsController extends AppController
 
 
       }
-   }
+    }
 
+    /**
+     * loadVideo method
+     * Created by José Daniel Sánchez and Andreína Alvarado.
+     * > This method lets load a video to show in the pop-up window.
+     * @return \Cake\Network\Response|null
+     */
     public function loadVideo(){
 
       if ($this->request->isPost()) {
