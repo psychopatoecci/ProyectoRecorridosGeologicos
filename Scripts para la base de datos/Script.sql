@@ -139,9 +139,7 @@ INSERT INTO contents VALUES (10, 'introduction', '../resources/intro/parrafo1.tx
 INSERT INTO contents VALUES (11, 'introduction', '../resources/intro/parrafo2.txt','Actualmente los recorridos centran su atención dentro del Área de Conservación Guanacaste, incluyendo sitios como: La península de Santa Elena, la isla Bolaños, el archipiélago Murciélago, bahía Santa Elena, playa Naranjo, entre otros. Siendo todos estos territorios declarados Patrimonio de la Humanidad (UNESCO, 1999, id N°928).', 'text', 2);
 INSERT INTO contents VALUES (12, 'introduction', '../resources/intro/parrafo3.txt','En el litoral Norte de la costa Pacífica de Costa Rica, la geología representa un elemento principal del paisaje, siendo de provecho para proyectos en varias áreas de interés como: educación, turismo y divulgación y concienciación de los parques nacionales.', 'text', 3);
 INSERT INTO contents VALUES (13, 'introduction', '../resources/intro/parrafo4.txt','La principal actividad económica de la zona es la pesca, por tanto, la importancia del desarrollo de otras actividades como el geoturismo, proveyendo a los pobladores cercanos empleos directos e indirectos, fomentado el desarrollo de la economía y para los visitantes recreación y el rescate de valores patrimoniales de Costa Rica, desde el punto de vista geológico.', 'text', 3);
-INSERT INTO contents VALUES (14, 'introduction', '../resources/intro/parrafo5.txt','Al día de hoy se realizan dos recorridos diferentes:
-Península de Santa Elena y alrededores e 
-Isla Bolaños y Alrededores', 'text', 4);
+INSERT INTO contents VALUES (14, 'introduction', '../resources/intro/parrafo5.txt','Al día de hoy se realizan dos recorridos diferentes: Península de Santa Elena y alrededores e Isla Bolaños y Alrededores', 'text', 4);
 INSERT INTO contents VALUES (15, 'introduction', '../resources/intro/background_images/01.png', '', 'image', 1);
 INSERT INTO contents VALUES (16, 'introduction', '../resources/intro/background_images/02.png', '', 'image', 2);
 INSERT INTO contents VALUES (17, 'introduction', '../resources/intro/background_images/03.png', '', 'image', 3);
@@ -149,7 +147,7 @@ INSERT INTO contents VALUES (18, 'introduction', '../resources/intro/background_
 
 -- tourBolanos
 INSERT INTO contents VALUES (23, 'tourBolanos', '../resources/travel/bolanos/bolanos.png', '', 'image', 0);
-INSERT INTO contents VALUES (24, 'tourBolanos', '../resources/travel/bolanos/bolanos.txt', 'En la isla Bolaños y sus cercanías se visualizan rocas sedimentarias, específicamente intercalaciones areniscas y lutitas reflejadas en las formaciones Descartes y Bolaños, moldeadas en el talud continental. Además se encuentran depósitos de arena de playa recientes, comprendiendo más de 40 millones de años de historia.', 'text', 0);
+INSERT INTO contents VALUES (24, 'tourBolanos', '../resources/travel/bolanos/bolanos.txt', 'En la Isla Bolaños y sus cercanías se visualizan rocas sedimentarias, específicamente intercalaciones areniscas y lutitas reflejadas en las formaciones Descartes y Bolaños, moldeadas en el talud continental. Además se encuentran depósitos de arena de playa recientes, comprendiendo más de 40 millones de años de historia.', 'text', 0);
 INSERT INTO contents VALUES (110, 'tourBolanos', 'http://www.geologia.ucr.ac.cr/revista/revista/to_pdf/revista/01/01-BAUMGARTNERETAL.pdf','Sedimentación y Paleogeografía del Cretácico y Cenozoico del litoral Pacífico de Costa Rica', 'url', 0);
 -- tourBolanos contents
 INSERT INTO contents VALUES(26,'P1R1','../../resources/travel/maps/1/Punto1-1. Estratos Rocosos.jpg','Secuencia de estratos rocosos','image',0);
@@ -184,7 +182,7 @@ INSERT INTO contents VALUES(54,'P19R1','../../resources/travel/maps/1/Punto19-8.
 
 -- tourSantaElena
 INSERT INTO contents VALUES (19, 'tourSantaElena', '../resources/travel/santa_elena/santa_elena.png', '', 'image', 0);
-INSERT INTO contents VALUES (20, 'tourSantaElena', '../resources/travel/santa_elena/santa_elena.txt','La península de Santa Elena se encuentra compuesta por rocas ígneas y sedimentarias. Las primeras corresponden a peridotitas formadas en el manto superior de la Tierra, mientras que, las últimas son calizas e intercalaciones de areniscas y lutitas, las formaciones de El Viejo, Santa Ana, Curú y Descartes, pertenecen respectivamente a esos tipos de roca generadas en el talud continental, contenidas en una historia geológica de más de 100 millones de años, culminando en Isla Bolaños.', 'text', 0);
+INSERT INTO contents VALUES (20, 'tourSantaElena', '../resources/travel/santa_elena/santa_elena.txt','La Península de Santa Elena se encuentra compuesta por rocas ígneas y sedimentarias. Las primeras corresponden a peridotitas formadas en el manto superior de la Tierra, mientras que, las últimas son calizas e intercalaciones de areniscas y lutitas, las formaciones de El Viejo, Santa Ana, Curú y Descartes, pertenecen respectivamente a esos tipos de roca generadas en el talud continental, contenidas en una historia geológica de más de 100 millones de años, culminando en Isla Bolaños.', 'text', 0);
 INSERT INTO contents VALUES (21, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/download/105.000000365/4199','Magmatic and geotectonic significance of Santa Elena Peninsula, Costa Rica', 'url', 0);
 INSERT INTO contents VALUES (22, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/download/105.000000364/4198','Evidence for middle Cretaceous accretion at Santa Elena Peninsula (Santa Rosa Accretionary Complex), Costa Rica', 'url', 1);
 -- tourSantaElena contents

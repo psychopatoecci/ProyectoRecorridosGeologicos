@@ -1,8 +1,4 @@
 <?php
-/**
- * Pages Controller.
- * Controller used in all pages as for now.
- */
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -17,6 +13,7 @@ class PagesController extends AppController
     /**
      * Home method.
      * Used for the main / page.
+     * Created by José Daniel Sánchez, Adrián Madrigal and Jean Carlo Lara.
      * This method show a carousel and a little text box
      * with some information.
      * @return \Cake\Network\Response|null
