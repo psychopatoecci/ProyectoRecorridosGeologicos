@@ -150,7 +150,7 @@ INSERT INTO contents VALUES (18, 'introduction', '../resources/intro/background_
 -- tourBolanos
 INSERT INTO contents VALUES (23, 'tourBolanos', '../resources/travel/bolanos/bolanos.png', '', 'image', 0);
 INSERT INTO contents VALUES (24, 'tourBolanos', '../resources/travel/bolanos/bolanos.txt', 'En la isla Bolaños y sus cercanías se visualizan rocas sedimentarias, específicamente intercalaciones areniscas y lutitas reflejadas en las formaciones Descartes y Bolaños, moldeadas en el talud continental. Además se encuentran depósitos de arena de playa recientes, comprendiendo más de 40 millones de años de historia.', 'text', 0);
-INSERT INTO contents VALUES (25, 'tourBolanos', 'http://www.geologia.ucr.ac.cr/revista/revista/to_pdf/revista/01/01-BAUMGARTNERETAL.pdf','', 'url', 0);
+INSERT INTO contents VALUES (110, 'tourBolanos', 'http://www.geologia.ucr.ac.cr/revista/revista/to_pdf/revista/01/01-BAUMGARTNERETAL.pdf','Sedimentación y Paleogeografía del Cretácico y Cenozoico del litoral Pacífico de Costa Rica', 'url', 0);
 -- tourBolanos contents
 INSERT INTO contents VALUES(26,'P1R1','../../resources/travel/maps/1/Punto1-1. Estratos Rocosos.jpg','Secuencia de estratos rocosos','image',0);
 INSERT INTO contents VALUES(27,'P2R1','../../resources/travel/maps/1/Punto2-1. Bajo Rojo.jpg','Rocas sedimentarias de Bajo Rojo','image',0);
