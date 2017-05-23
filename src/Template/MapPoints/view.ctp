@@ -163,12 +163,91 @@
       top:1px !important;
       right:0 !important;
   }
+  .help-tip{
+      
+      padding-bottom: 8px;
+      float:right;
+      margin:4px;
+      text-align: center;
+      background-color: #F7D358;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 28px;
+      line-height: 48px;
+      cursor: default;
+      z-index: 1;
+  }
 
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+      z-index: 1;
+  }
 
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 10%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+      z-index: 1;
+  }
 
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: justify;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right:0px;
+      color: #FFF;
+      font-size: 17px;
+      line-height: 1.4;
+     z-index: 1;
+  } 
+
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+      z-index: 1;
+  }
+
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+      z-index: 1;
+  }
+   
+   .title {
+        padding-bottom: 8px;
+    }
+   h1 {
+      color: #3F3F3F;
+      text-shadow: 1px 1px #ADADAD;
+      margin-left: 15px;
+  }
     </style>
         
-        <h1><?php echo $title; ?></h1>
+    <div>
+        <div class="help-tip">
+            <p>Presione los marcadores del mapa para ver la informaci&oacute;n relativa a cada ubicaci&oacute;n.</p>
+        </div>
+        <h1 class="title"><?php echo $title; ?></h1>
+    </div>
     <div id="map-canvas">
     </div>
 
