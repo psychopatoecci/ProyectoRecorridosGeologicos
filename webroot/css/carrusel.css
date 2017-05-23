@@ -58,22 +58,12 @@
 		}
 }
 
-
-/*.main-msg:hover {
-    color:black;
-    -webkit-animation-name: example; /* Safari 4.0 - 8.0 
-    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 
-    animation-name: example;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-}*/
-
 /*----------------------------------------------- Estilos para cuadro del mensaje --------------------------------------------- */
 .main-msgdiv {
     font-family: sans-serif;
     font-size: 18px;
     font-weight: 400;
-    background:#D6C6BA;
+    background:#E0E0E0;
     margin: 0 0 25px;
     overflow: hidden;
     border-radius: 35px 0px 35px 0px;
