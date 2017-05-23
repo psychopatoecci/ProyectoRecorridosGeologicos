@@ -94,7 +94,7 @@
         font-size: 22px;
         font-weight: 400;
         padding: 10px;
-        background-color: #ffff99;
+        background-color: #F37021;
         color: black;
         margin: 0;
     }
