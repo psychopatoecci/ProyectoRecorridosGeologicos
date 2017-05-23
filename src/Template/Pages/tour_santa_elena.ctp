@@ -16,7 +16,6 @@
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 
-
 <?= $this->Html->css('tour.css') ?> 
 
 <div class="help-tip">
