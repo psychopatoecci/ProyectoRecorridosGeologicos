@@ -291,12 +291,13 @@ function initialize() {
                       //'<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
     <?php
         echo "'<p>";
-        if (count ($point ['texts']) > 0 ) {
-            foreach ($point ['texts'] as $text) {
-                echo $text ['description'];
-            }
-        } else { // No hay texto en la base.
+        if ( count ($point ['texts']) == 0 
+            && count ($point ['videos']) == 0
+            && count ($point ['images']) == 0 ) {
             echo 'Lo sentimos, en este momento no hay información disponible de este punto del recorrido.';
+        }
+        foreach ($point ['texts'] as $text) {
+            echo $text ['description'];
         }
         echo "</p>'";
         if (count ($point ['images']) > 0) {
