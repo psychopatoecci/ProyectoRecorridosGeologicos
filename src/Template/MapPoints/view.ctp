@@ -252,7 +252,6 @@
     </div>
     <div id="map-canvas">
     </div>
-    <?php var_dump ($mapPoints); ?>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfpStLLTf3UeMblxDulglE9fMhTy4peMA
 &callback=initMap&language=es"></script>
