@@ -39,15 +39,20 @@ class MapPointsController extends AppController
             $videos = [];
             $texts  = [];
             foreach ($point ['page']['contents'] as $content) {
+                $toAdd = array (
+                    'link_path' => $content ['link_path'],
+                    'description' => $content ['description'],
+                    'sequence_in_page' => $content ['sequence_in_page']
+                );
                 switch ($content ['content_type']) {
                     case 'image':
-                        $images [] = [$content ['link_path'], $content ['description'], $content['sequence_in_page']];
+                        $images [] = $toAdd;
                         break;
                     case 'video':
-                        $videos [] = [$content ['link_path'], $content ['description'], $content['sequence_in_page']];
+                        $videos [] = $toAdd;
                         break;
                     case 'text':
-                        $texts [] = [$content ['link_path'], $content ['description'], $content['sequence_in_page']];
+                        $texts [] = $toAdd;
                         break;
                     default:
                         assert (false);

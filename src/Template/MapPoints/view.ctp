@@ -252,6 +252,7 @@
     </div>
     <div id="map-canvas">
     </div>
+    <?php var_dump ($mapPoints); ?>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfpStLLTf3UeMblxDulglE9fMhTy4peMA
 &callback=initMap&language=es"></script>
@@ -289,18 +290,26 @@ function initialize() {
                     '<div class="iw-content">' +
                       '<div class="iw-subTitle">History</div>' +
                       '<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
-                      '<p>Founded in 1824, the Porcelain Factory of Vista Alegre was the first industrial unit dedicated to porcelain production in Portugal. For the foundation and success of this risky industrial development was crucial the spirit of persistence of its founder, José Ferreira Pinto Basto. Leading figure in Portuguese society of the nineteenth century farm owner, daring dealer, wisely incorporated the liberal ideas of the century, having become "the first example of free enterprise" in Portugal.</p>'
-                        <?php
-                            if (count ($point ['images']) > 0) {
-                                echo '+ \'<button class = \\"btn btn-warning\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_image(this.id);\\" style = \\"height: 45px;\\"><p class=\\"marker_options\\" ><i class=\\"glyphicon glyphicon-picture\\" id=\\"iconoImagen\\"></i> Ver imágenes</p></button>\'+\'&nbsp&nbsp&nbsp\'';
-                            }
-                            if (count ($point ['videos']) > 0) {
-                                echo '+ \'<button class = \\"btn btn-primary\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_video(this.id);\\" style = \\"height: 45px;\\"><p class =\\"marker_options\\" ><i class=\\"glyphicon glyphicon-film\\" id=\\"iconoImagen\\"></i> Ver videos</p></button>\'';
-                            }
-                        ?>
-                    + '</div>' +
-                    '<div class="iw-bottom-gradient"></div>' +
-                  '</div>';
+    <?php
+        echo "'<p>";
+        if (count ($point ['texts']) > 0 ) {
+            foreach ($point ['texts'] as $text) {
+                echo $text ['description'];
+            }
+        } else { // No hay texto en la base.
+            echo 'Lo sentimos, en este momento no hay información disponible de este punto del recorrido.';
+        }
+        echo "</p>'";
+        if (count ($point ['images']) > 0) {
+            echo '+ \'<button class = \\"btn btn-warning\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_image(this.id);\\" style = \\"height: 45px;\\"><p class=\\"marker_options\\" ><i class=\\"glyphicon glyphicon-picture\\" id=\\"iconoImagen\\"></i> Ver imágenes</p></button>\'+\'&nbsp&nbsp&nbsp\'';
+        }
+        if (count ($point ['videos']) > 0) {
+            echo '+ \'<button class = \\"btn btn-primary\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_video(this.id);\\" style = \\"height: 45px;\\"><p class =\\"marker_options\\" ><i class=\\"glyphicon glyphicon-film\\" id=\\"iconoImagen\\"></i> Ver videos</p></button>\'';
+        }
+    ?>
+    + '</div>' +
+        '<div class="iw-bottom-gradient"></div>' +
+    '</div>';
 
 
        var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
