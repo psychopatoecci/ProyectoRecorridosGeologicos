@@ -233,20 +233,22 @@
   }
    
    .title {
-        padding-bottom: 8px;
+        padding-top: 16px;
+        padding-bottom: 7px;
     }
    h1 {
+      margin-top: 10px;
       color: #3F3F3F;
       text-shadow: 1px 1px #ADADAD;
       margin-left: 15px;
   }
     </style>
         
-    <div>
+    <div class="title">
         <div class="help-tip">
             <p>Presione los marcadores del mapa para ver la informaci&oacute;n relativa a cada ubicaci&oacute;n.</p>
         </div>
-        <h1 class="title"><?php echo $title; ?></h1>
+        <h1><?php echo $title; ?></h1>
     </div>
     <div id="map-canvas">
     </div>
