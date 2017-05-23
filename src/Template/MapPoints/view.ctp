@@ -163,12 +163,93 @@
       top:1px !important;
       right:0 !important;
   }
+  .help-tip{
+      
+      padding-bottom: 8px;
+      float:right;
+      margin:4px;
+      text-align: center;
+      background-color: #F7D358;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 28px;
+      line-height: 48px;
+      cursor: default;
+      z-index: 1;
+  }
 
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+      z-index: 1;
+  }
 
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 10%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+      z-index: 1;
+  }
 
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: justify;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right:0px;
+      color: #FFF;
+      font-size: 17px;
+      line-height: 1.4;
+     z-index: 1;
+  } 
+
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+      z-index: 1;
+  }
+
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+      z-index: 1;
+  }
+   
+   .title {
+        padding-top: 16px;
+        padding-bottom: 7px;
+    }
+   h1 {
+      margin-top: 10px;
+      color: #3F3F3F;
+      text-shadow: 1px 1px #ADADAD;
+      margin-left: 15px;
+  }
     </style>
         
+    <div class="title">
+        <div class="help-tip">
+            <p>Presione los marcadores del mapa para ver la informaci&oacute;n relativa a cada ubicaci&oacute;n.</p>
+        </div>
         <h1><?php echo $title; ?></h1>
+    </div>
     <div id="map-canvas">
     </div>
 
@@ -208,18 +289,26 @@ function initialize() {
                     '<div class="iw-content">' +
                       '<div class="iw-subTitle">History</div>' +
                       '<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
-                      '<p>Founded in 1824, the Porcelain Factory of Vista Alegre was the first industrial unit dedicated to porcelain production in Portugal. For the foundation and success of this risky industrial development was crucial the spirit of persistence of its founder, José Ferreira Pinto Basto. Leading figure in Portuguese society of the nineteenth century farm owner, daring dealer, wisely incorporated the liberal ideas of the century, having become "the first example of free enterprise" in Portugal.</p>'
-                        <?php
-                            if (count ($point ['images']) > 0) {
-                                echo '+ \'<button class = \\"btn btn-warning\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_image(this.id);\\" style = \\"height: 45px;\\"><p class=\\"marker_options\\" ><i class=\\"glyphicon glyphicon-picture\\" id=\\"iconoImagen\\"></i> Ver imágenes</p></button>\'+\'&nbsp&nbsp&nbsp\'';
-                            }
-                            if (count ($point ['videos']) > 0) {
-                                echo '+ \'<button class = \\"btn btn-primary\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_video(this.id);\\" style = \\"height: 45px;\\"><p class =\\"marker_options\\" ><i class=\\"glyphicon glyphicon-film\\" id=\\"iconoImagen\\"></i> Ver videos</p></button>\'';
-                            }
-                        ?>
-                    + '</div>' +
-                    '<div class="iw-bottom-gradient"></div>' +
-                  '</div>';
+    <?php
+        echo "'<p>";
+        if (count ($point ['texts']) > 0 ) {
+            foreach ($point ['texts'] as $text) {
+                echo $text ['description'];
+            }
+        } else { // No hay texto en la base.
+            echo 'Lo sentimos, en este momento no hay información disponible de este punto del recorrido.';
+        }
+        echo "</p>'";
+        if (count ($point ['images']) > 0) {
+            echo '+ \'<button class = \\"btn btn-warning\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_image(this.id);\\" style = \\"height: 45px;\\"><p class=\\"marker_options\\" ><i class=\\"glyphicon glyphicon-picture\\" id=\\"iconoImagen\\"></i> Ver imágenes</p></button>\'+\'&nbsp&nbsp&nbsp\'';
+        }
+        if (count ($point ['videos']) > 0) {
+            echo '+ \'<button class = \\"btn btn-primary\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_video(this.id);\\" style = \\"height: 45px;\\"><p class =\\"marker_options\\" ><i class=\\"glyphicon glyphicon-film\\" id=\\"iconoImagen\\"></i> Ver videos</p></button>\'';
+        }
+    ?>
+    + '</div>' +
+        '<div class="iw-bottom-gradient"></div>' +
+    '</div>';
 
 
        var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
