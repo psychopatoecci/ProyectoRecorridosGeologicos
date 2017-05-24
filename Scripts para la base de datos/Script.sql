@@ -186,7 +186,7 @@ INSERT INTO contents VALUES (20, 'tourSantaElena', '../resources/travel/santa_el
 INSERT INTO contents VALUES (21, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000365/4199','Magmatic and geotectonic significance of Santa Elena Peninsula, Costa Rica', 'url', 0);
 INSERT INTO contents VALUES (22, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000364/4198','Evidence for middle Cretaceous accretion at Santa Elena Peninsula (Santa Rosa Accretionary Complex), Costa Rica', 'url', 1);
 -- tourSantaElena contents
-INSERT INTO contents VALUES(55,'P1R2','../../resources/travel/maps/2/Punto1-1. Columna Estratigrafica.jpg','Columna Estratigrafica','image',0);
+-- INSERT INTO contents VALUES(55,'P1R2','../../resources/travel/maps/2/Punto1-1. Columna Estratigrafica.jpg','Columna Estratigrafica','image',0);
 INSERT INTO contents VALUES(56,'P1R2','../../resources/travel/maps/2/Punto1-2.jpg','','image',0);
 INSERT INTO contents VALUES(57,'P1R2','../../resources/travel/maps/2/Punto1-3.jpg','','image',0);
 INSERT INTO contents VALUES(58,'P1R2','../../resources/travel/maps/2/Punto1-4.jpg','','image',0);
