@@ -91,7 +91,7 @@
     /*Características del título*/
     #iw-container .iw-title {
         font-family: 'Open Sans Condensed', sans-serif;
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 400;
         padding: 10px;
         background-color: #F37021;
@@ -100,7 +100,7 @@
     }
     /*Características del contenido*/
     #iw-container .iw-content {
-        font-size: 13px;
+        font-size: 15px;
         line-height: 18px;
         font-weight: 400;
         padding: 15px 5px 20px 15px;
@@ -336,7 +336,7 @@ function initialize() {
 
   var $n = "<?= h($point ['page_id']); ?>";
   var $content = '<div id="iw-container">' +
-                    '<div class="iw-title"><?= $point ['sequence_number']; ?>.</div>' +
+      '<div class="iw-title"><?= $point ['sequence_number']; ?>.<?= $point ['name']; ?></div>' +
                     '<div class="iw-content">' +
                       //'<div class="iw-subTitle">History</div>' +
                       //'<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +

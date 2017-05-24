@@ -27,7 +27,7 @@ class MapPointsController extends AppController
              // Evitar que se caiga si se envian datos erroneos.
              $tourNum = 1;
         }
-        $this -> set ('title', 'Recorrido '.($tourNum == 1 ? 'Isla Bola&ntilde;os' : 'Santa Elena'));
+        $this -> set ('title', 'Recorrido '.($tourNum == 1 ? 'Isla Bola&ntilde;os' : 'Pen&iacute;nsula de Santa Elena'));
         $this -> set ('tourNumber', $tourNum == 1 ? 'Isla Bolanos' : 'Santa Elena');
         $this -> set ('latLong', $tourNum == 1 ? '11.021101, -85.725462' : '10.905865, -85.830166');
 
