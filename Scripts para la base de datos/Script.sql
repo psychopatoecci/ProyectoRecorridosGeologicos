@@ -41,7 +41,7 @@ INSERT INTO pages VALUES ('P22R1');
 INSERT INTO pages VALUES ('P23R1');
 INSERT INTO pages VALUES ('P24R1');
 INSERT INTO pages VALUES ('P25R1');
--- recorrido Isla Murcielago 
+-- recorrido Península de Santa Elena
 INSERT INTO pages VALUES ('P1R2');
 INSERT INTO pages VALUES ('P2R2');
 INSERT INTO pages VALUES ('P3R2');
@@ -95,7 +95,7 @@ INSERT INTO map_points VALUES(1,22,'P22R1',-85.707280,11.049030,'No asignado');
 INSERT INTO map_points VALUES(1,23,'P23R1',-85.707730,11.049180,'No asignado');
 INSERT INTO map_points VALUES(1,24,'P24R1',-85.708200,11.049260,'No asignado');
 INSERT INTO map_points VALUES(1,25,'P25R1',-85.708650,11.049330,'No asignado');
--- recorrido Isla Murciélago
+-- recorrido Santa Elena
 INSERT INTO map_points VALUES(2,1,'P1R2',-85.709450,10.951240,'No asignado');
 INSERT INTO map_points VALUES(2,2,'P2R2',-85.774040,10.940810,'Estratos de la Formación Descartes');
 INSERT INTO map_points VALUES(2,3,'P3R2',-85.802090,10.940750,'Estratos de la Formación Descartes');
@@ -227,7 +227,6 @@ INSERT INTO contents VALUES (90, 'toursDescription', '../resources/travel/genera
 INSERT INTO contents VALUES (91, 'toursDescription', '../resources/travel/general/sugerencia5.txt', 'Bajarse del bote solo si el botero se lo indica.', 'text', 0);
 INSERT INTO contents VALUES (92, 'toursDescription', '../resources/travel/general/security.png', '', 'image', 0);
 
-
 INSERT INTO contents VALUES(166,'P2R1','','Intercalaciones de areniscas gruesas con cemento carbonático y areniscas finas.','text',0);
 INSERT INTO contents VALUES(167,'P5R1','','Las calizas de isla Muñecos, son características por estar establecidas a partir de bioconstrucciones, es decir corales que formaron arrecifes.','text',0);
 INSERT INTO contents VALUES(168,'P12R1','','Uno de los procesos más importantes por los que, atraviesan las rocas desde su formación es la meteorización, siendo esta un medio físico o químico capaz de afectar a las rocas. Meteorización física por oleaje y química por reacción del agua con sus constituyentes.','text',0);
@@ -247,7 +246,5 @@ INSERT INTO contents VALUES(180,'P18R1','','Bajo las peridotitas hay una brecha 
 INSERT INTO contents VALUES(181,'P20R1','','La base de la secuencia de rocas en la península de Santa Elena corresponde con el Complejo Acrecional de Santa Roca. Este se encuentra comprendido por un conjunto de rocas sedimentarias silíceas, o radiolaritas, producto de la acumulación de microorganismos muertos.','text',0);
 INSERT INTO contents VALUES(182,'P24R1','','Interdigitadas entre las peridotitas hay lavas, estas lavas son diabasas. Conocidos como basaltos en almohadilla por sus formas típicas, a consecuencia de su rápido enfriamiento al estar en contacto con agua durante su emplazamiento.','text',0);
 
-
-
-
-
+-- Vídeos de Santa Elena
+INSERT INTO contents VALUES(183,'P11R2','https://www.youtube.com/watch?v=0Z0Ny-iACVg','Formación Descartes','video',0);
