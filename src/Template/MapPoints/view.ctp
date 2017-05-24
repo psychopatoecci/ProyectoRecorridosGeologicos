@@ -304,7 +304,7 @@ function initialize() {
 
   google.maps.event.addDomListener(window, "resize", function() {
      var center = map.getCenter();
-     google.maps.event.trigger(map, "resize");
+      google.maps.event.trigger(map, "resize");
      map.setCenter(center);
 
      var width_user = window.innerWidth;
