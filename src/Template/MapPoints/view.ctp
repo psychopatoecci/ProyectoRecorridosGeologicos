@@ -268,17 +268,68 @@
 ?>
 
 function initialize() {
-  var mapOptions = {
-    center: center,
-    zoom: 12,    
-    mapTypeId: 'terrain'
-  };
+
+   var width_user = window.innerWidth;
+   
+   
+   <?php if ( $_SERVER['REQUEST_URI'] === '/pages/tour/2' ): ?>
+
+       if(width_user > 795)
+       {
+          var mapOptions = {center: center,zoom: 12, mapTypeId: 'terrain'};
+       }
+       else if (width_user <= 795 && width_user > 410)
+       {
+          var mapOptions = {center: center,zoom: 11, mapTypeId: 'terrain'};
+       }
+       else if (  width_user <= 410 && width_user > 225)
+       {
+          var mapOptions = { center: center,zoom: 10, mapTypeId: 'terrain' };
+       }
+       else 
+       {
+          var mapOptions = { center: center, zoom: 9, mapTypeId: 'terrain'};
+       }
+
+  <?php else: ?>
+          var mapOptions = {center: center,zoom: 12, mapTypeId: 'terrain'};
+  <?php endif; ?>
 
   var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
   
    // A new Info Window is created and set content
   var infowindow = new google.maps.InfoWindow();
+
+
+  google.maps.event.addDomListener(window, "resize", function() {
+     var center = map.getCenter();
+     google.maps.event.trigger(map, "resize");
+     map.setCenter(center);
+
+     var width_user = window.innerWidth;
+    
+    <?php if ( $_SERVER['REQUEST_URI'] === '/pages/tour/2' ): ?>
+         if(width_user > 795) 
+         {
+            map.setZoom(12);
+         }
+         else if ( width_user <= 795 && width_user > 410)
+         {
+            map.setZoom(11); 
+         }
+         else if ( width_user <= 410 && width_user > 225)
+         {
+            map.setZoom(10); 
+         }
+         else
+         {
+            map.setZoom(9);  
+         }
+    <?php else: ?>
+         map.setZoom(12); 
+    <?php endif; ?>
+  });
 
   <?php foreach ($mapPoints as $point): ?>
   // InfoWindow content
