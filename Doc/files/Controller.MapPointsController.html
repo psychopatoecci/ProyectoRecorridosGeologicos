@@ -21,7 +21,55 @@
     <script src="../js/jquery.smooth-scroll.js"></script>
     <script src="../js/prism.min.js"></script>
     <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
-    
+        <script type="text/javascript">
+        function loadExternalCodeSnippets() {
+            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+                var src = pre.getAttribute('data-src');
+                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+                var language = 'php';
+
+                var code = document.createElement('code');
+                code.className = 'language-' + language;
+
+                pre.textContent = '';
+
+                code.textContent = 'Loading…';
+
+                pre.appendChild(code);
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('GET', src, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+
+                            Prism.highlightElement(code);
+                        }
+                        else if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                        }
+                        else {
+                            code.textContent = '✖ Error: File does not exist or is empty';
+                        }
+                    }
+                };
+
+                xhr.send(null);
+            });
+        }
+
+        $(document).ready(function(){
+            loadExternalCodeSnippets();
+        });
+        $('#source-view').on('shown', function () {
+            loadExternalCodeSnippets();
+        })
+    </script>
+
     <link rel="shortcut icon" href="../images/favicon.ico"/>
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
     <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
@@ -96,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1507317344"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1149118012"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1507317344" class="accordion-body collapse in">
+            <div id="namespace-1149118012" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-805144055"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1641206314"></a>
                                 <a href="../namespaces/App.html" style="margin-left: 30px; padding-left: 0">App</a>
             </div>
-            <div id="namespace-805144055" class="accordion-body collapse ">
+            <div id="namespace-1641206314" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1352171673"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-586633589"></a>
                                 <a href="../namespaces/App.Console.html" style="margin-left: 30px; padding-left: 0">Console</a>
             </div>
-            <div id="namespace-1352171673" class="accordion-body collapse ">
+            <div id="namespace-586633589" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -132,10 +180,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1302153528"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-142254892"></a>
                                 <a href="../namespaces/App.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
             </div>
-            <div id="namespace-1302153528" class="accordion-body collapse ">
+            <div id="namespace-142254892" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -153,19 +201,19 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-358187194"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-660226644"></a>
                                 <a href="../namespaces/App.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
             </div>
-            <div id="namespace-358187194" class="accordion-body collapse ">
+            <div id="namespace-660226644" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-192118332"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-490834714"></a>
                                 <a href="../namespaces/App.Model.Entity.html" style="margin-left: 30px; padding-left: 0">Entity</a>
             </div>
-            <div id="namespace-192118332" class="accordion-body collapse ">
+            <div id="namespace-490834714" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -183,10 +231,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1608493389"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-258161078"></a>
                                 <a href="../namespaces/App.Model.Table.html" style="margin-left: 30px; padding-left: 0">Table</a>
             </div>
-            <div id="namespace-1608493389" class="accordion-body collapse ">
+            <div id="namespace-258161078" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -212,10 +260,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2007027832"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-8905182"></a>
                                 <a href="../namespaces/App.Shell.html" style="margin-left: 30px; padding-left: 0">Shell</a>
             </div>
-            <div id="namespace-2007027832" class="accordion-body collapse ">
+            <div id="namespace-8905182" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -230,10 +278,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1015291384"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-660347387"></a>
                                 <a href="../namespaces/App.View.html" style="margin-left: 30px; padding-left: 0">View</a>
             </div>
-            <div id="namespace-1015291384" class="accordion-body collapse ">
+            <div id="namespace-660347387" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -268,39 +316,39 @@
     <section class="row-fluid">
         <div class="span10 offset2">
             <div class="row-fluid">
-                <div class="span8 content namespace">
+                <div class="span8 content file">
                     <nav>
-                                                <a href="../namespaces/App.html">\App</a>
-                                            </nav>
-                    <h1><small>\App</small>View</h1>
+                                                                    </nav>
 
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+                    <h1><small>Controller</small>MapPointsController.php</h1>
+                    <p><em></em></p>
                     
+
                     
                     
                                         <h2>Classes</h2>
                     <table class="table table-hover">
                                             <tr>
-                            <td><a href="../classes/App.View.AjaxView.html">AjaxView</a></td>
-                            <td><em>A view class that is used for AJAX responses.</em></td>
-                        </tr>
-                                            <tr>
-                            <td><a href="../classes/App.View.AppView.html">AppView</a></td>
-                            <td><em>Application View</em></td>
+                            <td><a href="../classes/App.Controller.MapPointsController.html">MapPointsController</a></td>
+                            <td><em>MapPoints Controller
+&gt; Corresponds to the map tour tabs (Isla Bolaños &amp; Peninsula de Santa Elena).</em></td>
                         </tr>
                                         </table>
                                     </div>
 
                 <aside class="span4 detailsbar">
                     <dl>
-                        <dt>Namespace hierarchy</dt>
-                        <dd class="hierarchy">
-                                                                                                                                                                                                                                                                                                                                                                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
-                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/App.html">\App</a></div>
-                                                                                        <div class="namespace-wrapper">\App\View</div>
-                        </dd>
+                                                    <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Default</div></dd>
+                        
+                        
                     </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                            </table>
+
                 </aside>
             </div>
 
@@ -308,6 +356,16 @@
             
         </div>
     </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label"></h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Controller/MapPointsController.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
 
     <footer class="row-fluid">
         <section class="span10 offset2">
