@@ -24,12 +24,13 @@ class MapPointsController extends AppController
     public function view($tourNum)
     {
         if ($tourNum != 1 && $tourNum != 2) {
-            // Evitar que se caiga si se envian datos erroneos.
-            $tourNum = 1;
+             // Evitar que se caiga si se envian datos erroneos.
+             $tourNum = 1;
         }
         $this -> set ('title', 'Recorrido '.($tourNum == 1 ? 'Isla Bola&ntilde;os' : 'Santa Elena'));
         $this -> set ('tourNumber', $tourNum == 1 ? 'Isla Bolanos' : 'Santa Elena');
-        $this -> set ('latLong', $tourNum == 1 ? '11.021101, -85.705462' : '10.905865, -85.760166');
+        $this -> set ('latLong', $tourNum == 1 ? '11.021101, -85.725462' : '10.905865, -85.830166');
+
         $mapPoints = $this->MapPoints->find('all', [
             'conditions' => ['MapPoints.path' => $tourNum]]
         ) -> contain (['Pages.Contents']);
