@@ -16,3 +16,102 @@
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 
+<?= $this->Html->script('galleria/galleria-1.5.7.js') ?> 
+<?= $this->Html->css('\galleria\themes\fullscreen\galleria.fullscreen.min.css') ?> 
+
+
+        <style>
+            .galleria{ 
+                max-width: auto; 
+                height: 740px; 
+                background: white;
+            }
+            .background
+            {
+            	background-color: white;
+            }
+        </style>
+
+      <div class="galleria">
+            <img src="/resources/gallery/Punto1-1. Estratos Rocosos.jpg">
+            <img src="/resources/gallery/Punto2-1. Bajo Rojo.jpg">
+            <img src="/resources/gallery/Punto4-1. Calizas.jpg">
+            <img src="/resources/gallery/Punto5-1.jpg">
+            <img src="/resources/gallery/Punto5-2.jpg">
+            <img src="/resources/gallery/Punto6-1.jpg">
+            <img src="/resources/gallery/Punto8-1. Estratificacion.jpg">
+            <img src="/resources/gallery/Punto7-1. Estratos Volcados.jpg">
+            <img src="/resources/gallery/Punto9-1. Vista Orosi-Cacao.jpg">
+            <img src="/resources/gallery/Punto10-1. El Dragon de Roca.jpg">            
+            <img src="/resources/gallery/Punto10-2.jpg">
+			<img src="/resources/gallery/Punto11-1. Estratos Rocosos.jpg">
+			<img src="/resources/gallery/Punto11-2.jpg">
+			<img src="/resources/gallery/Punto12-1. Duna Costera.jpg">
+			<img src="/resources/gallery/Punto13-1. Conglomerado.jpg">
+			<img src="/resources/gallery/Punto14-1. Duna Costera.jpg">
+			<img src="/resources/gallery/Punto15-1. Conglomerado.jpg">
+			<img src="/resources/gallery/Punto15-3. Estratos Rocosos.jpg">
+			<img src="/resources/gallery/Punto15-4. Pares Conjugados.jpg">
+			<img src="/resources/gallery/Punto19-1. Estratificacion Cruzada.jpg">
+			<img src="/resources/gallery/Punto19-2.jpg">
+			<img src="/resources/gallery/Punto19-3.jpg">
+			<img src="/resources/gallery/Punto19-4.jpg">
+			<img src="/resources/gallery/Punto19-5.jpg">
+			<img src="/resources/gallery/Punto19-6.jpg">
+			<img src="/resources/gallery/Punto19-7.jpg">
+			<img src="/resources/gallery/Punto19-8.jpg">
+        </div>
+        
+        <script>
+        ( function(){ 
+            Galleria.loadTheme('../js/galleria/themes/classic/galleria.classic.min.js');
+            Galleria.run('.galleria', {
+                extend: function(options) {
+                Galleria.log(this) // the gallery instance
+                Galleria.log(options) // the gallery options
+                // listen to when an image is shown
+                this.bind('image', function(e) {
+                    Galleria.log(e) // the event object may contain custom objects, in this case the main image
+                    Galleria.log(e.imageTarget) // the current image
+
+                    // lets make galleria open a lightbox when clicking the main image:
+                    $(e.imageTarget).click(this.proxy(function() {
+                        this.openLightbox();
+                    }));
+                });
+             }   
+          });
+        }());
+        
+       </script>
+
+       <style type="text/css">
+
+		.galleria-theme-classic .galleria-counter {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			text-align: right;
+			color: #fff;
+			font: normal 15px/1 arial,sans-serif;
+			z-index: 1;
+		}
+
+       	.galleria-lightbox-close {
+			height: 31px;
+			width: 31px;
+       		font: 33px/33px arial,sans-serif;
+    		z-index: 199999;
+		}
+
+		body, html {
+			background: white;
+		}
+
+		.galleria-lightbox-counter {
+			float: right;
+			margin-left: 8px;
+			font: 17px/17px arial,sans-serif;
+		}
+
+       </style>
