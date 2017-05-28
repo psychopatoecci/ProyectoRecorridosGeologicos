@@ -116,7 +116,7 @@
 
 	#titulo {
 		color: #504E4E;
-	    background-color: rgba(255,255,255,0.5);
+	    background-color: rgba(255,255,255,0.7);
 	    padding-left: 25px;
 	    border-radius: 0px 10px 10px 0px;
 	    text-align: left;
@@ -126,7 +126,7 @@
 
 	#subtitulo {
 		color: #504E4E;
-	    background-color: rgba(255,255,255,0.5);
+	    background-color: rgba(255,255,255,0.7);
 	    border-radius: 10px;
 	    text-align: left;
 	    text-shadow: 2px 2px #B3AFAF;
