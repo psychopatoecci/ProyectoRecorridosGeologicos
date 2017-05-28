@@ -23,7 +23,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <style>
             .galleria{ 
                 max-width: auto; 
-                height: 740px; 
+                height: 800px; 
                 background: white;
             }
             .background
@@ -113,5 +113,68 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			margin-left: 8px;
 			font: 17px/17px arial,sans-serif;
 		}
+
+		@media (max-width: 1300px) and (min-width: 1101px) { 
+			.galleria {
+			    height: 800px;
+			}
+		}
+
+		@media (max-width: 1100px) and (min-width: 1001px) { 
+			.galleria {
+			    height: 780px;
+			}
+		}
+
+		@media (max-width: 1000px) and (min-width: 951px) { 
+			.galleria {
+			    height: 750px;
+			}
+		}
+
+		@media (max-width: 950px) and (min-width: 901px) { 
+			.galleria {
+			    height: 700px;
+			}
+		}
+
+		@media (max-width: 900px) and (min-width: 751px) { 
+			.galleria {
+			    height: 680px;
+			}
+		}
+
+		@media (max-width: 750px) and (min-width: 651px) { 
+			.galleria {
+			    height: 680px;
+			}
+		}
+
+		@media (max-width: 650px) and (min-width: 551px) { 
+			.galleria {
+			    height: 580px;
+			}
+		}
+
+		@media (max-width: 550px) and (min-width: 451px) { 
+			.galleria {
+			    height: 500px;
+			}
+		}
+
+		@media (max-width: 450px) and (min-width: 351px) { 
+			.galleria {
+			    height: 480px;
+			}
+		}
+
+		@media (max-width: 350px) and (min-width: 251px) { 
+			.galleria {
+			    height: 430px;
+			}
+		}
+
+}
+
 
        </style>
