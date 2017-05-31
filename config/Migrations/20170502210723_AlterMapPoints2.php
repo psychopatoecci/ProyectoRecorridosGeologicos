@@ -13,10 +13,11 @@ class AlterMapPoints2 extends AbstractMigration
     public function change()
     {
         $table = $this->table('map_points');
+        /*
         $table->addColumn('name', 'text', [
             'default' => null,
             'null' => false,
-        ]);
+        ]);*/
         $table->changeColumn('latitude', 'float');
         $table->changeColumn('longitude', 'float');
         $table->update();
