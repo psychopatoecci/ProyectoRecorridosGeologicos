@@ -1,4 +1,4 @@
-﻿USE recorridos_geologicosdb;
+USE recorridos_geologicosdb;
 
 -- Borramos las tuplas "viejas"
 TRUNCATE TABLE map_points; 
@@ -51,7 +51,7 @@ INSERT INTO contents VALUES (25, 'tourSantaElena', 'http://revistes.ub.edu/index
 
 
 -- TourDescripcion link del vídeo
-INSERT INTO contents VALUES(26,'https://www.youtube.com/embed/tS5jzLqhCzI?autoplay=1&amp;rel=0&amp;showinfo=0','','url',0);
+INSERT INTO contents VALUES(26, 'toursDescription','https://www.youtube.com/embed/tS5jzLqhCzI?autoplay=1&amp;rel=0&amp;showinfo=0','','url',0);
 
 -- recomendaciones
 INSERT INTO contents VALUES (27, 'toursDescription', '../resources/travel/general/titulo.txt', 'Esperamos que el recorrido sea de su agrado, algunas recomendaciones de seguridad:', 'text', 0);
