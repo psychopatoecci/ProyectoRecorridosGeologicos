@@ -50,8 +50,8 @@ INSERT INTO contents VALUES (24, 'tourSantaElena', 'http://revistes.ub.edu/index
 INSERT INTO contents VALUES (25, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000364/4198','Evidence for middle Cretaceous accretion at Santa Elena Peninsula (Santa Rosa Accretionary Complex), Costa Rica', 'url', 1);
 
 
--- TourDescripcion
-INSERT INTO contents VALUES(26,'toursDescription','https://www.youtube.com/watch?v=0Z0Ny-iACVg','','video',0);
+-- TourDescripcion link del vídeo
+INSERT INTO contents VALUES(26,'https://www.youtube.com/embed/tS5jzLqhCzI?autoplay=1&amp;rel=0&amp;showinfo=0','','url',0);
 
 -- recomendaciones
 INSERT INTO contents VALUES (27, 'toursDescription', '../resources/travel/general/titulo.txt', 'Esperamos que el recorrido sea de su agrado, algunas recomendaciones de seguridad:', 'text', 0);
@@ -197,7 +197,7 @@ INSERT INTO contents VALUES(85,'P7R2','../../resources/travel/maps/2/Punto8-3. F
 INSERT INTO contents VALUES(86,'P8R2','../../resources/travel/maps/2/Punto9-1.jpg','Pliegue sinsedimentario','image',0);
 INSERT INTO contents VALUES(87,'P9R2','../../resources/travel/maps/2/Punto10-1. Estratos Inclinados.jpg','Estratos inclinados','image',0);
 INSERT INTO contents VALUES(88,'P10R2','../../resources/travel/maps/2/Punto11-1. Formacion Descartes.jpg','Formación Descartes, rocas inclinados hacia el Norte','image',0);
-INSERT INTO contents VALUES(89,'P10R2','https://www.youtube.com/watch?v=0Z0Ny-iACVg&t=6s','Otra vista de la Formación Descartes','video',0);
+INSERT INTO contents VALUES(89,'P10R2','https://www.youtube.com/watch?v=0Z0Ny-iACVg','Otra vista de la Formación Descartes','video',0);
 INSERT INTO contents VALUES(90,'P12R2','../../resources/travel/maps/2/Punto13-1. Peridotita.jpg','Intrusiones de diabasas en peridotitas','image',0);
 INSERT INTO contents VALUES(91,'P12R2','../../resources/travel/maps/2/Punto13-2. Peridotita.jpg','Intrusiones de diabasas en peridotitas','image',0);
 INSERT INTO contents VALUES(92,'P12R2','../../resources/travel/maps/2/Punto13-3. Peridotita.jpg','Intrusiones de diabasas en peridotitas','image',0);
