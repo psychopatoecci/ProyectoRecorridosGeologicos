@@ -17,6 +17,7 @@ class AdminController extends AppController
      */
     public function mapIndex()
     {
+        $this->viewBuilder()->layout("defaultAdmin");
         $modelMapPoints = new mapPointsController();
         $points = $this->paginate($modelMapPoints->MapPoints);
         $this->set('mapPoints',$points);
