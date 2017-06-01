@@ -13,46 +13,28 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Galería';
 ?>
 
 <?= $this->Html->script('galleria/galleria-1.5.7.js') ?> 
-<?= $this->Html->css('\galleria\themes\fullscreen\galleria.fullscreen.min.css') ?> 
 <?= $this->Html->css('gallery.css') ?> 
+<?= $this->Html->css('\galleria\themes\fullscreen\galleria.fullscreen.min.css') ?>
+<?= $this->Html->script('galleria/themes/classic/galleria.classic.min.js') ?> 
+
+<title> 
+    <?php echo $title; ?>
+</title>
 
 <div class="galleria">
-    <img src="/resources/gallery/Punto1-1. Estratos Rocosos.jpg">
-    <img src="/resources/gallery/Punto2-1. Bajo Rojo.jpg">
-    <img src="/resources/gallery/Punto4-1. Calizas.jpg">
-    <img src="/resources/gallery/Punto5-1.jpg">
-    <img src="/resources/gallery/Punto5-2.jpg">
-    <img src="/resources/gallery/Punto6-1.jpg">
-    <img src="/resources/gallery/Punto8-1. Estratificacion.jpg">
-    <img src="/resources/gallery/Punto7-1. Estratos Volcados.jpg">
-    <img src="/resources/gallery/Punto9-1. Vista Orosi-Cacao.jpg">
-    <img src="/resources/gallery/Punto10-1. El Dragon de Roca.jpg">            
-    <img src="/resources/gallery/Punto10-2.jpg">
-	<img src="/resources/gallery/Punto11-1. Estratos Rocosos.jpg">
-	<img src="/resources/gallery/Punto11-2.jpg">
-	<img src="/resources/gallery/Punto12-1. Duna Costera.jpg">
-	<img src="/resources/gallery/Punto13-1. Conglomerado.jpg">
-	<img src="/resources/gallery/Punto14-1. Duna Costera.jpg">
-	<img src="/resources/gallery/Punto15-1. Conglomerado.jpg">
-	<img src="/resources/gallery/Punto15-3. Estratos Rocosos.jpg">
-	<img src="/resources/gallery/Punto15-4. Pares Conjugados.jpg">
-	<img src="/resources/gallery/Punto19-1. Estratificacion Cruzada.jpg">
-	<img src="/resources/gallery/Punto19-2.jpg">
-	<img src="/resources/gallery/Punto19-3.jpg">
-	<img src="/resources/gallery/Punto19-4.jpg">
-	<img src="/resources/gallery/Punto19-5.jpg">
-	<img src="/resources/gallery/Punto19-6.jpg">
-	<img src="/resources/gallery/Punto19-7.jpg">
-	<img src="/resources/gallery/Punto19-8.jpg">
+    <?php foreach ($images as $image): ?>
+        <img src="<?php echo $image->link_path ;?>">
+    <?php endforeach; ?>
+
 </div>
-        
+   
+
 <script>
 ( function(){ 
-    Galleria.loadTheme('../js/galleria/themes/classic/galleria.classic.min.js');
     Galleria.run('.galleria', {
         extend: function(options) {
         Galleria.log(this) // the gallery instance
@@ -72,4 +54,3 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 }());
 
 </script>
-

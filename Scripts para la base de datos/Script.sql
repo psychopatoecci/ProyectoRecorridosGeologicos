@@ -1,4 +1,4 @@
-USE recorridos_geologicosdb;
+﻿USE recorridos_geologicosdb;
 
 -- Borramos las tuplas "viejas"
 TRUNCATE TABLE map_points; 
@@ -208,7 +208,6 @@ INSERT INTO contents VALUES(96,'P14R2','../../resources/travel/maps/2/Punto15-1.
 INSERT INTO contents VALUES(97,'P15R2','../../resources/travel/maps/2/Punto16-2.jpg','Complejo Acrecional de Santa Rosa','image',0);
 INSERT INTO contents VALUES(98,'P15R2','../../resources/travel/maps/2/Punto16-3.jpg','Complejo Acrecional de Santa Rosa','image',0);
 INSERT INTO contents VALUES(99,'P15R2','None','La base de la secuencia de rocas en la península de Santa Elena corresponde con el Complejo Acrecional de Santa Roca. Este se encuentra comprendido por un conjunto de rocas sedimentarias silíceas, o radiolaritas, producto de la acumulación de microorganismos muertos. ','text',0);
-INSERT INTO contents VALUES(100,'P16R2','../../resources/travel/maps/2/Punto17-1.Tómbolo.png','Tómbolo','image',0);
 INSERT INTO contents VALUES(101,'P17R2','../../resources/travel/maps/2/Punto19-1. Arco en roca.jpg','Arco en roca','image',0);
 INSERT INTO contents VALUES(102,'P18R2','../../resources/travel/maps/2/Punto21-1.jpg','Basaltos en almohadilla','image',0);
 INSERT INTO contents VALUES(103,'P18R2','../../resources/travel/maps/2/Punto21-2.jpg','Basaltos en almohadilla','image',0);

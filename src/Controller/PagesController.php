@@ -213,9 +213,26 @@ class PagesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function gallery()
-    {
-		
+    public function gallery($tourNum)
+    {        
+        if ($tourNum != 1 && $tourNum != 2) {
+             // Evitar que se caiga si se envian datos erroneos.
+             $tourNum = 1;
+        }
+        $this -> set ('title', 'Galer&iacute;a '.($tourNum == 1 ? 'Isla Bola&ntilde;os' : 'Pen&iacute;nsula de Santa Elena'));
+
+        $tourId = 'R'.$tourNum;
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id LIKE' => '%'.$tourId.'%',
+                                  'Contents.content_type' => 'image')
+        ));        
+
+        $images = $imagesQuery->toArray();        
+
+        $this->set([
+            'images'    => $images
+        ]);        
     }
 	
 	/**
