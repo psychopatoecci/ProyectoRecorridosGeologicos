@@ -23,7 +23,7 @@ $cakeDescription = 'Descripción de los Recorridos';
 <?= $this->Html->css('description.css') ?> 
 	<div class="tip-video">
 		<div>
-		<iframe class="video" src="https://www.youtube.com/embed/tS5jzLqhCzI?autoplay=1&amp;rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+		<iframe class="video" src="<?php echo $url[0]->link_path;?>" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<div class="help-tip2">
 			<div class="help-tip">
