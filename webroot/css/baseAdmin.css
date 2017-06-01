@@ -1,0 +1,348 @@
+/*------------------------------------------------- Estilos generales ------------------------------------------------- */
+
+body{
+	color: black;
+	font-family: 'Roboto', sans-serif;
+}
+
+/*-------------------------------------------- Encabezado de la aplicación -------------------------------------------- */
+header{
+	padding: 0px;
+	color: black;
+	background-color: white;
+	font-weight: bold;
+	text-align: center; 
+	overflow: auto;
+}
+
+.header-title{
+	font-size: 5em;
+    margin-bottom: 12px;
+    margin-top: 12px;
+	height:auto;
+}
+
+/* Evitar en desplizamiento sobre el header*/
+.row {
+   margin-right: 0px;
+   margin-left: 0px;
+   margin-top: 7px;
+   margin-bottom: 7px;
+}
+
+/*-------------------------------------------- Barra de navegación  -------------------------------------------- */
+
+/* Provoca que la barra sea continua*/
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Fondo de la barra principal y tamaño de la letra*/
+.navbar{
+	background-color: #F37021;
+	border-radius: 0;
+	font-size: 15px;
+	font-weight: bold;
+	border-style: solid;
+    border-color: #404040 #F37021 #404040 #F37021 ;
+}
+
+.navbar-inverse
+{
+    margin-bottom: 0px;
+}
+
+/* Color de la letra de los enlace principales*/
+.navbar-inverse .navbar-nav > li > a
+{
+	color:white;
+}
+
+/* Fondo y letra de los enlaces principales cuando el mouse se encuentra encima */
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover{
+	color: white;
+	background-color: #F09050;
+}
+
+/* Fondo y letra de los enlace que tienen menu desplegable cuando se da click encima */
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover{
+	color: white;
+	background-color: #F09050;
+}
+
+/* Fondo del menu desplegable*/
+.dropdown-menu{
+	background-color:#F37021;
+
+}
+
+/* Fondo y letra de los enlaces dentro del menu desplegable cuando el mouse no se encuentra encima*/
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
+	color: white;
+	background-color: #F37021;
+}
+
+/* Fondo y letra de los enlaces dentro del menu desplegable cuando el mouse se encuentra encima */
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open .dropdown-menu>li>a :focus, .navbar-inverse .navbar-nav > .open .dropdown-menu>li>a:hover{
+	color: white;
+	background-color: #F09050;
+}
+
+/* Fondo y letra para poner los activos*/
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
+{
+	color: white;
+	background-color: #F09050;
+}
+
+/* Fondo cuando se mantiene pulsado el icono de navegacion en modo responsive*/
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover
+{
+	background-color: #F09050;
+}
+
+/* Borde del icono de navegacion*/
+.navbar-inverse .navbar-toggle
+{
+    border-color: white;
+}
+
+/*-------------------------------------------- Pie de página de la aplicación -------------------------------------------- */
+
+/* Bloque principal del pie*/
+#footer {
+
+  width: 100%;
+  padding-left:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-top:0;
+  margin-bottom:0;
+  height: auto;
+  background-color:#e0e0e0;
+
+
+}
+
+/* Bloque de los derechos del pie*/
+#derechos {
+
+  width: 100%;
+  padding-left:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-top:0;
+  margin-bottom:0;
+  height: auto;
+  background-color: #F37021;
+
+}
+
+/* Bloque de los derechos del pie*/
+#derechos .container .row {
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+}
+
+/*----------------------------------------------- Estilos responsive --------------------------------------------- */
+
+/* Estilos responsive del header */
+@media (min-width: 1046px) { 
+	.row .header-title a img.img_ucr
+	{
+		float:left;
+	}
+
+	.row .header-title a img.img_app
+	{
+		float:right;
+	}
+
+	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del header */
+@media (max-width: 1046px) and (min-width: 720px) { 
+
+	.row .header-title a img.img_ucr
+	{
+		float:left;
+		width:55%;
+	}
+
+	.row .header-title a img.img_app
+	{
+		float:right;
+		width:43%;
+	}
+
+	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive
+	{
+		display: none;
+	}
+
+}
+
+/* Estilos responsive del header */
+@media (max-width: 719px) and (min-width: 571px) { 
+
+	.row .header-title a img.img_ucr{}
+
+	.row .header-title a img.img_app{}
+
+	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del header */
+@media (max-width: 570px) and (min-width: 481px) { 
+
+	.row .header-title a img.img_ucr
+	{
+		width: 98%;
+	}
+
+	.row .header-title a img.img_app
+	{  
+		width: 87%;
+	}
+
+	.row .header-title a img.img_ucr_responsive
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del header */
+@media (max-width: 480px) and (min-width: 360px) { 
+
+	.row .header-title a img.img_ucr
+	{
+		display: none;
+	}
+	.row .header-title a img.img_app
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive {  }
+
+	.row .header-title a img.img_ucr_responsive {  }
+}
+
+
+/* Estilos responsive del header */
+@media (max-width: 360px) { 
+
+	.row .header-title a img.img_ucr
+	{
+		display: none;
+	}
+	.row .header-title a img.img_app
+	{
+		display: none;
+	}
+
+	.row .header-title a img.img_app_responsive 
+	{ 
+		width: 82%;
+	}
+
+	.row .header-title a img.img_ucr_responsive 
+	{ 
+		width: 82%;
+	}
+}
+
+/* Estilos responsive de la barra de navegación */
+@media  (min-width: 780px) { 
+
+	/* Fondo y letra de los enlaces principales cuando el mouse se encuentra encima */
+	.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover{
+		color: white;
+		background-color: #F09050;
+		height: 48px;
+	}
+
+	/* Fondo y letra de los enlace que tienen menu desplegable cuando se da click encima */
+	.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover{
+		color: white;
+		background-color: #F09050;
+		height: 48px;
+	}
+
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+	    position: absolute;
+	    left: 25px;
+
+	}
+
+	/* Fondo y letra para poner los activos*/
+	.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
+	{
+		color: white;
+		background-color: #F09050;
+		height: 48px;
+	}
+
+}
+
+/* Estilos responsive del footer */
+@media (min-width: 992px) { 
+
+	.row .col-md-6 .centering a img
+	{
+		float:right;
+	}
+	
+	.row .col-md-6 .footertext 
+	{
+		text-align: left;		
+	}
+}
+
+/* Estilos responsive del footer */
+@media (max-width: 991px) { 
+	
+	.row .col-md-6 .centering a img 
+	{
+		text-align: center;
+	}
+	
+	.row .col-md-6 .footertext 
+	{
+		text-align: center;		
+	}
+}
+
