@@ -42,7 +42,7 @@ header{
 
 /* Fondo de la barra principal y tamaño de la letra*/
 .navbar{
-	background-color: #F37021;
+	background-color: blue;
 	border-radius: 0;
 	font-size: 15px;
 	font-weight: bold;
