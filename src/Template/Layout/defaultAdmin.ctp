@@ -146,8 +146,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				</div>
 				<div class="col-md-6" style="padding-bottom: 10px;">
 				<center class="centering">	
-					<a title="Facebook Oficial del Sitio" href="/"><img src="/img/logo_facebook.png" alt="logo_facebook"/></a>
-					<a title="Canal Oficial de Youtube" href="/"><img src="/img/logo_youtube.png" alt="logo_youtube"/></a>
+					<a title="Facebook Oficial del Sitio" href="/"><img src="/img/logo_facebook_white.png" alt="logo_facebook"/></a>
+					<a title="Canal Oficial de Youtube" href="/"><img src="/img/logo_youtube_white.png" alt="logo_youtube"/></a>
 				</center>
 				</div>
 
