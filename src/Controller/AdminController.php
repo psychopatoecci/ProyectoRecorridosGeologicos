@@ -15,20 +15,22 @@ class AdminController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function mapindex()
+    public function mapindex($tourId)
     {
         $this->viewBuilder()->layout("defaultAdmin");
         $modelMapPoints = new MapPointsController();
-        $points = $this->paginate($modelMapPoints->MapPoints);
+        $points = $this->paginate(
+        	$modelMapPoints->MapPoints->find('all', array(
+            	'conditions' => array('MapPoints.path' => $tourId)
+        	))   
+        );
+        $this -> set ('title', ''.($tourId == 1 ? 'Isla Bola&ntilde;os' : 'Pen&iacute;nsula de Santa Elena'));
         $this->set('mapPoints',$points);
     }
 
     public function mapadd()
     {
         $this->viewBuilder()->layout("defaultAdmin");
-        $modelMapPoints = new MapPointsController();
-        $points = $this->paginate($modelMapPoints->MapPoints);
-        $this->set('mapPoints',$points);
     }
 
 }

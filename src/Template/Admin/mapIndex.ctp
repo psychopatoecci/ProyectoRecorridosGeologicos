@@ -20,7 +20,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <div class="row">
     <div class = "col-md-12">
        <div class = "page-header" >   
-            <h2>Isla Bolaños</h2>
+            <h2><?php echo $title; ?></h2>
        </div> 
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
         <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar&#8194;', ['controller'=>'admin','action' => 'mapadd'],['class' => 'btn btn-success','escape' => false]) ?>

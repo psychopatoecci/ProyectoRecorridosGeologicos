@@ -80,6 +80,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 									</ul>
 							</li>
 							<li class="dropdown" id="accountmenu">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-blackboard">&#8194;</span>Mapas<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Isla Bolaños',['1','controller'=>'admin','action'=> 'mapindex'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Península de Santa Elena',['2','controller'=>'admin','action'=> 'mapindex'],['escape' => false]);?></li>
+									</ul>
+							</li>
+							<li class="dropdown" id="accountmenu">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-picture">&#8194;</span>Galería<b class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Isla Bolaños',['1','controller'=>'pages','action'=> 'gallery'],['escape' => false]);?></li>
