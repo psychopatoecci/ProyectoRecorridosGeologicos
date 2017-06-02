@@ -23,7 +23,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <h2>Isla Bolaños</h2>
        </div> 
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
-        <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar&#8194;', ['action' => 'edit'],['class' => 'btn btn-success','escape' => false]) ?>
+        <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar&#8194;', ['controller'=>'admin','action' => 'mapadd'],['class' => 'btn btn-success','escape' => false]) ?>
          </div>
 
 
@@ -33,7 +33,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <tr>
                         <th scope="col"><?= $this->Paginator->sort('Identificador') ?></th>
                         <th scope="col"><?= $this->Paginator->sort('name',['Nombre del punto']) ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('sequence_number', ['Secuencia en el recorrido']) ?></th>
                         <th scope="col"><?= $this->Paginator->sort('latitide', ['Latitud']) ?></th>
                         <th scope="col"><?= $this->Paginator->sort('longitude',['Longitud']) ?></th>
 
@@ -45,7 +44,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         <tr>
                             <td><?= h($point->page_id) ?></td>
                             <td><?= h($point->name) ?></td>
-                            <td><?= $this->Number->format($point->sequence_number) ?></td>
                             <td><?= $this->Number->format($point->latitude) ?></td>
                             <td><?= $this->Number->format($point->longitude) ?></td>
                             <td>
