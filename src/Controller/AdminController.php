@@ -32,5 +32,48 @@ class AdminController extends AppController
     {
         $this->viewBuilder()->layout("defaultAdmin");
     }
+    
+    /**
+     * Admin Information method.
+     * Created by Josin Madrigal.
+     * [GET]  Gets contents to display in view.
+	 * [POST] Updates database.
+     * @return \Cake\Network\Response|null
+     */
+	 
+	public function information()
+    {
+		$this->set('title', 'Administración de Información General');
+		$this->viewBuilder()->layout("defaultAdmin");
+		
+		$pagesController = new PagesController();
+		
+		if ($this->request->is(['post'])) {
+			
+				//Verificar y actualizar la base
+			    
+				$this->Flash->success(__('Cambios guardados.'));
+		}
+		
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'introduction',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'introduction',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+
+        $this->set([
+            'text' => $text,              
+            'images' => $images,              
+        ]);
+    }
 
 }
