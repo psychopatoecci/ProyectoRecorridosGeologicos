@@ -12,8 +12,10 @@ class UsersTableTest extends TestCase
 {
 
     /**
-     * Test subject     *
-     * @var \App\Model\Table\UsersTable     */
+     * Test subject
+     *
+     * @var \App\Model\Table\UsersTable
+     */
     public $Users;
 
     /**
@@ -33,7 +35,9 @@ class UsersTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Users') ? [] : ['className' => 'App\Model\Table\UsersTable'];        $this->Users = TableRegistry::get('Users', $config);    }
+        $config = TableRegistry::exists('Users') ? [] : ['className' => 'App\Model\Table\UsersTable'];
+        $this->Users = TableRegistry::get('Users', $config);
+    }
 
     /**
      * tearDown method

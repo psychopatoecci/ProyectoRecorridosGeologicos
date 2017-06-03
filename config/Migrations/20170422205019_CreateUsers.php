@@ -12,7 +12,7 @@ class CreateUsers extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('users', ['id' => false, 'primary_key' => ['username']]);
+        $table = $this->table('users');
 
         // Cake pide que se llame username.
         $table->addColumn('username', 'string', [
