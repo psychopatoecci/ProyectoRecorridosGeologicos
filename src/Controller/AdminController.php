@@ -75,5 +75,46 @@ class AdminController extends AppController
             'images' => $images,              
         ]);
     }
+    
+    
+    public function home()
+    {
+        $this->set('title', 'Administración de inicio');
+        $this->viewBuilder()->layout("defaultAdmin");
+		//$action = $this->request->params['action'];
+        $pagesController = new PagesController();
+        if ($this->request->is(['post'])) {
+			
+				//Verificar y actualizar la base
+			    
+				$this->Flash->success(__('Cambios guardados.'));
+		}
+        //Crea el objeto query con la consulta especificada.
+        
+        $textQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'home',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'home',
+                                'Contents.content_type' => 'image',)
+        ));
+
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images,            
+        ]);
+    }
+    
+    public function addimage()
+    {
+        $this->viewBuilder()->layout("defaultAdmin");
+    }
 
 }
