@@ -118,7 +118,7 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Datos err&oacute;neos, intente nuevamente.'));
+            $this->Flash->error(__('Datos erróneos, intente nuevamente.'));
         }
     }
 
