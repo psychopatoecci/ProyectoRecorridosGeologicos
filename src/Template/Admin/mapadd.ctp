@@ -118,6 +118,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	function eliminarVideo(name_row){
 		$("#" + name_row ).remove();
 	}
+	
 </script>
 
 <div class="container-fluid">
@@ -177,7 +178,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<input class = "info_data_image" id="name_image_0" placeholder="Seleccione un archivo" disabled="disabled" />
 					<div class="fileUpload btn btn-primary">
 			    		<span>Subir</span>
-			    		<input type="file" name ="container_path_image[0]" multiple="multiple" id="container_path_image_0" class="upload_image">
+			    		<input type="file" name ="container_path_image[0]" multiple="multiple" id="container_path_image_0" class="upload_image" accept="image/*">
+
 					</div>
 				</div>
 			</div>
