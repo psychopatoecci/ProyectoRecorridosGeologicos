@@ -69,7 +69,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					</div>
 					<div class="collapse navbar-collapse" id="navbar-collapse-4">
 						<ul class="nav navbar-nav navbar-left">
-							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/home' || $_SERVER['REQUEST_URI'] === '/' ) {echo "active"; } else  {echo "noactive";}?>"> <?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'pages','action'=> 'home'],['escape' => false]);?></li>
+							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/admin/home' || $_SERVER['REQUEST_URI'] === '/' ) {echo "active"; } else  {echo "noactive";}?>"> <?= $this->Html->link ('<span class="glyphicon glyphicon-home">&#8194;</span>Inicio',['controller'=>'admin','action'=> 'home'],['escape' => false]);?></li>
 							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/admin/information' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-info-sign">&#8194;</span>Información',['controller'=>'admin','action'=> 'information'],['escape' => false]);?></li>
 							<li class="dropdown" id="accountmenu">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-map-marker">&#8194;</span>Recorridos<b class="caret"></b></a>
@@ -89,8 +89,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							<li class="dropdown" id="accountmenu">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-picture">&#8194;</span>Galería<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Isla Bolaños',['1','controller'=>'pages','action'=> 'gallery'],['escape' => false]);?></li>
-										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Península de Santa Elena',['2','controller'=>'pages','action'=> 'gallery'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Isla Bolaños',['1','controller'=>'admin','action'=> 'gallery'],['escape' => false]);?></li>
+										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Península de Santa Elena',['2','controller'=>'admin','action'=> 'gallery'],['escape' => false]);?></li>
 									</ul>
 							</li>
 						</ul>

@@ -90,7 +90,7 @@ class AdminController extends AppController
 		}
         //Crea el objeto query con la consulta especificada.
         
-        $textQuery = $pagesController->Pages->Contents->find('all', array(
+        $textsQuery = $pagesController->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'home',
                                 'Contents.content_type' => 'text',)
         ));
@@ -100,14 +100,9 @@ class AdminController extends AppController
                                 'Contents.content_type' => 'image',)
         ));
 
-
-        // Ejecuta la consulta al tratar de convertirla en array.
-        $text   = $textQuery->toArray();
-        $images = $imagesQuery->toArray();
-
         $this->set([
-            'text'      => $text,              
-            'images'    => $images,            
+            'text'      => $textsQuery,              
+            'images'    => $imagesQuery,            
         ]);
     }
     

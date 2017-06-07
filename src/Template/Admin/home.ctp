@@ -41,8 +41,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <?php foreach ($images as $image): ?>
                         <tr>
                             <td>
-                                <?= $this->Html->link('&#8201;&#8194;<span class="glyphicon glyphicon-pencil"></span> &#8201;Ver imagen&#8194;', ['action' => 'edit', $point->page_id],['class' => 'btn btn-sm btn-primary','escape' => false]) ?>
-                                <?= $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>&#8194;Eliminar', ['action' => 'delete', $point->page_id], ['confirm' => 'Desea eliminar la imagen?','class' => 'btn btn-sm btn-danger','escape' => false]) ?>
+                                <img width="200" height="200" src="
+                                    <?php echo $image ['link_path'] ?>
+                                "></img>
+                                <?php
+echo '<form method="post" onsubmit="return confirm (\'¿Desea eliminar la imagen?\');" action="/admin/home">
+        <button  class="btn btn-sm btn-danger" > <div class="glyphicon glyphicon-remove">&#8194;</div></button>
+    </form>'; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
