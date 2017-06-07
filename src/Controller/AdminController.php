@@ -76,4 +76,47 @@ class AdminController extends AppController
         ]);
     }
 
+    public function description(){
+        $this->set('title', 'Administración de Descripción General');
+        $this->viewBuilder()->layout("defaultAdmin");       
+        
+        $pagesController = new PagesController();
+        
+        if ($this->request->is(['post'])) {
+            
+                //Verificar y actualizar la base
+                
+                $this->Flash->success(__('Cambios guardados.'));
+        }
+        
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'image',)
+        ));
+        
+        $urlQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'url',)
+        )); 
+        
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images, 
+            'url'       => $url,       
+        ]);     
+    
+    }    
+
 }
