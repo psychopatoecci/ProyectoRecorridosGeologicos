@@ -17,6 +17,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 
+<?= $this->Html->script('jquery-3.2.0.min.js') ?> 
+
+<style>
+	#botonEliminar {
+		color: red;
+	}
+
+	#recSeguridad {
+		margin-bottom: 12px;
+	}
+
+	#botonAgregar {
+		margin-bottom: 12px;
+	}
+
+</style>
+
 <title>
     <?php echo $title; ?>
 </title>
@@ -41,15 +58,33 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		  <input type="text" class="form-control" id="tituloSugerencias" name="tituloSugerencias" value="<?php echo $text[0]->description; ?>">
 		</div>
 				
-		<div class=main-div2>			
-			<div  class="lista">
-				<ol id="lista2">
-				    <li><?php echo $text[1]->description; ?></li>
-				    <li><?php echo $text[2]->description; ?></li>
-				    <li><?php echo $text[3]->description; ?></li>
-				    <li><?php echo $text[4]->description; ?></li>
-				    <li><?php echo $text[5]->description; ?></li> 
-				</ol>
-				</div>
+
+		<label>Recomendaciones de seguridad:</label>
+		<div class="input_fields_wrap">
+			<button type="button" class="btn btn-success" id="botonAgregar">Agregar</button>
+			<?php for($i = 1; $i < count($text); $i++): ?>    
+			    <div id="recSeguridad"><input type="text" class="form-control" name="mytext[]" value="<?php echo $text[$i]->description; ?>"><a href="#" class="remove_field" id="botonEliminar">Eliminar</a></div>
+			<?php endfor; ?>
 		</div>
-	</div>
+
+<script>
+$(document).ready(function() {
+	var max_fields = $("div[id*='recSeguridad']").length;
+    var max_fields      = 8 - max_fields; 
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $("#botonAgregar"); //Add button ID
+    
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div id="recSeguridad"><input type="text" class="form-control" name="mytext[]"/><ahref="#" class="remove_field" id="botonEliminar">Eliminar</a></div>'); //add input box
+        }
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
