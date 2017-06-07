@@ -109,7 +109,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 						"</div>" +
 				      "</div>";
 
-		$("#new_content").append(element);
+		$("#new_content").prepend(element);
 
 		document.getElementsByName("video_name")[0].value = "";
 		document.getElementsByName("video_path")[0].value = "";
