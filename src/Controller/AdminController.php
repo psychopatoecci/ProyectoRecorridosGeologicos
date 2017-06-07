@@ -39,8 +39,7 @@ class AdminController extends AppController
      * [GET]  Gets contents to display in view.
 	 * [POST] Updates database.
      * @return \Cake\Network\Response|null
-     */
-	 
+     */	 
 	public function information()
     {
 		$this->set('title', 'Administración de Información General');
@@ -117,6 +116,38 @@ class AdminController extends AppController
             'url'       => $url,       
         ]);     
     
+    }
+
+    /**
+     * Admin tourSantaElena method.
+     * Created by Josin Madrigal & Isabel Chaves.
+     * [GET]  Gets contents to display in view.
+     * [POST] Updates database.
+     * @return \Cake\Network\Response|null
+     */
+    public function tourSantaElena()
+    {
+        $this->set('title', 'Administración del recorrido de la Península de Santa Elena');
+        $this->viewBuilder()->layout("defaultAdmin"); 
+
+        $pagesController = new PagesController();
+
+    }
+    
+    /**
+     * Admin tourBolanos method.
+     * Created by Josin Madrigal & Isabel Chaves.
+     * [GET]  Gets contents to display in view.
+     * [POST] Updates database.
+     * @return \Cake\Network\Response|null
+     */
+    public function tourBolanos()
+    {
+        $this->set('title', 'Administración del recorrido de Isla Bolaños');
+        $this->viewBuilder()->layout("defaultAdmin"); 
+
+        $pagesController = new PagesController();
+
     }    
 
 }
