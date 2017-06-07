@@ -81,6 +81,5 @@ class AppController extends Controller
      */
     public function beforeFilter (Event $event) {
         $this->Auth->allow(['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact', 'view', 'logout', 'login', 'add']);
-        echo "<h1>QUITAR ADD DE BEFOREFILTER EN APPCONTROLLER PARA PRODUCCION</h1>";
     }
 }

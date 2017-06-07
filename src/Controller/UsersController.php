@@ -110,13 +110,15 @@ class UsersController extends AppController
     }
     public function login()
     {
+        $this -> set ('title', 'Iniciar sesi&oacute;n');
+        $this -> viewBuilder() -> layout ('defaultAdmin');
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            $this->Flash->error(__('Datos erróneos, intente nuevamente.'));
         }
     }
 

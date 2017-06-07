@@ -6,6 +6,9 @@ TRUNCATE TABLE contents;
 SET FOREIGN_KEY_CHECKS = 0; 
 TRUNCATE TABLE pages;
 SET FOREIGN_KEY_CHECKS = 1;
+-- users
+-- clave es pruebas
+INSERT INTO users VALUES ( '1', 'pruebas', 'oveja@sleep.net', '$2y$10$E0yMGzeAz/EwsMb26wW0dOaVrQNNeGNaD0Ml47BJOH4baTtGflmfy');
 
 -- home & introduction
 INSERT INTO pages VALUES ('home');
