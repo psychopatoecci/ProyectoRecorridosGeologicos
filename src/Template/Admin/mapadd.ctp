@@ -252,6 +252,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     position: relative;
     overflow: hidden;
     margin-left: 0px;
+    margin-top: 10px;
 
 }
 .fileUpload input.upload_image {
@@ -266,6 +267,29 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     filter: alpha(opacity=0);
 }
 
+.info_name_image{
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    width: 100%;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.info_data_image{
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    width: 100%;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
 </style>
 
