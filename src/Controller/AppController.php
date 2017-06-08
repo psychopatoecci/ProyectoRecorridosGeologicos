@@ -80,6 +80,6 @@ class AppController extends Controller
      * without logging in. Only administrators have accounts.
      */
     public function beforeFilter (Event $event) {
-        $this->Auth->allow(['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact', 'view', 'logout', 'login', 'add','mapindex','mapadd']);
+        $this->Auth->allow(['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact', 'view', 'logout', 'login', 'add','mapindex','mapadd', 'loadImage', 'loadVideo']);
     }
 }

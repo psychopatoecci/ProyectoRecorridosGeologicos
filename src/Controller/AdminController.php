@@ -10,34 +10,118 @@ use App\Controller\AppController;
 class AdminController extends AppController
 {
 
+private function verify_image_file() {
+        //Verificar y actualizar la base
+        if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
+            
+            //Verificacion del tamano. 
+            if ($_FILES['imagen_fondo']['size'] > 5*1024*1024) {
+                $msj_error = "La imagen excede el tamaño máximo permitido.";
+                return array("error" => $msj_error);
+            }
+            
+            $extension = "";
+            $fh=fopen($_FILES['imagen_fondo']['tmp_name'],'rb');
+            if ($fh) { 
+                $bytes6=fread($fh,6);
+                fclose($fh); 
+                if (!($bytes6===false)){
+                    if (substr($bytes6,0,3)=="\xff\xd8\xff") {
+                        $extension = 'jpg';
+                    }
+                    if ($bytes6=="\x89PNG\x0d\x0a"){
+                        $extension = 'png';
+                    }
+                }
+            }
+            
+            if (!$extension) {
+                $msj_error = "El archivo subido no tiene el formato adecuado (jpg, png).";
+                return array("error" => $msj_error);
+            }
+
+            //No hubo error
+            return array("extension" => $extension);
+           
+        } else {
+            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+            return array("error" => $msj_error);
+        }
+    }
+    
     /**
      * Admin Information method.
      * Created by Josin Madrigal.
      * [GET]  Gets contents to display in view.
-	 * [POST] Updates database.
+     * [POST] Updates database.
      * @return \Cake\Network\Response|null
-     */	 
-	public function information()
+     */  
+    public function information() 
     {
-		$this->set('title', 'Administración de Información General');
-		$this->viewBuilder()->layout("defaultAdmin");
-		
-		$pagesController = new PagesController();
-		
-		if ($this->request->is(['post'])) {
-			
-				//Verificar y actualizar la base
-			    
-				$this->Flash->success(__('Cambios guardados.'));
-		}
-		
+        $this->set('title', 'Administración de Información General');
+        $this->viewBuilder()->layout("defaultAdmin");
+        $this->loadModel('Pages');
+        
+        if ($this->request->is(['patch', 'post', 'put'])) {
+
+            if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
+                if (isset($_POST['image_id'])) {
+
+                    $imFile = $this->verify_image_file();
+                    if (isset($imFile["error"])) {
+                        $this->Flash->error($imFile["error"]);
+                    }else{
+
+                        //Se guarda la imagen en el directorio
+                        $image = $this->Pages->Contents->get($_POST['image_id']);
+                        $path = str_replace("..", "webroot", $image->link_path);
+
+                        if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $path)) {
+
+                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+                            $this->Flash->error($msj_error);
+
+                        } else {
+
+                            if(!strpos($image->link_path, $imFile["extension"])){
+                                //Si la extension es diferente se actualiza la base con la nueva extension
+                                $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                                if (!$this->Pages->Contents->save($image)) {
+                                    $this->Flash->error("Error al intentar guardar la imagen");
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (isset($_POST['text_id'])) {
+                $text = $this->Pages->Contents->get($_POST['text_id']);
+                $text->description = $_POST['descripcion'];
+                if ($this->Pages->Contents->save($text)) {
+                    $this->Flash->success("Cambios guardados");
+                }
+
+                if (isset($_POST['text2_id'])) {
+                    $text = $this->Pages->Contents->get($_POST['text2_id']);
+                    $text->description = $_POST['descripcion2'];
+                    $this->Pages->Contents->save($text);
+                }
+
+            }else{
+                $this->Flash->error("Error al intentar guardar el texto");
+            }
+
+        }
+        
         //Crea el objeto query con la consulta especificada.
-        $textQuery = $pagesController->Pages->Contents->find('all', array(
+        $textQuery = $this->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'introduction',
                                 'Contents.content_type' => 'text',)
         ));
 
-        $imagesQuery = $pagesController->Pages->Contents->find('all', array(
+        $imagesQuery = $this->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'introduction',
                                 'Contents.content_type' => 'image',)
         ));
