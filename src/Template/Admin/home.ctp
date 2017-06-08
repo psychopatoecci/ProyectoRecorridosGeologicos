@@ -16,42 +16,20 @@
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
-
-<div class="row">
-    <div class = "col-md-12">
-       <div class = "page-header" >   
-            <h2><?php echo $title; ?></h2>
-       </div> 
+<div class = "col-md-12">
+    <div class = "page-header" >   
+        <h2><?php echo $title; ?></h2>
+    </div> 
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
-        <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar imagen&#8194;', ['controller'=>'admin','action' => 'addimage'],['class' => 'btn btn-success','escape' => false]) ?>
-         </div>
-
-
-        <div class = "table-responsive">
-            <table class = "table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col"><?= $this->Paginator->sort('Identificador') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('nombre',['Nombre imagen']) ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('imagen', ['Imagen']) ?></th>
-                        <th scope="col" class="actions"><?= __('Acciones') ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($images as $image): ?>
-                        <tr>
-                            <td>
-                                <img width="200" height="200" src="
-                                    <?php echo $image ['link_path'] ?>
-                                "></img>
-                                <?php
-echo '<form method="post" onsubmit="return confirm (\'¿Desea eliminar la imagen?\');" action="/admin/home">
-        <button  class="btn btn-sm btn-danger" > <div class="glyphicon glyphicon-remove">&#8194;</div></button>
-    </form>'; ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                 </tbody>
-             </table>
-    </div>
+            <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar imagen&#8194;', ['controller'=>'admin','action' => 'addimage'],['class' => 'btn btn-success','escape' => false]) ?>
+        </div>
+        <?php foreach ($images as $image): ?>
+                <img width="200" height="200" src="
+                    <?php echo $image ['link_path'] ?>
+                "></img>
+                <?php /*
+                    echo '<form method="post" onsubmit="return confirm (\'¿Desea eliminar la imagen?\');" action="/admin/home">
+                    <button  class="btn btn-sm btn-danger" > <div class="glyphicon glyphicon-remove">&#8194;</div></button>
+                    </form>'; */?>
+        <?php endforeach; ?>
 </div>
