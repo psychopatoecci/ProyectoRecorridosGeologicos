@@ -23,7 +23,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <h2><?php echo $title; ?></h2>
        </div> 
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
-        <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar&#8194;', ['controller'=>'admin','action' => 'mapadd'],['class' => 'btn btn-success','escape' => false]) ?>
+        <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar&#8194;', [$tourId,'controller'=>'admin','action' => 'mapadd'],['class' => 'btn btn-success','escape' => false]) ?>
          </div>
 
 
@@ -65,7 +65,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </div>
 
 <style type="text/css">
-	
+    
 .table-responsive {
     padding-right: 20px;
     padding-left: 20px;

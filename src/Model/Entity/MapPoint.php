@@ -29,7 +29,7 @@ use Cake\ORM\Entity;
      */
     protected $_accessible = [
         '*' => true,
-        'path' => false,
-        'sequence_number' => false
+        'path' => true,
+        'sequence_number' => true
     ];
 }
