@@ -180,6 +180,9 @@ class AdminController extends AppController
 
             ---------------------Subir fotos -------------------*/
 
+            debug($this->request->data('hola'));
+            debug($this->request->data('hola2'));
+            debug($this->request->data('container_name_image'));
             /*Se crean los atributos para un punto del mapa*/
             $path = $tourId;
             $name = $this->request->data('name');
