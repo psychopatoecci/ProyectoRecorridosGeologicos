@@ -190,8 +190,34 @@ private function verify_image_file() {
     {
         $this->set('title', 'Administración del recorrido de la Península de Santa Elena');
         $this->viewBuilder()->layout("defaultAdmin"); 
+        $this->loadModel('Pages');
 
-        $pagesController = new PagesController();
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        $urlQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
+                                'Contents.content_type' => 'url',)
+        ));
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images,
+            'url'       => $url,              
+        ]);
 
     }
     
@@ -205,9 +231,36 @@ private function verify_image_file() {
     public function tourBolanos()
     {
         $this->set('title', 'Administración del recorrido de Isla Bolaños');
-        $this->viewBuilder()->layout("defaultAdmin"); 
+        $this->viewBuilder()->layout("defaultAdmin");
+        $this->loadModel('Pages');
 
-        $pagesController = new PagesController();
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        $urlQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
+                                'Contents.content_type' => 'url',)
+        ));
+
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images,
+            'url'       => $url,              
+        ]);
 
     }    
 

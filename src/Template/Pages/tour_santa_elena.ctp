@@ -54,11 +54,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							Documentos relacionados
 						</p>
 						<p>
-							<span class="glyphicon glyphicon-file"></span>
-							<a href="<?php echo $url[0]->link_path; ?>" target='_blank'><?php echo $url[0]->description; ?></a> 
+						<?php for ($i = 0; $i < sizeof($url); $i++) { ?>
+						  	<span class="glyphicon glyphicon-file"></span>
+							<a href="<?php echo $url[$i]->link_path; ?>" target='_blank'><?php echo $url[$i]->description; ?></a> 
 							<br>
-							<span class="glyphicon glyphicon-file"></span>
-							<a href="<?php echo $url[1]->link_path; ?>" target='_blank'><?php echo $url[1]->description; ?></a> 
+						<?php } ?>
 						</p>
 				</div>
 			</div>
