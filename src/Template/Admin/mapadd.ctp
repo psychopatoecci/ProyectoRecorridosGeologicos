@@ -24,39 +24,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 	function agregarImagen(){
 
-		var image_name = document.getElementsByName("image_name")[0].value;
-		var image_id = document.getElementsByName("image_id")[0].value;
-		var image_path = document.getElementsByName("image_path")[0].value;
-
-
-var x = document.getElementById("image_path");
-var txt = "";
-if ('files' in x) {
-    if (x.files.length == 0) {
-        txt = "Select one or more files.";
-    } else {
-        for (var i = 0; i < x.files.length; i++) {
-            txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-            var file = x.files[i];
-            if ('tmp_name' in file) {
-                txt += "tmp_name: " + file.tmp_name + "<br>";
-            }
-            if ('size' in file) {
-                txt += "size: " + file.size + " bytes <br>";
-            }
-        }
-    }
-
-    console.log(txt);
-} 
-
-		var image_temp = document.getElementsByName("image_temp")[0].value;
-
+		var button_id = document.getElementById("button_add_image").value;
 		var elements = document.getElementsByClassName("upload_image_list");
+		var temp_file = document.getElementById("tmp_image_" + button_id).value;
+		
 		console.log(elements.length);
 
 		var num = elements.length ;
-
 
 		for (var i = 0; i < elements.length; i++) {
 
@@ -78,39 +52,36 @@ if ('files' in x) {
 
 		}
 
-		var element = "<div class=\"row\" id =\""+ "row_imagen_" + num  +"\"> " +
-  							"<div class=\"col-sm-6\">" +
-								"<label><font color=\"red\"></font>Nombre </label>"+
-								"<input class = \"info_name_image\" type=\"text\" id=\"container_name_image_"+ num+"\" name=\"container_name_image["+num+"]\" value =\""+ image_name+"\">"+
-							"</div>" +
-				 			"<div class=\"col-sm-6\">"+
-				 			"<div><label><font color=\"red\"></font>Imagen </label></div>"+
-								"<input class = \"info_data_image\" id=\"name_image_"+num+"\" placeholder=\"Seleccione un archivo\" disabled=\"disabled\" value=\""+ image_id+"\"/>"+
-								"<div class=\"fileUpload btn btn-primary\" style= \"display:none;\">" +
-			    					"<span>Subir</span>" +
-			    					"<input type=\"file\" name =\"container_path_image["+num+"]\" multiple=\"multiple\" id=\"container_path_image_"+num+"\" class=\"upload_image_list\" value=\""+image_temp+"\" >"+
-								"</div>"+
-							"</div>"+
+		
+		var element = 	"<div class=\"row\" id =\"row_imagen_"+ num + "\">" +
 							"<div class=\"col-sm-6\">" +
-							"<button class = \"btn btn-info\" onclick = \" verImagen('" + image_temp +"');\" type=\"button\" style=\"margin-top:10px; margin-right:10px;\"> Ver </button>" +
-							"<button class = \"btn btn-danger\" onclick = \" eliminarImagen('row_imagen_" + num +"');\" type=\"button\" style=\"margin-top:10px;\"> Eliminar </button>" +
+								"<label><font color=\"red\"></font>Nombre </label>" +
+								"<input class = \"info_name_image\" type=\"text\" id=\"container_name_image_"+ num +"\" name=\"container_name_image[" + num+"]\" />" +
 							"</div>" +
+							"<div class=\"col-sm-6\">" +
+							"<div><label><font color=\"red\"></font>Imagen </label></div>" +
+								"<input class = \"info_data_image\" id=\"name_image_" + num +"\" placeholder=\"Seleccione un archivo\"/>" +
+								"<input class = \"info_data_image\" id=\"tmp_image_" + num + "\" placeholder=\"Seleccione un archivo\" disabled=\"disabled\" style = \"display:none;\" />" +
+								"<div class=\"fileUpload btn btn-primary\" id = \"element_row_"+num+"\"\>" +
+									"<span>Subir</span>" +
+									"<input type=\"file\" name =\"container_path_image["+num+"]\" multiple=\"multiple\" id=\"container_path_image_"+ num +"\" class=\"upload_image_list\" value=\"image_temp\" accept=\"image/*\" onchange=\"loadFile(event,"+ num +")\">" +
+								"</div>"+
+							"</div>" +
+							"<div class=\"col-sm-6\" id = \"element_row_buttons_" + num +"\">" +
+							"</div>"+
 						"</div>";
 
 
-
-
 		$("#new_content_image").prepend(element);
-	
-		$("#container_path_image_"+num)[0].files[0] = $("#image_path")[0].files[0];
-
-
-		document.getElementById("container_path_image_"+num).files = document.getElementById("image_path").files;
- 	
-		document.getElementsByName("image_name")[0].value = "";
-		document.getElementsByName("image_id")[0].value = "";
-		document.getElementsByName("image_path")[0].value = "";
-
+		
+		var buttons = 	"<button class = \"btn btn-info\" onclick = \" verImagen('" + temp_file +"');\" type=\"button\" style=\"margin-top:10px; margin-right:10px;\"> Ver </button>" +
+						"<button class = \"btn btn-danger\" onclick = \" eliminarVideo('row_imagen_" + button_id +"');\" type=\"button\" style=\"margin-top:10px; \"> Eliminar  </button>" ;
+						
+		$("#element_row_buttons_" + button_id).append(buttons);
+		document.getElementById("tmp_image_"+button_id).style.display = "none";
+		document.getElementById("element_row_"+button_id).style.display = "none";
+		
+		document.getElementById("button_add_image").value = num;
 	}
 
 	function verImagen(url_image)
@@ -252,24 +223,25 @@ if ('files' in x) {
 			<button class="btn btn-success" style ="margin-bottom: 15px;" type="button" onclick = "agregarImagen();" value ="0" id = "button_add_image">
 				<span class="glyphicon glyphicon-plus" ></span> Agregar
 			</button>
-			<div class="row">
-  				<div class="col-sm-6">
-				<label><font color="red"></font>Nombre </label>
-					<input class = "info_name_image" type="text" id="image_name" name="image_name" >
-				</div>
-				 <div class="col-sm-6">
-				 	<div><label><font color="red"></font>Imagen </label></div>
-					<input class = "info_data_image" id="image_id" name = "image_id" placeholder="Seleccione un archivo" disabled="disabled"  />
-					<input class = "info_data_image" id="image_temp" name = "image_temp" placeholder="Seleccione un archivo" disabled="disabled" />
-
-					<div class="fileUpload btn btn-primary">
-			    		<span>Subir</span>
-			    		<input type="file" name ="image_path" multiple="multiple" id="image_path" class="upload_image" accept="image/*" onchange="loadFile(event)">
-
+				
+			<div id ="new_content_image">
+				<div class="row" id ="row_imagen_0">
+					<div class="col-sm-6">
+						<label><font color="red"></font>Nombre </label>
+						<input class = "info_name_image" type="text" id="container_name_image_0" name="container_name_image[0]" />
+					</div>
+					<div class="col-sm-6">
+					<div><label><font color="red"></font>Imagen </label></div>
+						<input class = "info_data_image" id="name_image_0" placeholder="Seleccione un archivo"  />
+						<input class = "info_data_image" id="tmp_image_0" placeholder="Seleccione un archivo" disabled="disabled" style = "display:none;"/>
+						<div class="fileUpload btn btn-primary" id = "element_row_0">
+							<span>Subir</span>
+							<input type="file" name ="container_path_image[0]" multiple="multiple" id="container_path_image_0" class="upload_image_list" value="image_temp" accept="image/*" onchange="loadFile(event,0)">
+						</div>
+					</div>
+					<div class="col-sm-6" id = "element_row_buttons_0"> 
 					</div>
 				</div>
-			</div>
-			<div id ="new_content_image">
 			 </div>
 
 			<div class = "page-header" >   
@@ -293,33 +265,21 @@ if ('files' in x) {
 			 <div class="col-sm-6">
 			<button class="btn btn-primary"  type="submit" class="btn btn-default">Crear punto</button>       
 			</div>
-			</div>
-			<input type="file" accept="image/*" id="field1" name = "hola" onchange="loadFile(event)">
-
-			<input type="file" id="field1"/>
-				<span id="field2_area"><input type="file" id="field2" name="hola2"/></span>
-				
-				<script>
-				$('#field1').change(function(){
-				    var clone = $(this).clone();
-				    clone.attr('id', 'field2');
-				    $('#field2_area').html(clone);
-				});
-				</script>
+	</div>
 
 			</form>
 
 
 
 <script>
-  var loadFile = function(event) {
-    var output = document.getElementById('image_path');
+  var loadFile = function(event,id) {
+    var output = document.getElementById('container_path_image_' + id);
 
     var data_point = new Array();
     data_point.push({src:URL.createObjectURL(event.target.files[0])}); 
 
-    document.getElementById('image_temp').value = URL.createObjectURL(event.target.files[0]);
-	document.getElementById('image_id').value =  output.files[0].name;
+    document.getElementById('tmp_image_' + id).value = URL.createObjectURL(event.target.files[0]);
+	document.getElementById('name_image_'+ id).value =  output.files[0].name;
 
     $.magnificPopup.open({
       items: data_point,
@@ -432,10 +392,3 @@ if ('files' in x) {
 }
 
 </style>
-<!--
-<script type="text/javascript">
-	document.getElementById("container_path_image_0").onchange = function () {
-    	document.getElementById("name_image_0").value = this.files[0].name; ;
-	};
-</script>
--->

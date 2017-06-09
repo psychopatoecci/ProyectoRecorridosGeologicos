@@ -284,7 +284,7 @@ private function verify_image_file() {
         $this->set('mapPoints',$points);
     }
 
-    /**
+ /**
      * mapadd method
      *
      * @return \Cake\Network\Response|null
@@ -297,29 +297,33 @@ private function verify_image_file() {
 
         if ($this->request->is('post')) {
 
-            /*---------------------Subir fotos -------------------
-                $photo = [
-                    'name' => $this->request->data['ad_photos']['name'],
-                    'type' => $this->request->data['ad_photos']['type'],
-                    'tmp_name' => $this->request->data['ad_photos']['tmp_name'],
-                    'error' => $this->request->data['ad_photos']['error'],
-                    'size' => $this->request->data['ad_photos']['size']
-                ];
-                echo "<pre>"; print_r($photo); echo "</pre>";
-                echo "<pre>"; print_r($photo); echo "</pre>";
+            $images_struct = $this->request->data('container_path_image');
+            $images_names = $this->request->data('container_name_image');
+            
+            for($i = 0; $i < count($images_struct); ++$i) {
+                echo $images_names [$i];
+                if ($images_struct[$i]['error'] != 4){
+                    $photo = [
+                        'name' => $images_struct[$i]['name'],
+                        'type' => $images_struct[$i]['type'],
+                        'tmp_name' => $images_struct[$i]['tmp_name'],
+                        'error' => $images_struct[$i]['error'],
+                        'size' => $images_struct[$i]['size']
+                    ];
+                    echo "<pre>"; print_r($photo); echo "</pre>";
+                    echo "<pre>"; print_r($photo); echo "</pre>";
 
 
-                if ( move_uploaded_file($this->request->data['ad_photos']['tmp_name'], WWW_ROOT . 'resources/' . $this->request->data['ad_photos']['name'])) {
-                    echo "El fichero es válido y se subió con éxito.\n";
-                } else {
-                    echo "¡Posible ataque de subida de ficheros!\n";
+                    if ( move_uploaded_file($images_struct[$i]['tmp_name'], WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . $images_struct[$i]['name'])) {
+                        echo "El fichero es válido y se subió con éxito.\n";
+                    } else {
+                        echo "¡Posible ataque de subida de ficheros!\n";
+                    }
                 }
+            }
 
-            ---------------------Subir fotos -------------------*/
 
-            debug($this->request->data('hola'));
-            debug($this->request->data('hola2'));
-            debug($this->request->data('container_name_image'));
+            debug($this->request->data('container_path_image'));
             /*Se crean los atributos para un punto del mapa*/
             $path = $tourId;
             $name = $this->request->data('name');
