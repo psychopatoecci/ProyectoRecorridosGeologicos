@@ -297,42 +297,19 @@ private function verify_image_file() {
 
         if ($this->request->is('post')) {
 
-            $images_struct = $this->request->data('container_path_image');
-            $images_names = $this->request->data('container_name_image');
-            
-            for($i = 0; $i < count($images_struct); ++$i) {
-                echo $images_names [$i];
-                if ($images_struct[$i]['error'] != 4){
-                    $photo = [
-                        'name' => $images_struct[$i]['name'],
-                        'type' => $images_struct[$i]['type'],
-                        'tmp_name' => $images_struct[$i]['tmp_name'],
-                        'error' => $images_struct[$i]['error'],
-                        'size' => $images_struct[$i]['size']
-                    ];
-                    echo "<pre>"; print_r($photo); echo "</pre>";
-                    echo "<pre>"; print_r($photo); echo "</pre>";
+            debug($this->request->data('container_image'));
+            debug($this->request->data('container_video'));
 
-
-                    if ( move_uploaded_file($images_struct[$i]['tmp_name'], WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . $images_struct[$i]['name'])) {
-                        echo "El fichero es válido y se subió con éxito.\n";
-                    } else {
-                        echo "¡Posible ataque de subida de ficheros!\n";
-                    }
-                }
-            }
-
-
-            debug($this->request->data('container_path_image'));
             /*Se crean los atributos para un punto del mapa*/
             $path = $tourId;
             $name = $this->request->data('name');
             $latitude = $this->request->data('latitude');
-            $longitude = $this->request->data('latitude');
-            $video_name = $this->request->data('container_name');
-            $video_path = $this->request->data('container_path');
-
+            $longitude = $this->request->data('longitude');
             $description_point = $this->request->data('descripcion_point');
+
+            /* Contenido del punto del mapa*/
+            $images_struct = $this->request->data('container_image');
+            $video_struct = $this->request->data('container_video');
 
             /*Se busca el próximo id*/
             $points = $modelMapPoints->MapPoints->find('all', array(
@@ -380,41 +357,116 @@ private function verify_image_file() {
 
                     /*-------------------------------------------------- Texto del punto ---------------------------------------------- */
 
-                    $contentText = $modelPages->Pages->Contents->newEntity();
-
-                    $textContent = $modelPages->Pages->Contents->find('all', array(
-                                        'fields'=>array('Contents.id') )
-                                   );   
-
-                    $maxText = $textContent->max('id');
-
-                    /* Componentes de la nueva entidad de contenido */
-                    @$dataText = [
-                        'id' => ($maxText->id + 1),
-                        'page_id' => $key,
-                        'link_path' => " ",
-                        'description' => $description_point,
-                        'content_type' => "text",
-                        'sequence_in_page' => 0 ];
-
-                     /* Se asigna el componente a la nueva entidad de contenido */   
-                    $contentText = $modelPages->Pages->Contents->patchEntity($contentText, $dataText);
-
-                    /* Se guarda entidad en la base de datos */
-                    if ($modelPages->Pages->Contents->save($contentText))
+                    if (!empty($description_point))
                     {
-                        $this->Flash->success(__('The text has been saved.'));
-                    }
-                    else
-                    {
-                        $this->Flash->error(__('The text could not be saved. Please, try again.'));     
-                    }
+	                    $contentText = $modelPages->Pages->Contents->newEntity();
+
+	                    $textContent = $modelPages->Pages->Contents->find('all', array(
+	                                        'fields'=>array('Contents.id') )
+	                                   );   
+
+	                    $maxText = $textContent->max('id');
+
+	                    /* Componentes de la nueva entidad de contenido */
+	                    $dataText = [
+	                        'id' => ($maxText->id + 1),
+	                        'page_id' => $key,
+	                        'link_path' => " ",
+	                        'description' => $description_point,
+	                        'content_type' => "text",
+	                        'sequence_in_page' => 0 ];
+
+	                     /* Se asigna el componente a la nueva entidad de contenido */   
+	                    $contentText = $modelPages->Pages->Contents->patchEntity($contentText, $dataText);
+
+	                    /* Se guarda entidad en la base de datos */
+	                    if ($modelPages->Pages->Contents->save($contentText))
+	                    {
+	                        $this->Flash->success(__('The text has been saved.'));
+	                    }
+	                    else
+	                    {
+	                        $this->Flash->error(__('The text could not be saved. Please, try again.'));     
+	                    }
+	                 }
+
+                    /*------------------------------------------------- Imagenes del punto ---------------------------------------------- */
+
+
+		            foreach($images_struct as $image) {
+
+		                if ($image[0]['error'] != 4)
+		                {
+		            		$contentImage = $modelPages->Pages->Contents->newEntity();
+
+		                    $imagesPointContent = $modelPages->Pages->Contents->find('all', array(
+		                                        'fields'=>array('Contents.id') )
+		                                   );   
+
+		                    $maxImage = $imagesPointContent->max('id');
+
+							$path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . $image[0]['name'];
+							$name_value = $image[0]['name'];
+
+							if (file_exists($path)) {
+								$invalidate_path = true;
+								$number_sequence = 2;
+
+								while($invalidate_path == true)
+								{
+									$path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . "r".$number_sequence."_".$image[0]['name'];	
+									$name_value = "r".$number_sequence."_".$image[0]['name'];
+									if (file_exists($path)) {
+									   $invalidate_path = true;
+									}
+									else
+									{
+									   $invalidate_path = false;
+									}
+
+									$number_sequence = $number_sequence + 1;
+								}
+							}
+
+		                    if ( move_uploaded_file($image[0]['tmp_name'], $path)) {
+		                        echo "El fichero es válido y se subió con éxito.\n";
+		                    } else {
+		                        echo "¡Posible ataque de subida de ficheros!\n";
+		                    }
+
+
+		                    /* Componentes de la nueva entidad de contenido */
+		                    $dataImage = [
+		                        'id' => ($maxImage->id + 1),
+		                        'page_id' => $key,
+		                        'link_path' => "../../resources/travel/maps/".$tourId."/" .$name_value,
+		                        'description' => $image[1],
+		                        'content_type' => "image",
+		                        'sequence_in_page' => 0 ];
+
+					        /* Se asigna el componente a la nueva entidad de contenido */   
+		                    $contentImage  = $modelPages->Pages->Contents->patchEntity($contentImage , $dataImage);
+
+		                    /* Se guarda entidad en la base de datos */
+		                    if ($modelPages->Pages->Contents->save($contentImage))
+		                    {
+		                        $this->Flash->success(__('The image has been saved.'));
+		                    }
+		                    else
+		                    {
+		                        $this->Flash->error(__('The image could not be saved. Please, try again.'));     
+		                    }
+
+
+		                }
+		            }
+
 
                     /*------------------------------------------------- Video del punto ---------------------------------------------- */
 
 
                     /* Se itera sobre los componentes de video del punto del mapa */
-                    for($i = 0; $i < count($video_name); ++$i) 
+                    foreach($video_struct as $video) 
                     {
                         /* Se crea una entidad de tipo contenido */
                         $contentVideo = $modelPages->Pages->Contents->newEntity();
@@ -430,8 +482,8 @@ private function verify_image_file() {
                         $dataVideo = [
                             'id' => ($maxVideo->id + 1),
                             'page_id' => $key,
-                            'link_path' => $video_path[$i],
-                            'description' => $video_name[$i],
+                            'link_path' => $video[1],
+                            'description' => $video[0],
                             'content_type' => "video",
                             'sequence_in_page' => 0 ];
 
