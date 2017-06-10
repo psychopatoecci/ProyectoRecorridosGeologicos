@@ -615,4 +615,217 @@ private function verify_image_file() {
 
     }
 
+	/**
+     * mapedit method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function mapedit($pointId){
+        $this->viewBuilder()->layout("defaultAdmin");
+        $modelMapPoints = new MapPointsController();
+		$pagesController = new PagesController();
+		
+		$newPointName = "";
+		
+		$query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
+		$point = $query->first();
+		$textContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'text'))); 
+		$imageContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'image'))); 
+		$videoContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'video'))); 
+		
+		$point = $query->first();
+
+		$this->set('newPointName', $newPointName);
+		$this->set('point', $point);
+        $this->set('pointId', $pointId);
+		$this->set('textContents', $textContents);
+		$this->set('imageContents', $imageContents);
+		$this->set('videoContents', $videoContents);
+		$this->set('tourId', $point->path);
+		$path = $point->path;
+		
+		$this->viewBuilder()->layout("defaultAdmin");
+        $modelMapPoints = new MapPointsController();
+        $modelPages = new PagesController();
+		
+		$pages = $modelMapPoints->MapPoints->Pages->find('list', ['limit' => 200]);
+        $this->set(compact('mapPoint', 'pages'));
+        $this->set('_serialize', ['mapPoint']);
+
+        if ($this->request->is('post')) {
+			//$debug($this->request->data($pointId));
+			$descripcion_point = $this->request->data('descripcion_point');
+			$container_image_delete = $this->request->data('container_image_delete');
+			$container_image = $this->request->data('container_image');
+			$container_image_new = $this->request->data('container_image_new');
+			
+			/*-------------------------------------------------- Texto del punto ---------------------------------------------- */
+
+			if (!empty($descripcion_point))
+			{
+				/* Si el punto no tenía texto, entonces se va a agregar */
+				if($textContents->count() == 0){
+					$contentText = $modelPages->Pages->Contents->newEntity();
+
+					$textContent = $modelPages->Pages->Contents->find('all', array(
+										'fields'=>array('Contents.id') )
+								   );   
+
+					$maxText = $textContent->max('id');
+
+					/* Componentes de la nueva entidad de contenido */
+					$dataText = [
+						'id' => ($maxText->id + 1),
+						'page_id' => $point->page_id,
+						'link_path' => " ",
+						'description' => $descripcion_point,
+						'content_type' => "text",
+						'sequence_in_page' => 0 ];
+				
+					/* Se asigna el componente a la nueva entidad de contenido */   
+					$contentText = $modelPages->Pages->Contents->patchEntity($contentText, $dataText);
+
+					/* Se guarda entidad en la base de datos */
+					if ($modelPages->Pages->Contents->save($contentText))
+					{
+						$this->Flash->success(__('The text has been saved.'));
+					}
+					else
+					{
+						$this->Flash->error(__('The text could not be saved. Please, try again.'));     
+					}
+				}
+				/* Si tenía texto, entonces se va a modificar */
+				else{
+					$contentText = $textContents->first();
+					$contentText->description = $descripcion_point;
+					
+					/* Se guarda entidad en la base de datos */
+					if ($modelPages->Pages->Contents->save($contentText))
+					{
+						$this->Flash->success(__('The text has been modified.'));
+					}
+					else
+					{
+						$this->Flash->error(__('The text could not be modified. Please, try again.'));     
+					}
+				}
+			}
+			
+			/*-------------------------------------------------- Imágenes del punto ---------------------------------------------- */
+			
+			/*--------------------------------------------------- Caso de eliminar ----------------------------------------------- */
+			
+			debug($this->request->data('container_image'));
+			debug($this->request->data('container_image_new'));
+			
+			if($container_image_delete != null){
+				foreach($container_image_delete as $image){
+					$query = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.description' => $image[0], 'Contents.link_path' => $image[1]))); 
+					$imageContent = $query->first();
+					
+					/* Se guarda entidad en la base de datos */
+					if ($modelPages->Pages->Contents->delete($imageContent))
+					{
+						$this->Flash->success(__('The image has been removed.'));
+					}
+					else
+					{
+						$this->Flash->error(__('The image could not be removed. Please, try again.'));     
+					}
+				}
+			}
+			
+			/*---------------------------------------------------- Caso de agregar ----------------------------------------------- */
+			
+			if($container_image_new != null){
+				foreach($container_image_new as $image) {
+					if (true)
+					{
+						$contentImageNew = $modelPages->Pages->Contents->newEntity();
+
+						$imagesPointContent = $modelPages->Pages->Contents->find('all', array(
+											'fields'=>array('Contents.id') )
+									   );   
+
+						$maxImage = $imagesPointContent->max('id');
+
+						$path =  WWW_ROOT . 'resources/travel/maps/'.$point->path.'/' . $image[1]['name'];
+						$name_value = $image[1]['name'];
+
+						if (file_exists($path)) {
+							$invalidate_path = true;
+							$number_sequence = 2;
+
+							while($invalidate_path == true)
+							{
+								$path =  WWW_ROOT . 'resources/travel/maps/'.$point->path.'/' . "r".$number_sequence."_".$image[1]['name'];	
+								$name_value = "r".$number_sequence."_".$image[1]['name'];
+								if (file_exists($path)) {
+								   $invalidate_path = true;
+								}
+								else
+								{
+								   $invalidate_path = false;
+								}
+
+								$number_sequence = $number_sequence + 1;
+							}
+						}
+
+						if(move_uploaded_file($image[1]['tmp_name'], $path)) {
+							echo "El fichero es válido y se subió con éxito.\n";
+						} 
+						else{
+							echo "¡Posible ataque de subida de ficheros!\n";
+						}
+
+						/* Componentes de la nueva entidad de contenido */
+						$dataImage = [
+							'page_id' => $point->page_id,
+							'link_path' => "../../resources/travel/maps/".$point->path."/" .$name_value,
+							'description' => $image[0],
+							'content_type' => "image",
+							'sequence_in_page' => 0 ];
+
+						/* Se asigna el componente a la nueva entidad de contenido */   
+						$contentImageNew  = $modelPages->Pages->Contents->patchEntity($contentImageNew , $dataImage);
+
+						/* Se guarda entidad en la base de datos */
+						if ($modelPages->Pages->Contents->save($contentImageNew))
+						{
+							$this->Flash->success(__('The image has been saved.'));
+						}
+						else
+						{
+							$this->Flash->error(__('The image could not be saved. Please, try again.'));     
+						}
+					}
+				}
+			}
+			
+			/*-------------------------------------------------- Caso de modificar ----------------------------------------------- */
+			
+			if($container_image != null){
+				$images = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'image'))); 
+				foreach($images as $image){
+					if($container_image[$image->id] != null){
+						$image->description = $container_image[$image->id][0];
+						$image->link_path = $container_image[$image->id][1];
+					
+						/* Se guarda entidad en la base de datos */
+						if ($modelPages->Pages->Contents->save($image))
+						{
+							$this->Flash->success(__('The image has been modified.'));
+						}
+						else
+						{
+							$this->Flash->error(__('The image could not be modified. Please, try again.'));     
+						}
+					}
+				}
+			}
+		}
+    }
+	
 }
