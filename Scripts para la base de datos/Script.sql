@@ -217,3 +217,13 @@ INSERT INTO contents VALUES(103,'P18R2','../../resources/travel/maps/2/Punto21-2
 INSERT INTO contents VALUES(104,'P18R2','../../resources/travel/maps/2/Punto21-3.jpg','Duna costera','image',0);
 INSERT INTO contents VALUES(105,'P18R2','None','Interdigitadas entre las peridotitas hay lavas, estas lavas son diabasas. Conocidos como basaltos en almohadilla por sus formas típicas, a consecuencia de su rápido enfriamiento al estar en contacto con agua durante su emplazamiento','text',0);
 INSERT INTO contents VALUES(106,'P19R2','../../resources/travel/maps/2/Punto22-1.jpg','Paleoduna','image',0);
+
+-- Vídeos de algunos puntos R2 = Santa Elena
+-- (id,page_id, link_path, description, content_type, sequence_in_page)
+INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
+VALUES('P3R1','https://youtu.be/yngL0Ahu4FQ','Bahía Junquillal','video',0),
+	  ('P12R1','https://youtu.be/bxea9PzgKXc','Duna Activa','video',0),
+	  ('P15R1','https://youtu.be/1OXQphmzYoo','Isla Bolaños','video',0),
+	  ('P8R1','https://youtu.be/izi0JKKH-qA','Relieve producto','video',0),
+	  ('P11R1','https://youtu.be/sNPbGGtMKNY','Relieve producto','video',0),
+	  ('P2R2','https://youtu.be/C_ps7PMQHIk','Vista a la Península','video',0);
