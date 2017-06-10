@@ -144,10 +144,8 @@ private function verify_image_file() {
 		//$action = $this->request->params['action'];
         $pagesController = new PagesController();
         if ($this->request->is(['post'])) {
-			
-				//Verificar y actualizar la base
-			    
-				$this->Flash->success(__('Cambios guardados.'));
+            var_dump ($this -> request -> 
+            $this->Flash->success(__('Cambios guardados.'));
 		}
         //Crea el objeto query con la consulta especificada.
         
