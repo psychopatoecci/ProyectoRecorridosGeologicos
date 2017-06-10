@@ -143,9 +143,15 @@ private function verify_image_file() {
         $this->viewBuilder()->layout("defaultAdmin");
 		//$action = $this->request->params['action'];
         $pagesController = new PagesController();
+        $contentsController = $pagesController->Pages->Contents;
         if ($this->request->is(['post'])) {
-            var_dump ($this -> request -> 
-            $this->Flash->success(__('Cambios guardados.'));
+            $imagen = $this -> request -> data ['imagen'];
+            $imagen = $contentsController->get ($imagen);
+            if ($contentsController->delete ($imagen)) {
+                $this->Flash->success(__('Cambios guardados.'));
+            } else {
+                $this->Flash->error(__('No se pudo borrar la imagen.'));
+            }
 		}
         //Crea el objeto query con la consulta especificada.
         
