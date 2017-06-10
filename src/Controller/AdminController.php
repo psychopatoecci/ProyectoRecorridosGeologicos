@@ -136,7 +136,7 @@ private function verify_image_file() {
         ]);
     }
 
-    public function description(){
+ public function description(){
         $this->set('title', 'Administración de Descripción General');
         $this->viewBuilder()->layout("defaultAdmin");       
         
@@ -177,6 +177,73 @@ private function verify_image_file() {
             'url'       => $url,       
         ]);     
     
+    }
+    
+    public function modifyDescription(){
+        //Para saber si es el url
+        $pagesController = new PagesController();
+        $modelContents = new PagesController();
+        
+        $i = 0;
+                //Crea el objeto query con la consulta especificada.
+        $textQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'text',)
+        ));
+        
+        $urlQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'url',)
+        )); 
+        
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $texts   = $textQuery->toArray();
+        $url    = $urlQuery->toArray();
+                                
+        //borrar el url, con url[0]->id
+        $pagesController->Pages->Contents->deleteAll(array('Contents.id' => $url[0]->id));
+        
+        //se borra cada texto en la base
+        foreach($texts as $text){
+            $pagesController->Pages->Contents->deleteAll(array('Contents.id' => $text->id));
+        }
+                    
+        foreach($_POST as $postValue){
+            $content = $modelContents->Pages->Contents->newEntity();
+            if(!empty($postValue)){
+            if($i != 0){
+                //Es texto
+                $content->content_type = 'text';    
+                $content->link_path = '';       
+                $content->description = $postValue;                            
+            }else{
+                //Es url(solo pasa una vez)
+                $content->content_type = 'url';
+                if(preg_match('/http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/', $postValue)){                                    
+                    preg_match('/(?<=\?v\=).+/', $postValue, $matches_out);            
+                    $content->link_path = 'https://www.youtube.com/embed/'.$matches_out[0].'?autoplay=1&rel=0&showinfo=0';
+                }else{
+                    if(preg_match('/http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/embed\/.+)/', $postValue)){
+                        $content->link_path = $postValue;
+                    }else{
+                        $content->link_path = '';
+                    }
+                }
+
+                $content->description = '';                         
+            }
+                $content->id = 500+$i;
+                $content->page_id = 'toursDescription';             
+                $content->sequence_in_page = 0;
+            }
+                $modelContents->Pages->Contents->save($content);            
+
+            $i++;
+        }
+     
+     
+        $this->redirect(['controller' => 'admin', 'action'=>'description']);    
     }
 
     /**

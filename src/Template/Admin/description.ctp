@@ -39,6 +39,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </title>
 
 <?= $this->Html->css('description.css') ?> 
+
+
 	<div class="tip-video">
 		<div>
 		<iframe width="100%" height="345" src="<?php echo $url[0]->link_path;?>" align="left"></iframe>	
@@ -48,6 +50,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				<p>En esta página usted encontrará información general acerca de ambos recorridos, así como datos necesarios si desea realizarlos.</p>
 			</div>
 		</div>
+		
+		<form method="post" action="/admin/modifyDescription">
 		<div class="form-group">
 		  <label>URL:</label>
 		  <input type="text" class="form-control" id="videoURL" name="videoURL" value="<?php echo $url[0]->link_path;?>">
@@ -63,28 +67,38 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="input_fields_wrap">
 			<button type="button" class="btn btn-success" id="botonAgregar">Agregar</button>
 			<?php for($i = 1; $i < count($text); $i++): ?>    
-			    <div id="recSeguridad"><input type="text" class="form-control" name="mytext[]" value="<?php echo $text[$i]->description; ?>"><a href="#" class="remove_field" id="botonEliminar">Eliminar</a></div>
+			    <div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>" id="<?php echo uniqid(); ?>" value="<?php echo $text[$i]->description; ?>"><a href="#" class="remove_field" id="botonEliminar">Eliminar</a></div>
 			<?php endfor; ?>
 		</div>
+		<input type="submit" value="Submit">
+		</form>
 
 <script>
 $(document).ready(function() {
-	var max_fields = $("div[id*='recSeguridad']").length;
-    var max_fields      = 8 - max_fields; 
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button      = $("#botonAgregar"); //Add button ID
-    
+	var max_fields 			= $("div[id*='recSeguridad']").length;
+    var max_fields      	= 8 - max_fields; 
+    var wrapper     	    = $(".input_fields_wrap"); //Fields wrapper    
+    var add_button 	     	= $("#botonAgregar"); //Add button ID
+    var current_length 		= $("div[id*='recSeguridad']").length;
+    var min_length			= 4;
+
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div id="recSeguridad"><input type="text" class="form-control" name="mytext[]"/><ahref="#" class="remove_field" id="botonEliminar">Eliminar</a></div>'); //add input box
+            $(wrapper).append('<div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>'+x+'" id="<?php echo uniqid(); ?>'+x+'"/><ahref="#" class="remove_field" id="botonEliminar">Eliminar</a></div>'); //add input box
         }
     });
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+    	e.preventDefault(); 
+    	if($("div[id*='recSeguridad']").length > min_length){
+        	$(this).parent('div').remove(); x--;
+    	}else{
+    		this.blur();
+    		alert("No puede eliminar más recomendaciones de seguridad");
+    	}
     })
 });
 </script>
