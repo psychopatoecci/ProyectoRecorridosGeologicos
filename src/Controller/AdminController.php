@@ -224,8 +224,34 @@ private function verify_image_file() {
     {
         $this->set('title', 'Administración del recorrido de la Península de Santa Elena');
         $this->viewBuilder()->layout("defaultAdmin"); 
+        $this->loadModel('Pages');
 
-        $pagesController = new PagesController();
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        $urlQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourSantaElena',
+                                'Contents.content_type' => 'url',)
+        ));
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images,
+            'url'       => $url,              
+        ]);
 
     }
     
@@ -239,9 +265,36 @@ private function verify_image_file() {
     public function tourBolanos()
     {
         $this->set('title', 'Administración del recorrido de Isla Bolaños');
-        $this->viewBuilder()->layout("defaultAdmin"); 
+        $this->viewBuilder()->layout("defaultAdmin");
+        $this->loadModel('Pages');
 
-        $pagesController = new PagesController();
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
+                                'Contents.content_type' => 'text',)
+        ));
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
+                                'Contents.content_type' => 'image',)
+        ));
+
+        $urlQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'tourBolanos',
+                                'Contents.content_type' => 'url',)
+        ));
+
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images,
+            'url'       => $url,              
+        ]);
 
     }    
 
@@ -265,7 +318,7 @@ private function verify_image_file() {
         $this->set('mapPoints',$points);
     }
 
-    /**
+ /**
      * mapadd method
      *
      * @return \Cake\Network\Response|null
@@ -278,38 +331,19 @@ private function verify_image_file() {
 
         if ($this->request->is('post')) {
 
-            /*---------------------Subir fotos -------------------
-                $photo = [
-                    'name' => $this->request->data['ad_photos']['name'],
-                    'type' => $this->request->data['ad_photos']['type'],
-                    'tmp_name' => $this->request->data['ad_photos']['tmp_name'],
-                    'error' => $this->request->data['ad_photos']['error'],
-                    'size' => $this->request->data['ad_photos']['size']
-                ];
-                echo "<pre>"; print_r($photo); echo "</pre>";
-                echo "<pre>"; print_r($photo); echo "</pre>";
+            debug($this->request->data('container_image'));
+            debug($this->request->data('container_video'));
 
-
-                if ( move_uploaded_file($this->request->data['ad_photos']['tmp_name'], WWW_ROOT . 'resources/' . $this->request->data['ad_photos']['name'])) {
-                    echo "El fichero es válido y se subió con éxito.\n";
-                } else {
-                    echo "¡Posible ataque de subida de ficheros!\n";
-                }
-
-            ---------------------Subir fotos -------------------*/
-
-            debug($this->request->data('hola'));
-            debug($this->request->data('hola2'));
-            debug($this->request->data('container_name_image'));
             /*Se crean los atributos para un punto del mapa*/
             $path = $tourId;
             $name = $this->request->data('name');
             $latitude = $this->request->data('latitude');
-            $longitude = $this->request->data('latitude');
-            $video_name = $this->request->data('container_name');
-            $video_path = $this->request->data('container_path');
-
+            $longitude = $this->request->data('longitude');
             $description_point = $this->request->data('descripcion_point');
+
+            /* Contenido del punto del mapa*/
+            $images_struct = $this->request->data('container_image');
+            $video_struct = $this->request->data('container_video');
 
             /*Se busca el próximo id*/
             $points = $modelMapPoints->MapPoints->find('all', array(
@@ -357,41 +391,116 @@ private function verify_image_file() {
 
                     /*-------------------------------------------------- Texto del punto ---------------------------------------------- */
 
-                    $contentText = $modelPages->Pages->Contents->newEntity();
-
-                    $textContent = $modelPages->Pages->Contents->find('all', array(
-                                        'fields'=>array('Contents.id') )
-                                   );   
-
-                    $maxText = $textContent->max('id');
-
-                    /* Componentes de la nueva entidad de contenido */
-                    @$dataText = [
-                        'id' => ($maxText->id + 1),
-                        'page_id' => $key,
-                        'link_path' => " ",
-                        'description' => $description_point,
-                        'content_type' => "text",
-                        'sequence_in_page' => 0 ];
-
-                     /* Se asigna el componente a la nueva entidad de contenido */   
-                    $contentText = $modelPages->Pages->Contents->patchEntity($contentText, $dataText);
-
-                    /* Se guarda entidad en la base de datos */
-                    if ($modelPages->Pages->Contents->save($contentText))
+                    if (!empty($description_point))
                     {
-                        $this->Flash->success(__('The text has been saved.'));
-                    }
-                    else
-                    {
-                        $this->Flash->error(__('The text could not be saved. Please, try again.'));     
-                    }
+	                    $contentText = $modelPages->Pages->Contents->newEntity();
+
+	                    $textContent = $modelPages->Pages->Contents->find('all', array(
+	                                        'fields'=>array('Contents.id') )
+	                                   );   
+
+	                    $maxText = $textContent->max('id');
+
+	                    /* Componentes de la nueva entidad de contenido */
+	                    $dataText = [
+	                        'id' => ($maxText->id + 1),
+	                        'page_id' => $key,
+	                        'link_path' => " ",
+	                        'description' => $description_point,
+	                        'content_type' => "text",
+	                        'sequence_in_page' => 0 ];
+
+	                     /* Se asigna el componente a la nueva entidad de contenido */   
+	                    $contentText = $modelPages->Pages->Contents->patchEntity($contentText, $dataText);
+
+	                    /* Se guarda entidad en la base de datos */
+	                    if ($modelPages->Pages->Contents->save($contentText))
+	                    {
+	                        $this->Flash->success(__('The text has been saved.'));
+	                    }
+	                    else
+	                    {
+	                        $this->Flash->error(__('The text could not be saved. Please, try again.'));     
+	                    }
+	                 }
+
+                    /*------------------------------------------------- Imagenes del punto ---------------------------------------------- */
+
+
+		            foreach($images_struct as $image) {
+
+		                if ($image[0]['error'] != 4)
+		                {
+		            		$contentImage = $modelPages->Pages->Contents->newEntity();
+
+		                    $imagesPointContent = $modelPages->Pages->Contents->find('all', array(
+		                                        'fields'=>array('Contents.id') )
+		                                   );   
+
+		                    $maxImage = $imagesPointContent->max('id');
+
+							$path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . $image[0]['name'];
+							$name_value = $image[0]['name'];
+
+							if (file_exists($path)) {
+								$invalidate_path = true;
+								$number_sequence = 2;
+
+								while($invalidate_path == true)
+								{
+									$path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . "r".$number_sequence."_".$image[0]['name'];	
+									$name_value = "r".$number_sequence."_".$image[0]['name'];
+									if (file_exists($path)) {
+									   $invalidate_path = true;
+									}
+									else
+									{
+									   $invalidate_path = false;
+									}
+
+									$number_sequence = $number_sequence + 1;
+								}
+							}
+
+		                    if ( move_uploaded_file($image[0]['tmp_name'], $path)) {
+		                        echo "El fichero es válido y se subió con éxito.\n";
+		                    } else {
+		                        echo "¡Posible ataque de subida de ficheros!\n";
+		                    }
+
+
+		                    /* Componentes de la nueva entidad de contenido */
+		                    $dataImage = [
+		                        'id' => ($maxImage->id + 1),
+		                        'page_id' => $key,
+		                        'link_path' => "../../resources/travel/maps/".$tourId."/" .$name_value,
+		                        'description' => $image[1],
+		                        'content_type' => "image",
+		                        'sequence_in_page' => 0 ];
+
+					        /* Se asigna el componente a la nueva entidad de contenido */   
+		                    $contentImage  = $modelPages->Pages->Contents->patchEntity($contentImage , $dataImage);
+
+		                    /* Se guarda entidad en la base de datos */
+		                    if ($modelPages->Pages->Contents->save($contentImage))
+		                    {
+		                        $this->Flash->success(__('The image has been saved.'));
+		                    }
+		                    else
+		                    {
+		                        $this->Flash->error(__('The image could not be saved. Please, try again.'));     
+		                    }
+
+
+		                }
+		            }
+
 
                     /*------------------------------------------------- Video del punto ---------------------------------------------- */
 
 
                     /* Se itera sobre los componentes de video del punto del mapa */
-                    for($i = 0; $i < count($video_name); ++$i) 
+                    foreach($video_struct as $video) 
                     {
                         /* Se crea una entidad de tipo contenido */
                         $contentVideo = $modelPages->Pages->Contents->newEntity();
@@ -407,8 +516,8 @@ private function verify_image_file() {
                         $dataVideo = [
                             'id' => ($maxVideo->id + 1),
                             'page_id' => $key,
-                            'link_path' => $video_path[$i],
-                            'description' => $video_name[$i],
+                            'link_path' => $video[1],
+                            'description' => $video[0],
                             'content_type' => "video",
                             'sequence_in_page' => 0 ];
 
