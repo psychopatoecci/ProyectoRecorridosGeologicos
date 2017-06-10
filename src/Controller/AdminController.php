@@ -137,11 +137,10 @@ private function verify_image_file() {
     }
     
     
-    public function home()
+    public function home($addingImage = null)
     {
         $this->set('title', 'Administración de inicio');
         $this->viewBuilder()->layout("defaultAdmin");
-		//$action = $this->request->params['action'];
         $pagesController = new PagesController();
         $contentsController = $pagesController->Pages->Contents;
         if ($this->request->is(['post'])) {
@@ -166,7 +165,8 @@ private function verify_image_file() {
         ));
 
         $this->set([
-            'text'      => $textsQuery,              
+            'initialPath' => isset ($agregarImagen) ? '../' : '/',
+            'text'      => $textsQuery,       
             'images'    => $imagesQuery,            
         ]);
     }

@@ -16,20 +16,47 @@
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
+<style>
+    .imagen {
+        margin: 6px;
+        padding: 6px;
+    }
+    img {
+        margin-bottom: 5px;
+    }
+</style>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
 <div class = "col-md-12">
     <div class = "page-header" >   
         <h2><?php echo $title; ?></h2>
     </div> 
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
-            <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar imagen&#8194;', ['controller'=>'admin','action' => 'addimage'],['class' => 'btn btn-success','escape' => false]) ?>
+            <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar imagen&#8194;', ['agregar', 'controller'=>'admin','action' => 'home'],['class' => 'btn btn-success','escape' => false]) ?>
         </div>
-        <?php foreach ($images as $image): ?>
-                <img width="200" height="200" src="
-                    <?php echo $image ['link_path'] ?>
-                "></img>
-                <?php /*
-                    echo '<form method="post" onsubmit="return confirm (\'¿Desea eliminar la imagen?\');" action="/admin/home">
-                    <button  class="btn btn-sm btn-danger" > <div class="glyphicon glyphicon-remove">&#8194;</div></button>
-                    </form>'; */?>
-        <?php endforeach; ?>
+        <table>
+            <?php foreach ($images as $image): ?>
+                <td class="imagen">
+                    <img width="200" height="200" draggable="true" src="<?php echo $initialPath.$image ['link_path'] ?>"></img>
+                    <br />
+                    <form method="post" onsubmit="return confirm ('¿Desea eliminar la imagen?');" action="/admin/home">
+                        <input type="hidden" name="imagen"value="<?=$image ['id']?>"></input>
+                        <button  class="btn btn-block btn-danger" > Eliminar <div class="glyphicon glyphicon-remove">&#8194;</div></button>
+                    </form>
+                </td>
+            <?php endforeach; ?>
+        </table>
 </div>
