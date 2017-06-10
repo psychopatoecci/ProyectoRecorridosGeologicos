@@ -110,7 +110,7 @@ private function verify_image_file() {
                 }
 
             }else{
-                $this->Flash->error("Error al intentar guardar el texto");
+                $this->Flash->error("Error al intentar guardar el texto.");
             }
 
         }
@@ -191,6 +191,53 @@ private function verify_image_file() {
         $this->set('title', 'Administración del recorrido de la Península de Santa Elena');
         $this->viewBuilder()->layout("defaultAdmin"); 
         $this->loadModel('Pages');
+        
+        if ($this->request->is(['patch', 'post', 'put'])) {
+
+            if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
+                if (isset($_POST['image_id'])) {
+
+                    $imFile = $this->verify_image_file();
+                    if (isset($imFile["error"])) {
+                        $this->Flash->error($imFile["error"]);
+                    }else{
+
+                        //Se guarda la imagen en el directorio
+                        $image = $this->Pages->Contents->get($_POST['image_id']);
+                        $path = str_replace("..", "webroot", $image->link_path);
+
+                        if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $path)) {
+
+                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+                            $this->Flash->error($msj_error);
+
+                        } else {
+
+                            if(!strpos($image->link_path, $imFile["extension"])){
+                                //Si la extension es diferente se actualiza la base con la nueva extension
+                                $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                                if (!$this->Pages->Contents->save($image)) {
+                                    $this->Flash->error("Error al intentar guardar la imagen");
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (isset($_POST['text_id'])) {
+                $text = $this->Pages->Contents->get($_POST['text_id']);
+                $text->description = $_POST['descripcion'];
+                if ($this->Pages->Contents->save($text)) {
+                    $this->Flash->success("Cambios guardados");
+                }
+
+            }else{
+                $this->Flash->error("Error al intentar guardar el texto.");
+            }
+
+        }
 
         //Crea el objeto query con la consulta especificada.
         $textQuery = $this->Pages->Contents->find('all', array(
@@ -230,9 +277,55 @@ private function verify_image_file() {
      */
     public function tourBolanos()
     {
-        $this->set('title', 'Administración del recorrido de Isla Bolaños');
+        $this->set('title', 'Administración del Recorrido de Isla Bolaños');
         $this->viewBuilder()->layout("defaultAdmin");
-        $this->loadModel('Pages');
+      $this->loadModel('Pages');
+        
+        if ($this->request->is(['patch', 'post', 'put'])) {
+
+            if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
+                if (isset($_POST['image_id'])) {
+
+                    $imFile = $this->verify_image_file();
+                    if (isset($imFile["error"])) {
+                        $this->Flash->error($imFile["error"]);
+                    }else{
+
+                        //Se guarda la imagen en el directorio
+                        $image = $this->Pages->Contents->get($_POST['image_id']);
+                        $path = str_replace("..", "webroot", $image->link_path);
+
+                        if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $path)) {
+
+                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+                            $this->Flash->error($msj_error);
+
+                        } else {
+
+                            if(!strpos($image->link_path, $imFile["extension"])){
+                                //Si la extension es diferente se actualiza la base con la nueva extension
+                                $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                                if (!$this->Pages->Contents->save($image)) {
+                                    $this->Flash->error("Error al intentar guardar la imagen");
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (isset($_POST['text_id'])) {
+                $text = $this->Pages->Contents->get($_POST['text_id']);
+                $text->description = $_POST['descripcion'];
+                if ($this->Pages->Contents->save($text)) {
+                    $this->Flash->success("Cambios guardados");
+                }
+            }else{
+                $this->Flash->error("Error al intentar guardar el texto.");
+            }
+
+        }
 
         //Crea el objeto query con la consulta especificada.
         $textQuery = $this->Pages->Contents->find('all', array(
