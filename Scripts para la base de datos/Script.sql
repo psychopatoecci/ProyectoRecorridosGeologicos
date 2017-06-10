@@ -221,9 +221,9 @@ INSERT INTO contents VALUES(106,'P19R2','../../resources/travel/maps/2/Punto22-1
 -- Vídeos de algunos puntos R2 = Santa Elena
 -- (id,page_id, link_path, description, content_type, sequence_in_page)
 INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
-VALUES('P4R1','https://youtu.be/yngL0Ahu4FQ','Bahía Junquillal','video',0),
-	  ('P13R1','https://youtu.be/bxea9PzgKXc','Duna Activa','video',0),
-	  ('P16R1','https://youtu.be/1OXQphmzYoo','Isla Bolaños','video',0),
-	  ('P9R1','https://youtu.be/izi0JKKH-qA','Relieve producto','video',0),
-	  ('P12R1','https://youtu.be/sNPbGGtMKNY','Relieve producto','video',0),
-	  ('P3R2','https://youtu.be/C_ps7PMQHIk','Vista a la Península','video',0);
+VALUES('P4R1','https://www.youtube.com/watch?v=yngL0Ahu4FQ&','Bahía Junquillal','video',0),
+	  ('P13R1','https://www.youtube.com/watch?v=bxea9PzgKXc&','Duna Activa','video',0),
+	  ('P16R1','https://www.youtube.com/watch?v=1OXQphmzYoo&','Isla Bolaños','video',0),
+	  ('P9R1','https://www.youtube.com/watch?v=izi0JKKH-qA&','Relieve producto de la erosión','video',0),
+	  ('P12R1','https://www.youtube.com/watch?v=sNPbGGtMKNY&','Relieve producto de la erosión','video',0),
+	  ('P3R2','https://www.youtube.com/watch?v=C_ps7PMQHIk&','Vista a la Península','video',0);
