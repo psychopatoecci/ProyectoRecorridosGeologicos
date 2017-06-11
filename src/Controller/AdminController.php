@@ -48,6 +48,45 @@ private function verify_image_file() {
             return array("error" => $msj_error);
         }
     }
+// TO DO: combinar con la función de arriba.
+private function verify_image_file2() {
+        //Verificar y actualizar la base
+        if(is_uploaded_file($_FILES['image']['tmp_name'])) {
+            
+            //Verificacion del tamano. 
+            if ($_FILES['image']['size'] > 5*1024*1024) {
+                $msj_error = "La imagen excede el tamaño máximo permitido.";
+                return array("error" => $msj_error);
+            }
+            
+            $extension = "";
+            $fh=fopen($_FILES['image']['tmp_name'],'rb');
+            if ($fh) { 
+                $bytes6=fread($fh,6);
+                fclose($fh); 
+                if (!($bytes6===false)){
+                    if (substr($bytes6,0,3)=="\xff\xd8\xff") {
+                        $extension = 'jpg';
+                    }
+                    if ($bytes6=="\x89PNG\x0d\x0a"){
+                        $extension = 'png';
+                    }
+                }
+            }
+            
+            if (!$extension) {
+                $msj_error = "El archivo subido no tiene el formato adecuado (jpg, png).";
+                return array("error" => $msj_error);
+            }
+
+            //No hubo error
+            return array("extension" => $extension);
+           
+        } else {
+            $msj_error = "Error al intentar subir la imagen '". $_FILES['image']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+            return array("error" => $msj_error);
+        }
+    }
     
     /**
      * Admin Information method.
@@ -144,24 +183,48 @@ private function verify_image_file() {
         $pagesController = new PagesController();
         $contentsController = $pagesController->Pages->Contents;
         if ($this->request->is(['post', 'patch', 'put'])) {
-            if (is_uploaded_file($_FILES['image']['tmp_name'])) {
-                $imFile = $this->verify_image_file();
-                if (isset($imFile["error"])) {
-                    $this->Flash->error ($imFile ["error"]);
+            if (isset($this->request->data['uploading'])) {
+                if (is_uploaded_file($_FILES['image']['tmp_name'])) {
+                    $imFile = $this->verify_image_file2();
+                    if (isset($imFile["error"])) {
+                        $this->Flash->error ($imFile ["error"]);
+                    } else {
+                        $imageNum = $contentsController -> find('all', [
+                            'fields' => ['Contents.id']
+                        ])->max ('id') ['id'] + 1;
+                        $lastSeqInPage = $contentsController -> find ('all', [
+                            'fields' => ['Contents.sequence_in_page']
+                        ])->max ('sequence_in_page') ['sequence_in_page'] + 1;
+                        $image = $contentsController -> newEntity ();
+                        $lpath = 'resources/home/carousel/'.$imageNum.'.'.$imFile['extension'];
+                        if (!move_uploaded_file($_FILES['image']['tmp_name'], 'webroot/'.$lpath)) {
+                            $msj_error = "Error al intentar subir la imagen '".$_FILES['image']['tmp_name']."'. Pudo haber ocurrido un ataque.";
+                            $this->Flash->error ($msj_error);
+                        } else {
+                            $image -> page_id          = 'home'; 
+                            $image -> content_type     = 'image';
+                            $image -> description      = '';
+                            $image -> link_path        = $lpath;
+                            $image -> sequence_in_page = $lastSeqInPage;
+
+                            if ($contentsController -> save ($image)) {
+                                $this->Flash->success ('Imagen insertada correctamente');
+                            } else {
+                                // TO DO: Borrar la imagen subida.
+                                $this->Flash->error ('Error insertando imagen en base');
+                            } // Fin if se metió en base.
+                        } // Fin if se subió.
+                    }
+                }
+            } else if (isset($this->request->data['removing'])) {    
+                $imagen = $this -> request -> data ['imagen'];
+                $imagen = $contentsController->get ($imagen);
+                if ($contentsController->delete ($imagen)) {
+                    $this->Flash->success(__('Cambios guardados.'));
                 } else {
-                    $image = $this -> Pages -> Contents -> newEntity ();
-                    $this->Flash->success ('Vamos bien');
-                    //$path = str_replace("..", webroot, 
+                    $this->Flash->error(__('No se pudo borrar la imagen.'));
                 }
             }
-            /*
-            $imagen = $this -> request -> data ['imagen'];
-            $imagen = $contentsController->get ($imagen);
-            if ($contentsController->delete ($imagen)) {
-                $this->Flash->success(__('Cambios guardados.'));
-            } else {
-                $this->Flash->error(__('No se pudo borrar la imagen.'));
-            }*/
 		}
         //Crea el objeto query con la consulta especificada.
         

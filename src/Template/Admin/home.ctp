@@ -45,15 +45,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <h2><?php echo $title; ?></h2>
     </div> 
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
-            <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar imagen&#8194;', ['agregar', 'controller'=>'admin','action' => 'home'],['class' => 'btn btn-success','escape' => false]) ?>
+            <h3>Subir imagen</h3>
             <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-                <!--<td><img class="img" id="iimm" src="<?php echo $image ->link_path;?>" height="300" width="500"></td>-->
-                <!--<td><textarea name="descripcion" cols="60" rows="5"><?php echo $text->description;  ?></textarea></td>-->
                 <td><?php echo $this->Form->file('image', ['id' => 'boton']); ?>
                     <?php echo $this->Form->submit('Aceptar'); ?>
                 </td>
-                <!--<?php echo $this->Form->hidden('image_id', ['value' => $image->id]); ?>-->
-                <!--<?php echo $this->Form->hidden('text_id', ['value' => $text->id]); ?>-->
+                <?php echo $this->Form->hidden('uploading'); ?>
             <?php echo $this->Form->end();?>
         </div>
         <table>
@@ -63,6 +60,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <br />
                     <form method="post" onsubmit="return confirm ('¿Desea eliminar la imagen?');" action="/admin/home">
                         <input type="hidden" name="imagen"value="<?=$image ['id']?>"></input>
+                        <?php echo $this->Form->hidden('removing'); ?>
                         <button  class="btn btn-block btn-danger" > Eliminar <div class="glyphicon glyphicon-remove">&#8194;</div></button>
                     </form>
                 </td>
