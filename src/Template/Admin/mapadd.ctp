@@ -20,6 +20,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <?= $this->Html->script('jquery.magnific-popup.js') ?> 
 <?= $this->Html->css('magnific-popup.css') ?> 
 <?= $this->Html->css('admin.css') ?>
+<?= $this->Html->css('mapadd.css') ?>
 
 <script>
 
@@ -168,7 +169,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 						"</div>" +
 						"<div class=\"col-sm-6\" style=\"padding-left: 0px;\">" +
 							"<button class = \"btn btn-info\" onclick = \" verVideo('" + video_path +"');\" type=\"button\" style=\"margin-top:10px; margin-right:10px;\"> Ver </button>" +
-							"<button class = \"btn btn-danger\" onclick = \" eliminarVideo('" + siguiente_video +"');\" type=\"button\" style=\"margin-top:10px; \"> Eliminar  </button>" +
+							"<button class = \"btn btn-info\" onclick = \" eliminarVideo('" + siguiente_video +"');\" type=\"button\" style=\"margin-top:10px; \"> Eliminar  </button>" +
 						"</div>" +
 				      "</div>";
 
@@ -288,7 +289,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<div id="texto_descriptivo" class="tabcontent">
 				<div class="row">
 					<label><font color="red"></font>Descripción </label>
-					<textarea class = "info_data" type="text" id="descripcion_point" name="descripcion_point" placeholder="Ingrese un texto descriptivo del punto" ></textarea>
+					<textarea class = "info_data" type="text" id="descripcion_point" name="descripcion_point" placeholder="Ingrese un texto descriptivo del punto" rows="7"></textarea>
 				</div>
 			</div>
 
@@ -327,7 +328,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</div>
 
 			<div id="contenido_videos" class="tabcontent">
-				<button class="btn btn-success" style ="margin-bottom: 15px; margin-top: 15px;" type="button" onclick = "agregarVideo();">
+				<button class="btn btn-success" style ="margin-bottom: 15px; margin-top: 15px; background-color: #3299bb; border-color: #3299bb" type="button" onclick = "agregarVideo();">
 					<span class="glyphicon glyphicon-plus"></span> Agregar
 				</button>
 				
@@ -366,166 +367,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 
 
-<style type="text/css">
 
-.info_image{
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    width: 87%;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+<script >
 
-.info_data{
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    width: 100%;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+	function openElement(evt, elementName) {
+	    var r, tabcontent, tablinks;
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (r= 0; r < tabcontent.length; r++) {
+	        tabcontent[r].style.display = "none";
+	    }
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (r = 0; r < tablinks.length; r++) {
+	        tablinks[r].className = tablinks[r].className.replace(" active", "");
+	    }
+	    document.getElementById(elementName).style.display = "block";
+	    evt.currentTarget.className += " active";
+	}
 
-.info_video{
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    width: 100%;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin-left: 0px;
-    margin-top: 10px;
-    background-color: #3299bb;
-
-}
-
-.fileUpload input.upload_image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-	background-color: #3299bb;
-    border: 1px solid black;
-}
-
-.info_name_image{
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    width: 100%;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.info_data_image{
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    width: 100%;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-</style>
-
-<script type="text/javascript">
-
-function openElement(evt, elementName) {
-    var r, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (r= 0; r < tabcontent.length; r++) {
-        tabcontent[r].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (r = 0; r < tablinks.length; r++) {
-        tablinks[r].className = tablinks[r].className.replace(" active", "");
-    }
-    document.getElementById(elementName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-document.getElementById("defaultOpen").click();
+	document.getElementById("defaultOpen").click();
 
 </script>
-
-<style type="text/css">
-
-<style>
-
-body {font-family: 'Roboto', sans-serif;}
-
-/* Style the tab */
-div.tab {
-	color: white;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #2b637d;
-    border-radius: 4px;
-}
-
-/* Style the buttons inside the tab */
-div.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 13px;
-}
-
-/* Change background color of buttons on hover */
-div.tab button:hover {
-    background-color: #56839A;
-}
-
-/* Create an active/current tablink class */
-div.tab button.active {
-    background-color: #56839A;
-}
-
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-    min-height: 200px;
-}
-
-/* Style the close button */
-.topright {
-    float: right;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-.topright:hover {color: red;}
-</style>
-</style>
