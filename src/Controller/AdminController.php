@@ -246,6 +246,48 @@ private function verify_image_file() {
         $this->redirect(['controller' => 'admin', 'action'=>'description']);    
     }
 
+
+    /**
+     * Method to insert links into tours tables.
+     * Created by Josin Madrigal & Isabel Chaves.
+     * @return \Cake\Network\Response|null
+     */
+    public function toursLinks(){
+
+        $callerTourPage = $this->request->getQuery('page');
+        $this->loadModel('Pages');
+
+        $this->Pages->Contents->deleteAll(array('Contents.content_type' => 'url'));
+        
+        $dataArray          = $this->request->getData();
+        $urlArray           = array();
+        $descriptionArray   = array();
+
+        foreach ($dataArray as $key => $value) {
+            if(strpos($key, 'url') !== false){
+                $urlArray[] = $value;
+            }
+            elseif (strpos($key, 'description') !== false) {
+                $descriptionArray[] = $value;
+            }
+        }
+
+        for ($i=0; $i < count($urlArray); $i++) { 
+            $content = $this->Pages->Contents->newEntity();
+            $content->content_type  = 'url';    
+            $content->page_id       = $callerTourPage;    
+            $content->link_path     = $urlArray[$i];       
+            $content->description   = $descriptionArray[$i]; 
+            $content->sequence_in_page = $i; 
+            $this->Pages->Contents->save($content);
+        }
+
+        $this->Flash->success("Cambios guardados.");
+
+        
+        $this->redirect(['controller' => 'admin', 'action'=>$callerTourPage]);
+    }
+
     /**
      * Admin tourSantaElena method.
      * Created by Josin Madrigal & Isabel Chaves.

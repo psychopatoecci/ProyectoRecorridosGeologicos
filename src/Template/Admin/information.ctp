@@ -20,9 +20,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 <?= $this->Html->css('admin.css') ?>
 
-	<div class="help-tip">
-		<p>Esta página le permite administrar el contenido de la pestaña de Información del sitio: cambiar la imagen de fondo y su respectivo texto descriptivo.</p>
-	</div>
+    <div class="help-tip">
+        <p>Esta página le permite administrar el contenido de la pestaña de Información del sitio: cambiar la imagen de fondo y su respectivo texto descriptivo.</p>
+    </div>
 
 <div class="row">
     <div class = "col-md-12">
@@ -34,64 +34,84 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <table class = "table table-striped table-hover">
                 <thead>
                     <tr>
-                    	<th scope="col" class="actions">Imagen de fondo</th>
-                    	<th scope="col" class="actions">Texto descriptivo</th>
+                        <th scope="col" class="actions">Imagen de fondo</th>
+                        <th scope="col" class="actions">Texto descriptivo</th>
                         <th scope="col" class="actions"><?= __('Acciones') ?></th>
                     </tr>
                 </thead>
                 <tbody>
                        <tr>
-                       		<?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-	                       		<td><img class="img" id="iimm" src="<?php echo $images[0]->link_path;?>" height="300" width="500"></td>
-	                            <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[0]->description;  ?></textarea></td>
-	                            <td><?php echo $this->Form->file('imagen_fondo', ['id' => 'boton']); ?>
-									<?php echo $this->Form->submit('Aceptar'); ?>
-								</td>
-								<?php echo $this->Form->hidden('image_id', ['value' => $images[0]->id]); ?>
-								<?php echo $this->Form->hidden('text_id', ['value' => $text[0]->id]); ?>
+                            <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
+                                <td><img class="img" id="img0" src="<?php echo $images[0]->link_path;?>" height="300" width="500"></td>
+                                <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[0]->description;  ?></textarea></td>
+                                <td>
+                                    <label class="btn btn-primary">
+                                    <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img0)']); ?>
+                                    Cambiar imagen
+                                    </label>
+                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                                    <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type'=>'button', 'onclick'=>'cancel()']); ?>
+                                </td>
+                                <?php echo $this->Form->hidden('image_id', ['value' => $images[0]->id]); ?>
+                                <?php echo $this->Form->hidden('text_id', ['value' => $text[0]->id]); ?>
                             <?php echo $this->Form->end();?>
                         </tr>
                        <tr>
-                       		<?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-	                       		<td><img class="img" id="iimm" src="<?php echo $images[1]->link_path;?>" height="300" width="500"></td>
-	                            <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[1]->description;  ?></textarea></td>
-	                            <td><?php echo $this->Form->file('imagen_fondo', ['id' => 'boton']); ?>
-									<?php echo $this->Form->submit('Aceptar'); ?>
-								</td>
-								<?php echo $this->Form->hidden('image_id', ['value' => $images[1]->id]); ?>
-								<?php echo $this->Form->hidden('text_id', ['value' => $text[1]->id]); ?>
+                            <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
+                                <td><img class="img" id="img1" src="<?php echo $images[1]->link_path;?>" height="300" width="500"></td>
+                                <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[1]->description;  ?></textarea></td>
+                                <td>
+                                    <label class="btn btn-primary">
+                                    <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img1)']); ?>
+                                    Cambiar imagen
+                                    </label>
+                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                                    <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
+                                </td>
+                                <?php echo $this->Form->hidden('image_id', ['value' => $images[1]->id]); ?>
+                                <?php echo $this->Form->hidden('text_id', ['value' => $text[1]->id]); ?>
                             <?php echo $this->Form->end();?>
                         </tr>
                         <tr>
-                       		<?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-	                       		<td><img class="img" src="<?php echo $images[2]->link_path;?>" height="300" width="500"></td>
-	                       		<td>       
-		                            <table>
-			                       		<tr>
-				                            <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[2]->description;  ?></textarea></td>
-			                            </tr>
-			                            <tr>
-				                            <td><textarea name="descripcion2" cols="60" rows="5"><?php echo $text[3]->description;  ?></textarea></td>
-			                            </tr>
-		                            </table>
-	                            </td>
-	                            <td><?php echo $this->Form->file('imagen_fondo', ['id' => 'boton']); ?>
-									<?php echo $this->Form->submit('Aceptar'); ?>
-								</td>
-								<?php echo $this->Form->hidden('image_id', ['value' => $images[2]->id]); ?>
-								<?php echo $this->Form->hidden('text_id', ['value' => $text[2]->id]); ?>
-								<?php echo $this->Form->hidden('text2_id', ['value' => $text[3]->id]); ?>
+                            <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
+                                <td><img class="img" id="img2" src="<?php echo $images[2]->link_path;?>" height="300" width="500"></td>
+                                <td>       
+                                    <table>
+                                        <tr>
+                                            <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[2]->description;  ?></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td><textarea name="descripcion2" cols="60" rows="5"><?php echo $text[3]->description;  ?></textarea></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <label class="btn btn-primary">
+                                    <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img2)']); ?>
+                                    Cambiar imagen
+                                    </label>
+                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                                    <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
+                                </td>
+                                <?php echo $this->Form->hidden('image_id', ['value' => $images[2]->id]); ?>
+                                <?php echo $this->Form->hidden('text_id', ['value' => $text[2]->id]); ?>
+                                <?php echo $this->Form->hidden('text2_id', ['value' => $text[3]->id]); ?>
                             <?php echo $this->Form->end();?>
-                  	   </tr>
+                       </tr>
                        <tr>
-                       		<?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-	                       		<td><img class="img" id="iimm" src="<?php echo $images[3]->link_path;?>" height="300" width="500"></td>
-	                            <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[4]->description;  ?></textarea></td>
-	                            <td><?php echo $this->Form->file('imagen_fondo', ['id' => 'boton']); ?>
-									<?php echo $this->Form->submit('Aceptar'); ?>
-								</td>
-								<?php echo $this->Form->hidden('image_id', ['value' => $images[3]->id]); ?>
-								<?php echo $this->Form->hidden('text_id', ['value' => $text[4]->id]); ?>
+                            <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
+                                <td><img class="img" id="img3" src="<?php echo $images[3]->link_path;?>" height="300" width="500"></td>
+                                <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[4]->description;  ?></textarea></td>
+                                <td>
+                                    <label class="btn btn-primary">
+                                    <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img3)']); ?>
+                                    Cambiar imagen
+                                    </label>
+                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                                    <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
+                                </td>
+                                <?php echo $this->Form->hidden('image_id', ['value' => $images[3]->id]); ?>
+                                <?php echo $this->Form->hidden('text_id', ['value' => $text[4]->id]); ?>
                             <?php echo $this->Form->end();?>
                         </tr>
 
@@ -101,24 +121,27 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </div>
 
 <script>
-	function readURL(input) {
+    function changeImage(input, imgId) {
+
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('#blah')
-                    .attr('src', e.target.result)
-                    .width(150)
-                    .height(200);
-            };
+                $(imgId).attr('src', e.target.result)
 
+            };
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    function cancel() {
+        location.reload();
+    }
+
 </script>
 
 <style type="text/css">
-	
+    
 .table-responsive {
     padding-right: 20px;
     padding-left: 20px;
@@ -133,4 +156,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #FAFAFA;
 }
+
+input[type="file"] {
+    display: none;
+}
+
+.btn {
+    margin-bottom: 10px;
+}
+
 </style>
