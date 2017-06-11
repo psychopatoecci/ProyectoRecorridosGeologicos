@@ -24,6 +24,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     img {
         margin-bottom: 5px;
     }
+    .dropBox {
+        width: 350px;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;    
+    }
 </style>
 <script>
     function allowDrop(ev) {
@@ -37,7 +43,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
+        ev.target.parentNode.parentNode.insertBefore (document.getElementById(data).parentNode, ev.target.parentNode.previousSibling);
     }
 </script>
 <div class = "col-md-12">
@@ -53,10 +59,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <?php echo $this->Form->hidden('uploading'); ?>
             <?php echo $this->Form->end();?>
         </div>
+            
         <table>
             <?php foreach ($images as $image): ?>
-                <td class="imagen">
-                    <img width="200" height="200" draggable="true" src="<?php echo $initialPath.$image ['link_path'] ?>"></img>
+                <!--<div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>-->
+                <td class="imagen" draggable="true" ondragstart="drag(event)">
+                    <img id="<?= $image->id?>" ondrop="drop(event)" ondragover="allowDrop(event)" width="200" height="200" src="<?php echo $initialPath.$image ['link_path'] ?>"></img>
                     <br />
                     <form method="post" onsubmit="return confirm ('¿Desea eliminar la imagen?');" action="/admin/home">
                         <input type="hidden" name="imagen"value="<?=$image ['id']?>"></input>
