@@ -46,10 +46,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		document.getElementById("container_name_image_" + actual_img).readOnly = true;
 		document.getElementById("name_image_" + actual_img).readOnly = true;
 
-		var buttons = 	"<button class = \"btn btn-info\" onclick = \" verImagen('" + document.getElementById("tmp_image_"+actual_img).value +"');\" type=\"button\" style=\"margin-top:10px; margin-right:10px;\"> Ver </button>" +
-						"<button class = \"btn btn-info\" onclick = \" eliminarImagen('" + actual_img +"');\" type=\"button\" style=\"margin-top:10px; \"> Eliminar  </button>" ;
-						
+
+		var buttons = 	"<button class = \"btn btn-info\" onclick = \" verImagen('" + document.getElementById("tmp_image_"+actual_img).value +"');\" type=\"button\" style=\"margin-top:25px; margin-right:10px; font-size: 12px;\"> Ver </button>" +
+						"<button class = \"btn btn-info\" onclick = \" eliminarImagen('" + actual_img +"');\" type=\"button\" style=\"margin-top:25px; font-size: 12px;\"> Eliminar  </button>" ;
+		
+		$("#button_add_image_"+actual_img).remove();			
 		$("#element_row_buttons_" + actual_img).append(buttons);
+
 
 		siguiente_img = elementos_img.length ;
 
@@ -76,22 +79,25 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		actual_img = siguiente_img;
 		
 		var element = 	"<div class=\"row\" id =\"row_imagen_"+ siguiente_img + "\">" +
-							"<div class=\"col-sm-6\" style=\"padding-left: 0px;\">" +
+							"<div class=\"col-sm-5\" style=\"padding-left: 0px;\">" +
 								"<label><font color=\"red\"></font>Nombre </label>" +
 								"<input class = \"info_name_image\" type=\"text\" id=\"container_name_image_"+ siguiente_img +"\" placeholder=\"Ingrese un nombre para la imagen\"/>" +
 								"<span class=\"error\" aria-live=\"polite\" id =\"validate_content_image_" + siguiente_img +"\"></span>"+
 							"</div>" +
-							"<div class=\"col-sm-6\" style=\"padding-left: 0px;\">" +
+							"<div class=\"col-sm-5\" style=\"padding-left: 0px;\">" +
 							"<div><label><font color=\"red\"></font>Imagen </label></div>" +
 								"<input class = \"info_data_image\" id=\"name_image_" +siguiente_img +"\" placeholder=\"Seleccione un archivo\"/>" +
 								"<span class=\"error\" aria-live=\"polite\" id =\"validate_content_image_"+siguiente_img+"\"></span>"+
 								"<input class = \"info_data_image\" id=\"tmp_image_" + siguiente_img + "\" placeholder=\"Seleccione un archivo\" disabled=\"disabled\" style = \"display:none;\" />" +
-								"<div class=\"fileUpload btn btn-primary\" id = \"element_row_"+siguiente_img+"\"\>" +
+								"<div class=\"fileUpload btn btn-primary\" id = \"element_row_"+siguiente_img+"\" style=\" background-color: #3299bb; font-size: 12px;\" \>" +
 									"<span>Subir</span>" +
 									"<input type=\"file\" name =\"\" multiple=\"multiple\" id=\"container_path_image_"+ siguiente_img +"\" class=\"upload_image\" value=\"image_temp\" accept=\"image/*\" onchange=\"loadFile(event,"+ siguiente_img +")\">" +
 								"</div>"+
 							"</div>" +
-							"<div class=\"col-sm-6\" id = \"element_row_buttons_" + siguiente_img +"\" style=\"padding-left: 0px;\">" +
+							"<div class=\"col-sm-2\" id = \"element_row_buttons_" + siguiente_img +"\" style=\"padding-left: 0px;\">" +
+							"<button class=\"btn btn-success\" style =\"margin-bottom: 15px; margin-top: 25px; background-color: #3299bb; border-color: #3299bb; font-size: 12px;\" type=\"button\" onclick = \"agregarImagen();\"  id = \"button_add_image_"+siguiente_img+"\">"+
+								"<span class=\"glyphicon glyphicon-plus\" ></span> Agregar"+
+							"</button>"+
 							"</div>"+
 						"</div>" + 
 						"<div id=\"leyenda_imagenes_" + siguiente_img+ "\">" +
@@ -159,17 +165,17 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		}
 
 		var element = "<div class=\"row\" id =\""+ "row_video_" + siguiente_video  +"\">" + 
-		  				"<div class=\"col-sm-6\" style=\"padding-left: 0px;\">" +
+		  				"<div class=\"col-sm-5\" style=\"padding-left: 0px;\">" +
 						"<label><font color=\"red\" style=\"margin-top:10px;\"></font>Nombre </label>" +
 							"<input class = \"info_video\" type=\"text\" id = \"CV\" name=\"container_video["+ siguiente_video +"][0]\" value = "+ video_name +" readonly>" +
 						"</div>"+
-						"<div class=\"col-sm-6\" style=\"padding-left: 0px;\">" +
+						"<div class=\"col-sm-5\" style=\"padding-left: 0px;\">" +
 							"<label><font color=\"red\" style=\"margin-top:10px;\"></font> Video </label>" +
 							"<input class = \"info_data\" type=\"text\" id = \"CV\" name=\"container_video["+ siguiente_video +"][1]\" value =" + video_path +" readonly>" +
 						"</div>" +
-						"<div class=\"col-sm-6\" style=\"padding-left: 0px;\">" +
-							"<button class = \"btn btn-info\" onclick = \" verVideo('" + video_path +"');\" type=\"button\" style=\"margin-top:10px; margin-right:10px;\"> Ver </button>" +
-							"<button class = \"btn btn-info\" onclick = \" eliminarVideo('" + siguiente_video +"');\" type=\"button\" style=\"margin-top:10px; \"> Eliminar  </button>" +
+						"<div class=\"col-sm-2\" style=\"padding-left: 0px;\">" +
+							"<button class = \"btn btn-info\" onclick = \" verVideo('" + video_path +"');\" type=\"button\" style=\"margin-top:25px; margin-right:10px; font-size: 12px;\"> Ver </button>" +
+							"<button class = \"btn btn-info\" onclick = \" eliminarVideo('" + siguiente_video +"');\" type=\"button\" style=\"margin-top:25px; font-size: 12px;\"> Eliminar  </button>" +
 						"</div>" +
 				      "</div>";
 
@@ -294,28 +300,29 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</div>
 
 			<div id="contenido_imagenes" class="tabcontent">
-				<button class="btn btn-success" style ="margin-bottom: 15px; margin-top: 15px; background-color: #3299bb; border-color: #3299bb;" type="button" onclick = "agregarImagen();"  id = "button_add_image">
-					<span class="glyphicon glyphicon-plus" ></span> Agregar
-				</button>
 
 				<div id ="new_content_image">
 					<div class="row" id ="row_imagen_0">
-						<div class="col-sm-6" style="padding-left: 0px;">
+						<div class="col-sm-5" style="padding-left: 0px;">
 							<label><font color="red"></font>Nombre </label>
 							<input class = "info_name_image" type="text" id="container_name_image_0" placeholder="Ingrese un nombre para la imagen"/>
 							<span class="error" aria-live="polite" id ="validate_name_image_0"></span>
 						</div>
-						<div class="col-sm-6" style="padding-left: 0px;">
+						<div class="col-sm-5" style="padding-left: 0px;">
 							<div><label><font color="red"></font>Imagen </label></div>
 							<input class = "info_data_image" id="name_image_0" placeholder="Seleccione un archivo" readonly />
 							<span class="error" aria-live="polite" id ="validate_content_image_0"></span>
 							<input class = "info_data_image" id="tmp_image_0" placeholder="Seleccione una imagen" disabled="disabled" style = "display:none;"/>
-							<div class="fileUpload btn btn-primary" id = "element_row_0" style=" background-color: #3299bb;" >
+							<div class="fileUpload btn btn-primary" id = "element_row_0" style=" background-color: #3299bb; font-size: 12px;" >
 								<span>Subir</span>
 								<input type="file"  class = "upload_image" multiple="multiple" id="container_path_image_0" value="image_temp" accept="image/*" onchange="loadFile(event,0)">
 							</div>
 						</div>
-						<div class="col-sm-6" id = "element_row_buttons_0" style="padding-left: 0px;"> </div>
+						<div class="col-sm-2" id = "element_row_buttons_0" style="padding-left: 0px;"> 
+							<button class="btn btn-success" style ="margin-bottom: 15px; margin-top: 25px; background-color: #3299bb; border-color: #3299bb; font-size: 12px;" type="button" onclick = "agregarImagen();"  id = "button_add_image_0">
+								<span class="glyphicon glyphicon-plus" ></span> Agregar
+							</button>
+						</div>
 					</div>
 	 				
 	 				<div id="leyenda_imagenes_0"> 
@@ -328,20 +335,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</div>
 
 			<div id="contenido_videos" class="tabcontent">
-				<button class="btn btn-success" style ="margin-bottom: 15px; margin-top: 15px; background-color: #3299bb; border-color: #3299bb" type="button" onclick = "agregarVideo();">
-					<span class="glyphicon glyphicon-plus"></span> Agregar
-				</button>
-				
+
 				<div class="row">
-					<div class="col-sm-6" style="padding-left: 0px;">
+					<div class="col-sm-5" style="padding-left: 0px;">
 						<label><font color="red"></font>Nombre </label>
 						<input class = "info_data" type="text" name="video_name" placeholder="Ingrese el nombre del video" id ="1">
 						<span class="error" aria-live="polite" id ="validate_name_video"></span>
 					</div>
-					<div class="col-sm-6" style="padding-left: 0px;">
+					<div class="col-sm-5" style="padding-left: 0px;">
 						<label><font color="red"></font> Video </label>
 						<input class = "info_data" type="text" name="video_path" placeholder="Ingrese la ruta del video" id = "1">
 						<span class="error" aria-live="polite" id ="validate_content_video"></span>
+					</div>
+					<div class="col-sm-1" style="padding-left: 0px;">
+					<button class="btn btn-success" style ="margin-bottom: 15px; margin-top: 25px; background-color: #3299bb; border-color: #3299bb; font-size: 12px;" type="button" onclick = "agregarVideo();">
+						<span class="glyphicon glyphicon-plus"></span> Agregar
+					</button>
 					</div>
 				</div>
 
