@@ -486,7 +486,7 @@ private function verify_image_file() {
         $this->set('mapPoints',$points);
     }
 
- /**
+  /**
      * mapadd method
      *
      * @return \Cake\Network\Response|null
@@ -500,9 +500,6 @@ private function verify_image_file() {
         $modelPages = new PagesController();
 
         if ($this->request->is('post')) {
-
-            debug($this->request->data('container_image'));
-            debug($this->request->data('container_video'));
 
             /*Se crean los atributos para un punto del mapa*/
             $path = $tourId;
@@ -589,102 +586,106 @@ private function verify_image_file() {
 
                     /*------------------------------------------------- Imagenes del punto ---------------------------------------------- */
 
+                    if (!empty($images_struct))
+                    {
+                        foreach($images_struct as $image) {
 
-                    foreach($images_struct as $image) {
+                            if ($image[0]['error'] != 4)
+                            {
+                                $contentImage = $modelPages->Pages->Contents->newEntity();
 
-                        if ($image[0]['error'] != 4)
-                        {
-                            $contentImage = $modelPages->Pages->Contents->newEntity();
+                                $path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . $image[0]['name'];
+                                $name_value = $image[0]['name'];
 
-                            $path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . $image[0]['name'];
-                            $name_value = $image[0]['name'];
+                                if (file_exists($path)) {
+                                    $invalidate_path = true;
+                                    $number_sequence = 2;
 
-                            if (file_exists($path)) {
-                                $invalidate_path = true;
-                                $number_sequence = 2;
-
-                                while($invalidate_path == true)
-                                {
-                                    $path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . "r".$number_sequence."_".$image[0]['name'];  
-                                    $name_value = "r".$number_sequence."_".$image[0]['name'];
-                                    if (file_exists($path)) {
-                                       $invalidate_path = true;
-                                    }
-                                    else
+                                    while($invalidate_path == true)
                                     {
-                                       $invalidate_path = false;
+                                        $path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . "r".$number_sequence."_".$image[0]['name'];  
+                                        $name_value = "r".$number_sequence."_".$image[0]['name'];
+                                        if (file_exists($path)) {
+                                           $invalidate_path = true;
+                                        }
+                                        else
+                                        {
+                                           $invalidate_path = false;
+                                        }
+
+                                        $number_sequence = $number_sequence + 1;
                                     }
-
-                                    $number_sequence = $number_sequence + 1;
                                 }
+
+                                if ( move_uploaded_file($image[0]['tmp_name'], $path)) {
+                                    echo "El fichero es válido y se subió con éxito.\n";
+                                } else {
+                                    echo "¡Posible ataque de subida de ficheros!\n";
+                                }
+
+
+                                /* Componentes de la nueva entidad de contenido */
+                                $dataImage = [
+                                    'page_id' => $key,
+                                    'link_path' => "../../resources/travel/maps/".$tourId."/" .$name_value,
+                                    'description' => $image[1],
+                                    'content_type' => "image",
+                                    'sequence_in_page' => 0 ];
+
+                                /* Se asigna el componente a la nueva entidad de contenido */   
+                                $contentImage  = $modelPages->Pages->Contents->patchEntity($contentImage , $dataImage);
+
+                                /* Se guarda entidad en la base de datos */
+                                if ($modelPages->Pages->Contents->save($contentImage))
+                                {
+                                    $this->Flash->success(__('The image has been saved.'));
+                                }
+                                else
+                                {
+                                    $this->Flash->error(__('The image could not be saved. Please, try again.'));     
+                                }
+
+
                             }
-
-                            if ( move_uploaded_file($image[0]['tmp_name'], $path)) {
-                                echo "El fichero es válido y se subió con éxito.\n";
-                            } else {
-                                echo "¡Posible ataque de subida de ficheros!\n";
-                            }
-
-
-                            /* Componentes de la nueva entidad de contenido */
-                            $dataImage = [
-                                'page_id' => $key,
-                                'link_path' => "../../resources/travel/maps/".$tourId."/" .$name_value,
-                                'description' => $image[1],
-                                'content_type' => "image",
-                                'sequence_in_page' => 0 ];
-
-                            /* Se asigna el componente a la nueva entidad de contenido */   
-                            $contentImage  = $modelPages->Pages->Contents->patchEntity($contentImage , $dataImage);
-
-                            /* Se guarda entidad en la base de datos */
-                            if ($modelPages->Pages->Contents->save($contentImage))
-                            {
-                                $this->Flash->success(__('The image has been saved.'));
-                            }
-                            else
-                            {
-                                $this->Flash->error(__('The image could not be saved. Please, try again.'));     
-                            }
-
-
                         }
                     }
-
 
                     /*------------------------------------------------- Video del punto ---------------------------------------------- */
 
-
-                    /* Se itera sobre los componentes de video del punto del mapa */
-                    foreach($video_struct as $video) 
+                    if (!empty($video_struct))
                     {
-                        /* Se crea una entidad de tipo contenido */
-                        $contentVideo = $modelPages->Pages->Contents->newEntity();
-
-                        /* Componentes de la nueva entidad de contenido */
-                        $dataVideo = [
-                            'page_id' => $key,
-                            'link_path' => $video[1],
-                            'description' => $video[0],
-                            'content_type' => "video",
-                            'sequence_in_page' => 0 ];
-
-                         /* Se asigna el componente a la nueva entidad de contenido */   
-                        $contentVideo = $modelPages->Pages->Contents->patchEntity($contentVideo, $dataVideo);
-
-                        /* Se guarda entidad en la base de datos */
-                        if ($modelPages->Pages->Contents->save($contentVideo))
+                        /* Se itera sobre los componentes de video del punto del mapa */
+                        foreach($video_struct as $video) 
                         {
-                            $this->Flash->success(__('The video has been saved.'));
-                        }
-                        else
-                        {
-                            $this->Flash->error(__('The video could not be saved. Please, try again.'));     
-                        }
+                            /* Se crea una entidad de tipo contenido */
+                            $contentVideo = $modelPages->Pages->Contents->newEntity();
 
+                            /* Componentes de la nueva entidad de contenido */
+                            $dataVideo = [
+                                'page_id' => $key,
+                                'link_path' => $video[1],
+                                'description' => $video[0],
+                                'content_type' => "video",
+                                'sequence_in_page' => 0 ];
+
+                             /* Se asigna el componente a la nueva entidad de contenido */   
+                            $contentVideo = $modelPages->Pages->Contents->patchEntity($contentVideo, $dataVideo);
+
+                            /* Se guarda entidad en la base de datos */
+                            if ($modelPages->Pages->Contents->save($contentVideo))
+                            {
+                                $this->Flash->success(__('The video has been saved.'));
+                            }
+                            else
+                            {
+                                $this->Flash->error(__('The video could not be saved. Please, try again.'));     
+                            }
+
+                        }
                     }
 
-                    //return $this->redirect([$path,'controller'=> 'admin','action' => 'mapindex']);
+                    $this->Flash->success(__('Punto del recorrido ingresado correctamente'));     
+                    return $this->redirect([$path,'controller'=> 'admin','action' => 'mapindex']);
                 }
                 else
                 {
