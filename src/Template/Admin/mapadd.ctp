@@ -292,14 +292,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				<button class="tablinks" type = "button" onclick="openElement(event, 'contenido_videos')">Agregar videos</button>
 			</div>
 
-			<div id="texto_descriptivo" class="tabcontent">
+			<div id="texto_descriptivo" class="tabcontent" style="overflow-y: scroll; height:350px;">
 				<div class="row">
 					<label><font color="red"></font>Descripción </label>
 					<textarea class = "info_data" type="text" id="descripcion_point" name="descripcion_point" placeholder="Ingrese un texto descriptivo del punto" rows="7"></textarea>
 				</div>
 			</div>
 
-			<div id="contenido_imagenes" class="tabcontent">
+			<div id="contenido_imagenes" class="tabcontent" style="overflow-y: scroll; height:350px;">
 
 				<div id ="new_content_image">
 					<div class="row" id ="row_imagen_0">
@@ -334,7 +334,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				</div>
 			</div>
 
-			<div id="contenido_videos" class="tabcontent">
+			<div id="contenido_videos" class="tabcontent" style="overflow-y: scroll; height:350px;">
 
 				<div class="row">
 					<div class="col-sm-5" style="padding-left: 0px;">
