@@ -17,8 +17,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 
-<?= $this->Html->script('jquery-3.2.0.min.js') ?> 
-
 <style>
 	#botonEliminar {
 		color: red;
