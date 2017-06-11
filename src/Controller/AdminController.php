@@ -143,14 +143,25 @@ private function verify_image_file() {
         $this->viewBuilder()->layout("defaultAdmin");
         $pagesController = new PagesController();
         $contentsController = $pagesController->Pages->Contents;
-        if ($this->request->is(['post'])) {
+        if ($this->request->is(['post', 'patch', 'put'])) {
+            if (is_uploaded_file($_FILES['image']['tmp_name'])) {
+                $imFile = $this->verify_image_file();
+                if (isset($imFile["error"])) {
+                    $this->Flash->error ($imFile ["error"]);
+                } else {
+                    $image = $this -> Pages -> Contents -> newEntity ();
+                    $this->Flash->success ('Vamos bien');
+                    //$path = str_replace("..", webroot, 
+                }
+            }
+            /*
             $imagen = $this -> request -> data ['imagen'];
             $imagen = $contentsController->get ($imagen);
             if ($contentsController->delete ($imagen)) {
                 $this->Flash->success(__('Cambios guardados.'));
             } else {
                 $this->Flash->error(__('No se pudo borrar la imagen.'));
-            }
+            }*/
 		}
         //Crea el objeto query con la consulta especificada.
         

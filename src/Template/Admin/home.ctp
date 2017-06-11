@@ -46,6 +46,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div> 
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
             <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar imagen&#8194;', ['agregar', 'controller'=>'admin','action' => 'home'],['class' => 'btn btn-success','escape' => false]) ?>
+            <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
+                <!--<td><img class="img" id="iimm" src="<?php echo $image ->link_path;?>" height="300" width="500"></td>-->
+                <!--<td><textarea name="descripcion" cols="60" rows="5"><?php echo $text->description;  ?></textarea></td>-->
+                <td><?php echo $this->Form->file('image', ['id' => 'boton']); ?>
+                    <?php echo $this->Form->submit('Aceptar'); ?>
+                </td>
+                <!--<?php echo $this->Form->hidden('image_id', ['value' => $image->id]); ?>-->
+                <!--<?php echo $this->Form->hidden('text_id', ['value' => $text->id]); ?>-->
+            <?php echo $this->Form->end();?>
         </div>
         <table>
             <?php foreach ($images as $image): ?>
