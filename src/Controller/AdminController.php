@@ -10,7 +10,8 @@ use App\Controller\AppController;
 class AdminController extends AppController
 {
 
-private function verify_image_file() {
+    private function verify_image_file() 
+    {
         //Verificar y actualizar la base
         if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
             
@@ -250,7 +251,8 @@ private function verify_image_file2() {
         $this->viewBuilder()->layout("defaultAdmin");
     }
 
- public function description(){
+    public function description()
+    {
         $this->set('title', 'Administración de Descripción General');
         $this->viewBuilder()->layout("defaultAdmin");       
         
@@ -289,8 +291,7 @@ private function verify_image_file2() {
             'text'      => $text,              
             'images'    => $images, 
             'url'       => $url,       
-        ]);     
-    
+        ]);      
     }
     
     public function modifyDescription(){
@@ -358,6 +359,47 @@ private function verify_image_file2() {
      
      
         $this->redirect(['controller' => 'admin', 'action'=>'description']);    
+    }
+
+
+    /**
+     * Method to insert links into tours tables.
+     * Created by Josin Madrigal & Isabel Chaves.
+     * @return \Cake\Network\Response|null
+     */
+    public function toursLinks(){
+
+        $callerTourPage = $this->request->getQuery('page');
+        $this->loadModel('Pages');
+
+        $this->Pages->Contents->deleteAll(array('Contents.content_type' => 'url'));
+        
+        $dataArray          = $this->request->getData();
+        $urlArray           = array();
+        $descriptionArray   = array();
+
+        foreach ($dataArray as $key => $value) {
+            if(strpos($key, 'url') !== false){
+                $urlArray[] = $value;
+            }
+            elseif (strpos($key, 'description') !== false) {
+                $descriptionArray[] = $value;
+            }
+        }
+
+        for ($i=0; $i < count($urlArray); $i++) { 
+            $content = $this->Pages->Contents->newEntity();
+            $content->content_type  = 'url';    
+            $content->page_id       = $callerTourPage;    
+            $content->link_path     = $urlArray[$i];       
+            $content->description   = $descriptionArray[$i]; 
+            $content->sequence_in_page = $i; 
+            $this->Pages->Contents->save($content);
+        }
+
+        $this->Flash->success("Cambios guardados exitosamente.");
+
+        $this->redirect(['controller' => 'admin', 'action'=>$callerTourPage]);
     }
 
     /**
@@ -460,7 +502,7 @@ private function verify_image_file2() {
     {
         $this->set('title', 'Administración del Recorrido de Isla Bolaños');
         $this->viewBuilder()->layout("defaultAdmin");
-      $this->loadModel('Pages');
+        $this->loadModel('Pages');
         
         if ($this->request->is(['patch', 'post', 'put'])) {
 
@@ -500,7 +542,7 @@ private function verify_image_file2() {
                 $text = $this->Pages->Contents->get($_POST['text_id']);
                 $text->description = $_POST['descripcion'];
                 if ($this->Pages->Contents->save($text)) {
-                    $this->Flash->success("Cambios guardados");
+                    $this->Flash->success("Cambios guardados exitosamente.");
                 }
             }else{
                 $this->Flash->error("Error al intentar guardar el texto.");
@@ -558,7 +600,7 @@ private function verify_image_file2() {
         $this->set('mapPoints',$points);
     }
 
- /**
+  /**
      * mapadd method
      *
      * @return \Cake\Network\Response|null
@@ -572,9 +614,6 @@ private function verify_image_file2() {
         $modelPages = new PagesController();
 
         if ($this->request->is('post')) {
-
-            debug($this->request->data('container_image'));
-            debug($this->request->data('container_video'));
 
             /*Se crean los atributos para un punto del mapa*/
             $path = $tourId;
@@ -661,102 +700,106 @@ private function verify_image_file2() {
 
                     /*------------------------------------------------- Imagenes del punto ---------------------------------------------- */
 
+                    if (!empty($images_struct))
+                    {
+                        foreach($images_struct as $image) {
 
-                    foreach($images_struct as $image) {
+                            if ($image[0]['error'] != 4)
+                            {
+                                $contentImage = $modelPages->Pages->Contents->newEntity();
 
-                        if ($image[0]['error'] != 4)
-                        {
-                            $contentImage = $modelPages->Pages->Contents->newEntity();
+                                $path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . $image[0]['name'];
+                                $name_value = $image[0]['name'];
 
-                            $path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . $image[0]['name'];
-                            $name_value = $image[0]['name'];
+                                if (file_exists($path)) {
+                                    $invalidate_path = true;
+                                    $number_sequence = 2;
 
-                            if (file_exists($path)) {
-                                $invalidate_path = true;
-                                $number_sequence = 2;
-
-                                while($invalidate_path == true)
-                                {
-                                    $path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . "r".$number_sequence."_".$image[0]['name'];  
-                                    $name_value = "r".$number_sequence."_".$image[0]['name'];
-                                    if (file_exists($path)) {
-                                       $invalidate_path = true;
-                                    }
-                                    else
+                                    while($invalidate_path == true)
                                     {
-                                       $invalidate_path = false;
+                                        $path =  WWW_ROOT . 'resources/travel/maps/'.$tourId.'/' . "r".$number_sequence."_".$image[0]['name'];  
+                                        $name_value = "r".$number_sequence."_".$image[0]['name'];
+                                        if (file_exists($path)) {
+                                           $invalidate_path = true;
+                                        }
+                                        else
+                                        {
+                                           $invalidate_path = false;
+                                        }
+
+                                        $number_sequence = $number_sequence + 1;
                                     }
-
-                                    $number_sequence = $number_sequence + 1;
                                 }
+
+                                if ( move_uploaded_file($image[0]['tmp_name'], $path)) {
+                                    echo "El fichero es válido y se subió con éxito.\n";
+                                } else {
+                                    echo "¡Posible ataque de subida de ficheros!\n";
+                                }
+
+
+                                /* Componentes de la nueva entidad de contenido */
+                                $dataImage = [
+                                    'page_id' => $key,
+                                    'link_path' => "../../resources/travel/maps/".$tourId."/" .$name_value,
+                                    'description' => $image[1],
+                                    'content_type' => "image",
+                                    'sequence_in_page' => 0 ];
+
+                                /* Se asigna el componente a la nueva entidad de contenido */   
+                                $contentImage  = $modelPages->Pages->Contents->patchEntity($contentImage , $dataImage);
+
+                                /* Se guarda entidad en la base de datos */
+                                if ($modelPages->Pages->Contents->save($contentImage))
+                                {
+                                    $this->Flash->success(__('The image has been saved.'));
+                                }
+                                else
+                                {
+                                    $this->Flash->error(__('The image could not be saved. Please, try again.'));     
+                                }
+
+
                             }
-
-                            if ( move_uploaded_file($image[0]['tmp_name'], $path)) {
-                                echo "El fichero es válido y se subió con éxito.\n";
-                            } else {
-                                echo "¡Posible ataque de subida de ficheros!\n";
-                            }
-
-
-                            /* Componentes de la nueva entidad de contenido */
-                            $dataImage = [
-                                'page_id' => $key,
-                                'link_path' => "../../resources/travel/maps/".$tourId."/" .$name_value,
-                                'description' => $image[1],
-                                'content_type' => "image",
-                                'sequence_in_page' => 0 ];
-
-                            /* Se asigna el componente a la nueva entidad de contenido */   
-                            $contentImage  = $modelPages->Pages->Contents->patchEntity($contentImage , $dataImage);
-
-                            /* Se guarda entidad en la base de datos */
-                            if ($modelPages->Pages->Contents->save($contentImage))
-                            {
-                                $this->Flash->success(__('The image has been saved.'));
-                            }
-                            else
-                            {
-                                $this->Flash->error(__('The image could not be saved. Please, try again.'));     
-                            }
-
-
                         }
                     }
-
 
                     /*------------------------------------------------- Video del punto ---------------------------------------------- */
 
-
-                    /* Se itera sobre los componentes de video del punto del mapa */
-                    foreach($video_struct as $video) 
+                    if (!empty($video_struct))
                     {
-                        /* Se crea una entidad de tipo contenido */
-                        $contentVideo = $modelPages->Pages->Contents->newEntity();
-
-                        /* Componentes de la nueva entidad de contenido */
-                        $dataVideo = [
-                            'page_id' => $key,
-                            'link_path' => $video[1],
-                            'description' => $video[0],
-                            'content_type' => "video",
-                            'sequence_in_page' => 0 ];
-
-                         /* Se asigna el componente a la nueva entidad de contenido */   
-                        $contentVideo = $modelPages->Pages->Contents->patchEntity($contentVideo, $dataVideo);
-
-                        /* Se guarda entidad en la base de datos */
-                        if ($modelPages->Pages->Contents->save($contentVideo))
+                        /* Se itera sobre los componentes de video del punto del mapa */
+                        foreach($video_struct as $video) 
                         {
-                            $this->Flash->success(__('The video has been saved.'));
-                        }
-                        else
-                        {
-                            $this->Flash->error(__('The video could not be saved. Please, try again.'));     
-                        }
+                            /* Se crea una entidad de tipo contenido */
+                            $contentVideo = $modelPages->Pages->Contents->newEntity();
 
+                            /* Componentes de la nueva entidad de contenido */
+                            $dataVideo = [
+                                'page_id' => $key,
+                                'link_path' => $video[1],
+                                'description' => $video[0],
+                                'content_type' => "video",
+                                'sequence_in_page' => 0 ];
+
+                             /* Se asigna el componente a la nueva entidad de contenido */   
+                            $contentVideo = $modelPages->Pages->Contents->patchEntity($contentVideo, $dataVideo);
+
+                            /* Se guarda entidad en la base de datos */
+                            if ($modelPages->Pages->Contents->save($contentVideo))
+                            {
+                                $this->Flash->success(__('The video has been saved.'));
+                            }
+                            else
+                            {
+                                $this->Flash->error(__('The video could not be saved. Please, try again.'));     
+                            }
+
+                        }
                     }
 
-                    //return $this->redirect([$path,'controller'=> 'admin','action' => 'mapindex']);
+                    $this->Flash->success(__('Punto del recorrido ingresado correctamente'));     
+                    return $this->redirect([$path,'controller'=> 'admin','action' => 'mapindex']);
                 }
                 else
                 {
@@ -815,17 +858,44 @@ private function verify_image_file2() {
 
         if ($this->request->is('post')) {
 			//$debug($this->request->data($pointId));
+			$pointName = $this->request->data('pointName');
 			$descripcion_point = $this->request->data('descripcion_point');
 			$container_image_delete = $this->request->data('container_image_delete');
 			$container_image = $this->request->data('container_image');
 			$container_image_new = $this->request->data('container_image_new');
+			$container_video_delete = $this->request->data('container_video_delete');
+			$container_video = $this->request->data('container_video');
+			$container_video_new = $this->request->data('container_video_new');
 			
-			/*-------------------------------------------------- Texto del punto ---------------------------------------------- */
+			/***********************************************************************************************************************/
+			/***********************************************************************************************************************/
+			/**************************************************** Nombre del punto *************************************************/
+			/***********************************************************************************************************************/
+			/***********************************************************************************************************************/
+			
+			if($pointName != $point->name){
+				$point->name = $pointName;
+				
+				/* Se guarda entidad en la base de datos */
+				if ($modelMapPoints->MapPoints->save($point))
+				{
+					$this->Flash->success(__('The point has been modified.'));
+				}
+				else
+				{
+					$this->Flash->error(__('The point could not be modified. Please, try again.'));     
+				}
+			}
+			
+			/***********************************************************************************************************************/
+			/***********************************************************************************************************************/
+			/***************************************************** Texto del punto *************************************************/
+			/***********************************************************************************************************************/
+			/***********************************************************************************************************************/
 
-			if (!empty($descripcion_point))
-			{
-				/* Si el punto no tenía texto, entonces se va a agregar */
-				if($textContents->count() == 0){
+			/* Si el punto no tenía texto, entonces se va a agregar */
+			if($textContents->count() == 0){
+				if(!empty($descripcion_point)){
 					$contentText = $modelPages->Pages->Contents->newEntity();
 
 					$textContent = $modelPages->Pages->Contents->find('all', array(
@@ -856,9 +926,11 @@ private function verify_image_file2() {
 						$this->Flash->error(__('The text could not be saved. Please, try again.'));     
 					}
 				}
-				/* Si tenía texto, entonces se va a modificar */
-				else{
-					$contentText = $textContents->first();
+			}
+			/* Si tenía texto, entonces se va a modificar */
+			else{
+				$contentText = $textContents->first();
+				if($contentText->description != $descripcion_point){
 					$contentText->description = $descripcion_point;
 					
 					/* Se guarda entidad en la base de datos */
@@ -873,12 +945,13 @@ private function verify_image_file2() {
 				}
 			}
 			
-			/*-------------------------------------------------- Imágenes del punto ---------------------------------------------- */
+			/***********************************************************************************************************************/
+			/***********************************************************************************************************************/
+			/*************************************************** Imágenes del punto ************************************************/
+			/***********************************************************************************************************************/
+			/***********************************************************************************************************************/
 			
 			/*--------------------------------------------------- Caso de eliminar ----------------------------------------------- */
-			
-			debug($this->request->data('container_image'));
-			debug($this->request->data('container_image_new'));
 			
 			if($container_image_delete != null){
 				foreach($container_image_delete as $image){
@@ -941,13 +1014,24 @@ private function verify_image_file2() {
 							echo "¡Posible ataque de subida de ficheros!\n";
 						}
 
-						/* Componentes de la nueva entidad de contenido */
-						$dataImage = [
-							'page_id' => $point->page_id,
-							'link_path' => "../../resources/travel/maps/".$point->path."/" .$name_value,
-							'description' => $image[0],
-							'content_type' => "image",
-							'sequence_in_page' => 0 ];
+						if($image[0] != ""){
+							/* Componentes de la nueva entidad de contenido */
+							$dataImage = [
+								'page_id' => $point->page_id,
+								'link_path' => "../../resources/travel/maps/".$point->path."/" .$name_value,
+								'description' => $image[0],
+								'content_type' => "image",
+								'sequence_in_page' => 0 ];
+						}
+						else{
+							/* Componentes de la nueva entidad de contenido */
+							$dataImage = [
+								'page_id' => $point->page_id,
+								'link_path' => "../../resources/travel/maps/".$point->path."/" .$name_value,
+								'description' => " ",
+								'content_type' => "image",
+								'sequence_in_page' => 0 ];
+						}
 
 						/* Se asigna el componente a la nueva entidad de contenido */   
 						$contentImageNew  = $modelPages->Pages->Contents->patchEntity($contentImageNew , $dataImage);
@@ -971,17 +1055,107 @@ private function verify_image_file2() {
 				$images = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'image'))); 
 				foreach($images as $image){
 					if($container_image[$image->id] != null){
-						$image->description = $container_image[$image->id][0];
-						$image->link_path = $container_image[$image->id][1];
-					
-						/* Se guarda entidad en la base de datos */
-						if ($modelPages->Pages->Contents->save($image))
-						{
-							$this->Flash->success(__('The image has been modified.'));
+						if($image->description != $container_image[$image->id][0]){
+							$image->description = $container_image[$image->id][0];
+						
+							/* Se guarda entidad en la base de datos */
+							if ($modelPages->Pages->Contents->save($image))
+							{
+								$this->Flash->success(__('The image has been modified.'));
+							}
+							else
+							{
+								$this->Flash->error(__('The image could not be modified. Please, try again.'));     
+							}
 						}
-						else
-						{
-							$this->Flash->error(__('The image could not be modified. Please, try again.'));     
+					}
+				}
+			}
+			
+			/***********************************************************************************************************************/
+			/***********************************************************************************************************************/
+			/**************************************************** Videos del punto *************************************************/
+			/***********************************************************************************************************************/
+			/***********************************************************************************************************************/
+			
+			/*--------------------------------------------------- Caso de eliminar ----------------------------------------------- */
+			
+			if($container_video_delete != null){
+				foreach($container_video_delete as $video){
+					$query = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.description' => $video[0], 'Contents.link_path' => $video[1]))); 
+					$videoContent = $query->first();
+					
+					/* Se guarda entidad en la base de datos */
+					if ($modelPages->Pages->Contents->delete($videoContent))
+					{
+						$this->Flash->success(__('The video has been removed.'));
+					}
+					else
+					{
+						$this->Flash->error(__('The video could not be removed. Please, try again.'));     
+					}
+				}
+			}
+			
+			/*---------------------------------------------------- Caso de agregar ----------------------------------------------- */
+			
+			if($container_video_new != null){
+				foreach($container_video_new as $video){
+					$contentVideoNew = $modelPages->Pages->Contents->newEntity();
+
+					if($video[0] != ""){
+					/* Componentes de la nueva entidad de contenido */
+					$dataVideo = [
+						'page_id' => $point->page_id,
+						'link_path' => $video[1],
+						'description' => $video[0],
+						'content_type' => "video",
+						'sequence_in_page' => 0 ];
+					}
+					else{
+						/* Componentes de la nueva entidad de contenido */
+					$dataVideo = [
+						'page_id' => $point->page_id,
+						'link_path' => $video[1],
+						'description' => " ",
+						'content_type' => "video",
+						'sequence_in_page' => 0 ];
+					}
+					
+
+					/* Se asigna el componente a la nueva entidad de contenido */   
+					$contentVideoNew  = $modelPages->Pages->Contents->patchEntity($contentVideoNew , $dataVideo);
+
+					/* Se guarda entidad en la base de datos */
+					if ($modelPages->Pages->Contents->save($contentVideoNew))
+					{
+						$this->Flash->success(__('The video has been saved.'));
+					}
+					else
+					{
+						$this->Flash->error(__('The video could not be saved. Please, try again.'));     
+					}
+				}
+			}
+			
+			/*-------------------------------------------------- Caso de modificar ----------------------------------------------- */
+			
+			if($container_video != null){
+				$videos = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'video'))); 
+				foreach($videos as $video){
+					if($container_video[$video->id] != null){
+						if($video->description != $container_video[$video->id][0]){
+							$video->description = $container_video[$video->id][0];
+						
+							/* Se guarda entidad en la base de datos */
+							if ($modelPages->Pages->Contents->save($video))
+							{
+								$this->Flash->success(__('The video has been modified.'));
+							}
+							else
+							{
+								$this->Flash->error(__('The video could not be modified. Please, try again.'));     
+							}
 						}
 					}
 				}
@@ -989,4 +1163,29 @@ private function verify_image_file2() {
 		}
     }
 	
+	/**
+     * mapdelete method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function mapdelete($pointId){
+        $modelMapPoints = new MapPointsController();
+		$query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
+		$point = $query->first();
+		$tourId = $point->path;
+		
+		if($this->request->is('post')){
+			/* Se guarda entidad en la base de datos */
+			if ($modelMapPoints->MapPoints->delete($point))
+			{
+				$this->Flash->success(__('The point has been removed.'));
+			}
+			else
+			{
+				$this->Flash->error(__('The point could not be removed. Please, try again.'));     
+			}
+		}
+		
+		$this->redirect('/admin/mapindex/'.$tourId);
+	}
 }
