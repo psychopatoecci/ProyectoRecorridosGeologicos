@@ -10,19 +10,19 @@ use App\Controller\AppController;
 class AdminController extends AppController
 {
 
-    private function verify_image_file() 
+    private function verify_image_file($imgName) 
     {
         //Verificar y actualizar la base
-        if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
+        if(is_uploaded_file($_FILES[$imgName]['tmp_name'])) {
             
             //Verificacion del tamano. 
-            if ($_FILES['imagen_fondo']['size'] > 5*1024*1024) {
+            if ($_FILES[$imgName]['size'] > 5*1024*1024) {
                 $msj_error = "La imagen excede el tamaño máximo permitido.";
                 return array("error" => $msj_error);
             }
             
             $extension = "";
-            $fh=fopen($_FILES['imagen_fondo']['tmp_name'],'rb');
+            $fh=fopen($_FILES[$imgName]['tmp_name'],'rb');
             if ($fh) { 
                 $bytes6=fread($fh,6);
                 fclose($fh); 
@@ -45,46 +45,7 @@ class AdminController extends AppController
             return array("extension" => $extension);
            
         } else {
-            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
-            return array("error" => $msj_error);
-        }
-    }
-// TO DO: combinar con la función de arriba.
-private function verify_image_file2() {
-        //Verificar y actualizar la base
-        if(is_uploaded_file($_FILES['image']['tmp_name'])) {
-            
-            //Verificacion del tamano. 
-            if ($_FILES['image']['size'] > 5*1024*1024) {
-                $msj_error = "La imagen excede el tamaño máximo permitido.";
-                return array("error" => $msj_error);
-            }
-            
-            $extension = "";
-            $fh=fopen($_FILES['image']['tmp_name'],'rb');
-            if ($fh) { 
-                $bytes6=fread($fh,6);
-                fclose($fh); 
-                if (!($bytes6===false)){
-                    if (substr($bytes6,0,3)=="\xff\xd8\xff") {
-                        $extension = 'jpg';
-                    }
-                    if ($bytes6=="\x89PNG\x0d\x0a"){
-                        $extension = 'png';
-                    }
-                }
-            }
-            
-            if (!$extension) {
-                $msj_error = "El archivo subido no tiene el formato adecuado (jpg, png).";
-                return array("error" => $msj_error);
-            }
-
-            //No hubo error
-            return array("extension" => $extension);
-           
-        } else {
-            $msj_error = "Error al intentar subir la imagen '". $_FILES['image']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+            $msj_error = "Error al intentar subir la imagen '". $_FILES[$imgName]['tmp_name']."'. Pudo haber ocurrido un ataque.";;
             return array("error" => $msj_error);
         }
     }
@@ -107,7 +68,7 @@ private function verify_image_file2() {
             if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
                 if (isset($_POST['image_id'])) {
 
-                    $imFile = $this->verify_image_file();
+                    $imFile = $this->verify_image_file('imagen_fondo');
                     if (isset($imFile["error"])) {
                         $this->Flash->error($imFile["error"]);
                     }else{
@@ -186,7 +147,7 @@ private function verify_image_file2() {
         if ($this->request->is(['post', 'patch', 'put'])) {
             if (isset($this->request->data['uploading'])) {
                 if (is_uploaded_file($_FILES['image']['tmp_name'])) {
-                    $imFile = $this->verify_image_file2();
+                    $imFile = $this->verify_image_file('image');
                     if (isset($imFile["error"])) {
                         $this->Flash->error ($imFile ["error"]);
                     } else {
@@ -420,7 +381,7 @@ private function verify_image_file2() {
             if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
                 if (isset($_POST['image_id'])) {
 
-                    $imFile = $this->verify_image_file();
+                    $imFile = $this->verify_image_file('imagen_fondo');
                     if (isset($imFile["error"])) {
                         $this->Flash->error($imFile["error"]);
                     }else{
@@ -509,7 +470,7 @@ private function verify_image_file2() {
             if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
                 if (isset($_POST['image_id'])) {
 
-                    $imFile = $this->verify_image_file();
+                    $imFile = $this->verify_image_file('imagen_fondo');
                     if (isset($imFile["error"])) {
                         $this->Flash->error($imFile["error"]);
                     }else{
