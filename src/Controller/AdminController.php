@@ -1005,4 +1005,30 @@ private function verify_image_file() {
 			}
 		}
     }
+	
+	/**
+     * mapdelete method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function mapdelete($pointId){
+        $modelMapPoints = new MapPointsController();
+		$query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
+		$point = $query->first();
+		$tourId = $point->path;
+		
+		if($this->request->is('post')){
+			/* Se guarda entidad en la base de datos */
+			if ($modelMapPoints->MapPoints->delete($point))
+			{
+				$this->Flash->success(__('The point has been removed.'));
+			}
+			else
+			{
+				$this->Flash->error(__('The point could not be removed. Please, try again.'));     
+			}
+		}
+		
+		$this->redirect('/admin/mapindex/'.$tourId);
+	}
 }

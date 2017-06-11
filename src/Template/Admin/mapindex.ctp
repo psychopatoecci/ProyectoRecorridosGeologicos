@@ -48,7 +48,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             <td><?= $this->Number->format($point->longitude) ?></td>
                             <td>
 								<?= $this->Html->link('&#8201;&#8194;<span class="glyphicon glyphicon-pencil"></span> &#8201;Editar&#8194;', ['action' => 'mapedit', $point->page_id],['class' => 'btn btn-sm btn-primary','escape' => false]) ?>
-                                <?= $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>&#8194;Eliminar', ['action' => 'delete', $point->page_id], ['confirm' => 'Eliminar usuario?','class' => 'btn btn-sm btn-danger','escape' => false]) ?>
+                                <?= $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>&#8194;Eliminar', ['action' => 'mapdelete', $point->page_id], ['confirm' => 'Está seguro de que desea eliminar este punto?','class' => 'btn btn-sm btn-danger','escape' => false]) ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
