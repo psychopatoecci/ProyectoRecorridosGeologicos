@@ -10,7 +10,8 @@ use App\Controller\AppController;
 class AdminController extends AppController
 {
 
-private function verify_image_file() {
+    private function verify_image_file() 
+    {
         //Verificar y actualizar la base
         if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
             
@@ -136,7 +137,8 @@ private function verify_image_file() {
         ]);
     }
 
- public function description(){
+    public function description()
+    {
         $this->set('title', 'Administración de Descripción General');
         $this->viewBuilder()->layout("defaultAdmin");       
         
@@ -175,8 +177,7 @@ private function verify_image_file() {
             'text'      => $text,              
             'images'    => $images, 
             'url'       => $url,       
-        ]);     
-    
+        ]);      
     }
     
     public function modifyDescription(){
@@ -282,9 +283,8 @@ private function verify_image_file() {
             $this->Pages->Contents->save($content);
         }
 
-        $this->Flash->success("Cambios guardados.");
+        $this->Flash->success("Cambios guardados exitosamente.");
 
-        
         $this->redirect(['controller' => 'admin', 'action'=>$callerTourPage]);
     }
 
@@ -388,7 +388,7 @@ private function verify_image_file() {
     {
         $this->set('title', 'Administración del Recorrido de Isla Bolaños');
         $this->viewBuilder()->layout("defaultAdmin");
-      $this->loadModel('Pages');
+        $this->loadModel('Pages');
         
         if ($this->request->is(['patch', 'post', 'put'])) {
 
@@ -428,7 +428,7 @@ private function verify_image_file() {
                 $text = $this->Pages->Contents->get($_POST['text_id']);
                 $text->description = $_POST['descripcion'];
                 if ($this->Pages->Contents->save($text)) {
-                    $this->Flash->success("Cambios guardados");
+                    $this->Flash->success("Cambios guardados exitosamente.");
                 }
             }else{
                 $this->Flash->error("Error al intentar guardar el texto.");

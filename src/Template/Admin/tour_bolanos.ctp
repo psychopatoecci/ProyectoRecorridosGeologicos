@@ -69,17 +69,17 @@ $cakeDescription = 'Recorrido Isla Bolaños';
 <?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourBolanos"]); ?>
 <div class="container-fluid" id="urlForm">
 	<div class="row">
-	    <div class="col-md-1">
-	    	<label>Enlaces </label>
-	    </div>
+	    <div class="page-header" style="padding-left: 10px;">
+        <h3>Documentos de interés</h3>
+      </div>
 	</div>
 
 	<div class="row">
-	    <div class="col-md-1">
-	    	<?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
-	    </div>
-	    <div class="col-md-1">
+	    <div class="col-md-1 pull-right" style="padding-right: 20px">
 	    	<?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
+	    </div>
+	    <div class="col-md-1 pull-right" style="padding-right: 20px">
+	    	<?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
 	    </div>
 	</div>
 	
@@ -94,8 +94,10 @@ $cakeDescription = 'Recorrido Isla Bolaños';
 	<?php for ($i = 0; $i < sizeof($url); $i++) { ?>
 	<div class="row" id="linkInput<?= $i ?>">
 	    <div class="col-md-9 links">
-	    	<?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'placeholder'=>'Descripción']); ?>
-	    	<?php echo $this->Form->text('url'.$i, ['value'=>$url[$i]->link_path, 'placeholder'=>'Enlace']); ?>
+	    	<label>Descripción</label>
+	    	<?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'placeholder'=>'Descripción', 'id' => 'descripcion']); ?>
+	    	<label>URL</label>
+	    	<?php echo $this->Form->text('url'.$i, ['value'=>$url[$i]->link_path, 'placeholder'=>'Enlace', 'id' => 'enlace']); ?>
 	    	<?php echo $this->Form->button('Eliminar', ['class'=>'btn btn-danger', 'type'=>'button', 'onclick'=>'eliminar(linkInput'.$i.')']); ?>
 		</div>
 	</div>
@@ -131,12 +133,14 @@ $cakeDescription = 'Recorrido Isla Bolaños';
     function agregar() {
     	var container="#urlForm";
     	$(container).append('<div class="row" id="linkInput'+ current_length + '">\
-	   						 <div class="col-md-9 links">\
-	   						 <input name="description'+ current_length + '" class="form-control" type="text" placeholder="Descripción">\
-	    					<input name="url'+ current_length + '" class="form-control" type="text" placeholder="Enlace">\
-	    					<button class="btn btn-danger" type="button" onclick="eliminar(linkInput'+current_length+')">Eliminar</button>\
-							</div>\
-							</div>');
+							<div class="col-md-9 links">\
+                 			<label>Descripción</label>\
+                 			<input name="description'+ current_length + '" class="form-control" type="text" placeholder="Descripción">\
+                 			<label>URL</label>\
+                 			<input name="url'+ current_length + '" class="form-control" type="url" required pattern="https?://.+" placeholder="Enlace">\
+                			<button class="btn btn-danger" type="button" onclick="eliminar(linkInput'+current_length+')">Eliminar</button>\
+              				</div>\
+              				</div>');
     	current_length++;
     }
     
@@ -145,7 +149,7 @@ $cakeDescription = 'Recorrido Isla Bolaños';
         	$(id).remove(); 
         	current_length--;
     	}else{
-    		alert("No se pueden eliminar más ");
+    		alert("Al menos debe contener un documento.");
     	}
     }
 
