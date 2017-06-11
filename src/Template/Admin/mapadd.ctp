@@ -128,7 +128,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 									"<span class=\"error\" aria-live=\"polite\" id =\"validate_content_image_"+siguiente_img+"\"></span>"+
 									"<input class = \"info_data_image\" id=\"tmp_image_" + siguiente_img + "\" placeholder=\"Seleccione un archivo\" disabled=\"disabled\" style = \"display:none;\" />" +
 									"<div class=\"fileUpload btn btn-primary\" id = \"element_row_"+siguiente_img+"\" style=\" background-color: #3299bb; font-size: 12px;\" \>" +
-										"<span>Subir</span>" +
+										"<span>Subir imagen</span>" +
 										"<input type=\"file\" name =\"\" multiple=\"multiple\" id=\"container_path_image_"+ siguiente_img +"\" class=\"upload_image\" value=\"image_temp\" accept=\"image/*\" onchange=\"loadFile(event,"+ siguiente_img +")\">" +
 									"</div>"+
 								"</div>" +
@@ -182,6 +182,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		var video_name = document.getElementsByName("video_name")[actual_video].value;
 		var video_path = document.getElementsByName("video_path")[actual_video].value;
 
+
 	    if(video_name == "" || video_path == "" ) {
 		   
 		   	if (video_name == "") {
@@ -206,62 +207,92 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		    }
 		    else
 		    {
-		    	$("#validate_content_video p" ).remove();
-		    	$("#validate_content_video").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
-	    		setTimeout(function() { $("#validate_content_video p").fadeOut(); }, 1500); 
-	    		setTimeout(function(){$("#validate_content_video p").remove(); }, 100000);
-		    }
+			    var patron = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
 
+		    	if (video_path.match(patron))
+		    	{
+			    	$("#validate_content_video p" ).remove();
+			    	$("#validate_content_video").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
+		    		setTimeout(function() { $("#validate_content_video p").fadeOut(); }, 1500); 
+		    		setTimeout(function(){$("#validate_content_video p").remove(); }, 100000);
+		    	}
+		    	else
+		    	{
+			  		$("#validate_content_video p" ).remove();
+			    	$("#validate_content_video").append("<p style = \"color:red; font-weight: bold;\">*El campo de la url es inválido</p> ")
+		    		setTimeout(function() { $("#validate_content_video p").fadeOut(); }, 1500); 
+		    		setTimeout(function(){$("#validate_content_video p").remove(); }, 100000);  		
+		    	}
+		    }
 
 		}
 	    else
 	    {
-			siguiente_video = elementos_video.length ;
 
-			for (var i = 0; i < elementos_video.length; i++) {
+			var patron = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
 
-				var same = false;
-				for(var j = 0; j < elementos_video.length; j++){
-					if(i== elementos_video[j])
-					{
-						same = true;
+	    	if (video_path.match(patron))
+	    	{
+				siguiente_video = elementos_video.length ;
+
+				for (var i = 0; i < elementos_video.length; i++) {
+
+					var same = false;
+					for(var j = 0; j < elementos_video.length; j++){
+						if(i== elementos_video[j])
+						{
+							same = true;
+						}
 					}
+
+					if (same==false)
+					{
+						siguiente_video = i;
+						break;
+					}
+
 				}
 
-				if (same==false)
+				var element = "<div class=\"row\" id =\""+ "row_video_" + siguiente_video  +"\">" + 
+				  				"<div class=\"col-sm-5\" style=\"padding-left: 0px;\">" +
+								"<label><font color=\"red\" style=\"margin-top:10px;\"></font>Nombre </label>" +
+									"<input class = \"info_video\" type=\"text\" id = \"CV\" name=\"container_video["+ siguiente_video +"][0]\" value = "+ video_name +" readonly>" +
+								"</div>"+
+								"<div class=\"col-sm-5\" style=\"padding-left: 0px;\">" +
+									"<label><font color=\"red\" style=\"margin-top:10px;\"></font> Video </label>" +
+									"<input class = \"info_data\" type=\"text\" id = \"CV\" name=\"container_video["+ siguiente_video +"][1]\" value =" + video_path +" readonly>" +
+								"</div>" +
+								"<div class=\"col-sm-2\" style=\"padding-left: 0px;\">" +
+									"<button class = \"btn btn-info\" onclick = \" verVideo('" + video_path +"');\" type=\"button\" style=\"margin-top:25px; margin-right:10px; font-size: 12px;\"> Ver </button>" +
+									"<button class = \"btn btn-info\" onclick = \" eliminarVideo('" + siguiente_video +"');\" type=\"button\" style=\"margin-top:25px; font-size: 12px;\"> Eliminar  </button>" +
+								"</div>" +
+						      "</div>";
+
+				$("#new_content").prepend(element);
+
+				document.getElementsByName("video_name")[actual_video].value = "";
+				document.getElementsByName("video_path")[actual_video].value = "";
+				elementos_video.push(siguiente_video);
+
+				if (elementos_video.length != 0)
 				{
-					siguiente_video = i;
-					break;
+					$("#leyenda_videos_p").remove();
 				}
-
 			}
-
-			var element = "<div class=\"row\" id =\""+ "row_video_" + siguiente_video  +"\">" + 
-			  				"<div class=\"col-sm-5\" style=\"padding-left: 0px;\">" +
-							"<label><font color=\"red\" style=\"margin-top:10px;\"></font>Nombre </label>" +
-								"<input class = \"info_video\" type=\"text\" id = \"CV\" name=\"container_video["+ siguiente_video +"][0]\" value = "+ video_name +" readonly>" +
-							"</div>"+
-							"<div class=\"col-sm-5\" style=\"padding-left: 0px;\">" +
-								"<label><font color=\"red\" style=\"margin-top:10px;\"></font> Video </label>" +
-								"<input class = \"info_data\" type=\"text\" id = \"CV\" name=\"container_video["+ siguiente_video +"][1]\" value =" + video_path +" readonly>" +
-							"</div>" +
-							"<div class=\"col-sm-2\" style=\"padding-left: 0px;\">" +
-								"<button class = \"btn btn-info\" onclick = \" verVideo('" + video_path +"');\" type=\"button\" style=\"margin-top:25px; margin-right:10px; font-size: 12px;\"> Ver </button>" +
-								"<button class = \"btn btn-info\" onclick = \" eliminarVideo('" + siguiente_video +"');\" type=\"button\" style=\"margin-top:25px; font-size: 12px;\"> Eliminar  </button>" +
-							"</div>" +
-					      "</div>";
-
-			$("#new_content").prepend(element);
-
-			document.getElementsByName("video_name")[actual_video].value = "";
-			document.getElementsByName("video_path")[actual_video].value = "";
-			elementos_video.push(siguiente_video);
-
-			if (elementos_video.length != 0)
+			else
 			{
-				$("#leyenda_videos_p").remove();
+				
+		    	$("#validate_name_video p" ).remove();
+		    	$("#validate_name_video").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
+	    		setTimeout(function() { $("#validate_name_video p").fadeOut(); }, 1500); 
+	    		setTimeout(function(){$("#validate_name_video p").remove(); }, 100000);
+
+		  		$("#validate_content_video p" ).remove();
+		    	$("#validate_content_video").append("<p style = \"color:red; font-weight: bold;\">*El campo de la url es inválido</p> ")
+	    		setTimeout(function() { $("#validate_content_video p").fadeOut(); }, 1500); 
+	    		setTimeout(function(){$("#validate_content_video p").remove(); }, 100000); 
 			}
-	  }
+	    }
 	}
 
 
@@ -315,7 +346,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class = "page-header" >   
 			<h3>Información general</h3>
 		</div> 
-		<form method="post" enctype="multipart/form-data" accept-charset="utf-8" role="form" action="/admin/mapadd/<?php echo $tourId ?>"  onsubmit="return validateForm()">
+		<form method="post" enctype="multipart/form-data" accept-charset="utf-8" role="form" action="/admin/mapadd/<?php echo $tourId ?>"  onsubmit="return validateForm()" novalidate>
 			<fieldset>
 				<div class="row">
 					<div class="col-sm-6" style="padding-left: 0px; padding-top: 8px; padding-right: : 0px;">
@@ -325,7 +356,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					</div>
 					<div class="col-sm-6" style="padding-left: 0px; padding-top: 8px; padding-right: : 0px;">
 							<label><font color="red"></font>Latitud</label>
-							<input class = "form-control" type="number" id="latitude" name="latitude" min="10.326276" max="10.4991630" step="0.0000001" placeholder="Ingrese la latitud el punto" >
+							<input class = "form-control" type="number" id="latitude" name="latitude" min="-86.210410" max="-82.381674" step="0.0000001" placeholder="Ingrese la latitud el punto" >
 							<span class="error" aria-live="polite" id ="latitude_validate"></span>
 					</div>
 				</div>
@@ -333,7 +364,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				<div class="row" style="padding-top: 4px;">
 					 <div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
 							<label><font color="red"></font>Longitud</label>
-							<input class = "form-control" type="number" id="longitude" name="longitude" min="-85.0624920" max="-82.8157880" step="0.0000001" placeholder="Ingrese la longitud del punto" >
+							<input class = "form-control" type="number" id="longitude" name="longitude" min="7.967310" max="11.302868" step="0.0000001" placeholder="Ingrese la longitud del punto" >
 							<span class="error" aria-live="polite" id = "longitude_validate"></span>
 					</div>
 				</div>
@@ -372,7 +403,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							<span class="error" aria-live="polite" id ="validate_content_image_0"></span>
 							<input class = "info_data_image" id="tmp_image_0" placeholder="Seleccione una imagen" disabled="disabled" style = "display:none;"/ readonly>
 							<div class="fileUpload btn btn-primary" id = "element_row_0" style=" background-color: #3299bb; font-size: 12px;" >
-								<span>Subir</span>
+								<span>Subir imagen</span>
 								<input type="file"  class = "upload_image" multiple="multiple" id="container_path_image_0" value="image_temp" accept="image/*" onchange="loadFile(event,0)">
 							</div>
 						</div>
@@ -424,8 +455,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 			<div class="row" style = "margin-top: 35px;"">
 				<div class="col-sm-6" style="padding-left: 0px;">
-					<button class="btn btn-primary"  type="submit" class="btn btn-default">Aceptar</button>       
-					<button class="btn btn-danger"  type="button" class="btn btn-default">Cancelar</button>       
+					<button class="btn btn-primary"  type="submit">Guardar</button>       
+					<button class="btn btn-danger"  type="button" onclick="window.location.href='/admin/mapindex/<?php echo $tourId ?>'">Cancelar</button>       
 				</div>
 			</div>
 		</form>
@@ -484,10 +515,20 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	    }
 	    else
 	    {
-	    	$('#latitude_validate p').remove();
-	    	$("#latitude_validate").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
-    		setTimeout(function() { $('#latitude_validate p').fadeOut(); }, 8000); 
-    		setTimeout(function(){$('#latitude_validate p').remove(); }, 100000);
+			if ( parseFloat(latitude)>= -86.210410 && parseFloat(latitude) <= -82.381674 ){
+		    	$('#latitude_validate p').remove();
+		    	$("#latitude_validate").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
+	    		setTimeout(function() { $('#latitude_validate p').fadeOut(); }, 8000); 
+	    		setTimeout(function(){$('#latitude_validate p').remove(); }, 100000);
+	    	}
+	    	else
+	    	{
+		    	$('#latitude_validate p').remove();
+		    	$("#latitude_validate").append("<p style = \"color:red; font-weight: bold;\">*La latitud del punto no se encuentra dentro de un rango válido</p> ")
+				setTimeout(function() { $('#latitude_validate p').fadeOut(); }, 8000); 
+				setTimeout(function(){$('#latitude_validate p').remove(); }, 100000);
+				status = false;		
+	    	}
 	    }
 
 	   	var longitude = document.getElementById("longitude").value;	    
@@ -501,10 +542,20 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	    }
 	    else
 	    {
-	    	$('#longitude_validate p').remove();
-	    	$("#longitude_validate").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
-    		setTimeout(function() { $('#longitude_validate p').fadeOut(); }, 8000); 
-    		setTimeout(function(){$('#longitude_validate p').remove(); }, 100000);
+	    	if ( parseFloat(longitude)>=7.967310 && parseFloat(longitude) <= 11.302868 ){
+		    	$('#longitude_validate p').remove();
+		    	$("#longitude_validate").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
+	    		setTimeout(function() { $('#longitude_validate p').fadeOut(); }, 8000); 
+	    		setTimeout(function(){$('#longitude_validate p').remove(); }, 100000);
+	    	}
+	    	else
+	    	{
+		    	$('#longitude_validate p').remove();
+		    	$("#longitude_validate").append("<p style = \"color:red; font-weight: bold;\">*La longitud del punto no se encuentra dentro de un rango válido</p> ")
+				setTimeout(function() { $('#longitude_validate p').fadeOut(); }, 8000); 
+				setTimeout(function(){$('#longitude_validate p').remove(); }, 100000);
+				status = false;	
+	    	}
 	    }
 
 	    return status;
