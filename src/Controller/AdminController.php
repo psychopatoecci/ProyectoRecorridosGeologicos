@@ -561,7 +561,7 @@ class AdminController extends AppController
         $this->set('mapPoints',$points);
     }
 
-  /**
+/**
      * mapadd method
      *
      * @return \Cake\Network\Response|null
@@ -760,7 +760,7 @@ class AdminController extends AppController
                     }
 
                     $this->Flash->success(__('Punto del recorrido ingresado correctamente'));     
-                    return $this->redirect([$path,'controller'=> 'admin','action' => 'mapindex']);
+                    return $this->redirect(['controller'=> 'admin','action' => 'mapindex',$tourId]);
                 }
                 else
                 {
@@ -780,7 +780,7 @@ class AdminController extends AppController
 
     }
 
-	/**
+    /**
      * mapedit method
      *
      * @return \Cake\Network\Response|null
@@ -788,340 +788,342 @@ class AdminController extends AppController
     public function mapedit($pointId){
         $this->viewBuilder()->layout("defaultAdmin");
         $modelMapPoints = new MapPointsController();
-		$pagesController = new PagesController();
-		
-		$newPointName = "";
-		
-		$query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
-		$point = $query->first();
-		$textContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'text'))); 
-		$imageContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'image'))); 
-		$videoContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'video'))); 
-		
-		$point = $query->first();
+        $pagesController = new PagesController();
+        
+        $newPointName = "";
+        
+        $query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
+        $point = $query->first();
+        $textContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'text'))); 
+        $imageContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'image'))); 
+        $videoContents = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'video'))); 
+        
+        $point = $query->first();
 
-		$this->set('newPointName', $newPointName);
-		$this->set('point', $point);
+        $this->set('newPointName', $newPointName);
+        $this->set('point', $point);
         $this->set('pointId', $pointId);
-		$this->set('textContents', $textContents);
-		$this->set('imageContents', $imageContents);
-		$this->set('videoContents', $videoContents);
-		$this->set('tourId', $point->path);
-		$path = $point->path;
-		
-		$this->viewBuilder()->layout("defaultAdmin");
+        $this->set('textContents', $textContents);
+        $this->set('imageContents', $imageContents);
+        $this->set('videoContents', $videoContents);
+        $this->set('tourId', $point->path);
+        $path = $point->path;
+        
+        $this->viewBuilder()->layout("defaultAdmin");
         $modelMapPoints = new MapPointsController();
         $modelPages = new PagesController();
-		
-		$pages = $modelMapPoints->MapPoints->Pages->find('list', ['limit' => 200]);
+        
+        $pages = $modelMapPoints->MapPoints->Pages->find('list', ['limit' => 200]);
         $this->set(compact('mapPoint', 'pages'));
         $this->set('_serialize', ['mapPoint']);
 
         if ($this->request->is('post')) {
-			//$debug($this->request->data($pointId));
-			$pointName = $this->request->data('pointName');
-			$descripcion_point = $this->request->data('descripcion_point');
-			$container_image_delete = $this->request->data('container_image_delete');
-			$container_image = $this->request->data('container_image');
-			$container_image_new = $this->request->data('container_image_new');
-			$container_video_delete = $this->request->data('container_video_delete');
-			$container_video = $this->request->data('container_video');
-			$container_video_new = $this->request->data('container_video_new');
-			
-			/***********************************************************************************************************************/
-			/***********************************************************************************************************************/
-			/**************************************************** Nombre del punto *************************************************/
-			/***********************************************************************************************************************/
-			/***********************************************************************************************************************/
-			
-			if($pointName != $point->name){
-				$point->name = $pointName;
-				
-				/* Se guarda entidad en la base de datos */
-				if ($modelMapPoints->MapPoints->save($point))
-				{
-					$this->Flash->success(__('The point has been modified.'));
-				}
-				else
-				{
-					$this->Flash->error(__('The point could not be modified. Please, try again.'));     
-				}
-			}
-			
-			/***********************************************************************************************************************/
-			/***********************************************************************************************************************/
-			/***************************************************** Texto del punto *************************************************/
-			/***********************************************************************************************************************/
-			/***********************************************************************************************************************/
+            //$debug($this->request->data($pointId));
+            $pointName = $this->request->data('pointName');
+            $descripcion_point = $this->request->data('descripcion_point');
+            $container_image_delete = $this->request->data('container_image_delete');
+            $container_image = $this->request->data('container_image');
+            $container_image_new = $this->request->data('container_image_new');
+            $container_video_delete = $this->request->data('container_video_delete');
+            $container_video = $this->request->data('container_video');
+            $container_video_new = $this->request->data('container_video_new');
+            
+            /***********************************************************************************************************************/
+            /***********************************************************************************************************************/
+            /**************************************************** Nombre del punto *************************************************/
+            /***********************************************************************************************************************/
+            /***********************************************************************************************************************/
+            
+            if($pointName != $point->name){
+                $point->name = $pointName;
+                
+                /* Se guarda entidad en la base de datos */
+                if ($modelMapPoints->MapPoints->save($point))
+                {
+                    $this->Flash->success(__('The point has been modified.'));
+                }
+                else
+                {
+                    $this->Flash->error(__('The point could not be modified. Please, try again.'));     
+                }
+            }
+            
+            /***********************************************************************************************************************/
+            /***********************************************************************************************************************/
+            /***************************************************** Texto del punto *************************************************/
+            /***********************************************************************************************************************/
+            /***********************************************************************************************************************/
 
-			/* Si el punto no tenía texto, entonces se va a agregar */
-			if($textContents->count() == 0){
-				if(!empty($descripcion_point)){
-					$contentText = $modelPages->Pages->Contents->newEntity();
+            /* Si el punto no tenía texto, entonces se va a agregar */
+            if($textContents->count() == 0){
+                if(!empty($descripcion_point)){
+                    $contentText = $modelPages->Pages->Contents->newEntity();
 
-					$textContent = $modelPages->Pages->Contents->find('all', array(
-										'fields'=>array('Contents.id') )
-								   );   
+                    $textContent = $modelPages->Pages->Contents->find('all', array(
+                                        'fields'=>array('Contents.id') )
+                                   );   
 
-					$maxText = $textContent->max('id');
+                    $maxText = $textContent->max('id');
 
-					/* Componentes de la nueva entidad de contenido */
-					$dataText = [
-						'id' => ($maxText->id + 1),
-						'page_id' => $point->page_id,
-						'link_path' => " ",
-						'description' => $descripcion_point,
-						'content_type' => "text",
-						'sequence_in_page' => 0 ];
-				
-					/* Se asigna el componente a la nueva entidad de contenido */   
-					$contentText = $modelPages->Pages->Contents->patchEntity($contentText, $dataText);
+                    /* Componentes de la nueva entidad de contenido */
+                    $dataText = [
+                        'id' => ($maxText->id + 1),
+                        'page_id' => $point->page_id,
+                        'link_path' => " ",
+                        'description' => $descripcion_point,
+                        'content_type' => "text",
+                        'sequence_in_page' => 0 ];
+                
+                    /* Se asigna el componente a la nueva entidad de contenido */   
+                    $contentText = $modelPages->Pages->Contents->patchEntity($contentText, $dataText);
 
-					/* Se guarda entidad en la base de datos */
-					if ($modelPages->Pages->Contents->save($contentText))
-					{
-						$this->Flash->success(__('The text has been saved.'));
-					}
-					else
-					{
-						$this->Flash->error(__('The text could not be saved. Please, try again.'));     
-					}
-				}
-			}
-			/* Si tenía texto, entonces se va a modificar */
-			else{
-				$contentText = $textContents->first();
-				if($contentText->description != $descripcion_point){
-					$contentText->description = $descripcion_point;
-					
-					/* Se guarda entidad en la base de datos */
-					if ($modelPages->Pages->Contents->save($contentText))
-					{
-						$this->Flash->success(__('The text has been modified.'));
-					}
-					else
-					{
-						$this->Flash->error(__('The text could not be modified. Please, try again.'));     
-					}
-				}
-			}
-			
-			/***********************************************************************************************************************/
-			/***********************************************************************************************************************/
-			/*************************************************** Imágenes del punto ************************************************/
-			/***********************************************************************************************************************/
-			/***********************************************************************************************************************/
-			
-			/*--------------------------------------------------- Caso de eliminar ----------------------------------------------- */
-			
-			if($container_image_delete != null){
-				foreach($container_image_delete as $image){
-					$query = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.description' => $image[0], 'Contents.link_path' => $image[1]))); 
-					$imageContent = $query->first();
-					
-					/* Se guarda entidad en la base de datos */
-					if ($modelPages->Pages->Contents->delete($imageContent))
-					{
-						$this->Flash->success(__('The image has been removed.'));
-					}
-					else
-					{
-						$this->Flash->error(__('The image could not be removed. Please, try again.'));     
-					}
-				}
-			}
-			
-			/*---------------------------------------------------- Caso de agregar ----------------------------------------------- */
-			
-			if($container_image_new != null){
-				foreach($container_image_new as $image) {
-					if (true)
-					{
-						$contentImageNew = $modelPages->Pages->Contents->newEntity();
+                    /* Se guarda entidad en la base de datos */
+                    if ($modelPages->Pages->Contents->save($contentText))
+                    {
+                        $this->Flash->success(__('The text has been saved.'));
+                    }
+                    else
+                    {
+                        $this->Flash->error(__('The text could not be saved. Please, try again.'));     
+                    }
+                }
+            }
+            /* Si tenía texto, entonces se va a modificar */
+            else{
+                $contentText = $textContents->first();
+                if($contentText->description != $descripcion_point){
+                    $contentText->description = $descripcion_point;
+                    
+                    /* Se guarda entidad en la base de datos */
+                    if ($modelPages->Pages->Contents->save($contentText))
+                    {
+                        $this->Flash->success(__('The text has been modified.'));
+                    }
+                    else
+                    {
+                        $this->Flash->error(__('The text could not be modified. Please, try again.'));     
+                    }
+                }
+            }
+            
+            /***********************************************************************************************************************/
+            /***********************************************************************************************************************/
+            /*************************************************** Imágenes del punto ************************************************/
+            /***********************************************************************************************************************/
+            /***********************************************************************************************************************/
+            
+            /*--------------------------------------------------- Caso de eliminar ----------------------------------------------- */
+            
+            if($container_image_delete != null){
+                foreach($container_image_delete as $image){
+                    $query = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.description' => $image[0], 'Contents.link_path' => $image[1]))); 
+                    $imageContent = $query->first();
+                    
+                    /* Se guarda entidad en la base de datos */
+                    if ($modelPages->Pages->Contents->delete($imageContent))
+                    {
+                        $this->Flash->success(__('The image has been removed.'));
+                    }
+                    else
+                    {
+                        $this->Flash->error(__('The image could not be removed. Please, try again.'));     
+                    }
+                }
+            }
+            
+            /*---------------------------------------------------- Caso de agregar ----------------------------------------------- */
+            
+            if($container_image_new != null){
+                foreach($container_image_new as $image) {
+                    if (true)
+                    {
+                        $contentImageNew = $modelPages->Pages->Contents->newEntity();
 
-						$imagesPointContent = $modelPages->Pages->Contents->find('all', array(
-											'fields'=>array('Contents.id') )
-									   );   
+                        $imagesPointContent = $modelPages->Pages->Contents->find('all', array(
+                                            'fields'=>array('Contents.id') )
+                                       );   
 
-						$maxImage = $imagesPointContent->max('id');
+                        $maxImage = $imagesPointContent->max('id');
 
-						$path =  WWW_ROOT . 'resources/travel/maps/'.$point->path.'/' . $image[1]['name'];
-						$name_value = $image[1]['name'];
+                        $path =  WWW_ROOT . 'resources/travel/maps/'.$point->path.'/' . $image[1]['name'];
+                        $name_value = $image[1]['name'];
 
-						if (file_exists($path)) {
-							$invalidate_path = true;
-							$number_sequence = 2;
+                        if (file_exists($path)) {
+                            $invalidate_path = true;
+                            $number_sequence = 2;
 
-							while($invalidate_path == true)
-							{
-								$path =  WWW_ROOT . 'resources/travel/maps/'.$point->path.'/' . "r".$number_sequence."_".$image[1]['name'];	
-								$name_value = "r".$number_sequence."_".$image[1]['name'];
-								if (file_exists($path)) {
-								   $invalidate_path = true;
-								}
-								else
-								{
-								   $invalidate_path = false;
-								}
+                            while($invalidate_path == true)
+                            {
+                                $path =  WWW_ROOT . 'resources/travel/maps/'.$point->path.'/' . "r".$number_sequence."_".$image[1]['name']; 
+                                $name_value = "r".$number_sequence."_".$image[1]['name'];
+                                if (file_exists($path)) {
+                                   $invalidate_path = true;
+                                }
+                                else
+                                {
+                                   $invalidate_path = false;
+                                }
 
-								$number_sequence = $number_sequence + 1;
-							}
-						}
+                                $number_sequence = $number_sequence + 1;
+                            }
+                        }
 
-						if(move_uploaded_file($image[1]['tmp_name'], $path)) {
-							echo "El fichero es válido y se subió con éxito.\n";
-						} 
-						else{
-							echo "¡Posible ataque de subida de ficheros!\n";
-						}
+                        if(move_uploaded_file($image[1]['tmp_name'], $path)) {
+                            echo "El fichero es válido y se subió con éxito.\n";
+                        } 
+                        else{
+                            echo "¡Posible ataque de subida de ficheros!\n";
+                        }
 
-						if($image[0] != ""){
-							/* Componentes de la nueva entidad de contenido */
-							$dataImage = [
-								'page_id' => $point->page_id,
-								'link_path' => "../../resources/travel/maps/".$point->path."/" .$name_value,
-								'description' => $image[0],
-								'content_type' => "image",
-								'sequence_in_page' => 0 ];
-						}
-						else{
-							/* Componentes de la nueva entidad de contenido */
-							$dataImage = [
-								'page_id' => $point->page_id,
-								'link_path' => "../../resources/travel/maps/".$point->path."/" .$name_value,
-								'description' => " ",
-								'content_type' => "image",
-								'sequence_in_page' => 0 ];
-						}
+                        if($image[0] != ""){
+                            /* Componentes de la nueva entidad de contenido */
+                            $dataImage = [
+                                'page_id' => $point->page_id,
+                                'link_path' => "../../resources/travel/maps/".$point->path."/" .$name_value,
+                                'description' => $image[0],
+                                'content_type' => "image",
+                                'sequence_in_page' => 0 ];
+                        }
+                        else{
+                            /* Componentes de la nueva entidad de contenido */
+                            $dataImage = [
+                                'page_id' => $point->page_id,
+                                'link_path' => "../../resources/travel/maps/".$point->path."/" .$name_value,
+                                'description' => " ",
+                                'content_type' => "image",
+                                'sequence_in_page' => 0 ];
+                        }
 
-						/* Se asigna el componente a la nueva entidad de contenido */   
-						$contentImageNew  = $modelPages->Pages->Contents->patchEntity($contentImageNew , $dataImage);
+                        /* Se asigna el componente a la nueva entidad de contenido */   
+                        $contentImageNew  = $modelPages->Pages->Contents->patchEntity($contentImageNew , $dataImage);
 
-						/* Se guarda entidad en la base de datos */
-						if ($modelPages->Pages->Contents->save($contentImageNew))
-						{
-							$this->Flash->success(__('The image has been saved.'));
-						}
-						else
-						{
-							$this->Flash->error(__('The image could not be saved. Please, try again.'));     
-						}
-					}
-				}
-			}
-			
-			/*-------------------------------------------------- Caso de modificar ----------------------------------------------- */
-			
-			if($container_image != null){
-				$images = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'image'))); 
-				foreach($images as $image){
-					if($container_image[$image->id] != null){
-						if($image->description != $container_image[$image->id][0]){
-							$image->description = $container_image[$image->id][0];
-						
-							/* Se guarda entidad en la base de datos */
-							if ($modelPages->Pages->Contents->save($image))
-							{
-								$this->Flash->success(__('The image has been modified.'));
-							}
-							else
-							{
-								$this->Flash->error(__('The image could not be modified. Please, try again.'));     
-							}
-						}
-					}
-				}
-			}
-			
-			/***********************************************************************************************************************/
-			/***********************************************************************************************************************/
-			/**************************************************** Videos del punto *************************************************/
-			/***********************************************************************************************************************/
-			/***********************************************************************************************************************/
-			
-			/*--------------------------------------------------- Caso de eliminar ----------------------------------------------- */
-			
-			if($container_video_delete != null){
-				foreach($container_video_delete as $video){
-					$query = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.description' => $video[0], 'Contents.link_path' => $video[1]))); 
-					$videoContent = $query->first();
-					
-					/* Se guarda entidad en la base de datos */
-					if ($modelPages->Pages->Contents->delete($videoContent))
-					{
-						$this->Flash->success(__('The video has been removed.'));
-					}
-					else
-					{
-						$this->Flash->error(__('The video could not be removed. Please, try again.'));     
-					}
-				}
-			}
-			
-			/*---------------------------------------------------- Caso de agregar ----------------------------------------------- */
-			
-			if($container_video_new != null){
-				foreach($container_video_new as $video){
-					$contentVideoNew = $modelPages->Pages->Contents->newEntity();
+                        /* Se guarda entidad en la base de datos */
+                        if ($modelPages->Pages->Contents->save($contentImageNew))
+                        {
+                            $this->Flash->success(__('The image has been saved.'));
+                        }
+                        else
+                        {
+                            $this->Flash->error(__('The image could not be saved. Please, try again.'));     
+                        }
+                    }
+                }
+            }
+            
+            /*-------------------------------------------------- Caso de modificar ----------------------------------------------- */
+            
+            if($container_image != null){
+                $images = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'image'))); 
+                foreach($images as $image){
+                    if($container_image[$image->id] != null){
+                        if($image->description != $container_image[$image->id][0]){
+                            $image->description = $container_image[$image->id][0];
+                        
+                            /* Se guarda entidad en la base de datos */
+                            if ($modelPages->Pages->Contents->save($image))
+                            {
+                                $this->Flash->success(__('The image has been modified.'));
+                            }
+                            else
+                            {
+                                $this->Flash->error(__('The image could not be modified. Please, try again.'));     
+                            }
+                        }
+                    }
+                }
+            }
+            
+            /***********************************************************************************************************************/
+            /***********************************************************************************************************************/
+            /**************************************************** Videos del punto *************************************************/
+            /***********************************************************************************************************************/
+            /***********************************************************************************************************************/
+            
+            /*--------------------------------------------------- Caso de eliminar ----------------------------------------------- */
+            
+            if($container_video_delete != null){
+                foreach($container_video_delete as $video){
+                    $query = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.description' => $video[0], 'Contents.link_path' => $video[1]))); 
+                    $videoContent = $query->first();
+                    
+                    /* Se guarda entidad en la base de datos */
+                    if ($modelPages->Pages->Contents->delete($videoContent))
+                    {
+                        $this->Flash->success(__('The video has been removed.'));
+                    }
+                    else
+                    {
+                        $this->Flash->error(__('The video could not be removed. Please, try again.'));     
+                    }
+                }
+            }
+            
+            /*---------------------------------------------------- Caso de agregar ----------------------------------------------- */
+            
+            if($container_video_new != null){
+                foreach($container_video_new as $video){
+                    $contentVideoNew = $modelPages->Pages->Contents->newEntity();
 
-					if($video[0] != ""){
-					/* Componentes de la nueva entidad de contenido */
-					$dataVideo = [
-						'page_id' => $point->page_id,
-						'link_path' => $video[1],
-						'description' => $video[0],
-						'content_type' => "video",
-						'sequence_in_page' => 0 ];
-					}
-					else{
-						/* Componentes de la nueva entidad de contenido */
-					$dataVideo = [
-						'page_id' => $point->page_id,
-						'link_path' => $video[1],
-						'description' => " ",
-						'content_type' => "video",
-						'sequence_in_page' => 0 ];
-					}
-					
+                    if($video[0] != ""){
+                    /* Componentes de la nueva entidad de contenido */
+                    $dataVideo = [
+                        'page_id' => $point->page_id,
+                        'link_path' => $video[1],
+                        'description' => $video[0],
+                        'content_type' => "video",
+                        'sequence_in_page' => 0 ];
+                    }
+                    else{
+                        /* Componentes de la nueva entidad de contenido */
+                    $dataVideo = [
+                        'page_id' => $point->page_id,
+                        'link_path' => $video[1],
+                        'description' => " ",
+                        'content_type' => "video",
+                        'sequence_in_page' => 0 ];
+                    }
+                    
 
-					/* Se asigna el componente a la nueva entidad de contenido */   
-					$contentVideoNew  = $modelPages->Pages->Contents->patchEntity($contentVideoNew , $dataVideo);
+                    /* Se asigna el componente a la nueva entidad de contenido */   
+                    $contentVideoNew  = $modelPages->Pages->Contents->patchEntity($contentVideoNew , $dataVideo);
 
-					/* Se guarda entidad en la base de datos */
-					if ($modelPages->Pages->Contents->save($contentVideoNew))
-					{
-						$this->Flash->success(__('The video has been saved.'));
-					}
-					else
-					{
-						$this->Flash->error(__('The video could not be saved. Please, try again.'));     
-					}
-				}
-			}
-			
-			/*-------------------------------------------------- Caso de modificar ----------------------------------------------- */
-			
-			if($container_video != null){
-				$videos = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'video'))); 
-				foreach($videos as $video){
-					if($container_video[$video->id] != null){
-						if($video->description != $container_video[$video->id][0]){
-							$video->description = $container_video[$video->id][0];
-						
-							/* Se guarda entidad en la base de datos */
-							if ($modelPages->Pages->Contents->save($video))
-							{
-								$this->Flash->success(__('The video has been modified.'));
-							}
-							else
-							{
-								$this->Flash->error(__('The video could not be modified. Please, try again.'));     
-							}
-						}
-					}
-				}
-			}
-		}
+                    /* Se guarda entidad en la base de datos */
+                    if ($modelPages->Pages->Contents->save($contentVideoNew))
+                    {
+                        $this->Flash->success(__('The video has been saved.'));
+                    }
+                    else
+                    {
+                        $this->Flash->error(__('The video could not be saved. Please, try again.'));     
+                    }
+                }
+            }
+            
+            /*-------------------------------------------------- Caso de modificar ----------------------------------------------- */
+            
+            if($container_video != null){
+                $videos = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'video'))); 
+                if ($videos != null){
+                    foreach($videos as $video){
+                        if($container_video[$video->id] != null){
+                            if($video->description != $container_video[$video->id][0]){
+                                $video->description = $container_video[$video->id][0];
+                            
+                                /* Se guarda entidad en la base de datos */
+                                if ($modelPages->Pages->Contents->save($video))
+                                {
+                                    $this->Flash->success(__('The video has been modified.'));
+                                }
+                                else
+                                {
+                                    $this->Flash->error(__('The video could not be modified. Please, try again.'));     
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 	
 	/**
