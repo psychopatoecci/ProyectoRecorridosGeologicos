@@ -17,28 +17,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 
-<style>
-	#botonEliminar {
-		color: red;
-	}
-
-	#recSeguridad {
-		margin-bottom: 12px;
-	}
-
-	#botonAgregar {
-		margin-bottom: 12px;
-	}
-
-</style>
 
 <title>
     <?php echo $title; ?>
 </title>
 
-<?= $this->Html->css('description.css') ?> 
 
+<?= $this->Html->css('adminDescription.css') ?>
+<?= $this->Html->css('admin.css') ?>
 
+<div id="form">
 	<div class="tip-video">
 		<div>
 		<iframe width="100%" height="345" src="<?php echo $url[0]->link_path;?>" align="left"></iframe>	
@@ -68,8 +56,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			    <div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>" id="<?php echo uniqid(); ?>" value="<?php echo $text[$i]->description; ?>"><a href="#" class="remove_field" id="botonEliminar">Eliminar</a></div>
 			<?php endfor; ?>
 		</div>
-		<input type="submit" value="Submit">
+		<input type="submit" class="btn btn-primary" value="Aceptar">
+		<button type="button" class="btn btn-danger" onclick="cancel()"> Cancelar </button>
 		</form>
+</div>
 
 <script>
 $(document).ready(function() {
@@ -99,4 +89,8 @@ $(document).ready(function() {
     	}
     })
 });
+
+function cancel() {
+    location.reload();
+}
 </script>

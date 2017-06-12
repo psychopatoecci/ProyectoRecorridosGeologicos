@@ -1,0 +1,39 @@
+	#botonEliminar {
+		color: red;
+	}
+
+	#recSeguridad {
+		margin-bottom: 12px;
+	}
+
+	#botonAgregar {
+		margin-bottom: 12px;
+	}
+
+	body {
+		font-family: 'Roboto', sans-serif;
+	}
+
+	#form {
+    	padding-right: 30px;
+    	padding-left: 30px;		
+    	padding-bottom: 5px;
+	}
+
+	.help-tip2 {
+		position:absolute;
+    	top:0;
+    	right:0;
+	}
+	
+	/*-----------contiene el video---------- */
+	.video {
+		width: 100%;
+    	height:760px;
+	}
+	
+	/*-----------contiene el video y el help-tip---------- */
+	.tip-video {
+		position:relative;
+	}
+
