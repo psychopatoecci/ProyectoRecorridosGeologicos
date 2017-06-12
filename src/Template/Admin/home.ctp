@@ -44,7 +44,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
-        ev.target.parentNode.parentNode.insertBefore (document.getElementById(data).parentNode, ev.target.parentNode.previousSibling);
+        var parentNode = ev.target.parentNode;
+        if (parentNode.previousElementSibling == null){
+            parentNode.parentNode.insertBefore (document.getElementById(data).parentNode, parentNode);
+        } else {
+            parentNode.parentNode.insertBefore (document.getElementById(data).parentNode, parentNode.previousSibling);
+        }
         sequencesInPage = [];
         var table = document.getElementById('imagesTable');
         var sequences = '';
