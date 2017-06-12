@@ -155,7 +155,8 @@ class AdminController extends AppController
                             'fields' => ['Contents.id']
                         ])->max ('id') ['id'] + 1;
                         $lastSeqInPage = $contentsController -> find ('all', [
-                            'fields' => ['Contents.sequence_in_page']
+                            'fields' => ['Contents.sequence_in_page'],
+                            'conditions' => ['Contents.page_id' => 'home']
                         ])->max ('sequence_in_page') ['sequence_in_page'] + 1;
                         $image = $contentsController -> newEntity ();
                         $lpath = 'resources/home/carousel/'.$imageNum.'.'.$imFile['extension'];
@@ -179,12 +180,25 @@ class AdminController extends AppController
                     }
                 }
             } else if (isset($this->request->data['removing'])) {    
-                $imagen = $this -> request -> data ['imagen'];
-                $imagen = $contentsController->get ($imagen);
-                if ($contentsController->delete ($imagen)) {
+                // Hay que borrar una imagen.
+                $image = $this -> request -> data ['imagen'];
+                $image = $contentsController->get ($image);
+                if ($contentsController->delete ($image)) {
                     $this->Flash->success(__('Cambios guardados.'));
                 } else {
                     $this->Flash->error(__('No se pudo borrar la imagen.'));
+                }
+            } else if (isset ($this->request->data['reorder'])) {
+                $newOrder = explode(',', $this->request->data['reorder']);
+                $seq = 0;
+                foreach ($newOrder as $imgId) {
+                    $image = $contentsController -> get ($imgId);
+                    $image -> sequence_in_page = $seq;
+                    $seq ++;
+                    if (!$contentsController -> save ($image)){
+                        $this->Flash->error (__('No se pudo reordenar.'));
+                        break;
+                    }
                 }
             }
 		}
@@ -197,7 +211,8 @@ class AdminController extends AppController
 
         $imagesQuery = $pagesController->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'home',
-                                'Contents.content_type' => 'image',)
+                                'Contents.content_type' => 'image'),
+            'order' => array ('Contents.sequence_in_page')
         ));
 
         $this->set([

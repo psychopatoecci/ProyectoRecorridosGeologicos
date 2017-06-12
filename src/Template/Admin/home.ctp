@@ -32,6 +32,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     }
 </style>
 <script>
+    var lastSeq = 0;
     function allowDrop(ev) {
         ev.preventDefault();
     }
@@ -44,6 +45,17 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         ev.target.parentNode.parentNode.insertBefore (document.getElementById(data).parentNode, ev.target.parentNode.previousSibling);
+        sequencesInPage = [];
+        var table = document.getElementById('imagesTable');
+        var sequences = '';
+        for (var i = 0, row; row = table.rows[i]; i++) {
+            for (var j = 0, col; col = row.cells[j]; j++) {
+                var image = col.children [0];
+                sequences += image.id + ',';
+            }
+        }
+        sequences = sequences.substring (0, sequences.length - 1);
+        document.getElementById('reorderButton').innerHTML = '<form method="post" action="/admin/home"><input type="hidden" name="reorder" value="' + sequences + '"></input><input type="submit" value="Reordenar"></input></form>';
     }
 </script>
 <div class = "col-md-12">
@@ -60,7 +72,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?php echo $this->Form->end();?>
         </div>
             
-        <table>
+        <table id="imagesTable">
             <?php foreach ($images as $image): ?>
                 <!--<div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>-->
                 <td class="imagen" draggable="true" ondragstart="drag(event)">
@@ -74,4 +86,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 </td>
             <?php endforeach; ?>
         </table>
+        <div id="reorderButton">
+            
+        </div>
 </div>

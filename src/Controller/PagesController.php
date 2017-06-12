@@ -25,12 +25,13 @@ class PagesController extends AppController
         $action = $this->request->params['action'];
         //Obtiene los datos de las imagenes del carrusel.
         $contents = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'home')
+            'conditions' => array('Contents.page_id' => 'home'),
+            'order' => array ('Contents.sequence_in_page')
         ));
 
         $contentsLength = $this->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'home', 
-                                  'Contents.content_type' => 'image')
+                                  'Contents.content_type' => 'image'),
         ))->count();        
 
 			//query para el main message
@@ -41,7 +42,7 @@ class PagesController extends AppController
 			$text   = $textQuery->toArray();
         //Envía los datos a la vista
         $this->set([
-						'text' => $text,
+			'text' => $text,
             'contents' => $contents,
             'contentsLength' => $contentsLength,                    
         ]);
