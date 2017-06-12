@@ -231,6 +231,14 @@ class AdminController extends AppController
         $this->viewBuilder()->layout("defaultAdmin");
     }
 
+
+    /**
+     * Admin Description method.
+     * Created by Adrián Madrigal.
+     * [GET]  Gets contents to display in view.
+     * [POST] Updates database.
+     * @return \Cake\Network\Response|null
+     */
     public function description()
     {
         $this->set('title', 'Administración de Descripción General');
@@ -274,6 +282,11 @@ class AdminController extends AppController
         ]);      
     }
     
+    /**
+     * Method to descriptions into tours tables.
+     * Created by Adrián Madrigal
+     * @return \Cake\Network\Response|null
+     */    
     public function modifyDescription(){
         //Para saber si es el url
         $pagesController = new PagesController();
@@ -328,7 +341,6 @@ class AdminController extends AppController
 
                 $content->description = '';                         
             }
-                $content->id = 500+$i;
                 $content->page_id = 'toursDescription';             
                 $content->sequence_in_page = 0;
             }
