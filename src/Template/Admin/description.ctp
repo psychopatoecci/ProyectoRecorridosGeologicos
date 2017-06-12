@@ -26,7 +26,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <?= $this->Html->css('adminDescription.css') ?>
 <?= $this->Html->css('admin.css') ?>
 
+
 <div id="form">
+	<div class = "page-header" >   
+		<h2><?php echo $title; ?></h2>
+	</div> 	
 	<div class="tip-video">
 		<div>
 		<iframe width="100%" height="345" src="<?php echo $url[0]->link_path;?>" align="left"></iframe>	
@@ -37,7 +41,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</div>
 		</div>
 		
-		<form method="post" action="/admin/modifyDescription">
+		<form method="post" action="/admin/modifyDescription" name="formDescripcion" onsubmit="return validateForm()">
 		<div class="form-group">
 		  <label>URL:</label>
 		  <input type="text" class="form-control" id="videoURL" name="videoURL" value="<?php echo $url[0]->link_path;?>">
@@ -93,4 +97,14 @@ $(document).ready(function() {
 function cancel() {
     location.reload();
 }
+
+
+function validateForm() {
+    var x = document.forms["formDescripcion"]["tituloSugerencias"].value;
+    if (x == "") {
+        alert("El campo del título no puede estar vacío");
+        return false;
+    }
+}
+
 </script>
