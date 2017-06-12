@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Pages Controller.
@@ -11,10 +12,19 @@ class PagesController extends AppController
 {
 
     /**
+     * Allows the user to access these pages without logging in.
+     * Created by Christian Duran.
+     */
+    public function beforeFilter (Event $event) 
+    {
+        parent::beforeFilter ($event);
+        $this->Auth->allow (['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact']);
+    }
+    /**
      * Home method.
      * Used for the main / page.
      * Created by José Daniel Sánchez, Adrián Madrigal and Jean Carlo Lara.
-     * This method show a carousel and a little text box
+     * This method shows a carousel and a little text box
      * with some information.
      * @return \Cake\Network\Response|null
      */

@@ -93,6 +93,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Península de Santa Elena',['2','controller'=>'admin','action'=> 'gallery'],['escape' => false]);?></li>
 									</ul>
 							</li>
+
+							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/users/logout' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-log-out">&#8194;</span>Cerrar sesión',['controller'=>'users','action'=> 'logout'],['escape' => false]);?></li>
 						</ul>
 					</div>
 				</div>
