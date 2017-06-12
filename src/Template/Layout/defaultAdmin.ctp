@@ -93,7 +93,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 										<li><?= $this->Html->link ('<span class="glyphicon glyphicon-chevron-right">&#8194;</span>Península de Santa Elena',['2','controller'=>'admin','action'=> 'gallery'],['escape' => false]);?></li>
 									</ul>
 							</li>
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-eye-open">&#8194;</span>Ver cambios',['controller'=>$userController,'action'=> $userAction],['escape' => false]);?></li>
+                            <?php 
+                                if (isset ($userController) && isset ($userAction)) {
+                                    echo '<li>'.$this->Html->link ('<span class="glyphicon glyphicon-eye-open">&#8194;</span>Ver cambios',['controller'=>$userController,'action'=> $userAction],['escape' => false]).'</li>';
+                                }
+                            ?>
 						</ul>
 					</div>
 
