@@ -62,6 +62,8 @@ class AdminController extends AppController
         $this->set('title', 'Administración de Información General');
         $this->viewBuilder()->layout("defaultAdmin");
         $this->loadModel('Pages');
+        $this->set('userController', 'Pages');
+        $this->set('userAction', 'information');
         
         if ($this->request->is(['patch', 'post', 'put'])) {
 
@@ -141,6 +143,8 @@ class AdminController extends AppController
     public function home($addingImage = null)
     {
         $this->set('title', 'Administración de inicio');
+        $this->set('userController', 'Pages');
+        $this->set('userAction', 'home');
         $this->viewBuilder()->layout("defaultAdmin");
         $pagesController = new PagesController();
         $contentsController = $pagesController->Pages->Contents;
@@ -231,9 +235,9 @@ class AdminController extends AppController
     {
         $this->set('title', 'Administración de Descripción General');
         $this->viewBuilder()->layout("defaultAdmin");       
-        
         $pagesController = new PagesController();
-        
+        $this->set('userController', 'Pages');
+        $this->set('userAction', 'description');
         if ($this->request->is(['post'])) {
             
                 //Verificar y actualizar la base
@@ -391,6 +395,9 @@ class AdminController extends AppController
         $this->viewBuilder()->layout("defaultAdmin"); 
         $this->loadModel('Pages');
         
+        $this->set('userController', 'Pages');
+        $this->set('userAction', 'tourSantaElena');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
@@ -480,6 +487,8 @@ class AdminController extends AppController
         $this->viewBuilder()->layout("defaultAdmin");
         $this->loadModel('Pages');
         
+        $this->set('userController', 'Pages');
+        $this->set('userAction', 'tourBolanos');
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
@@ -572,6 +581,9 @@ class AdminController extends AppController
             ))   
         );
         $this -> set ('title', ''.($tourId == 1 ? 'Isla Bola&ntilde;os' : 'Pen&iacute;nsula de Santa Elena'));
+
+        $this->set('userController', 'MapPoints');
+        $this->set('userAction', 'view/'.$tourId);
         $this -> set ('tourId', $tourId);
         $this->set('mapPoints',$points);
     }
