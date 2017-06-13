@@ -82,13 +82,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         document.getElementById('reorderButton').innerHTML = '<form method="post" action="/admin/home"><input type="hidden"  name="reorder" value="' + sequences + '"></input><input type="submit" class="btn btn-primary boton" value="Reordenar"></input></form>';
     }
 </script>
-<div class = "col-md-12">
-    <div class = "page-header" >   
+<div style="margin-left:35px;">
+    <div class = "page-header">   
         <h2><?php echo $title; ?></h2>
     </div> 
     </div>
-    <div style="margin-left:15px">
-        <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
+    <div style="margin-left:35px">
+        <div style="padding-bottom:20px; padding-top: 10px;">
             <h3>Subir imagen</h3>
             <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
                 <div class="fileUpload btn btn-primary" style="margin-top: 15px; font-size:12px;" id="divUpload">
