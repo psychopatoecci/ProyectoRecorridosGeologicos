@@ -95,7 +95,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div style="margin-bottom:30px;">
 			<h3>Cambiar mensaje de inicio</h3>
             <?= $this->Form->create ('subir-mensaje') ?>
-            <?= $this->Form->text ('message', ['value' => $text['description']]) ?>
+            <?= $this->Form->textArea ('message', ['value' => $text['description'], 'style' => 'width:65%;']) ?>
             <input type="hidden"  name="id" value='<?= $text['id'] ?>'></input>
             <br /><button class="btn btn-primary"  type="submit" >Guardar</button>       
             <?= $this->Form->end () ?>
