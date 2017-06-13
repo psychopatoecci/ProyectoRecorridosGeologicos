@@ -54,3 +54,9 @@ $cakeDescription = 'Galería';
 }());
 
 </script>
+
+<style type="text/css">
+    body, html {
+    background: white;
+}
+</style>
