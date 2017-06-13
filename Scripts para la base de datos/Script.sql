@@ -13,9 +13,11 @@ INSERT INTO users VALUES ( '1', 'pruebas', 'oveja@sleep.net', '$2y$10$E0yMGzeAz/
 -- home & introduction
 INSERT INTO pages VALUES ('home');
 INSERT INTO pages VALUES ('introduction');
+
 -- recorridos
 INSERT INTO pages VALUES ('tourSantaElena');
 INSERT INTO pages VALUES ('tourBolanos');
+
 -- recomendaciones
 INSERT INTO pages VALUES ('toursDescription');
 
@@ -52,7 +54,6 @@ INSERT INTO contents VALUES (23, 'tourSantaElena', '../resources/travel/santa_el
 INSERT INTO contents VALUES (24, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000365/4199','Magmatic and geotectonic significance of Santa Elena Peninsula, Costa Rica', 'url', 0);
 INSERT INTO contents VALUES (25, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000364/4198','Evidence for middle Cretaceous accretion at Santa Elena Peninsula (Santa Rosa Accretionary Complex), Costa Rica', 'url', 1);
 
-
 -- TourDescripcion link del vídeo
 INSERT INTO contents VALUES(26, 'toursDescription','https://www.youtube.com/embed/tS5jzLqhCzI?autoplay=1&amp;rel=0&amp;showinfo=0','','url',0);
 
@@ -64,7 +65,6 @@ INSERT INTO contents VALUES (30, 'toursDescription', '../resources/travel/genera
 INSERT INTO contents VALUES (31, 'toursDescription', '../resources/travel/general/sugerencia4.txt', 'Evitar sacar los brazos o piernas del bote.', 'text', 0);
 INSERT INTO contents VALUES (32, 'toursDescription', '../resources/travel/general/sugerencia5.txt', 'Bajarse del bote solo si el botero se lo indica.', 'text', 0);
 INSERT INTO contents VALUES (33, 'toursDescription', '../resources/travel/general/security.png', '', 'image', 0);
-
 
 -- Recorrido Isla Bolaños 
 INSERT INTO pages VALUES ('P1R1');
@@ -227,3 +227,47 @@ VALUES('P4R1','https://www.youtube.com/watch?v=yngL0Ahu4FQ','Bahía Junquillal',
 	  ('P9R1','https://www.youtube.com/watch?v=izi0JKKH-qA','Relieve producto de la erosión','video',0),
 	  ('P12R1','https://www.youtube.com/watch?v=sNPbGGtMKNY','Relieve producto de la erosión','video',0),
 	  ('P3R2','https://www.youtube.com/watch?v=C_ps7PMQHIk','Vista a la Península','video',0);
+
+-- Galerías de imágenes
+-- gallery1 = Isla Bolaños
+INSERT INTO pages VALUES ('gallery1');
+-- gallery2 = Península de Santa Elena
+INSERT INTO pages VALUES ('gallery2');
+
+-- Contenidos de las Galerías
+INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
+VALUES('gallery1','../../resources/gallery/Bolanos/Bajo Rojo20.jpg','Bajo Rojo','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Capas de roca inclinadas en la isla Bolanos.png','Capas de Roca inclinadas','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Concrecion.jpg','Concreción','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Duna activa.jpg','Duna Activa','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/El Gallito.png','El Gallito','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/El Muneco5.jpg','El Muñeco','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Estratos de la Formacion Junquillal5.jpg','Estratos de la Formación Junquillal','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Isla Bolanos1.jpg','Isla Bolaños','image',0),  	
+	  ('gallery1','../../resources/gallery/Bolanos/Isla David12.jpg','Isla David','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Isla Despensa.jpg','Isla Despensa','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Isla Munecos.jpg','Isla Muñecos','image',0), 
+	  ('gallery1','../../resources/gallery/Bolanos/Isla Munecos10.jpg','Isla Muñecos','image',0), 
+	  ('gallery1','../../resources/gallery/Bolanos/Ondulitas.jpg','Isla Bolaños','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Pliegue sinsedimentario.jpg','Pliegue sinsedimentario','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Relictos de erosion.png','Relictos de erosión','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Relictos de erosion1.jpg','Relictos de erosión','image',0),
+	  -- Santa Elena
+	  ('gallery2','../../resources/gallery/SantaElena/Arco en roca de la isla San Jose.png','Arco en roca de la Isla San José','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Arco en roca.jpg','Arco en roca','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Cabo Santa Elena.jpg','Cabo Santa Elena','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Capas de roca inclinadas.png','Capas de roca inclinadas','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Duna activa.jpg','Duna activa','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/El Complejo Acrecional de Santa Rosa.jpg','El Complejo Acrecional de Santa Rosa','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Estratos de la Formacion Descartes.png','Estratos de la Formacion Descartes','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Estratos de la Formacion Descartes2.jpg','Estratos de la Formacion Descartes','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Estratos de la Formacion Rivas4.jpg','Estratos de la Formacion Rivas','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Estratos doblados de la Formacion Descartes3.jpg','Estratos doblados de la Formacion Descartes','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Formacion Descartes.png','Formacion Descartes','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Intrusiones y peridotitas.jpg','Intrusiones y peridotitas','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Paleo-duna.jpg','Paleo-duna','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Punta Blanca11.jpg','Punta Blanca','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Relicto de erosion.jpg','Relicto de erosion','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Vista a los cerros de la peninsula de Santa Elena.jpg','Vista a los cerros de la Península de Santa Elena','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Vista del macizo Orosi Cacao.png','Vista del macizo Orosi Cacao','image',0);
+

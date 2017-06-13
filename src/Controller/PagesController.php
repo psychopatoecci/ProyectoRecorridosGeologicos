@@ -232,7 +232,7 @@ class PagesController extends AppController
         }
         $this -> set ('title', 'Galer&iacute;a '.($tourNum == 1 ? 'Isla Bola&ntilde;os' : 'Pen&iacute;nsula de Santa Elena'));
 
-        $tourId = 'R'.$tourNum;
+        $tourId = 'gallery'.$tourNum;
 
         $imagesQuery = $this->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id LIKE' => '%'.$tourId.'%',
