@@ -16,7 +16,7 @@
         <legend><?= __('Escriba su usuario y contrase&ntilde;a') ?></legend>
         <?= $this->Form->control('username', ['label' => 'Nombre de usuario']) ?>
         <?= $this->Form->control('password', ['label' => 'Clave']) ?>
-    <?= $this->Form->button(__('Login')); ?>
+    <?= $this->Form->button(__('Iniciar Sesión'), ['class' => 'btn btn-success']); ?>
     <?= $this->Form->end() ?>
     </div>
 </div>
