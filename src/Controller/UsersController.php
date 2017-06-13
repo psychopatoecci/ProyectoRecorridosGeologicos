@@ -110,6 +110,13 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * login method.
+     * Created by Christian Durán.
+     * This method login Administrative site
+     * @return \Cake\Network\Response|null
+     */
     public function login()
     {
         $this -> set ('title', 'Iniciar sesi&oacute;n');
@@ -124,6 +131,12 @@ class UsersController extends AppController
         }
     }
 
+    /**
+     * logout method.
+     * Created by Christian Durán.
+     * This method logout Administrative site
+     * @return \Cake\Network\Response|null
+     */
     public function logout()
     {
         return $this->redirect($this->Auth->logout());

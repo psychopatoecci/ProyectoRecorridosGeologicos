@@ -10,6 +10,13 @@ use App\Controller\AppController;
 class AdminController extends AppController
 {
 
+    /**
+     * Verify Image File method.
+     * Created by Psychopato ECCI.
+     * This method verify the image size and 
+     * format and then update the database.
+     * @return \Cake\Network\Response|null
+     */ 
     private function verify_image_file($imgName) 
     {
         //Verificar y actualizar la base
@@ -139,7 +146,13 @@ class AdminController extends AppController
         ]);
     }
     
-    
+    /**
+     * Verify Image File method.
+     * Created by Christian Durán and Jean Carlo Lara.
+     * [GET]  Gets contents to display in view.
+     * [POST] Updates database.
+     * @return \Cake\Network\Response|null
+     */ 
     public function home($addingImage = null)
     {
         $this->set('title', 'Administración de inicio');
@@ -236,12 +249,6 @@ class AdminController extends AppController
         ]);
     }
     
-    public function addimage()
-    {
-        $this->viewBuilder()->layout("defaultAdmin");
-    }
-
-
     /**
      * Admin Description method.
      * Created by Adrián Madrigal.
@@ -369,7 +376,8 @@ class AdminController extends AppController
      * Created by Josin Madrigal & Isabel Chaves.
      * @return \Cake\Network\Response|null
      */
-     public function toursLinks(){
+     public function toursLinks()
+     {
 
         $callerTourPage = $this->request->getQuery('page');
         $this->loadModel('Pages');
@@ -595,8 +603,8 @@ class AdminController extends AppController
 
 
     /**
-     * Index method
-     *
+     * Index method for administration of map
+     * Created by José Daniel Sánchez
      * @return \Cake\Network\Response|null
      */
     public function mapindex($tourId)
@@ -608,7 +616,7 @@ class AdminController extends AppController
                 'conditions' => array('MapPoints.path' => $tourId)
             ))   
         );
-        $this -> set ('title', ''.($tourId == 1 ? 'Isla Bola&ntilde;os' : 'Pen&iacute;nsula de Santa Elena'));
+        $this -> set ('title', ''.($tourId == 1 ? 'Administración Isla Bola&ntilde;os' : 'Administración Pen&iacute;nsula de Santa Elena'));
 
         $this->set('userController', 'MapPoints');
         $this->set('userAction', 'view/'.$tourId);
@@ -616,9 +624,11 @@ class AdminController extends AppController
         $this->set('mapPoints',$points);
     }
 
-/**
-     * mapadd method
-     *
+    /**
+     * mapadd Method
+     * Created by José Daniel Sánchez y Andreína Alvarado
+     * [POST] Insert in database a map point and
+     * all the content inside.
      * @return \Cake\Network\Response|null
      */
     public function mapadd($tourId)
@@ -837,10 +847,13 @@ class AdminController extends AppController
 
     /**
      * mapedit method
-     *
+     * Created by José Daniel Sánchez y Andreína Alvarado
+     * [POST] Update in database a map point and
+     * all the content inside.
      * @return \Cake\Network\Response|null
      */
     public function mapedit($pointId){
+        $this->set('title', 'Editar un punto en el mapa');
         $this->viewBuilder()->layout("defaultAdmin");
         $modelMapPoints = new MapPointsController();
         $pagesController = new PagesController();
@@ -1183,10 +1196,13 @@ class AdminController extends AppController
     
     /**
      * mapdelete method
-     *
+     * Created by José Daniel Sánchez y Andreína Alvarado
+     * [POST] Delete in database a map point and
+     * all the content inside.
      * @return \Cake\Network\Response|null
      */
     public function mapdelete($pointId){
+        $this->set('title', 'Eliminar un punto en el mapa');
         $modelMapPoints = new MapPointsController();
         $query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
         $point = $query->first();

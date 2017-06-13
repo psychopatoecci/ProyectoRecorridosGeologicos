@@ -103,7 +103,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 				</div>
 				<div "collapse navbar-collapse" id="navbar-collapse-4">
-						<ul class = "nav navbar-nav navbar-right">
+						<ul class = "nav navbar-nav navbar-right" style="padding-right: 25px">
 							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-log-out">&#8194;</span>Cerrar sesión',['controller'=>'users','action'=> 'logout'],['escape' => false]);?></li>
 						</ul>
 				</div>

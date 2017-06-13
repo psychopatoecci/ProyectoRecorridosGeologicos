@@ -101,7 +101,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?php echo $this->Form->end();?>
         </div>
             
-        <h3>Arrastre im&aacute;genes para reacomodarlas detr&aacute;s de otras</h3>
+        <h3>Arrastre im&aacute;genes para reacomodarlas</h3>
         <table id="imagesTable" style="overflow:scroll;">
             <?php foreach ($images as $image): ?>
                 <td class="imagen" draggable="true" ondragstart="drag(event)">
@@ -122,7 +122,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?= $this->Form->create ('subir-mensaje') ?>
             <?= $this->Form->textArea ('message', ['value' => $text['description'], 'style' => 'width:65%;']) ?>
             <input type="hidden"  name="id" value='<?= $text['id'] ?>'></input>
-            <br /><button class="btn btn-primary"  type="submit" >Guardar</button>       
+            <br /><button class="btn btn-primary"  type="submit"> Guardar</button>       
             <?= $this->Form->end () ?>
         </div>
     </div>
