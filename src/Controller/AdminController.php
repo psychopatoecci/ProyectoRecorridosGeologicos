@@ -93,14 +93,14 @@ class AdminController extends AppController
 
                         } else {
 
-                            if(!strpos($image->link_path, $imFile["extension"])){
+                            //if(!strpos($image->link_path, $imFile["extension"])){
                                 //Si la extension es diferente se actualiza la base con la nueva extension
-                                $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
-                                if (!$this->Pages->Contents->save($image)) {
-                                    $this->Flash->error("Error al intentar guardar la imagen");
-                                }
+                                //$image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                                //if (!$this->Pages->Contents->save($image)) {
+                                  //  $this->Flash->error("Error al intentar guardar la imagen");
+                                //}
                                 
-                            }
+                            //}
                         }
                     }
                 }
@@ -454,7 +454,7 @@ class AdminController extends AppController
                             $this->Flash->error($msj_error);
 
                         } else {
-
+                            /*
                             if(!strpos($image->link_path, $imFile["extension"])){
                                 //Si la extension es diferente se actualiza la base con la nueva extension
                                 $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
@@ -462,7 +462,7 @@ class AdminController extends AppController
                                     $this->Flash->error("Error al intentar guardar la imagen");
                                 }
                                 
-                            }
+                            }*/
                         }
                     }
                 }
@@ -546,14 +546,14 @@ class AdminController extends AppController
 
                         } else {
 
-                            if(!strpos($image->link_path, $imFile["extension"])){
+                            /*if(!strpos($image->link_path, $imFile["extension"])){
                                 //Si la extension es diferente se actualiza la base con la nueva extension
                                 $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
                                 if (!$this->Pages->Contents->save($image)) {
                                     $this->Flash->error("Error al intentar guardar la imagen");
                                 }
                                 
-                            }
+                            }*/
                         }
                     }
                 }
