@@ -31,7 +31,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <?php foreach ($contents as $content): ?>
   <?php if(!strcmp($content->content_type, 'image')): ?>
     <div class="item">    
-      <img src="<?= h($content->link_path);?>" align="center">    
+      <img src="<?= '/'.h($content->link_path);?>" align="center">    
       <div class="carousel-caption">        
         <p><?= h($content->description);?>.</p>
       </div>
