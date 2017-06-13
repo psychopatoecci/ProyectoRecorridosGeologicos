@@ -24,11 +24,31 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     img {
         margin-bottom: 5px;
     }
-	.boton {
-		margin-left: 6px;
-	}
+    .boton {
+        margin-left: 6px;
+    }
+    .fileUpload {
+		position: relative;
+		overflow: hidden;
+	} 
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
 </style>
 <script>
+    function uploaded (ev) {
+        document.getElementById ('divUpload').style.display = "none";
+        document.getElementById ('saveButton').style.display = "inline-block";
+    }
     var lastSeq = 0;
     function allowDrop(ev) {
         ev.preventDefault();
@@ -64,20 +84,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <div class = "page-header" >   
         <h2><?php echo $title; ?></h2>
     </div> 
-	</div>
-	<div style="margin-left:15px">
+    </div>
+    <div style="margin-left:15px">
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
             <h3>Subir imagen</h3>
             <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-                <td><?php echo $this->Form->file('image', ['id' => 'boton']); ?>
-					<br /><button class="btn btn-primary"  type="submit" >Guardar</button>       
-                </td>
+                <div class="fileUpload btn btn-primary" style="margin-top: 15px; font-size:12px;" id="divUpload">
+					<span class="glyphicon glyphicon-upload"> </span> Subir imagen
+    				<input type="file" class="upload" name="image" accept="image/*" id="uploadBtn" onchange="uploaded(event)" />
+                </div>
+                <br /><button class="btn btn-primary"  type="submit" id="saveButton" style="display:none;">Guardar</button>       
                 <?php echo $this->Form->hidden('uploading'); ?>
             <?php echo $this->Form->end();?>
         </div>
             
         <h3>Arrastre im&aacute;genes para reacomodarlas detr&aacute;s de otras</h3>
-        <table id="imagesTable">
+        <table id="imagesTable" style="overflow:scroll;">
             <?php foreach ($images as $image): ?>
                 <td class="imagen" draggable="true" ondragstart="drag(event)">
                     <img id="<?= $image->id?>" ondrop="drop(event)" ondragover="allowDrop(event)" width="200" height="200" src="<?php echo $initialPath.$image ['link_path'] ?>"></img>
@@ -93,11 +115,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div id="reorderButton">
         </div>
         <div style="margin-bottom:30px;">
-			<h3>Cambiar mensaje de inicio</h3>
+            <h3>Cambiar mensaje de inicio</h3>
             <?= $this->Form->create ('subir-mensaje') ?>
             <?= $this->Form->textArea ('message', ['value' => $text['description'], 'style' => 'width:65%;']) ?>
             <input type="hidden"  name="id" value='<?= $text['id'] ?>'></input>
             <br /><button class="btn btn-primary"  type="submit" >Guardar</button>       
             <?= $this->Form->end () ?>
         </div>
-	</div>
+    </div>
