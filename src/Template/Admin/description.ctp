@@ -63,7 +63,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="input_fields_wrap">
 			<button type="button" class="btn btn-success" id="botonAgregar" style="background-color : #3299bb; border-color : #3299bb;">Agregar</button>
 			<?php for($i = 1; $i < count($text); $i++): ?>    
-			    <div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>" id="<?php echo uniqid(); ?>" value="<?php echo $text[$i]->description; ?>"><a href="#" class="remove_field" id="botonEliminar">Eliminar</a></div>
+			    <div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>" id="<?php echo uniqid(); ?>" value="<?php echo $text[$i]->description; ?>"> <a href="#" class="remove_field" id="botonEliminar">Eliminar</a></div>
 			<?php endfor; ?>
 		</div>
 		<input type="submit" class="btn btn-primary" value="Aceptar" style="background-color : #3299bb; border-color : #3299bb;">
