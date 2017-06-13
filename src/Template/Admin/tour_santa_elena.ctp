@@ -13,30 +13,31 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Recorrido Península de Santa Elena';
 ?>
 
 <?= $this->Html->css('admin.css') ?>
 
 <div class="help-tip">
-  <p>Mediante esta página usted puede administrar el contenido de la pestaña asociada al recorrido de la Península de Santa Elena y alrededores.</p>
+  <p>
+    Mediante esta página usted puede administrar el contenido de la pestaña asociada al recorrido de la Península de Santa Elena y alrededores.
+  </p>
 </div>
 
-<div class="row">
-    <div class = "col-md-12">
-       <div class = "page-header" >   
+<div class="container-fluid">
+  <div class="container" style="padding:25px;">
+    
+    <div class = "page-header" >   
             <h2><?php echo $title; ?></h2>
-       </div>
-  </div>
+    </div>
 
-<div class="container-fluid"
- style="padding-left: 15px;">
-  <div class="row">
-    <div class = "col-md-12">
     <div class="page-header" style="padding-left: 10px;">
-        <h3>Modificar imagen de fondo y descripción</h3>
-      </div>
-  <div class = "table-responsive">
+        <h3>
+          Modificar imagen de fondo y descripción
+        </h3>
+    </div>
+
+    <div class = "table-responsive">
             <table class = "table table-striped table-hover">
                 <thead>
                     <tr>
@@ -54,7 +55,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                   <label class="btn btn-primary">
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img0)']); ?>
                                     Cambiar imagen
-                                    </label>
+                                  </label>
                   <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
                   <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
                 </td>
@@ -64,58 +65,56 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         </tr>
                  </tbody>
              </table>
-  </div>
-  </div>
-  </div>
-</div>
-</div>
-<?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourSantaElena"]); ?>
+          </div>
 
-<div class="container-fluid" id="urlForm" style="padding-left: 25px;">
+          <?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourSantaElena"]); ?>
+
+  </div> <!-- Fin del container -->
+</div> <!--  Fin del container-fluid -->
+
+<div class="container-fluid" >
+<div class="container" id="urlForm" style="padding:25px;">
   <div class="row">
       <div class="page-header" style="padding-left: 10px;">
         <h3>Documentos de interés</h3>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="col-md-1 pull-right">
-        <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
-      </div>
-      <div class="col-md-1 pull-right">
-        <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
       </div>
   </div>
   
   <div class="row">
     <div class="col-md-9">
         <button type="button" class="btn btn-success" onclick="agregar()">
-        <span class="glyphicon glyphicon-plus"></span> Agregar
+          <span class="glyphicon glyphicon-plus" ></span> Agregar
         </button>
       </div>
   </div>
 
   <?php for ($i = 0; $i < sizeof($url); $i++) { ?>
   <div class="row" id="linkInput<?= $i ?>">
-      <div class="col-md-4 links">
+      <div class="col-md-9 links">
         <label>Descripción</label>
-        <?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'required','placeholder'=>'Descripción', 'id' => 'descripcion']);?>
-        </div>
-        <div class="col-md-4 links">
+        <?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'placeholder'=>'Descripción', 'id' => 'descripcion']); ?>
         <label>URL</label>
-        <?php echo $this->Form->url('url'.$i, ['value'=>$url[$i]->link_path, 'required', 'pattern'=>'^https?://.+$', 'placeholder'=>'Enlace', 'id' => 'enlace']); ?>
-        </div>
-        <div class="col-md-4 links">
+        <?php echo $this->Form->text('url'.$i, ['value'=>$url[$i]->link_path, 'placeholder'=>'Enlace', 'id' => 'enlace']); ?>
         <?php echo $this->Form->button('Eliminar', ['class'=>'btn btn-danger', 'type'=>'button', 'onclick'=>'eliminar(linkInput'.$i.')']); ?>
-        </div>
     </div>
   </div>
   <?php } ?>
+  </div> <!-- fin del container -->
+
+   <div class="container-fluid" style="padding:25px;">
+    <div class="row">
+      <div class="col-md-1">
+        <?php echo $this->Form->submit('Guardar', ['class' => 'btn btn-success']); ?>
+      </div>
+      <div class="col-md-1">
+        <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']);?>
+      </div>   
+    </div>
+  </div>
 </div>
+
 <?php echo $this->Form->hidden('page', ['value' => 'tourSantaElena']); ?>
 <?php echo $this->Form->end();?>
-
-
 
 <style type="text/css">
   
@@ -142,17 +141,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     function agregar() {
       var container="#urlForm";
       $(container).append('<div class="row" id="linkInput'+ current_length + '">\
-                 <div class="col-md-9 links">\
-                 <label>Descripción</label>\
-                 <input name="description'+ current_length + '" class="form-control" type="text" required placeholder="Descripción">\
-                 <label>URL</label>\
-                 <input type="url" name="url'+ current_length + '" class="form-control" required pattern="^https?://.+$" placeholder="Enlace">\
-                <button class="btn btn-danger" type="button" onclick="eliminar(linkInput'+current_length+')">Eliminar</button>\
-              </div>\
-              </div>');
+              <div class="col-md-9 links">\
+                      <label>Descripción</label>\
+                      <input name="description'+ current_length + '" class="form-control" type="text" placeholder="Descripción">\
+                      <label>URL</label>\
+                      <input name="url'+ current_length + '" class="form-control" type="url" required pattern="https?://.+" placeholder="Enlace">\
+                      <button class="btn btn-danger" type="button" onclick="eliminar(linkInput'+current_length+')">Eliminar</button>\
+                      </div>\
+                      </div>');
       current_length++;
-
-
     }
     
     function eliminar(id) {

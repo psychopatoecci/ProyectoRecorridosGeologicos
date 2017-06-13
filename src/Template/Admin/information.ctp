@@ -15,22 +15,25 @@
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 
 <?= $this->Html->css('admin.css') ?>
 
-    <div class="help-tip">
-        <p>Esta página le permite administrar el contenido de la pestaña de Información del sitio: cambiar la imagen de fondo y su respectivo texto descriptivo.</p>
-    </div>
+<div class="help-tip">
+	<p>
+		Esta página le permite administrar el contenido de la pestaña de Información del sitio: cambiar la imagen de fondo y su respectivo texto descriptivo.
+	</p>
+</div>
 
-<div class="row">
-    <div class = "col-md-12">
-       <div class = "page-header" >   
+<div class="container-fluid">
+	<div class="container" style=" padding:25px;">
+		
+		<div class = "page-header" >   
             <h2><?php echo $title; ?></h2>
-       </div> 
+    	</div>
 
-        <div class = "table-responsive">
+    	<div class = "table-responsive">
             <table class = "table table-striped table-hover">
                 <thead>
                     <tr>
@@ -42,8 +45,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <tbody>
                        <tr>
                             <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-                                <td><img class="img" id="img0" src="<?php echo $images[0]->link_path;?>" height="300" width="500"></td>
-                                <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[0]->description;  ?></textarea></td>
+                                <td><img class="img" id="img0" src="<?php echo $images[0]->link_path;?>" height="200" width="275"></td>
+                                <td><textarea name="descripcion" cols="60" rows="10"><?php echo $text[0]->description;  ?></textarea></td>
                                 <td>
                                     <label class="btn btn-primary">
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img0)']); ?>
@@ -58,8 +61,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         </tr>
                        <tr>
                             <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-                                <td><img class="img" id="img1" src="<?php echo $images[1]->link_path;?>" height="300" width="500"></td>
-                                <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[1]->description;  ?></textarea></td>
+                                <td><img class="img" id="img1" src="<?php echo $images[1]->link_path;?>" height="200" width="275"></td>
+                                <td><textarea name="descripcion" cols="60" rows="10"><?php echo $text[1]->description;  ?></textarea></td>
                                 <td>
                                     <label class="btn btn-primary">
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img1)']); ?>
@@ -74,7 +77,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         </tr>
                         <tr>
                             <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-                                <td><img class="img" id="img2" src="<?php echo $images[2]->link_path;?>" height="300" width="500"></td>
+                                <td><img class="img" id="img2" src="<?php echo $images[2]->link_path;?>" height="200" width="275"></td>
                                 <td>       
                                     <table>
                                         <tr>
@@ -100,8 +103,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                        </tr>
                        <tr>
                             <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-                                <td><img class="img" id="img3" src="<?php echo $images[3]->link_path;?>" height="300" width="500"></td>
-                                <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[4]->description;  ?></textarea></td>
+                                <td><img class="img" id="img3" src="<?php echo $images[3]->link_path;?>" height="200" width="275"></td>
+                                <td><textarea name="descripcion" cols="60" rows="10"><?php echo $text[4]->description;  ?></textarea></td>
                                 <td>
                                     <label class="btn btn-primary">
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img3)']); ?>
@@ -117,8 +120,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
                  </tbody>
              </table>
-    </div>
-</div>
+        </div>
+
+	</div> <!-- Fin del div container -->
+
+</div> <!-- Fin del div container-fluid -->
+
+  
 
 <script>
     function changeImage(input, imgId) {

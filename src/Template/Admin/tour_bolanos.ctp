@@ -16,77 +16,74 @@
 $cakeDescription = 'Recorrido Isla Bolaños';
 ?>
 
-<title>
-    <?php echo $title; ?>
-</title>
-
 <?= $this->Html->css('admin.css') ?>
 
 <div class="help-tip">
-	<p>Mediante esta página usted puede administrar el contenido de la pestaña asociada al recorrido de Isla Bolaños y alrededores.</p>
+  <p>
+    Mediante esta página usted puede administrar el contenido de la pestaña asociada al recorrido de Isla Bolaños y alrededores.
+  </p>
 </div>
 
-<div class="row">
-    <div class = "col-md-12">
-       <div class = "page-header" >   
+<div class="container-fluid">
+  <div class="container" style="padding:25px;">
+    
+    <div class = "page-header" >   
             <h2><?php echo $title; ?></h2>
-       </div>
-	</div>
-</div>
+    </div>
 
-<div class = "table-responsive">
+    <div class="page-header" style="padding-left: 10px;">
+        <h3>
+          Modificar imagen de fondo y descripción
+        </h3>
+    </div>
+
+    <div class = "table-responsive">
             <table class = "table table-striped table-hover">
                 <thead>
                     <tr>
-                    	<th scope="col" class="actions">Imagen de fondo</th>
-                    	<th scope="col" class="actions">Texto descriptivo</th>
+                      <th scope="col" class="actions">Imagen de fondo</th>
+                      <th scope="col" class="actions">Texto descriptivo</th>
                         <th scope="col" class="actions"><?= __('Acciones') ?></th>
                     </tr>
                 </thead>
                 <tbody>
                        <tr>
-                       		<?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-	                       		<td><img class="img" id="img0" src="<?php echo $images[0]->link_path;?>" height="300" width="500"></td>
-	                            <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[0]->description;  ?></textarea></td>
-	                            <td>
-	                                <label class="btn btn-primary">
+                          <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
+                            <td><img class="img" id="img0" src="<?php echo $images[0]->link_path;?>" height="200" width="275"></td>
+                              <td><textarea name="descripcion" cols="60" rows="10"><?php echo $text[0]->description;  ?></textarea></td>
+                              <td>
+                                  <label class="btn btn-primary">
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img0)']); ?>
                                     Cambiar imagen
-                                    </label>
-									<?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
-									<?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
-								</td>
-								<?php echo $this->Form->hidden('image_id', ['value' => $images[0]->id]); ?>
-								<?php echo $this->Form->hidden('text_id', ['value' => $text[0]->id]); ?>
+                                  </label>
+                  <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                  <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
+                </td>
+                <?php echo $this->Form->hidden('image_id', ['value' => $images[0]->id]); ?>
+                <?php echo $this->Form->hidden('text_id', ['value' => $text[0]->id]); ?>
                             <?php echo $this->Form->end();?>
                         </tr>
                  </tbody>
              </table>
-</div>
+          </div>
 
+          <?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourBolanos"]); ?>
 
+  </div> <!-- Fin del container -->
+</div> <!--  Fin del container-fluid -->
 
-<?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourBolanos"]); ?>
-<div class="container-fluid" id="urlForm">
+<div class="container-fluid" >
+<div class="container" id="urlForm" style="padding:25px;">
 	<div class="row">
 	    <div class="page-header" style="padding-left: 10px;">
         <h3>Documentos de interés</h3>
       </div>
 	</div>
-
-	<div class="row">
-	    <div class="col-md-1 pull-right" style="padding-right: 20px">
-	    	<?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
-	    </div>
-	    <div class="col-md-1 pull-right" style="padding-right: 20px">
-	    	<?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
-	    </div>
-	</div>
 	
 	<div class="row">
 		<div class="col-md-9">
 	    	<button type="button" class="btn btn-success" onclick="agregar()">
-	    	<span class="glyphicon glyphicon-plus" ></span> Agregar
+	    	  <span class="glyphicon glyphicon-plus" ></span> Agregar
 	    	</button>
 	    </div>
 	</div>
@@ -102,11 +99,22 @@ $cakeDescription = 'Recorrido Isla Bolaños';
 		</div>
 	</div>
 	<?php } ?>
+  </div> <!-- fin del container -->
+
+   <div class="container-fluid" style="padding:25px;">
+    <div class="row">
+      <div class="col-md-1">
+        <?php echo $this->Form->submit('Guardar', ['class' => 'btn btn-success']); ?>
+      </div>
+      <div class="col-md-1">
+        <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']);?>
+      </div>   
+    </div>
+  </div>
 </div>
+
 <?php echo $this->Form->hidden('page', ['value' => 'tourBolanos']); ?>
 <?php echo $this->Form->end();?>
-
-
 
 <style type="text/css">
 	
