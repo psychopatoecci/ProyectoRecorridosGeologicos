@@ -52,7 +52,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img0)']); ?>
                                     Cambiar imagen
                                     </label>
-                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success', 'style' => 'background-color : #3299bb; border-color : #3299bb;']); ?>
                                     <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type'=>'button', 'onclick'=>'cancel()']); ?>
                                 </td>
                                 <?php echo $this->Form->hidden('image_id', ['value' => $images[0]->id]); ?>
@@ -68,7 +68,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img1)']); ?>
                                     Cambiar imagen
                                     </label>
-                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success', 'style' => 'background-color : #3299bb; border-color : #3299bb;']); ?>
                                     <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
                                 </td>
                                 <?php echo $this->Form->hidden('image_id', ['value' => $images[1]->id]); ?>
@@ -93,7 +93,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img2)']); ?>
                                     Cambiar imagen
                                     </label>
-                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success', 'style' => 'background-color : #3299bb; border-color : #3299bb;']); ?>
                                     <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
                                 </td>
                                 <?php echo $this->Form->hidden('image_id', ['value' => $images[2]->id]); ?>
@@ -110,7 +110,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img3)']); ?>
                                     Cambiar imagen
                                     </label>
-                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                                    <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success', 'style' => 'background-color : #3299bb; border-color : #3299bb;']); ?>
                                     <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
                                 </td>
                                 <?php echo $this->Form->hidden('image_id', ['value' => $images[3]->id]); ?>

@@ -17,28 +17,30 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 
-
-<title>
-    <?php echo $title; ?>
-</title>
-
-
 <?= $this->Html->css('adminDescription.css') ?>
 <?= $this->Html->css('admin.css') ?>
 
+<div class="help-tip">
+	<p>
+		En esta página usted encontrará información general acerca de ambos recorridos, así como datos necesarios si desea realizarlos.
+	</p>
+</div>
 
+<div class="container-fluid">
+<div class="container" style=" padding:25px;">
 <div id="form">
 	<div class = "page-header" >   
 		<h2><?php echo $title; ?></h2>
-	</div> 	
+	</div> 
+
+	<div class="page-header" style="padding-left: 10px;">
+        <h3>
+          Modificar Vídeo
+        </h3>
+    </div>	
 	<div class="tip-video">
 		<div>
 		<iframe width="100%" height="345" src="<?php echo $url[0]->link_path;?>" align="left"></iframe>	
-		</div>
-		<div class="help-tip2">
-			<div class="help-tip">
-				<p>En esta página usted encontrará información general acerca de ambos recorridos, así como datos necesarios si desea realizarlos.</p>
-			</div>
 		</div>
 		
 		<form method="post" action="/admin/modifyDescription" name="formDescripcion" onsubmit="return validateForm()">
@@ -53,16 +55,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		</div>
 				
 
-		<label>Recomendaciones de seguridad:</label>
+    <div class="page-header" style="padding-left: 10px;">
+        <h3>
+          Modificar recomendaciones de Seguridad
+        </h3>
+    </div>
 		<div class="input_fields_wrap">
-			<button type="button" class="btn btn-success" id="botonAgregar">Agregar</button>
+			<button type="button" class="btn btn-success" id="botonAgregar" style="background-color : #3299bb; border-color : #3299bb;">Agregar</button>
 			<?php for($i = 1; $i < count($text); $i++): ?>    
 			    <div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>" id="<?php echo uniqid(); ?>" value="<?php echo $text[$i]->description; ?>"><a href="#" class="remove_field" id="botonEliminar">Eliminar</a></div>
 			<?php endfor; ?>
 		</div>
-		<input type="submit" class="btn btn-primary" value="Aceptar">
+		<input type="submit" class="btn btn-primary" value="Aceptar" style="background-color : #3299bb; border-color : #3299bb;">
 		<button type="button" class="btn btn-danger" onclick="cancel()"> Cancelar </button>
 		</form>
+</div>
+
+</div>
 </div>
 
 <script>

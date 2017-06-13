@@ -53,10 +53,10 @@ $cakeDescription = 'Recorrido Península de Santa Elena';
                               <td><textarea name="descripcion" cols="60" rows="10"><?php echo $text[0]->description;  ?></textarea></td>
                               <td>
                                   <label class="btn btn-primary">
-                                    <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img0)']); ?>
+                                    <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'style' => 'background-color : #3299bb; border-color : #3299bb;', 'onchange'=>'changeImage(this, img0)']); ?>
                                     Cambiar imagen
                                   </label>
-                  <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success']); ?>
+                  <?php echo $this->Form->submit('Aceptar', ['class' => 'btn btn-success', 'style' => 'background-color : #3299bb; border-color : #3299bb;']); ?>
                   <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']); ?>
                 </td>
                 <?php echo $this->Form->hidden('image_id', ['value' => $images[0]->id]); ?>
@@ -82,7 +82,7 @@ $cakeDescription = 'Recorrido Península de Santa Elena';
   
   <div class="row">
     <div class="col-md-9">
-        <button type="button" class="btn btn-success" onclick="agregar()">
+        <button type="button" class="btn btn-success" onclick="agregar()" style="background-color : #3299bb; border-color : #3299bb;">
           <span class="glyphicon glyphicon-plus" ></span> Agregar
         </button>
       </div>
@@ -101,10 +101,10 @@ $cakeDescription = 'Recorrido Península de Santa Elena';
   <?php } ?>
   </div> <!-- fin del container -->
 
-   <div class="container-fluid" style="padding:25px;">
+   <div class="container" style="padding:25px;">
     <div class="row">
       <div class="col-md-1">
-        <?php echo $this->Form->submit('Guardar', ['class' => 'btn btn-success']); ?>
+        <?php echo $this->Form->submit('Guardar', ['class' => 'btn btn-success', 'style' => 'background-color : #3299bb; border-color : #3299bb;']); ?>
       </div>
       <div class="col-md-1">
         <?php echo $this->Form->button('Cancelar', ['class'=>'btn btn-danger', 'type' => 'button', 'onclick' => 'cancel()']);?>
