@@ -103,7 +103,7 @@ class AdminController extends AppController
                 $text = $this->Pages->Contents->get($_POST['text_id']);
                 $text->description = $_POST['descripcion'];
                 if ($this->Pages->Contents->save($text)) {
-                    $this->Flash->success("Cambios guardados");
+                    $this->Flash->success("Cambios guardados exitosamente,");
                 }
 
                 if (isset($_POST['text2_id'])) {
@@ -359,7 +359,7 @@ class AdminController extends AppController
      * Created by Josin Madrigal & Isabel Chaves.
      * @return \Cake\Network\Response|null
      */
-    public function toursLinks(){
+     public function toursLinks(){
 
         $callerTourPage = $this->request->getQuery('page');
         $this->loadModel('Pages');
@@ -372,7 +372,13 @@ class AdminController extends AppController
 
         foreach ($dataArray as $key => $value) {
             if(strpos($key, 'url') !== false){
-                $urlArray[] = $value;
+                if(preg_match('^https?://.+$', $value)){ 
+                    $urlArray[] = $value;
+                }
+                else
+                {
+                    $this->Flash->success("Debe ingresar un URL válido.");
+                }
             }
             elseif (strpos($key, 'description') !== false) {
                 $descriptionArray[] = $value;

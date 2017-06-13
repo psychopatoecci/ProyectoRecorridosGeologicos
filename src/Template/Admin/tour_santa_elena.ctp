@@ -19,7 +19,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <?= $this->Html->css('admin.css') ?>
 
 <div class="help-tip">
-	<p>Mediante esta página usted puede administrar el contenido de la pestaña asociada al recorrido de la Península de Santa Elena y alrededores.</p>
+  <p>Mediante esta página usted puede administrar el contenido de la pestaña asociada al recorrido de la Península de Santa Elena y alrededores.</p>
 </div>
 
 <div class="row">
@@ -27,10 +27,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
        <div class = "page-header" >   
             <h2><?php echo $title; ?></h2>
        </div>
-	</div>
-</div>
+  </div>
 
-<div class = "table-responsive">
+<div class="container-fluid"
+ style="padding-left: 15px;">
+  <div class="row">
+    <div class = "col-md-12">
+    <div class="page-header" style="padding-left: 10px;">
+        <h3>Modificar imagen de fondo y descripción</h3>
+      </div>
+  <div class = "table-responsive">
             <table class = "table table-striped table-hover">
                 <thead>
                     <tr>
@@ -42,8 +48,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <tbody>
                        <tr>
                           <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
-                            <td><img class="img" id="img0" src="<?php echo $images[0]->link_path;?>" height="300" width="500"></td>
-                              <td><textarea name="descripcion" cols="60" rows="5"><?php echo $text[0]->description;  ?></textarea></td>
+                            <td><img class="img" id="img0" src="<?php echo $images[0]->link_path;?>" height="200" width="275"></td>
+                              <td><textarea name="descripcion" cols="60" rows="10"><?php echo $text[0]->description;  ?></textarea></td>
                               <td>
                                   <label class="btn btn-primary">
                                     <?php echo $this->Form->file('imagen_fondo', ['class' => 'btn btn-success', 'onchange'=>'changeImage(this, img0)']); ?>
@@ -58,12 +64,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         </tr>
                  </tbody>
              </table>
+  </div>
+  </div>
+  </div>
 </div>
-
-
-
+</div>
 <?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourSantaElena"]); ?>
-<div class="container-fluid" id="urlForm">
+
+<div class="container-fluid" id="urlForm" style="padding-left: 25px;">
   <div class="row">
       <div class="page-header" style="padding-left: 10px;">
         <h3>Documentos de interés</h3>
@@ -82,19 +90,24 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   <div class="row">
     <div class="col-md-9">
         <button type="button" class="btn btn-success" onclick="agregar()">
-        <span class="glyphicon glyphicon-plus" ></span> Agregar
+        <span class="glyphicon glyphicon-plus"></span> Agregar
         </button>
       </div>
   </div>
 
   <?php for ($i = 0; $i < sizeof($url); $i++) { ?>
   <div class="row" id="linkInput<?= $i ?>">
-      <div class="col-md-9 links">
+      <div class="col-md-4 links">
         <label>Descripción</label>
-        <?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'placeholder'=>'Descripción', 'id' => 'descripcion']); ?>
+        <?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'required','placeholder'=>'Descripción', 'id' => 'descripcion']);?>
+        </div>
+        <div class="col-md-4 links">
         <label>URL</label>
-        <?php echo $this->Form->text('url'.$i, ['value'=>$url[$i]->link_path, 'placeholder'=>'Enlace', 'id' => 'enlace']); ?>
+        <?php echo $this->Form->url('url'.$i, ['value'=>$url[$i]->link_path, 'required', 'pattern'=>'^https?://.+$', 'placeholder'=>'Enlace', 'id' => 'enlace']); ?>
+        </div>
+        <div class="col-md-4 links">
         <?php echo $this->Form->button('Eliminar', ['class'=>'btn btn-danger', 'type'=>'button', 'onclick'=>'eliminar(linkInput'.$i.')']); ?>
+        </div>
     </div>
   </div>
   <?php } ?>
@@ -131,9 +144,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
       $(container).append('<div class="row" id="linkInput'+ current_length + '">\
                  <div class="col-md-9 links">\
                  <label>Descripción</label>\
-                 <input name="description'+ current_length + '" class="form-control" type="text" placeholder="Descripción">\
+                 <input name="description'+ current_length + '" class="form-control" type="text" required placeholder="Descripción">\
                  <label>URL</label>\
-                 <input type="url" name="url'+ current_length + '" class="form-control" required pattern="https?://.+" placeholder="Enlace">\
+                 <input type="url" name="url'+ current_length + '" class="form-control" required pattern="^https?://.+$" placeholder="Enlace">\
                 <button class="btn btn-danger" type="button" onclick="eliminar(linkInput'+current_length+')">Eliminar</button>\
               </div>\
               </div>');
