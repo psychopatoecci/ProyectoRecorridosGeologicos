@@ -47,6 +47,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <script>
     function uploaded (ev) {
         document.getElementById ('divUpload').style.display = "none";
+        document.getElementById ('fileName').style.display = "inline-block";
+        document.getElementById ('fileName').value = document.getElementById('uploadBtn').files[0].name;
         document.getElementById ('saveButton').style.display = "inline-block";
     }
     var lastSeq = 0;
@@ -93,7 +95,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<span class="glyphicon glyphicon-upload"> </span> Subir imagen
     				<input type="file" class="upload" name="image" accept="image/*" id="uploadBtn" onchange="uploaded(event)" />
                 </div>
-                <br /><button class="btn btn-primary"  type="submit" id="saveButton" style="display:none;">Guardar</button>       
+                <input type="text" value="" id="fileName" style="display:none;" readonly="readonly">
+                </input><button class="btn btn-primary"  type="submit" id="saveButton" style="display:none;">Guardar</button>       
                 <?php echo $this->Form->hidden('uploading'); ?>
             <?php echo $this->Form->end();?>
         </div>
