@@ -183,7 +183,8 @@ class AdminController extends AppController
                         } // Fin if se subió.
                     }
                 }
-            } else if (isset($this->request->data['removing'])) {    
+            // No se están subiendo imágenes.
+            } else if (isset($this->request->data['removing'])) {
                 // Hay que borrar una imagen.
                 $image = $this -> request -> data ['imagen'];
                 $image = $contentsController->get ($image);
@@ -192,6 +193,7 @@ class AdminController extends AppController
                 } else {
                     $this->Flash->error(__('No se pudo borrar la imagen.'));
                 }
+            // No se están borrando imágenes.
             } else if (isset ($this->request->data['reorder'])) {
                 $newOrder = explode(',', $this->request->data['reorder']);
                 $seq = 0;
@@ -204,14 +206,22 @@ class AdminController extends AppController
                         break;
                     }
                 }
+            } else if ( isset ($this->request->data['message']) ) {
+                $toModify = $contentsController -> get ($this->request->data('id'));
+                $toModify -> description = $this->request->data ['message'];
+                if ($contentsController -> save ($toModify)) {
+                    $this->Flash->success(__('Cambios guardados.'));
+                } else {
+                    $this->Flash->error (__('No se pudo cambiar el mensaje.'));
+                }
             }
-		}
+        }
         //Crea el objeto query con la consulta especificada.
         
         $textsQuery = $pagesController->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'home',
                                 'Contents.content_type' => 'text',)
-        ));
+        ))->toArray ()[0];
 
         $imagesQuery = $pagesController->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'home',
@@ -1170,30 +1180,30 @@ class AdminController extends AppController
             }
         }
     }
-	
-	/**
+    
+    /**
      * mapdelete method
      *
      * @return \Cake\Network\Response|null
      */
     public function mapdelete($pointId){
         $modelMapPoints = new MapPointsController();
-		$query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
-		$point = $query->first();
-		$tourId = $point->path;
-		
-		if($this->request->is('post')){
-			/* Se guarda entidad en la base de datos */
-			if ($modelMapPoints->MapPoints->delete($point))
-			{
-				$this->Flash->success(__('The point has been removed.'));
-			}
-			else
-			{
-				$this->Flash->error(__('The point could not be removed. Please, try again.'));     
-			}
-		}
-		
-		$this->redirect('/admin/mapindex/'.$tourId);
-	}
+        $query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
+        $point = $query->first();
+        $tourId = $point->path;
+        
+        if($this->request->is('post')){
+            /* Se guarda entidad en la base de datos */
+            if ($modelMapPoints->MapPoints->delete($point))
+            {
+                $this->Flash->success(__('The point has been removed.'));
+            }
+            else
+            {
+                $this->Flash->error(__('The point could not be removed. Please, try again.'));     
+            }
+        }
+        
+        $this->redirect('/admin/mapindex/'.$tourId);
+    }
 }

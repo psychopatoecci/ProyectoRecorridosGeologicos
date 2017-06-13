@@ -24,12 +24,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     img {
         margin-bottom: 5px;
     }
-    .dropBox {
-        width: 350px;
-        height: 70px;
-        padding: 10px;
-        border: 1px solid #aaaaaa;    
-    }
+	.boton {
+		margin-left: 6px;
+	}
 </style>
 <script>
     var lastSeq = 0;
@@ -60,26 +57,28 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             }
         }
         sequences = sequences.substring (0, sequences.length - 1);
-        document.getElementById('reorderButton').innerHTML = '<form method="post" action="/admin/home"><input type="hidden" name="reorder" value="' + sequences + '"></input><input type="submit" value="Reordenar"></input></form>';
+        document.getElementById('reorderButton').innerHTML = '<form method="post" action="/admin/home"><input type="hidden"  name="reorder" value="' + sequences + '"></input><input type="submit" class="btn btn-primary boton" value="Reordenar"></input></form>';
     }
 </script>
 <div class = "col-md-12">
     <div class = "page-header" >   
         <h2><?php echo $title; ?></h2>
     </div> 
+	</div>
+	<div style="margin-left:15px">
         <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
             <h3>Subir imagen</h3>
             <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
                 <td><?php echo $this->Form->file('image', ['id' => 'boton']); ?>
-                    <?php echo $this->Form->submit('Aceptar'); ?>
+					<br /><button class="btn btn-primary"  type="submit" >Guardar</button>       
                 </td>
                 <?php echo $this->Form->hidden('uploading'); ?>
             <?php echo $this->Form->end();?>
         </div>
             
+        <h3>Arrastre im&aacute;genes para reacomodarlas detr&aacute;s de otras</h3>
         <table id="imagesTable">
             <?php foreach ($images as $image): ?>
-                <!--<div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>-->
                 <td class="imagen" draggable="true" ondragstart="drag(event)">
                     <img id="<?= $image->id?>" ondrop="drop(event)" ondragover="allowDrop(event)" width="200" height="200" src="<?php echo $initialPath.$image ['link_path'] ?>"></img>
                     <br />
@@ -92,6 +91,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?php endforeach; ?>
         </table>
         <div id="reorderButton">
-            
         </div>
-</div>
+        <div style="margin-bottom:30px;">
+			<h3>Cambiar mensaje de inicio</h3>
+            <?= $this->Form->create ('subir-mensaje') ?>
+            <?= $this->Form->text ('message', ['value' => $text['description']]) ?>
+            <input type="hidden"  name="id" value='<?= $text['id'] ?>'></input>
+            <br /><button class="btn btn-primary"  type="submit" >Guardar</button>       
+            <?= $this->Form->end () ?>
+        </div>
+	</div>
