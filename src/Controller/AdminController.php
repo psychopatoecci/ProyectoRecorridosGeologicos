@@ -99,7 +99,7 @@ class AdminController extends AppController
                          else if($updateLinkPath) {
                             //Se actualiza la base con la nueva extension si es necesario
                             if (!$this->Pages->Contents->save($image)) {
-                                $this->Flash->error("Error al intentar guardar la imagen");
+                                $this->Flash->error("Error al intentar guardar la imagen.");
                             }
                         }
                     }
@@ -110,7 +110,7 @@ class AdminController extends AppController
                 $text = $this->Pages->Contents->get($_POST['text_id']);
                 $text->description = $_POST['descripcion'];
                 if ($this->Pages->Contents->save($text)) {
-                    $this->Flash->success("Cambios guardados exitosamente,");
+                    $this->Flash->success("Cambios guardados exitosamente.");
                 }
 
                 if (isset($_POST['text2_id'])) {
@@ -266,8 +266,8 @@ class AdminController extends AppController
         if ($this->request->is(['post'])) {
             
                 //Verificar y actualizar la base
-                
-                $this->Flash->success(__('Cambios guardados.'));
+                //$this->Flash->success(__('Cambios guardados.'));
+                $this->Flash->success("Cambios guardados exitosamente.");
         }
         
         //Crea el objeto query con la consulta especificada.
@@ -361,12 +361,11 @@ class AdminController extends AppController
                 $content->page_id = 'toursDescription';             
                 $content->sequence_in_page = 0;
             }
-                $modelContents->Pages->Contents->save($content);            
-
+                $modelContents->Pages->Contents->save($content); 
             $i++;
         }
      
-     
+     	$this->Flash->success("Cambios guardados exitosamente.");
         $this->redirect(['controller' => 'admin', 'action'=>'description']);    
     }
 
