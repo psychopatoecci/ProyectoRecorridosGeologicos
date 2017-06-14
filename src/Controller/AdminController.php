@@ -17,7 +17,7 @@ class AdminController extends AppController
      * format and then update the database.
      * @return \Cake\Network\Response|null
      */ 
-    private function verify_image_file($imgName) 
+    private function verify_image_file($imgName = 'imagen_fondo') 
     {
         //Verificar y actualizar la base
         if(is_uploaded_file($_FILES[$imgName]['tmp_name'])) {
