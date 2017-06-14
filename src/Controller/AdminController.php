@@ -164,28 +164,28 @@ class AdminController extends AppController
         if ($this->request->is(['post', 'patch', 'put'])) {
             if (isset($this->request->data['uploading'])) {
                 if (is_uploaded_file($_FILES['image']['tmp_name'])) {
-                    
-                    
-                    
                     $imFile = $this->verify_image_file('image');
                     if (isset($imFile["error"])) {
                         $this->Flash->error ($imFile ["error"]);
                     } else {
-                        /*$imageNum = $contentsController -> find('all', [
+                        $imageNum = $contentsController -> find('all', [
                             'fields' => ['Contents.id']
-                        ])->max ('id') ['id'] + 1;*/
+                        ])->max ('id') ['id'] + 1;
+                        $lastSeqInPage = $contentsController -> find ('all', [
+                            'fields' => ['Contents.sequence_in_page'],
+                            'conditions' => ['Contents.page_id' => 'home']
+                        ])->max ('sequence_in_page') ['sequence_in_page'] + 1;
                         $image = $contentsController -> newEntity ();
-                        $name = $_FILES['image']['name'];
-                        $path = '../resources/home/carousel/'.$name;
-                        if (!move_uploaded_file($_FILES['image']['tmp_name'], 'resources/home/carousel/'.$name)) {
+                        $lpath = 'resources'.DS.'home'.DS.'carousel'.DS.$imageNum.'.'.$imFile['extension'];
+                        if (!move_uploaded_file($_FILES['image']['tmp_name'], WWW_ROOT.$lpath)) {
                             $msj_error = "Error al intentar subir la imagen '".$_FILES['image']['tmp_name']."'. Pudo haber ocurrido un ataque.";
                             $this->Flash->error ($msj_error);
                         } else {
                             $image -> page_id          = 'home'; 
                             $image -> content_type     = 'image';
                             $image -> description      = '';
-                            $image -> link_path        = $path;
-                            $image -> sequence_in_page = 0;
+                            $image -> link_path        = $lpath;
+                            $image -> sequence_in_page = $lastSeqInPage;
 
                             if ($contentsController -> save ($image)) {
                                 $this->Flash->success ('Imagen insertada correctamente');
@@ -196,6 +196,7 @@ class AdminController extends AppController
                         } // Fin if se subió.
                     }
                 }
+            // No se están subiendo imágenes.
             } else if (isset($this->request->data['removing'])) {
                 // Hay que borrar una imagen.
                 $image = $this -> request -> data ['imagen'];
