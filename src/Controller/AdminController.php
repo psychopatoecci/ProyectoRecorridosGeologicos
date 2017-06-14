@@ -267,46 +267,7 @@ class AdminController extends AppController
             
                 //Verificar y actualizar la base
                 //$this->Flash->success(__('Cambios guardados.'));
-                $this->Flash->success("Cambios guardados exitosamente.");
-        }
         
-        //Crea el objeto query con la consulta especificada.
-        $textQuery = $pagesController->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'toursDescription',
-                                'Contents.content_type' => 'text',)
-        ));
-
-        $imagesQuery = $pagesController->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'toursDescription',
-                                'Contents.content_type' => 'image',)
-        ));
-        
-        $urlQuery = $pagesController->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'toursDescription',
-                                'Contents.content_type' => 'url',)
-        )); 
-        
-
-        // Ejecuta la consulta al tratar de convertirla en array.
-        $text   = $textQuery->toArray();
-        $images = $imagesQuery->toArray();
-        $url    = $urlQuery->toArray();
-
-        $this->set([
-            'text'      => $text,              
-            'images'    => $images, 
-            'url'       => $url,       
-        ]);      
-    }
-    
-    /**
-     * Method to descriptions into tours tables.
-     * Created by Adrián Madrigal
-     * @return \Cake\Network\Response|null
-     */    
-    public function modifyDescription(){
-        //Para saber si es el url
-        $pagesController = new PagesController();
         $modelContents = new PagesController();
         
         $i = 0;
@@ -363,12 +324,39 @@ class AdminController extends AppController
             }
                 $modelContents->Pages->Contents->save($content); 
             $i++;
+        }     
+                $this->Flash->success("Cambios guardados exitosamente.");
         }
-     
-     	
-        $this->redirect(['controller' => 'admin', 'action'=>'description']);    
-    }
+        
+        //Crea el objeto query con la consulta especificada.
+        $textQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'text',)
+        ));
 
+        $imagesQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'image',)
+        ));
+        
+        $urlQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'toursDescription',
+                                'Contents.content_type' => 'url',)
+        )); 
+        
+
+        // Ejecuta la consulta al tratar de convertirla en array.
+        $text   = $textQuery->toArray();
+        $images = $imagesQuery->toArray();
+        $url    = $urlQuery->toArray();
+
+        $this->set([
+            'text'      => $text,              
+            'images'    => $images, 
+            'url'       => $url,       
+        ]);      
+    }
+    
 
     /**
      * Method to insert links into tours tables.

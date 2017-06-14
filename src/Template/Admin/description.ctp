@@ -22,7 +22,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 <div class="help-tip">
 	<p>
-		En esta página usted encontrará información general acerca de ambos recorridos, así como datos necesarios si desea realizarlos.
+		En esta página usted podrá modificar la información general acerca de ambos recorridos.
 	</p>
 </div>
 
@@ -43,7 +43,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<iframe width="100%" height="345" src="<?php echo $url[0]->link_path;?>" align="left"></iframe>	
 		</div>
 		
-		<form method="post" action="/admin/modifyDescription" name="formDescripcion" onsubmit="return validateForm()">
+		<form method="post" action="/admin/description" name="formDescripcion" onsubmit="return validateForm()">
 		<div class="form-group">
 		  <label>URL:</label>
 		  <input type="url" class="form-control" id="videoURL" name="videoURL" value="<?php echo $url[0]->link_path;?>">
@@ -114,6 +114,28 @@ function validateForm() {
         alert("El campo del título no puede estar vacío");
         return false;
     }
+
+    url = document.forms["formDescripcion"]["videoURL"].value;
+
+    if (url == "") {
+        alert("El campo del URL no puede estar vacío");
+        return false;
+    }
+    
+        if (url != undefined || url != '') {
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            if (match && match[2].length == 11) {
+                return true;
+            }
+            else {                
+                alert("El URL debe ser de YouTube");
+                return false;
+            }
+        }
+
+
 }
+
 
 </script>
