@@ -688,12 +688,12 @@ class AdminController extends AppController
             /*Se guarda el elemento Pages en la base de datos*/
             if($modelPages->Pages->save($pagesPoint)) 
             {
-                $this->Flash->success(__('The Pages has been saved.'));
+                //$this->Flash->success(__('The Pages has been saved.'));
                 
                 /* Se guarda el elemento MapPoint en la base de datos */
                 if ($modelMapPoints->MapPoints->save($mapPoint)) 
                 {
-                    $this->Flash->success(__('The MapPoint has been saved.'));
+                    //$this->Flash->success(__('The MapPoint has been saved.'));
 
 
                     /*-------------------------------------------------- Texto del punto ---------------------------------------------- */
@@ -716,11 +716,11 @@ class AdminController extends AppController
                         /* Se guarda entidad en la base de datos */
                         if ($modelPages->Pages->Contents->save($contentText))
                         {
-                            $this->Flash->success(__('The text has been saved.'));
+                            //$this->Flash->success(__('The text has been saved.'));
                         }
                         else
                         {
-                            $this->Flash->error(__('The text could not be saved. Please, try again.'));     
+                            //$this->Flash->error(__('The text could not be saved. Please, try again.'));     
                         }
                      }
 
@@ -758,9 +758,9 @@ class AdminController extends AppController
                                 }
 
                                 if ( move_uploaded_file($image[0]['tmp_name'], $path)) {
-                                    echo "El fichero es válido y se subió con éxito.\n";
+                                    // echo "El fichero es válido y se subió con éxito.\n";
                                 } else {
-                                    echo "¡Posible ataque de subida de ficheros!\n";
+                                    // echo "¡Posible ataque de subida de ficheros!\n";
                                 }
 
 
@@ -778,11 +778,11 @@ class AdminController extends AppController
                                 /* Se guarda entidad en la base de datos */
                                 if ($modelPages->Pages->Contents->save($contentImage))
                                 {
-                                    $this->Flash->success(__('The image has been saved.'));
+                                    //$this->Flash->success(__('The image has been saved.'));
                                 }
                                 else
                                 {
-                                    $this->Flash->error(__('The image could not be saved. Please, try again.'));     
+                                    //$this->Flash->error(__('The image could not be saved. Please, try again.'));     
                                 }
 
 
@@ -814,11 +814,11 @@ class AdminController extends AppController
                             /* Se guarda entidad en la base de datos */
                             if ($modelPages->Pages->Contents->save($contentVideo))
                             {
-                                $this->Flash->success(__('The video has been saved.'));
+                                //$this->Flash->success(__('The video has been saved.'));
                             }
                             else
                             {
-                                $this->Flash->error(__('The video could not be saved. Please, try again.'));     
+                                //$this->Flash->error(__('The video could not be saved. Please, try again.'));     
                             }
 
                         }
@@ -829,12 +829,12 @@ class AdminController extends AppController
                 }
                 else
                 {
-                    $this->Flash->error(__('The Point could not be saved. Please, try again.'));              
+                    //$this->Flash->error(__('The Point could not be saved. Please, try again.'));              
                 }
             }
             else
             {
-                $this->Flash->error(__('The Pages could not be saved. Please, try again.'));
+                //$this->Flash->error(__('The Pages could not be saved. Please, try again.'));
             }
         }
 
@@ -908,7 +908,7 @@ class AdminController extends AppController
                 /* Se guarda entidad en la base de datos */
                 if ($modelMapPoints->MapPoints->save($point))
                 {
-                    $this->Flash->success(__('The point has been modified.'));
+                    //$this->Flash->success(__('The point has been modified.'));
                 }
                 else
                 {
@@ -948,7 +948,7 @@ class AdminController extends AppController
                     /* Se guarda entidad en la base de datos */
                     if ($modelPages->Pages->Contents->save($contentText))
                     {
-                        $this->Flash->success(__('The text has been saved.'));
+                        //$this->Flash->success(__('The text has been saved.'));
                     }
                     else
                     {
@@ -965,7 +965,7 @@ class AdminController extends AppController
                     /* Se guarda entidad en la base de datos */
                     if ($modelPages->Pages->Contents->save($contentText))
                     {
-                        $this->Flash->success(__('The text has been modified.'));
+                        //$this->Flash->success(__('The text has been modified.'));
                     }
                     else
                     {
@@ -990,7 +990,7 @@ class AdminController extends AppController
                     /* Se guarda entidad en la base de datos */
                     if ($modelPages->Pages->Contents->delete($imageContent))
                     {
-                        $this->Flash->success(__('The image has been removed.'));
+                        //$this->Flash->success(__('The image has been removed.'));
                     }
                     else
                     {
@@ -1068,7 +1068,7 @@ class AdminController extends AppController
                         /* Se guarda entidad en la base de datos */
                         if ($modelPages->Pages->Contents->save($contentImageNew))
                         {
-                            $this->Flash->success(__('The image has been saved.'));
+                            //$this->Flash->success(__('The image has been saved.'));
                         }
                         else
                         {
@@ -1090,7 +1090,7 @@ class AdminController extends AppController
                             /* Se guarda entidad en la base de datos */
                             if ($modelPages->Pages->Contents->save($image))
                             {
-                                $this->Flash->success(__('The image has been modified.'));
+                                //$this->Flash->success(__('The image has been modified.'));
                             }
                             else
                             {
@@ -1117,7 +1117,7 @@ class AdminController extends AppController
                     /* Se guarda entidad en la base de datos */
                     if ($modelPages->Pages->Contents->delete($videoContent))
                     {
-                        $this->Flash->success(__('The video has been removed.'));
+                        //$this->Flash->success(__('The video has been removed.'));
                     }
                     else
                     {
@@ -1158,7 +1158,7 @@ class AdminController extends AppController
                     /* Se guarda entidad en la base de datos */
                     if ($modelPages->Pages->Contents->save($contentVideoNew))
                     {
-                        $this->Flash->success(__('The video has been saved.'));
+                        //$this->Flash->success(__('The video has been saved.'));
                     }
                     else
                     {
@@ -1180,7 +1180,7 @@ class AdminController extends AppController
                                 /* Se guarda entidad en la base de datos */
                                 if ($modelPages->Pages->Contents->save($video))
                                 {
-                                    $this->Flash->success(__('The video has been modified.'));
+                                    //$this->Flash->success(__('The video has been modified.'));
                                 }
                                 else
                                 {
@@ -1191,6 +1191,8 @@ class AdminController extends AppController
                     }
                 }
             }
+        
+        $this->Flash->success(__('El punto ha sido modificado correctamente'));
         }
     }
     
@@ -1202,24 +1204,27 @@ class AdminController extends AppController
      * @return \Cake\Network\Response|null
      */
     public function mapdelete($pointId){
-        $this->set('title', 'Eliminar un punto en el mapa');
-        $modelMapPoints = new MapPointsController();
-        $query = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
-        $point = $query->first();
-        $tourId = $point->path;
-        
-        if($this->request->is('post')){
-            /* Se guarda entidad en la base de datos */
-            if ($modelMapPoints->MapPoints->delete($point))
-            {
-                $this->Flash->success(__('The point has been removed.'));
-            }
-            else
-            {
-                $this->Flash->error(__('The point could not be removed. Please, try again.'));     
-            }
-        }
-        
-        $this->redirect('/admin/mapindex/'.$tourId);
-    }
+        $modelPages = new PagesController();
+		$modelMapPoints = new MapPointsController();
+		
+		$queryPages = $modelPages->Pages->find('all', array('conditions' => array('Pages.id' => $pointId)));
+		$queryPoint = $modelMapPoints->MapPoints->find('all', array('conditions' => array('MapPoints.page_id' => $pointId)));
+		$point = $queryPoint->first();
+		$tourId = $point->path;
+		$page = $queryPages->first();
+		
+		if($this->request->is('post')){
+			/* Se guarda entidad en la base de datos */
+			if ($modelPages->Pages->delete($page))
+			{
+				$this->Flash->success(__('Punto del recorrido eliminado correctamente.'));
+			}
+			else
+			{
+				$this->Flash->error(__('The point could not be removed. Please, try again.'));     
+			}
+		}
+		
+		$this->redirect('/admin/mapindex/'.$tourId);
+	}
 }
