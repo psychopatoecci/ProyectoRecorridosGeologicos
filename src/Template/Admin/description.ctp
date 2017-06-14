@@ -46,7 +46,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<form method="post" action="/admin/modifyDescription" name="formDescripcion" onsubmit="return validateForm()">
 		<div class="form-group">
 		  <label>URL:</label>
-		  <input type="text" class="form-control" id="videoURL" name="videoURL" value="<?php echo $url[0]->link_path;?>">
+		  <input type="url" class="form-control" id="videoURL" name="videoURL" value="<?php echo $url[0]->link_path;?>">
 		</div>		
 		
 		<div class="form-group">

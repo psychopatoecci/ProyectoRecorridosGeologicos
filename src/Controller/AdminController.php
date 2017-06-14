@@ -365,7 +365,7 @@ class AdminController extends AppController
             $i++;
         }
      
-     	$this->Flash->success("Cambios guardados exitosamente.");
+     	
         $this->redirect(['controller' => 'admin', 'action'=>'description']);    
     }
 
@@ -389,12 +389,12 @@ class AdminController extends AppController
 
         foreach ($dataArray as $key => $value) {
             if(strpos($key, 'url') !== false){
-                if(preg_match('^https?://.+$', $value)){ 
+                if(preg_match('/https?:\/\/.+/', $value)){ 
                     $urlArray[] = $value;
                 }
                 else
                 {
-                    $this->Flash->success("Debe ingresar un URL válido.");
+                   $this->Flash->success("Debe ingresar un URL válido.");
                 }
             }
             elseif (strpos($key, 'description') !== false) {

@@ -94,7 +94,7 @@ $cakeDescription = 'Recorrido Isla Bolaños';
 	    	<label>Descripción</label>
 	    	<?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'placeholder'=>'Descripción', 'id' => 'descripcion']); ?>
 	    	<label>URL</label>
-	    	<?php echo $this->Form->text('url'.$i, ['value'=>$url[$i]->link_path, 'placeholder'=>'Enlace', 'id' => 'enlace']); ?>
+	    	<?php echo $this->Form->url('url'.$i, ['value'=>$url[$i]->link_path, 'placeholder'=>'Enlace', 'id' => 'enlace']); ?>
 	    	<?php echo $this->Form->button('Eliminar', ['class'=>'btn btn-danger', 'type'=>'button', 'onclick'=>'eliminar(linkInput'.$i.')']); ?>
 		</div>
 	</div>
