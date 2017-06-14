@@ -76,31 +76,31 @@ class AdminController extends AppController
 
             if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
                 if (isset($_POST['image_id'])) {
-
-                    $imFile = $this->verify_image_file('imagen_fondo');
+                    $imFile = $this->verify_image_file();
                     if (isset($imFile["error"])) {
                         $this->Flash->error($imFile["error"]);
-                    }else{
 
-                        //Se guarda la imagen en el directorio
+                    } else {
+
+                        
                         $image = $this->Pages->Contents->get($_POST['image_id']);
+                        $updateLinkPath = !strpos($image->link_path, $imFile["extension"]);
+                        if($updateLinkPath) {
+                            //Si la extension es diferente se debe cambiar
+                            $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                        }
+
                         $path = str_replace("..", "webroot", $image->link_path);
-
+                        //Se guarda la imagen en el directorio
                         if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $path)) {
-
-                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";
                             $this->Flash->error($msj_error);
 
-                        } else {
-
-                            //if(!strpos($image->link_path, $imFile["extension"])){
-                                //Si la extension es diferente se actualiza la base con la nueva extension
-                                //$image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
-                                //if (!$this->Pages->Contents->save($image)) {
-                                  //  $this->Flash->error("Error al intentar guardar la imagen");
-                                //}
-                                
-                            //}
+                        } else if($updateLinkPath) {
+                            //Se actualiza la base con la nueva extension si es necesario
+                            if (!$this->Pages->Contents->save($image)) {
+                                $this->Flash->error("Error al intentar guardar la imagen");
+                            }
                         }
                     }
                 }
@@ -438,31 +438,31 @@ class AdminController extends AppController
 
             if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
                 if (isset($_POST['image_id'])) {
-
-                    $imFile = $this->verify_image_file('imagen_fondo');
+                    $imFile = $this->verify_image_file();
                     if (isset($imFile["error"])) {
                         $this->Flash->error($imFile["error"]);
-                    }else{
 
-                        //Se guarda la imagen en el directorio
+                    } else {
+
+                        
                         $image = $this->Pages->Contents->get($_POST['image_id']);
+                        $updateLinkPath = !strpos($image->link_path, $imFile["extension"]);
+                        if($updateLinkPath) {
+                            //Si la extension es diferente se debe cambiar
+                            $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                        }
+
                         $path = str_replace("..", "webroot", $image->link_path);
-
+                        //Se guarda la imagen en el directorio
                         if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $path)) {
-
-                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";
                             $this->Flash->error($msj_error);
 
-                        } else {
-                            /*
-                            if(!strpos($image->link_path, $imFile["extension"])){
-                                //Si la extension es diferente se actualiza la base con la nueva extension
-                                $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
-                                if (!$this->Pages->Contents->save($image)) {
-                                    $this->Flash->error("Error al intentar guardar la imagen");
-                                }
-                                
-                            }*/
+                        } else if($updateLinkPath) {
+                            //Se actualiza la base con la nueva extension si es necesario
+                            if (!$this->Pages->Contents->save($image)) {
+                                $this->Flash->error("Error al intentar guardar la imagen");
+                            }
                         }
                     }
                 }
@@ -529,31 +529,31 @@ class AdminController extends AppController
 
             if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
                 if (isset($_POST['image_id'])) {
-
-                    $imFile = $this->verify_image_file('imagen_fondo');
+                    $imFile = $this->verify_image_file();
                     if (isset($imFile["error"])) {
                         $this->Flash->error($imFile["error"]);
-                    }else{
 
-                        //Se guarda la imagen en el directorio
+                    } else {
+
+                        
                         $image = $this->Pages->Contents->get($_POST['image_id']);
+                        $updateLinkPath = !strpos($image->link_path, $imFile["extension"]);
+                        if($updateLinkPath) {
+                            //Si la extension es diferente se debe cambiar
+                            $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                        }
+
                         $path = str_replace("..", "webroot", $image->link_path);
-
+                        //Se guarda la imagen en el directorio
                         if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $path)) {
-
-                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";
                             $this->Flash->error($msj_error);
 
-                        } else {
-
-                            /*if(!strpos($image->link_path, $imFile["extension"])){
-                                //Si la extension es diferente se actualiza la base con la nueva extension
-                                $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
-                                if (!$this->Pages->Contents->save($image)) {
-                                    $this->Flash->error("Error al intentar guardar la imagen");
-                                }
-                                
-                            }*/
+                        } else if($updateLinkPath) {
+                            //Se actualiza la base con la nueva extension si es necesario
+                            if (!$this->Pages->Contents->save($image)) {
+                                $this->Flash->error("Error al intentar guardar la imagen");
+                            }
                         }
                     }
                 }
