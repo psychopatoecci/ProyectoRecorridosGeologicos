@@ -38,11 +38,17 @@ $cakeDescription = 'Descripción de los Recorridos';
 			</div>
 			<div  class="lista">
 				<ol id="lista2">
-				    <li><?php echo $text[1]->description; ?></li>
-				    <li><?php echo $text[2]->description; ?></li>
-				    <li><?php echo $text[3]->description; ?></li>
-				    <li><?php echo $text[4]->description; ?></li>
-				    <li><?php echo $text[5]->description; ?></li> 
+				<?php  
+					$i = 0;
+					foreach ($text as $textValue) {
+						
+						if($i != 0){
+							echo '<li>'.$text[$i]->description.'</li>';
+						}
+						$i++;						
+					}
+
+				?>
 				</ol>
 				</div>
 		</div>
