@@ -21,6 +21,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         margin: 6px;
         padding: 6px;
     }
+    
     img {
         margin-bottom: 5px;
     }
@@ -41,6 +42,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         cursor: pointer;
         opacity: 0;
         filter: alpha(opacity=0);
+    }
+    .divtabla{
+        width: 100%;
+        overflow-x:scroll;
     }
 
 </style>
@@ -82,10 +87,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         document.getElementById('reorderButton').innerHTML = '<form method="post" action="/admin/home"><input type="hidden"  name="reorder" value="' + sequences + '"></input><input type="submit" class="btn btn-primary boton" value="Reordenar"></input></form>';
     }
 </script>
+<?= $this->Html->css('admin.css') ?>
+
+<div class="help-tip">
+  <p>
+    Mediante esta página usted puede administrar el contenido de la pestaña de inicio. Para reordenar las imágenes arrastrelas hasta la posición deseada.
+  </p>
+</div>
+
 <div style="margin-left:35px;">
-    <div class = "page-header">   
+    <div class = "page-header"> 
         <h2><?php echo $title; ?></h2>
     </div> 
+    
     </div>
     <div style="margin-left:35px">
         <div style="padding-bottom:20px; padding-top: 10px;">
@@ -102,8 +116,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
             
         <h3>Arrastre im&aacute;genes para reacomodarlas</h3>
-        <table id="imagesTable" style="overflow:scroll;">
+        <div class="divtabla">
+        <table class="tabla" id="imagesTable">
             <?php foreach ($images as $image): ?>
+                
                 <td class="imagen" draggable="true" ondragstart="drag(event)">
                     <img id="<?= $image->id?>" ondrop="drop(event)" ondragover="allowDrop(event)" width="200" height="200" src="<?php echo $initialPath.$image ['link_path'] ?>"></img>
                     <br />
@@ -114,7 +130,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     </form>
                 </td>
             <?php endforeach; ?>
-        </table>
+        </table></div>
         <div id="reorderButton">
         </div>
         <div style="margin-bottom:30px;">
