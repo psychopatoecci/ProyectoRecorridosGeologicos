@@ -1037,10 +1037,10 @@ class AdminController extends AppController
                         }
 
                         if(move_uploaded_file($image[1]['tmp_name'], $path)) {
-                            echo "El fichero es válido y se subió con éxito.\n";
+                            //echo "El fichero es válido y se subió con éxito.\n";
                         } 
                         else{
-                            echo "¡Posible ataque de subida de ficheros!\n";
+                            //echo "¡Posible ataque de subida de ficheros!\n";
                         }
 
                         if($image[0] != ""){
