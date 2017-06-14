@@ -135,8 +135,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $(imgId).attr('src', e.target.result)
-
+                $(imgId).attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }

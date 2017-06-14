@@ -167,8 +167,7 @@ $cakeDescription = 'Recorrido Isla Bolaños';
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $(imgId).attr('src', e.target.result)
-
+                $(imgId).attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
