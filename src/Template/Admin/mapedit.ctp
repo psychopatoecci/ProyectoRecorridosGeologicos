@@ -154,7 +154,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				"<div class=\"row\">" +
 					"<div class=\"col-sm-5\">" +
 						"<label><font color=\"red\"></font>Nombre </label>" +
-						"<input class = \"info_name_image\" type=\"text\" name=\"container_image["+ id +"][0]\" id=\"container_image["+ id +"][0]\" value=\"" + nombre + "\"/>" +
+						"<input class = \"info_name_image\" type=\"text\" name=\"container_image["+ id +"][0]\" id=\"container_image["+ id +"][0]\" value=\"" + nombre + "\"/ readonly>" +
 					"</div>" +
 					"<div class=\"col-sm-5\">" +
 						"<div><label><font color=\"red\"></font>Imagen </label></div>" +
@@ -231,7 +231,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				"<div class=\"row\">" +
 					"<div class=\"col-sm-5\">" + 
 						"<label><font color=\"red\"></font>Nombre </label>" +
-						"<input class = \"info_data\" type=\"text\" id=\"container_video[" + id + "][0]\" name=\"container_video[" + id + "][0]\" value=\"" + nombre + "\" >" + 
+						"<input class = \"info_data\" type=\"text\" id=\"container_video[" + id + "][0]\" name=\"container_video[" + id + "][0]\" value=\"" + nombre + "\" readonly>" + 
 					"</div>" + 
 					"<div class=\"col-sm-5\">" +
 						"<div><label><font color=\"red\"></font>Video </label></div>" + 
@@ -493,11 +493,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				<?php foreach ($textContents as $contentText): ?>
 					<div class="row">
 							<label><font color="red"></font>Descripción </label>
-							<?php if(!empty($contextText->link_path)):?>
-								<textarea  class = "info_data" type="text" id="descripcion_point" name="descripcion_point" value="<?php echo $contentText->link_path?>" rows="10"><?php echo $contentText->link_path?></textarea>
-							<?php else: ?>
-								<textarea  class = "info_data" type="text" id="descripcion_point" name="descripcion_point" value="<?php echo $contentText->description?>" rows="10"><?php echo $contentText->description?></textarea>
-							<?php endif; ?>
+							<textarea  class = "info_data" type="text" id="descripcion_point" name="descripcion_point" value="<?php echo $contentText->description?>" rows="10"><?php echo $contentText->description?></textarea>
 					</div>
 				<?php endforeach; ?>
 			</div>
