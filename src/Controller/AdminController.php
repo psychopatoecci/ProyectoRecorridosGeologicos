@@ -369,7 +369,7 @@ class AdminController extends AppController
         $callerTourPage = $this->request->getQuery('page');
         $this->loadModel('Pages');
 
-        $this->Pages->Contents->deleteAll(array('Contents.content_type' => 'url'));
+        $this->Pages->Contents->deleteAll(array('Contents.content_type' => 'url', 'Contents.page_id' => $callerTourPage));
         
         $dataArray          = $this->request->getData();
         $urlArray           = array();

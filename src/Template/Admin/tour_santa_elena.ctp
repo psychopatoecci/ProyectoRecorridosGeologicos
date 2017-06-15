@@ -67,10 +67,10 @@ $cakeDescription = 'Recorrido Península de Santa Elena';
              </table>
           </div>
 
-          <?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourSantaElena"]); ?>
-
   </div> <!-- Fin del container -->
 </div> <!--  Fin del container-fluid -->
+
+<?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourSantaElena"]); ?>
 
 <div class="container-fluid" >
 <div class="container" id="urlForm" style="padding:25px;">
