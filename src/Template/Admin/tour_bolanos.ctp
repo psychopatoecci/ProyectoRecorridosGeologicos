@@ -67,11 +67,11 @@ $cakeDescription = 'Recorrido Isla Bolaños';
              </table>
           </div>
 
-          <?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourBolanos"]); ?>
 
   </div> <!-- Fin del container -->
 </div> <!--  Fin del container-fluid -->
 
+          <?php echo $this->Form->create('subir_enlaces', ['url'=>"/admin/toursLinks?page=tourBolanos"]); ?>
 <div class="container-fluid" >
 <div class="container" id="urlForm" style="padding:25px;">
 	<div class="row">
