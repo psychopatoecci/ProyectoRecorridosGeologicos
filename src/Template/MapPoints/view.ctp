@@ -131,7 +131,7 @@ function initialize() {
     new google.maps.Point(12, 35));
 
     //infowindow.setContent($content[0]);
-    var factory = new google.maps.LatLng(<?= $point ['longitude']; ?>, <?= $point ['latitude']; ?>);   
+    var factory = new google.maps.LatLng(<?= $point ['latitude']; ?>, <?= $point ['longitude']; ?>);   
     // marker options
     var marker = new google.maps.Marker({
       position: factory,
