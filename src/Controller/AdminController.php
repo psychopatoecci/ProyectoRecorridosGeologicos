@@ -1168,6 +1168,7 @@ class AdminController extends AppController
                 $videos = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'video'))); 
                 if ($videos != null){
                     foreach($videos as $video){
+                        if(isset($container_video[$video->id])){
                         if($container_video[$video->id] != null){
                             if($video->description != $container_video[$video->id][0]){
                                 $video->description = $container_video[$video->id][0];
@@ -1183,6 +1184,7 @@ class AdminController extends AppController
                                 }
                             }
                         }
+                    }
                     }
                 }
             }
