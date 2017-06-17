@@ -876,6 +876,8 @@ class AdminController extends AppController
         if ($this->request->is('post')) {
             //$debug($this->request->data($pointId));
             $pointName = $this->request->data('pointName');
+            $pointLatitude = $this->request->data('latitude');
+            $pointLongitude = $this->request->data('longitude');
             $descripcion_point = $this->request->data('descripcion_point');
             $container_image_delete = $this->request->data('container_image_delete');
             $container_image = $this->request->data('container_image');
@@ -892,6 +894,8 @@ class AdminController extends AppController
             
             if($pointName != $point->name){
                 $point->name = $pointName;
+                $point->latitude = $pointLatitude;
+                $point->longitude = $pointLongitude;
                 
                 /* Se guarda entidad en la base de datos */
                 if ($modelMapPoints->MapPoints->save($point))
@@ -1071,21 +1075,24 @@ class AdminController extends AppController
             if($container_image != null){
                 $images = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $point->page_id, 'Contents.content_type' => 'image'))); 
                 foreach($images as $image){
-                    if($container_image[$image->id] != null){
-                        if($image->description != $container_image[$image->id][0]){
-                            $image->description = $container_image[$image->id][0];
-                        
-                            /* Se guarda entidad en la base de datos */
-                            if ($modelPages->Pages->Contents->save($image))
-                            {
-                                //$this->Flash->success(__('The image has been modified.'));
-                            }
-                            else
-                            {
-                                $this->Flash->error(__('The image could not be modified. Please, try again.'));     
+                    if (isset($container_image[$image->id])){
+                        if($container_image[$image->id] != null){
+                            if($image->description != $container_image[$image->id][0]){
+                                $image->description = $container_image[$image->id][0];
+                            
+                                /* Se guarda entidad en la base de datos */
+                                if ($modelPages->Pages->Contents->save($image))
+                                {
+                                    //$this->Flash->success(__('The image has been modified.'));
+                                }
+                                else
+                                {
+                                    $this->Flash->error(__('The image could not be modified. Please, try again.'));     
+                                }
                             }
                         }
                     }
+
                 }
             }
             
