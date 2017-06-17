@@ -453,7 +453,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<div class="col-sm-6">
 						<div style = "margin-top:10px;">
 						<label><font color="red"></font>Latitud</label>
-						<input class = "form-control" type="number" id="latitude" name="latitude" min="-86.210410" max="-82.381674" step="0.0000001" value="<?php echo $point->latitude ?>" style="background-color:white;" placeholder="Ingrese la latitud el punto">
+						<input class = "form-control" type="number" id="latitude" name="latitude"  min="7.967310" max="11.302868" step="0.0000001" value="<?php echo $point->latitude ?>" style="background-color:white;" placeholder="Ingrese la latitud el punto">
 							<span class="error" aria-live="polite" id ="latitude_validate"></span>
 						</div>
 					</div>
@@ -461,7 +461,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				<div class="row">
 				 <div class="col-sm-6">
 						<label><font color="red"></font>Longitud</label>
-						<input class = "form-control" type="number" id="longitude" name="longitude" min="7.967310" max="11.302868" step="0.0000001" value="<?php echo $point->longitude ?>" style="background-color:white;" placeholder="Ingrese la longitud del punto">
+						<input class = "form-control" type="number" id="longitude" name="longitude" min="-86.210410" max="-82.381674" step="0.0000001" value="<?php echo $point->longitude ?>" style="background-color:white;" placeholder="Ingrese la longitud del punto">
 						<span class="error" aria-live="polite" id = "longitude_validate"></span>
 				</div>
 			</div>
@@ -657,7 +657,7 @@ document.getElementById("defaultOpen").click();
 	    }
 	    else
 	    {
-			if ( parseFloat(latitude)>= -86.210410 && parseFloat(latitude) <= -82.381674 ){
+			if ( parseFloat(latitude)>=7.967310 && parseFloat(latitude) <= 11.302868 ){
 		    	$('#latitude_validate p').remove();
 		    	$("#latitude_validate").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
 	    		setTimeout(function() { $('#latitude_validate p').fadeOut(); }, 8000); 
@@ -684,7 +684,7 @@ document.getElementById("defaultOpen").click();
 	    }
 	    else
 	    {
-	    	if ( parseFloat(longitude)>=7.967310 && parseFloat(longitude) <= 11.302868 ){
+	    	if ( parseFloat(longitude)>= -86.210410 && parseFloat(longitude) <= -82.381674 ){
 		    	$('#longitude_validate p').remove();
 		    	$("#longitude_validate").append("<p style = \"color:green; font-weight: bold;\">*Dato ingresado correctamente</p> ")
 	    		setTimeout(function() { $('#longitude_validate p').fadeOut(); }, 8000); 
