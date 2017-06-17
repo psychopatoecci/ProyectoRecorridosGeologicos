@@ -58,7 +58,7 @@ $cakeDescription = 'Recorrido Isla Bolaños';
 						<p>
 						<?php for ($i = 0; $i < sizeof($url); $i++) { ?>
 							<span class="glyphicon glyphicon-file"></span>
-							<a href="<?php echo $url[0]->link_path; ?>" target='_blank'><?php echo $url[$i]->description; ?></a> 
+							<a href="<?php echo $url[$i]->link_path; ?>" target='_blank'><?php echo $url[$i]->description; ?></a> 
 							<br>
 						<?php } ?>
 						</p>
