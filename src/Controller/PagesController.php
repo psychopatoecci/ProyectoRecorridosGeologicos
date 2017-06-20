@@ -256,4 +256,10 @@ class PagesController extends AppController
     {
 		
     }
+
+    //creditos
+    public function about()
+    {
+
+    }
 }
