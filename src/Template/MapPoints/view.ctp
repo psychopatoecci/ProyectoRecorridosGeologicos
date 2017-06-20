@@ -267,4 +267,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
   }
   </script>
 
+  <style type="text/css">
+    .btn .btn-warning {
+      background-color: red;
+    }
+  </style>
+
 
