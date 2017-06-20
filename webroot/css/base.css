@@ -42,12 +42,12 @@ header{
 
 /* Fondo de la barra principal y tamaño de la letra*/
 .navbar{
-	background-color: #F37021;
+	background-color: #0C6CAE;
 	border-radius: 0;
 	font-size: 15px;
 	font-weight: bold;
 	border-style: solid;
-    border-color: #404040 #F37021 #404040 #F37021 ;
+    border-color: #404040 #0C6CAE #404040 #0C6CAE ;
 }
 
 .navbar-inverse
@@ -64,44 +64,44 @@ header{
 /* Fondo y letra de los enlaces principales cuando el mouse se encuentra encima */
 .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover{
 	color: white;
-	background-color: #F09050;
+	background-color: #248CCD;
 }
 
 /* Fondo y letra de los enlace que tienen menu desplegable cuando se da click encima */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover{
 	color: white;
-	background-color: #F09050;
+	background-color: #248CCD;
 }
 
 /* Fondo del menu desplegable*/
 .dropdown-menu{
-	background-color:#F37021;
+	background-color:#0C6CAE;
 
 }
 
 /* Fondo y letra de los enlaces dentro del menu desplegable cuando el mouse no se encuentra encima*/
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
 	color: white;
-	background-color: #F37021;
+	background-color: #0C6CAE;
 }
 
 /* Fondo y letra de los enlaces dentro del menu desplegable cuando el mouse se encuentra encima */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open .dropdown-menu>li>a :focus, .navbar-inverse .navbar-nav > .open .dropdown-menu>li>a:hover{
 	color: white;
-	background-color: #F09050;
+	background-color: #248CCD;
 }
 
 /* Fondo y letra para poner los activos*/
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
 {
 	color: white;
-	background-color: #F09050;
+	background-color: #248CCD;
 }
 
 /* Fondo cuando se mantiene pulsado el icono de navegacion en modo responsive*/
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover
 {
-	background-color: #F09050;
+	background-color: #248CCD;
 }
 
 /* Borde del icono de navegacion*/
@@ -122,7 +122,7 @@ header{
   padding-top:0;
   margin-bottom:0;
   height: auto;
-  background-color:#e0e0e0;
+  background-color:#f6f6f6;
 
 
 }
@@ -137,7 +137,7 @@ header{
   padding-top:0;
   margin-bottom:0;
   height: auto;
-  background-color: #F37021;
+  background-color: #0C6CAE;
 
 }
 
@@ -291,14 +291,14 @@ header{
 	/* Fondo y letra de los enlaces principales cuando el mouse se encuentra encima */
 	.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover{
 		color: white;
-		background-color: #F09050;
+		background-color: #248CCD;
 		height: 48px;
 	}
 
 	/* Fondo y letra de los enlace que tienen menu desplegable cuando se da click encima */
 	.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover{
 		color: white;
-		background-color: #F09050;
+		background-color: #248CCD;
 		height: 48px;
 	}
 
@@ -312,7 +312,7 @@ header{
 	.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover
 	{
 		color: white;
-		background-color: #F09050;
+		background-color: #248CCD;
 		height: 48px;
 	}
 
