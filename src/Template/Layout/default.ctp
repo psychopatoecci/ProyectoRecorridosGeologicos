@@ -87,6 +87,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 									</ul>
 							</li>
 							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/contact' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'pages','action'=> 'contact'],['escape' => false]);?></li>
+							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/about' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-blackboard">&#8194;</span>Créditos',['controller'=>'pages','action'=> 'about'],['escape' => false]);?></li>
 						</ul>
 					</div>
 				</div>
