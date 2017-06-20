@@ -55,7 +55,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				</div> 
 			</div>
 		</header>
-
+		<div class="barra_encabezado"></div>
 		<div class="container-fluid">  
 			<nav class="navbar navbar-inverse">
 				<div class="container">

@@ -30,6 +30,19 @@ header{
    margin-bottom: 7px;
 }
 
+
+/*-------------------------------------------- Barra de imagen  -------------------------------------------- */
+
+.barra_encabezado
+{
+	background-color:red; 
+	height: 60px;
+	background-image: url("../img/barra_imagen.png");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: cover;
+}
+
 /*-------------------------------------------- Barra de navegación  -------------------------------------------- */
 
 /* Provoca que la barra sea continua*/
@@ -48,6 +61,7 @@ header{
 	font-weight: bold;
 	border-style: solid;
     border-color: #404040 #0C6CAE #404040 #0C6CAE ;
+
 }
 
 .navbar-inverse
