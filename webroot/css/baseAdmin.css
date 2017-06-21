@@ -26,8 +26,8 @@ header{
 .row {
    margin-right: 0px;
    margin-left: 0px;
-   margin-top: 7px;
-   margin-bottom: 7px;
+   margin-top: 0px;
+   margin-bottom: 0px;
 }
 
 
@@ -132,12 +132,76 @@ header{
   padding-left:0;
   padding-right:0;
   padding-bottom:0;
-  padding-top:0;
-  margin-bottom:0;
+  padding-top:8px;
+  margin-bottom:8px;
   height: auto;
-  background-color:#e0e0e0;
+  background-color:#f6f6f6;
 
 
+}
+
+#footer_responsive_1 {
+
+  width: 100%;
+  padding-left:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-top:8px;
+  margin-bottom:8px;
+  height: auto;
+  background-color:#f6f6f6;
+
+}
+
+#footer_responsive_2 {
+
+  width: 100%;
+  padding-left:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-top:8px;
+  margin-bottom:8px;
+  height: auto;
+  background-color:#f6f6f6;
+
+}
+
+#footer_responsive_3 {
+
+  width: 100%;
+  padding-left:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-top:8px;
+  margin-bottom:8px;
+  height: auto;
+  background-color:#f6f6f6;
+
+}
+
+
+.footertext
+{
+	font-weight: bold;
+}
+
+
+.responsive_2 
+{
+    width: 25% !important;
+    float: left !important;
+}
+
+.responsive_3
+{
+    width: 49% !important;
+    float: left !important;
+}
+
+.derechos_text
+{
+	color:white;
+	font-weight: normal;
 }
 
 /* Bloque de los derechos del pie*/
@@ -147,8 +211,8 @@ header{
   padding-left:0;
   padding-right:0;
   padding-bottom:0;
-  padding-top:0;
-  margin-bottom:0;
+  padding-top:8px;
+  margin-bottom:8px;
   height: auto;
   background-color: #005DA4;
   color: white;
@@ -163,6 +227,15 @@ header{
 
 }
 
+.derechos_reservados_left
+{
+	padding-left: 55px !important;
+}
+
+.derechos_reservados_right
+{
+	padding-right: 55px !important;
+}
 /*----------------------------------------------- Estilos responsive --------------------------------------------- */
 
 /* Estilos responsive del header */
@@ -348,6 +421,15 @@ header{
 /* Estilos responsive del footer */
 @media (max-width: 991px) { 
 	
+	.derechos_reservados_left
+	{
+		padding-left: 0px !important;
+	}
+
+	.derechos_reservados_right
+	{
+		padding-right: 0px !important;
+	}
 	.row .col-md-6 .centering a img 
 	{
 		text-align: center;
@@ -359,3 +441,132 @@ header{
 	}
 }
 
+/* Estilos responsive del footer */
+@media (min-width: 492px){
+
+	.responsive_2 {
+	    width: 25% !important;
+	    float: left !important;
+	}
+	.responsive_3 {
+	    width: 49% !important;
+	    float: left !important;
+	}
+}
+
+/* Estilos responsive del footer */
+@media (min-width: 1000px){
+	.normal_footer {
+	    width: 13.66666667% !important;
+	}
+}
+
+/* Estilos responsive del footer */
+@media (min-width: 1760px)
+{
+	#footer
+	{
+		display: block;
+	}
+
+	#footer_responsive_1
+	{
+		display: none;
+	}
+	#footer_responsive_2
+	{
+		display: none;
+	}
+	#footer_responsive_3
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del footer */
+@media (max-width:  1759px) and  (min-width: 1000px)
+{
+	#footer
+	{
+		display: none;
+	}
+
+	#footer_responsive_1
+	{
+		display: block;
+	}
+	#footer_responsive_2
+	{
+		display: none;
+	}
+	#footer_responsive_3
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del footer */
+@media (max-width:  999px) and  (min-width: 900px)
+{
+	#footer
+	{
+		display: none;
+	}
+
+	#footer_responsive_1
+	{
+		display: none;
+	}
+	#footer_responsive_2
+	{
+		display: block;
+	}
+	#footer_responsive_3
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del footer */
+@media (max-width:  900px) and  (min-width: 556px)
+{
+	#footer
+	{
+		display: none;
+	}
+
+	#footer_responsive_1
+	{
+		display: none;
+	}
+	#footer_responsive_2
+	{
+		display: none;
+	}
+	#footer_responsive_3
+	{
+		display: block;
+	}
+}
+
+/* Estilos responsive del footer */
+@media (max-width:  555px) and  (min-width: 0px)
+{
+	#footer
+	{
+		display: block;
+	}
+
+	#footer_responsive_1
+	{
+		display: none;
+	}
+	#footer_responsive_2
+	{
+		display: none;
+	}
+	#footer_responsive_3
+	{
+		display: none;
+	}
+}
