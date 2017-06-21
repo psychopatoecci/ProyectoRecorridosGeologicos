@@ -27,7 +27,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     	<?php echo $title; ?>
 	</title>
 
-    <?= $this->Html->meta('icon') ?>
+    <?php echo $this->Html->meta(
+    'ruta_geologica.ico',
+    '/ruta_geologica.ico',
+    array('type' => 'icon')
+	);
+	?>
 
 	<?= $this->Html->script('jquery-3.2.0.min') ?>
     <?= $this->Html->script('bootstrap.min') ?>		
