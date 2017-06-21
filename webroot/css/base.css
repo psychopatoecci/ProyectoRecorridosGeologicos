@@ -132,9 +132,9 @@ header{
   width: 100%;
   padding-left:0;
   padding-right:0;
-  padding-bottom:0;
+  padding-bottom:8px;
   padding-top:8px;
-  margin-bottom:8px;
+  margin-bottom:0;
   height: auto;
   background-color:#f6f6f6;
 
@@ -146,9 +146,9 @@ header{
   width: 100%;
   padding-left:0;
   padding-right:0;
-  padding-bottom:0;
+  padding-bottom:8px;
   padding-top:8px;
-  margin-bottom:8px;
+  margin-bottom:0;
   height: auto;
   background-color:#f6f6f6;
 
@@ -159,9 +159,9 @@ header{
   width: 100%;
   padding-left:0;
   padding-right:0;
-  padding-bottom:0;
+  padding-bottom:8px;
   padding-top:8px;
-  margin-bottom:8px;
+  margin-bottom:0;
   height: auto;
   background-color:#f6f6f6;
 
@@ -172,9 +172,9 @@ header{
   width: 100%;
   padding-left:0;
   padding-right:0;
-  padding-bottom:0;
+  padding-bottom:8px;
   padding-top:8px;
-  margin-bottom:8px;
+  margin-bottom:0;
   height: auto;
   background-color:#f6f6f6;
 
