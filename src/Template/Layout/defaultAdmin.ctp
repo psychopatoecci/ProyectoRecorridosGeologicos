@@ -103,11 +103,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					</div>
 
 				</div>
-				<div "collapse navbar-collapse" id="navbar-collapse-4">
+
+                <?php
+                    if ($this->request->session()->read('Auth.User')) {
+                        echo '<div "collapse navbar-collapse" id="navbar-collapse-4">
 						<ul class = "nav navbar-nav navbar-right" style="padding-right: 25px">
-							<li><?= $this->Html->link ('<span class="glyphicon glyphicon-log-out">&#8194;</span>Cerrar sesión',['controller'=>'users','action'=> 'logout'],['escape' => false]);?></li>
-						</ul>
-				</div>
+                            <li>'.
+                            $this->Html->link ('<span class="glyphicon glyphicon-log-out">&#8194;</span>Cerrar sesión',['controller'=>'users','action'=> 'logout'],['escape' => false])
+                            .'</li></ul></div>';
+                    } ?>
 			</nav>
 		</div>
 		
