@@ -54,6 +54,7 @@ INSERT INTO contents VALUES (22, 'tourSantaElena', '../resources/travel/santa_el
 INSERT INTO contents VALUES (23, 'tourSantaElena', '../resources/travel/santa_elena/santa_elena.txt','La Península de Santa Elena se encuentra compuesta por rocas ígneas y sedimentarias. Las primeras corresponden a peridotitas formadas en el manto superior de la Tierra, mientras que, las últimas son calizas e intercalaciones de areniscas y lutitas, las formaciones de El Viejo, Santa Ana, Curú y Descartes, pertenecen respectivamente a esos tipos de roca generadas en el talud continental, contenidas en una historia geológica de más de 100 millones de años, culminando en Isla Bolaños.', 'text', 0);
 INSERT INTO contents VALUES (24, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000365/4199','Magmatic and geotectonic significance of Santa Elena Peninsula, Costa Rica', 'url', 0);
 INSERT INTO contents VALUES (25, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000364/4198','Evidence for middle Cretaceous accretion at Santa Elena Peninsula (Santa Rosa Accretionary Complex), Costa Rica', 'url', 1);
+INSERT INTO contents VALUES (25, 'tourSantaElena', 'http://www.geologia.ucr.ac.cr/revista/revista/to_pdf/revista/33/33-2-dunas.pdf','Hallazgo de dunas fósiles del final del Pleistoceno en las islas Murciélago, Costa Rica', 'url', 1);
 
 -- TourDescripcion link del vídeo
 INSERT INTO contents VALUES(26, 'toursDescription','https://www.youtube.com/embed/tS5jzLqhCzI?autoplay=1&amp;rel=0&amp;showinfo=0','','url',0);

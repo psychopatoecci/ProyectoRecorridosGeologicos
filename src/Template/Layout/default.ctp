@@ -112,39 +112,74 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 
 	<div id="footer">
-		<div class="container">
+			<div class="container">
 			<div class="row">
 				<br>
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<center>
 						<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
 						<br>
 						<h4 class="footertext">Vicerrectoría de Investigación</h4>
-						<p class="footertext"> Ente responsable de supervisar, coordinar, estimular y divulgar la investigación en la Universidad de Costa Rica.<br>
 					</center>
 					<p>&nbsp;</p>
 				</div>
-				<div class="col-md-4">
-					<center>
-						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
-						<br>
-						<h4 class="footertext">Centro de Investigación en Ciencias Geológicas</h4>
-						<p class="footertext">Unidad de investigación dedicada al estudio de los procesos geológicos.<br>
-					</center>
-					<p>&nbsp;</p>
-				</div>
-				  
-				<div class="col-md-4">
+
+				<div class="col-md-2">
 					<center>
 						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
 						<br>
 						<h4 class="footertext">Museo de la Universidad de Costa Rica</h4>
-						<p class="footertext"> Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.<br>
 					</center>
+					<p>&nbsp;</p>
+				</div>
+
+				<div class="col-md-2">
+					<center>
+						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" /></a>
+						<br>
+						<h4 class="footertext">Escuela Centroamericana de Geología</h4>
+					</center>
+					<p>&nbsp;</p>
+				</div>
+
+				<div class="col-md-2">
+					<center>
+						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
+						<br>
+						<h4 class="footertext">Escuela de Ciencias de la Computación e Informática</h4>
+					</center>
+					<p>&nbsp;</p>
+				</div>
+				
+				<div class="col-md-2">
+					<center>
+						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
+						<br>
+						<h4 class="footertext">Centro de Investigación en Ciencias Geológicas</h4>
+					</center>
+					<p>&nbsp;</p>
+				</div>
+
+				<div class="col-md-2">
+					<center>
+						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
+						<br>
+						<h4 class="footertext">Área de Conservación Guanacaste</h4>
+					</center>
+					<p>&nbsp;</p>
+				</div>
+
+				<div class="col-md-2">
+					<center>
+						<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
+						<br>
+						<h4 class="footertext">World Heritage</h4>
+					</center>
+					<p>&nbsp;</p>
 				</div>
 				 
-			</div>
-		</div>
+			</div>			
+	</div>
 
 	<div id="derechos">
 		<div class="container">
@@ -159,8 +194,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<a title="Canal Oficial de Youtube" href="/"><img src="/img/logo_youtube_black.png" alt="logo_youtube"/></a>
 				</center>
 				</div>
-
-				 
 			</div>
 		</div>
 

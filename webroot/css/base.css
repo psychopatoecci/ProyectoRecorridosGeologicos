@@ -35,7 +35,7 @@ header{
 
 .barra_encabezado
 {
-	background-color:red; 
+	background-color:#0C6CAE; 
 	height: 60px;
 	background-image: url("../img/barra_imagen.png");
     background-repeat: repeat-y;
@@ -49,7 +49,7 @@ header{
 .container-fluid {
     padding-right: 0px;
     padding-left: 0px;
-    margin-right: auto;
+    margin-right: 5px;
     margin-left: auto;
 }
 
