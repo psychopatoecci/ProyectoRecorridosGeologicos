@@ -130,57 +130,266 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 
 	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<br>
-				<div class="col-md-4">
-					<center>
-						<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
-						<br>
-						<h4 class="footertext">Vicerrectoría de Investigación</h4>
-						<p class="footertext"> Ente responsable de supervisar, coordinar, estimular y divulgar la investigación en la Universidad de Costa Rica.<br>
-					</center>
-					<p>&nbsp;</p>
+		<div class="row">
+			<div>
+				<div class="col-md-2 normal_footer" style="margin-left: 3%;">
+						<center>
+							<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
+							<br>
+							<h5 class="footertext">Vicerrectoría de Investigación</h5>	
+						</center>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2 normal_footer">
+					<center>
+						<p>&nbsp;</p>
+						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" /></a>
+						<br>
+						<p>&nbsp;</p>
+						<h5 class="footertext">Escuela Centroamericana de Geología</h5>
+					</center>
+				</div>
+				<div class="col-md-2 normal_footer">
+					<center>
+						<p>&nbsp;</p>
+						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
+						<br>
+						<p>&nbsp;</p>
+						<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
+					</center>
+				</div>
+				<div class="col-md-2 normal_footer">
 					<center>
 						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
 						<br>
-						<h4 class="footertext">Centro de Investigación en Ciencias Geológicas</h4>
-						<p class="footertext">Unidad de investigación dedicada al estudio de los procesos geológicos.<br>
-					</center>
-					<p>&nbsp;</p>
+						<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
+					</center>					
 				</div>
-				  
-				<div class="col-md-4">
+				<div class="col-md-2 normal_footer">
 					<center>
 						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
 						<br>
-						<h4 class="footertext">Museo de la Universidad de Costa Rica</h4>
-						<p class="footertext"> Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.<br>
+						<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
+					</center>	
+				</div>
+				<div class="col-md-2 normal_footer">
+					<center>
+						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
+						<br>
+						<h5 class="footertext">Área de Conservación Guanacaste</h5>
+					</center>					
+				</div>
+				<div class="col-md-2 normal_footer">
+					<center>
+						<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
+						<br>
+						<h5 class="footertext">World Heritage</h5>
 					</center>
 				</div>
-				 
 			</div>
 		</div>
+	</div>
+
+	<div id="footer_responsive_1">
+		<div class="row">
+				<div class="col-md-3">
+						<center>
+							<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
+							<br>
+							<h5 class="footertext">Vicerrectoría de Investigación</h5>	
+						</center>
+				</div>
+				<div class="col-md-3">
+					<center>
+						<p>&nbsp;</p>
+						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" /></a>
+						<br>
+						<p>&nbsp;</p>
+						<h5 class="footertext">Escuela Centroamericana de Geología</h5>
+					</center>
+				</div>
+				<div class="col-md-3">
+					<center>
+						<p>&nbsp;</p>
+						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
+						<br>
+						<p>&nbsp;</p>
+						<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
+					</center>
+				</div>
+				<div class="col-md-3">
+					<center>
+						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
+						<br>
+						<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
+					</center>					
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-md-3 col-md-offset-2" style="margin-left: 13%;">
+					<center>
+						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
+						<br>
+						<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
+					</center>	
+				</div>
+				<div class="col-md-3">
+					<center>
+						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
+						<br>
+						<h5 class="footertext">Área de Conservación Guanacaste</h5>
+					</center>					
+				</div>
+				<div class="col-md-3 ">
+					<center>
+						<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
+						<br>
+						<h5 class="footertext">World Heritage</h5>
+					</center>
+				</div>
+		</div>
+	</div>
+
+	<div id="footer_responsive_2">
+		<div class="row">
+				<div class="col-md-3 responsive_2" style="margin-left: 13%;">
+						<center>
+							<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
+							<br>
+							<h5 class="footertext">Vicerrectoría de Investigación</h5>	
+						</center>
+				</div>
+				<div class="col-md-3 responsive_2" >
+					<center>
+						<p>&nbsp;</p>
+						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" style=" width: 105%;" /></a>
+						<br>
+						<p>&nbsp;</p>
+						<h5 class="footertext">Escuela Centroamericana de Geología</h5>
+					</center>
+				</div>
+				<div class="col-md-3 responsive_2">
+					<center>
+						<p>&nbsp;</p>
+						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
+						<br>
+						<p>&nbsp;</p>
+						<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
+					</center>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-md-3 responsive_2" style="margin-left: 13%;">
+					<center>
+						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
+						<br>
+						<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
+					</center>					
+				</div>
+				<div class="col-md-3 responsive_2">
+					<center>
+						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
+						<br>
+						<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
+					</center>	
+				</div>
+				<div class="col-md-3 responsive_2">
+					<center>
+						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
+						<br>
+						<h5 class="footertext">Área de Conservación Guanacaste</h5>
+					</center>					
+				</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-3 responsive_2" style="margin-left: 38%;">
+				<center>
+					<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
+					<br>
+					<h5 class="footertext">World Heritage</h5>
+				</center>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer_responsive_3">
+		<div class="row">
+				<div class="col-md-6 responsive_3">
+						<center>
+							<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
+							<br>
+							<h5 class="footertext">Vicerrectoría de Investigación</h5>	
+						</center>
+				</div>
+				<div class="col-md-6 responsive_3" >
+					<center>
+						<p>&nbsp;</p>
+						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" /></a>
+						<br>
+						<p>&nbsp;</p>
+						<h5 class="footertext">Escuela Centroamericana de Geología</h5>
+					</center>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-md-6 responsive_3">
+					<center>
+						<p>&nbsp;</p>
+						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
+						<br>
+						<p>&nbsp;</p>
+						<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
+					</center>
+				</div>
+				<div class="col-md-6 responsive_3">
+					<center>
+						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
+						<br>
+						<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
+					</center>					
+				</div>
+
+		</div>
+		<div class="row">
+				<div class="col-md-6 responsive_3">
+					<center>
+						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
+						<br>
+						<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
+					</center>	
+				</div>
+				<div class="col-md-6 responsive_3">
+					<center>
+						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
+						<br>
+						<h5 class="footertext">Área de Conservación Guanacaste</h5>
+					</center>					
+				</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 responsive_3" style="margin-left: 24%;">
+				<center>
+					<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
+					<br>
+					<h5 class="footertext">World Heritage</h5>
+				</center>
+			</div>
+		</div>
+	</div>
 
 	<div id="derechos">
-		<div class="container">
 			<div class="row">
 				<br>
-				<div class="col-md-6" style="padding-top: 6px;">
-						<p class="footertext"> &copy;<em>&#8194;2017 Centro de Investigación en Ciencias Geológicas </em>
+				<div class="col-md-6 derechos_reservados_left" >
+						<p class="footertext derechos_text"> &copy;<em>&#8194;2017 Centro de Investigación en Ciencias Geológicas </em></p>
 				</div>
-				<div class="col-md-6" style="padding-bottom: 10px;">
+				<div class="col-md-6 derechos_reservados_right" style="padding-bottom: 10px;">
 				<center class="centering">	
 					<a title="Facebook Oficial del Sitio" href="/"><img src="/img/logo_facebook_white.png" alt="logo_facebook"/></a>
 					<a title="Canal Oficial de Youtube" href="/"><img src="/img/logo_youtube_white.png" alt="logo_youtube"/></a>
 				</center>
 				</div>
-
-				 
 			</div>
-		</div>
 
 	</div>
 </div>
