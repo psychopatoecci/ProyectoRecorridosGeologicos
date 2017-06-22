@@ -16,37 +16,129 @@
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
+<style>
+    .imagen {
+        margin: 6px;
+        padding: 6px;
+    }
+    
+    img {
+        margin-bottom: 5px;
+    }
+    .boton {
+        margin-left: 6px;
+    }
+    .fileUpload {
+		position: relative;
+		overflow: hidden;
+	} 
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    .divtabla{
+        width: 100%;
+        overflow-x:scroll;
+    }
 
-<div class="row">
-    <div class = "col-md-12">
-       <div class = "page-header" >   
-            <h2><?php echo $title; ?></h2>
-       </div> 
-        <div style="padding-bottom:20px; padding-top: 10px; padding-left:20px">
-        <?= $this->Html->link('&#8194;<span class="glyphicon glyphicon-plus"></span> Agregar imagen&#8194;', ['controller'=>'admin','action' => 'addimage'],['class' => 'btn btn-success','escape' => false]) ?>
-         </div>
+</style>
+<script>
+    function uploaded (ev) {
+        document.getElementById ('divUpload').style.display = "none";
+        document.getElementById ('fileName').style.display = "inline-block";
+        document.getElementById ('fileName').value = document.getElementById('uploadBtn').files[0].name;
+        document.getElementById ('saveButton').style.display = "inline-block";
+    }
+    var lastSeq = 0;
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
 
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
 
-        <div class = "table-responsive">
-            <table class = "table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col"><?= $this->Paginator->sort('Identificador') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('nombre',['Nombre imagen']) ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('imagen', ['Imagen']) ?></th>
-                        <th scope="col" class="actions"><?= __('Acciones') ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($images as $image): ?>
-                        <tr>
-                            <td>
-                                <?= $this->Html->link('&#8201;&#8194;<span class="glyphicon glyphicon-pencil"></span> &#8201;Ver imagen&#8194;', ['action' => 'edit', $point->page_id],['class' => 'btn btn-sm btn-primary','escape' => false]) ?>
-                                <?= $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>&#8194;Eliminar', ['action' => 'delete', $point->page_id], ['confirm' => 'Desea eliminar la imagen?','class' => 'btn btn-sm btn-danger','escape' => false]) ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                 </tbody>
-             </table>
-    </div>
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var parentNode = ev.target.parentNode;
+        if (parentNode.previousElementSibling == null){
+            parentNode.parentNode.insertBefore (document.getElementById(data).parentNode, parentNode);
+        } else {
+            parentNode.parentNode.insertBefore (document.getElementById(data).parentNode, parentNode.previousSibling);
+        }
+        sequencesInPage = [];
+        var table = document.getElementById('imagesTable');
+        var sequences = '';
+        for (var i = 0, row; row = table.rows[i]; i++) {
+            for (var j = 0, col; col = row.cells[j]; j++) {
+                var image = col.children [0];
+                sequences += image.id + ',';
+            }
+        }
+        sequences = sequences.substring (0, sequences.length - 1);
+        document.getElementById('reorderButton').innerHTML = '<form method="post" action="/admin/home"><input type="hidden"  name="reorder" value="' + sequences + '"></input><input type="submit" class="btn btn-primary boton" value="Reordenar"></input></form>';
+    }
+</script>
+<?= $this->Html->css('admin.css') ?>
+
+<div class="help-tip">
+  <p>
+    Mediante esta página usted puede administrar el contenido de la pestaña de inicio. Para reordenar las imágenes arrastrelas hasta la posición deseada.
+  </p>
 </div>
+
+<div style="margin-left:35px;">
+    <div class = "page-header"> 
+        <h2><?php echo $title; ?></h2>
+    </div> 
+    
+    </div>
+    <div style="margin-left:35px">
+        <div style="padding-bottom:20px; padding-top: 10px;">
+            <h3>Subir imagen</h3>
+            <?php echo $this->Form->create('subir_datos', ['type' => 'file']); ?>
+                <div class="fileUpload btn btn-primary" style="margin-top: 15px; font-size:12px;" id="divUpload">
+					<span class="glyphicon glyphicon-upload"> </span> Subir imagen
+    				<input type="file" class="upload" name="image" accept="image/*" id="uploadBtn" onchange="uploaded(event)" />
+                </div>
+                <input type="text" value="" id="fileName" style="display:none;" readonly="readonly">
+                </input><button class="btn btn-primary"  type="submit" id="saveButton" style="display:none;">Guardar</button>       
+                <?php echo $this->Form->hidden('uploading'); ?>
+            <?php echo $this->Form->end();?>
+        </div>
+            
+        <h3>Arrastre im&aacute;genes para reacomodarlas</h3>
+        <div class="divtabla">
+        <table class="tabla" id="imagesTable">
+            <?php foreach ($images as $image): ?>
+                
+                <td class="imagen" draggable="true" ondragstart="drag(event)">
+                    <img id="<?= $image->id?>" ondrop="drop(event)" ondragover="allowDrop(event)" width="200" height="200" src="<?php echo $initialPath.$image ['link_path'] ?>"></img>
+                    <br />
+                    <form method="post" onsubmit="return confirm ('¿Desea eliminar la imagen?');" action="/admin/home">
+                        <input type="hidden" name="imagen"value="<?=$image ['id']?>"></input>
+                        <?php echo $this->Form->hidden('removing'); ?>
+                        <button  class="btn btn-block btn-danger" > Eliminar <div class="glyphicon glyphicon-remove">&#8194;</div></button>
+                    </form>
+                </td>
+            <?php endforeach; ?>
+        </table></div>
+        <div id="reorderButton">
+        </div>
+        <div style="margin-bottom:30px;">
+            <h3>Cambiar mensaje de inicio</h3>
+            <?= $this->Form->create ('subir-mensaje') ?>
+            <?= $this->Form->textArea ('message', ['value' => $text['description'], 'style' => 'width:65%;']) ?>
+            <input type="hidden"  name="id" value='<?= $text['id'] ?>'></input>
+            <br /><button class="btn btn-primary"  type="submit"> Guardar</button>       
+            <?= $this->Form->end () ?>
+        </div>
+    </div>

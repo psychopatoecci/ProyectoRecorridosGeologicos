@@ -42,7 +42,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'loginRedirect'  => [
-                'controller' => 'Pages',
+                'controller' => 'Admin',
                 'action'     => 'home'
             ],
             'logoutRedirect' => [
@@ -80,7 +80,6 @@ class AppController extends Controller
      * without logging in. Only administrators have accounts.
      */
     public function beforeFilter (Event $event) {
-        $this->Auth->allow(['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact', 'view', 'logout', 'login', 'add']);
-        echo "<h1>QUITAR ADD DE BEFOREFILTER EN APPCONTROLLER PARA PRODUCCION</h1>";
+        $this->Auth->allow(['logout', 'login']);
     }
 }

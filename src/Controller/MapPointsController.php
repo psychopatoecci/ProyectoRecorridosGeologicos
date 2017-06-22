@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * MapPoints Controller
@@ -11,6 +12,16 @@ use App\Controller\AppController;
  */
 class MapPointsController extends AppController
 {
+    /**
+     * Allows the user to access these pages without logging in.
+     * Created by Christian Duran.
+     */
+    public function beforeFilter (Event $event) 
+    {
+        parent::beforeFilter ($event);
+        $this->Auth->allow (['view', 'loadImage', 'loadVideo']);
+    }
+
 
     /**
      * View method

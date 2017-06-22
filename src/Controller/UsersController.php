@@ -33,12 +33,14 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        /*
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
 
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
+         */
     }
 
     /**
@@ -108,18 +110,33 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * login method.
+     * Created by Christian Durán.
+     * This method login Administrative site
+     * @return \Cake\Network\Response|null
+     */
     public function login()
     {
+        $this -> set ('title', 'Iniciar sesi&oacute;n');
+        $this -> viewBuilder() -> layout ('defaultAdmin');
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            $this->Flash->error(__('Datos erróneos, intente nuevamente.'));
         }
     }
 
+    /**
+     * logout method.
+     * Created by Christian Durán.
+     * This method logout Administrative site
+     * @return \Cake\Network\Response|null
+     */
     public function logout()
     {
         return $this->redirect($this->Auth->logout());

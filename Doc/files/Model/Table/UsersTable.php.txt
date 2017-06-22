@@ -35,7 +35,7 @@ use Cake\Validation\Validator;
 
         $this->setTable('users');
         $this->setDisplayField('username');
-        $this->setPrimaryKey('username');
+        $this->setPrimaryKey('id');
     }
 
     /**

@@ -6,13 +6,19 @@ TRUNCATE TABLE contents;
 SET FOREIGN_KEY_CHECKS = 0; 
 TRUNCATE TABLE pages;
 SET FOREIGN_KEY_CHECKS = 1;
+TRUNCATE TABLE users;
+-- users
+-- clave es pruebas
+INSERT INTO users VALUES ( '1', 'pruebas', 'oveja@sleep.net', '$2y$10$E0yMGzeAz/EwsMb26wW0dOaVrQNNeGNaD0Ml47BJOH4baTtGflmfy');
 
 -- home & introduction
 INSERT INTO pages VALUES ('home');
 INSERT INTO pages VALUES ('introduction');
+
 -- recorridos
 INSERT INTO pages VALUES ('tourSantaElena');
 INSERT INTO pages VALUES ('tourBolanos');
+
 -- recomendaciones
 INSERT INTO pages VALUES ('toursDescription');
 
@@ -48,7 +54,7 @@ INSERT INTO contents VALUES (22, 'tourSantaElena', '../resources/travel/santa_el
 INSERT INTO contents VALUES (23, 'tourSantaElena', '../resources/travel/santa_elena/santa_elena.txt','La Península de Santa Elena se encuentra compuesta por rocas ígneas y sedimentarias. Las primeras corresponden a peridotitas formadas en el manto superior de la Tierra, mientras que, las últimas son calizas e intercalaciones de areniscas y lutitas, las formaciones de El Viejo, Santa Ana, Curú y Descartes, pertenecen respectivamente a esos tipos de roca generadas en el talud continental, contenidas en una historia geológica de más de 100 millones de años, culminando en Isla Bolaños.', 'text', 0);
 INSERT INTO contents VALUES (24, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000365/4199','Magmatic and geotectonic significance of Santa Elena Peninsula, Costa Rica', 'url', 0);
 INSERT INTO contents VALUES (25, 'tourSantaElena', 'http://revistes.ub.edu/index.php/GEOACTA/article/view/105.000000364/4198','Evidence for middle Cretaceous accretion at Santa Elena Peninsula (Santa Rosa Accretionary Complex), Costa Rica', 'url', 1);
-
+INSERT INTO contents VALUES (25, 'tourSantaElena', 'http://www.geologia.ucr.ac.cr/revista/revista/to_pdf/revista/33/33-2-dunas.pdf','Hallazgo de dunas fósiles del final del Pleistoceno en las islas Murciélago, Costa Rica', 'url', 1);
 
 -- TourDescripcion link del vídeo
 INSERT INTO contents VALUES(26, 'toursDescription','https://www.youtube.com/embed/tS5jzLqhCzI?autoplay=1&amp;rel=0&amp;showinfo=0','','url',0);
@@ -62,82 +68,81 @@ INSERT INTO contents VALUES (31, 'toursDescription', '../resources/travel/genera
 INSERT INTO contents VALUES (32, 'toursDescription', '../resources/travel/general/sugerencia5.txt', 'Bajarse del bote solo si el botero se lo indica.', 'text', 0);
 INSERT INTO contents VALUES (33, 'toursDescription', '../resources/travel/general/security.png', '', 'image', 0);
 
-
 -- Recorrido Isla Bolaños 
 INSERT INTO pages VALUES ('P1R1');
-INSERT INTO map_points VALUES(1,1,'P1R1',-85.709020,10.951780,'Salida');
+INSERT INTO map_points VALUES(1,1,'P1R1',10.951780,-85.709020,'Salida');
 INSERT INTO pages VALUES ('P2R1');
-INSERT INTO map_points VALUES(1,2,'P2R1',-85.715100,10.951480,'Secuencia de estratos sedimentarios');
+INSERT INTO map_points VALUES(1,2,'P2R1',10.951480,-85.715100,'Secuencia de estratos sedimentarios');
 INSERT INTO pages VALUES ('P3R1');
-INSERT INTO map_points VALUES(1,3,'P3R1',-85.733630,10.957080,'La erosión y sus efectos');
+INSERT INTO map_points VALUES(1,3,'P3R1',10.957080,-85.733630,'La erosión y sus efectos');
 INSERT INTO pages VALUES ('P4R1');
-INSERT INTO map_points VALUES(1,4,'P4R1',-85.727130,10.969880,'Bahía Junquillal');
+INSERT INTO map_points VALUES(1,4,'P4R1',10.969880,-85.727130,'Bahía Junquillal');
 INSERT INTO pages VALUES ('P5R1');
-INSERT INTO map_points VALUES(1,5,'P5R1',-85.717800,10.977700,'Calizas de isla Muñecos y alrededores');
+INSERT INTO map_points VALUES(1,5,'P5R1',10.977700,-85.717800,'Calizas de isla Muñecos y alrededores');
 INSERT INTO pages VALUES ('P6R1');
-INSERT INTO map_points VALUES(1,6,'P6R1',-85.717790,10.981760,'Isla Muñecos y sus corales');
+INSERT INTO map_points VALUES(1,6,'P6R1',10.981760,-85.717790,'Isla Muñecos y sus corales');
 INSERT INTO pages VALUES ('P7R1');
-INSERT INTO map_points VALUES(1,7,'P7R1',-85.719070,10.982170,'Isla Muñecos');
+INSERT INTO map_points VALUES(1,7,'P7R1',10.982170,-85.719070,'Isla Muñecos');
 INSERT INTO pages VALUES ('P8R1');
-INSERT INTO map_points VALUES(1,8,'P8R1',-85.718900,10.983900,'Isla Muñecos');
+INSERT INTO map_points VALUES(1,8,'P8R1',10.983900,-85.718900,'Isla Muñecos');
 INSERT INTO pages VALUES ('P9R1');
-INSERT INTO map_points VALUES(1,9,'P9R1',-85.748100,11.001680,'Isla Despensa (Isla Loro)');
+INSERT INTO map_points VALUES(1,9,'P9R1',11.001680,-85.748100,'Isla Despensa (Isla Loro)');
 INSERT INTO pages VALUES ('P10R1');
-INSERT INTO map_points VALUES(1,10,'P10R1',-85.748580,11.036130,'La cordillera volcánica de Guanacaste');
+INSERT INTO map_points VALUES(1,10,'P10R1',11.036130,-85.748580,'La cordillera volcánica de Guanacaste');
 INSERT INTO pages VALUES ('P11R1');
-INSERT INTO map_points VALUES(1,11,'P11R1',-85.738710,11.038130,'Bahía Jobo');
+INSERT INTO map_points VALUES(1,11,'P11R1',11.038130,-85.738710,'Bahía Jobo');
 INSERT INTO pages VALUES ('P12R1');
-INSERT INTO map_points VALUES(1,12,'P12R1',-85.741690,11.044810,'La meteorización');
+INSERT INTO map_points VALUES(1,12,'P12R1',11.044810,-85.741690,'La meteorización');
 INSERT INTO pages VALUES ('P13R1');
-INSERT INTO map_points VALUES(1,13,'P13R1',-85.738060,11.046230,'Dunas costeras');
+INSERT INTO map_points VALUES(1,13,'P13R1',11.046230,-85.738060,'Dunas costeras');
 INSERT INTO pages VALUES ('P14R1');
-INSERT INTO map_points VALUES(1,14,'P14R1',-85.726660,11.048830,'Los rincones de Bahía Salinas');
+INSERT INTO map_points VALUES(1,14,'P14R1',11.048830,-85.726660,'Los rincones de Bahía Salinas');
 INSERT INTO pages VALUES ('P15R1');
-INSERT INTO map_points VALUES(1,15,'P15R1',-85.721900,11.045760,'Dunas costeras');
+INSERT INTO map_points VALUES(1,15,'P15R1',11.045760,-85.721900,'Dunas costeras');
 INSERT INTO pages VALUES ('P16R1');
-INSERT INTO map_points VALUES(1,16,'P16R1',-85.707510,11.046680,'La isla Bolaños');
+INSERT INTO map_points VALUES(1,16,'P16R1',11.046680,-85.707510,'La isla Bolaños');
 INSERT INTO pages VALUES ('P17R1');
-INSERT INTO map_points VALUES(1,17,'P17R1',-85.707460,11.049130,'Rocas de la Formación Junquillal');
+INSERT INTO map_points VALUES(1,17,'P17R1',11.049130,-85.707460,'Rocas de la Formación Junquillal');
 
 -- Recorrido Isla Santa Elena
 INSERT INTO pages VALUES ('P1R2');
-INSERT INTO map_points VALUES(2,1,'P1R2',-85.709450,10.951240,'Salida');
+INSERT INTO map_points VALUES(2,1,'P1R2',10.951240,-85.709450,'Salida');
 INSERT INTO pages VALUES ('P2R2');
-INSERT INTO map_points VALUES(2,2,'P2R2',-85.774040,10.940810,'Estratos de la Formación Descartes');
+INSERT INTO map_points VALUES(2,2,'P2R2',10.940810,-85.774040,'Estratos de la Formación Descartes');
 INSERT INTO pages VALUES ('P3R2');
-INSERT INTO map_points VALUES(2,3,'P3R2',-85.799320,10.919580,'Diferencias en la vegetación según el tipo de roca');
+INSERT INTO map_points VALUES(2,3,'P3R2',10.919580,-85.799320,'Diferencias en la vegetación según el tipo de roca');
 INSERT INTO pages VALUES ('P4R2');
-INSERT INTO map_points VALUES(2,4,'P4R2',-85.801950,10.913380,'Rocas del manto');
+INSERT INTO map_points VALUES(2,4,'P4R2',10.913380,-85.801950,'Rocas del manto');
 INSERT INTO pages VALUES ('P5R2');
-INSERT INTO map_points VALUES(2,5,'P5R2',-85.816210,10.925060,'Rocas de la Formación Santa Ana, Piedras Blancas y  Rivas');
+INSERT INTO map_points VALUES(2,5,'P5R2',10.925060,-85.816210,'Rocas de la Formación Santa Ana, Piedras Blancas y  Rivas');
 INSERT INTO pages VALUES ('P6R2');
-INSERT INTO map_points VALUES(2,6,'P6R2',-85.786930,10.917530,'Rocas de la Formación Rivas');
+INSERT INTO map_points VALUES(2,6,'P6R2',10.917530,-85.786930,'Rocas de la Formación Rivas');
 INSERT INTO pages VALUES ('P7R2');
-INSERT INTO map_points VALUES(2,7,'P7R2',-85.810370,10.936450,'Rocas de la Formación Descartes');
+INSERT INTO map_points VALUES(2,7,'P7R2',10.936450,-85.810370,'Rocas de la Formación Descartes');
 INSERT INTO pages VALUES ('P8R2');
-INSERT INTO map_points VALUES(2,8,'P8R2',-85.875000,10.950200,'Pliegues sinsedimentarios');
+INSERT INTO map_points VALUES(2,8,'P8R2',10.950200,-85.875000,'Pliegues sinsedimentarios');
 INSERT INTO pages VALUES ('P9R2');
-INSERT INTO map_points VALUES(2,9,'P9R2',-85.883960,10.950160,'Maravillas de la naturaleza');
+INSERT INTO map_points VALUES(2,9,'P9R2',10.950160,-85.883960,'Maravillas de la naturaleza');
 INSERT INTO pages VALUES ('P10R2');
-INSERT INTO map_points VALUES(2,10,'P10R2',-85.874380,10.940150,'Otra vista de la Formación Descartes');
+INSERT INTO map_points VALUES(2,10,'P10R2',10.940150,-85.874380,'Otra vista de la Formación Descartes');
 INSERT INTO pages VALUES ('P11R2');
-INSERT INTO map_points VALUES(2,11,'P11R2',-85.877490,10.931710,'Vistas provocadas por la erosión y meteorización');
+INSERT INTO map_points VALUES(2,11,'P11R2',10.931710,-85.877490,'Vistas provocadas por la erosión y meteorización');
 INSERT INTO pages VALUES ('P12R2');
-INSERT INTO map_points VALUES(2,12,'P12R2',-85.949440,10.893430,'Intrusiones en peridotitas');
+INSERT INTO map_points VALUES(2,12,'P12R2',10.893430,-85.949440,'Intrusiones en peridotitas');
 INSERT INTO pages VALUES ('P13R2');
-INSERT INTO map_points VALUES(2,13,'P13R2',-85.926040,10.894280,'Brecha de falla');
+INSERT INTO map_points VALUES(2,13,'P13R2',10.894280,-85.926040,'Brecha de falla');
 INSERT INTO pages VALUES ('P14R2');
-INSERT INTO map_points VALUES(2,14,'P14R2',-85.899800,10.884000,'Las dunas costeras');
+INSERT INTO map_points VALUES(2,14,'P14R2',10.884000,-85.899800,'Las dunas costeras');
 INSERT INTO pages VALUES ('P15R2');
-INSERT INTO map_points VALUES(2,15,'P15R2',-85.879100,10.880000,'Rocas del Complejo Acrecional de Santa Rosa');
+INSERT INTO map_points VALUES(2,15,'P15R2',10.880000,-85.879100,'Rocas del Complejo Acrecional de Santa Rosa');
 INSERT INTO pages VALUES ('P16R2');
-INSERT INTO map_points VALUES(2,16,'P16R2',-85.859960,10.854020,'La isla Colorada');
+INSERT INTO map_points VALUES(2,16,'P16R2',10.854020,-85.859960,'La isla Colorada');
 INSERT INTO pages VALUES ('P17R2');
-INSERT INTO map_points VALUES(2,17,'P17R2',-85.912070,10.852620,'La isla San José y su secreto');
+INSERT INTO map_points VALUES(2,17,'P17R2',10.852620,-85.912070,'La isla San José y su secreto');
 INSERT INTO pages VALUES ('P18R2');
-INSERT INTO map_points VALUES(2,18,'P18R2',-85.910300,10.856070,'Basaltos del archipiélago Murciélago');
+INSERT INTO map_points VALUES(2,18,'P18R2',10.856070,-85.910300,'Basaltos del archipiélago Murciélago');
 INSERT INTO pages VALUES ('P19R2');
-INSERT INTO map_points VALUES(2,19,'P19R2',-85.937450,10.859190,'Otra vista de las islas Murciélago');
+INSERT INTO map_points VALUES(2,19,'P19R2',10.859190,-85.937450,'Otra vista de las islas Murciélago');
 
 -- Recorrido Isla Bolaños 
 INSERT INTO contents VALUES(34,'P1R1','None','Punto de partida del recorrido Isla Bolaños','text',0);
@@ -214,3 +219,57 @@ INSERT INTO contents VALUES(103,'P18R2','../../resources/travel/maps/2/Punto21-2
 INSERT INTO contents VALUES(104,'P18R2','../../resources/travel/maps/2/Punto21-3.jpg','Duna costera','image',0);
 INSERT INTO contents VALUES(105,'P18R2','None','Interdigitadas entre las peridotitas hay lavas, estas lavas son diabasas. Conocidos como basaltos en almohadilla por sus formas típicas, a consecuencia de su rápido enfriamiento al estar en contacto con agua durante su emplazamiento','text',0);
 INSERT INTO contents VALUES(106,'P19R2','../../resources/travel/maps/2/Punto22-1.jpg','Paleoduna','image',0);
+
+-- Vídeos de algunos puntos R2 = Santa Elena
+-- (id,page_id, link_path, description, content_type, sequence_in_page)
+INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
+VALUES('P4R1','https://www.youtube.com/watch?v=yngL0Ahu4FQ','Bahía Junquillal','video',0),
+	  ('P13R1','https://www.youtube.com/watch?v=bxea9PzgKXc','Duna Activa','video',0),
+	  ('P16R1','https://www.youtube.com/watch?v=1OXQphmzYoo','Isla Bolaños','video',0),
+	  ('P9R1','https://www.youtube.com/watch?v=izi0JKKH-qA','Relieve producto de la erosión','video',0),
+	  ('P12R1','https://www.youtube.com/watch?v=sNPbGGtMKNY','Relieve producto de la erosión','video',0),
+	  ('P3R2','https://www.youtube.com/watch?v=C_ps7PMQHIk','Vista a la Península','video',0);
+
+-- Galerías de imágenes
+-- gallery1 = Isla Bolaños
+INSERT INTO pages VALUES ('gallery1');
+-- gallery2 = Península de Santa Elena
+INSERT INTO pages VALUES ('gallery2');
+
+-- Contenidos de las Galerías
+INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
+VALUES('gallery1','../../resources/gallery/Bolanos/Bajo Rojo20.jpg','Bajo Rojo','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Capas de roca inclinadas en la isla Bolanos.png','Capas de Roca inclinadas','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Concrecion.jpg','Concreción','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Duna activa.jpg','Duna Activa','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/El Gallito.png','El Gallito','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/El Muneco5.jpg','El Muñeco','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Estratos de la Formacion Junquillal5.jpg','Estratos de la Formación Junquillal','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Isla Bolanos1.jpg','Isla Bolaños','image',0),  	
+	  ('gallery1','../../resources/gallery/Bolanos/Isla David12.jpg','Isla David','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Isla Despensa.jpg','Isla Despensa','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Isla Munecos.jpg','Isla Muñecos','image',0), 
+	  ('gallery1','../../resources/gallery/Bolanos/Isla Munecos10.jpg','Isla Muñecos','image',0), 
+	  ('gallery1','../../resources/gallery/Bolanos/Ondulitas.jpg','Isla Bolaños','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Pliegue sinsedimentario.jpg','Pliegue sinsedimentario','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Relictos de erosion.png','Relictos de erosión','image',0),
+	  ('gallery1','../../resources/gallery/Bolanos/Relictos de erosion1.jpg','Relictos de erosión','image',0),
+	  -- Santa Elena
+	  ('gallery2','../../resources/gallery/SantaElena/Arco en roca de la isla San Jose.png','Arco en roca de la Isla San José','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Arco en roca.jpg','Arco en roca','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Cabo Santa Elena.jpg','Cabo Santa Elena','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Capas de roca inclinadas.png','Capas de roca inclinadas','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Duna activa.jpg','Duna activa','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/El Complejo Acrecional de Santa Rosa.jpg','El Complejo Acrecional de Santa Rosa','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Estratos de la Formacion Descartes.png','Estratos de la Formacion Descartes','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Estratos de la Formacion Descartes2.jpg','Estratos de la Formacion Descartes','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Estratos de la Formacion Rivas4.jpg','Estratos de la Formacion Rivas','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Estratos doblados de la Formacion Descartes3.jpg','Estratos doblados de la Formacion Descartes','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Formacion Descartes.png','Formacion Descartes','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Intrusiones y peridotitas.jpg','Intrusiones y peridotitas','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Paleo-duna.jpg','Paleo-duna','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Punta Blanca11.jpg','Punta Blanca','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Relicto de erosion.jpg','Relicto de erosion','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Vista a los cerros de la peninsula de Santa Elena.jpg','Vista a los cerros de la Península de Santa Elena','image',0),
+	  ('gallery2','../../resources/gallery/SantaElena/Vista del macizo Orosi Cacao.png','Vista del macizo Orosi Cacao','image',0);
+

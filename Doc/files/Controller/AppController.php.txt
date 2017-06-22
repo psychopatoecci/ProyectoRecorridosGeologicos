@@ -40,6 +40,16 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect'  => [
+                'controller' => 'Admin',
+                'action'     => 'home'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action'     => 'home'
+            ]
+        ]);
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -62,6 +72,15 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    /**
+     * Created by Christian Duran and Jean Carlo Lara
+     * > Allows certain pages (all non-administrative ones) to be able to be accessed
+     * without logging in. Only administrators have accounts.
+     */
+    public function beforeFilter (Event $event) {
+        $this->Auth->allow(['logout', 'login']);
     }
 }
 

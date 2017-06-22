@@ -21,11 +21,12 @@ $cakeDescription = 'Galería';
 <?= $this->Html->css('\galleria\themes\fullscreen\galleria.fullscreen.min.css') ?>
 <?= $this->Html->script('galleria/themes/classic/galleria.classic.min.js') ?> 
 
+
+
+<div class="galleria">
 <title> 
     <?php echo $title; ?>
 </title>
-
-<div class="galleria">
     <?php foreach ($images as $image): ?>
         <img src="<?php echo $image->link_path ;?>">
     <?php endforeach; ?>
@@ -54,3 +55,9 @@ $cakeDescription = 'Galería';
 }());
 
 </script>
+
+<style type="text/css">
+    body, html {
+    background: white;
+}
+</style>

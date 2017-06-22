@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Pages Controller.
@@ -11,10 +12,19 @@ class PagesController extends AppController
 {
 
     /**
+     * Allows the user to access these pages without logging in.
+     * Created by Christian Duran.
+     */
+    public function beforeFilter (Event $event) 
+    {
+        parent::beforeFilter ($event);
+        $this->Auth->allow (['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact']);
+    }
+    /**
      * Home method.
      * Used for the main / page.
      * Created by José Daniel Sánchez, Adrián Madrigal and Jean Carlo Lara.
-     * This method show a carousel and a little text box
+     * This method shows a carousel and a little text box
      * with some information.
      * @return \Cake\Network\Response|null
      */
@@ -25,12 +35,13 @@ class PagesController extends AppController
         $action = $this->request->params['action'];
         //Obtiene los datos de las imagenes del carrusel.
         $contents = $this->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'home')
+            'conditions' => array('Contents.page_id' => 'home'),
+            'order' => array ('Contents.sequence_in_page')
         ));
 
         $contentsLength = $this->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'home', 
-                                  'Contents.content_type' => 'image')
+                                  'Contents.content_type' => 'image'),
         ))->count();        
 
 			//query para el main message
@@ -41,7 +52,7 @@ class PagesController extends AppController
 			$text   = $textQuery->toArray();
         //Envía los datos a la vista
         $this->set([
-						'text' => $text,
+			'text' => $text,
             'contents' => $contents,
             'contentsLength' => $contentsLength,                    
         ]);
@@ -213,9 +224,26 @@ class PagesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function gallery()
-    {
-		
+    public function gallery($tourNum)
+    {        
+        if ($tourNum != 1 && $tourNum != 2) {
+             // Evitar que se caiga si se envian datos erroneos.
+             $tourNum = 1;
+        }
+        $this -> set ('title', 'Galer&iacute;a '.($tourNum == 1 ? 'Isla Bola&ntilde;os' : 'Pen&iacute;nsula de Santa Elena'));
+
+        $tourId = 'gallery'.$tourNum;
+
+        $imagesQuery = $this->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id LIKE' => '%'.$tourId.'%',
+                                  'Contents.content_type' => 'image')
+        ));        
+
+        $images = $imagesQuery->toArray();        
+
+        $this->set([
+            'images'    => $images
+        ]);        
     }
 	
 	/**

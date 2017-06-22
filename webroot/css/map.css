@@ -77,8 +77,8 @@ img.mfp-img {
     font-size: 18px;
     font-weight: 400;
     padding: 10px;
-    background-color: #F37021;
-    color: black;
+    background-color: #0C6CAE;
+    color: white;
     margin: 0;
 }
 /*Características del contenido*/
@@ -150,7 +150,7 @@ img.mfp-img {
     float:right;
     margin:4px;
     text-align: center;
-    background-color: #F7D358;
+    background-color: #92CAD9;
     border-radius: 50%;
     width: 48px;
     height: 48px;

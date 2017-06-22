@@ -4,7 +4,7 @@
 	float:right;
 	margin:4px;
 	text-align: center;
-	background-color: #F7D358;
+	background-color: #92CAD9;
 	border-radius: 50%;
 	width: 48px;
 	height: 48px;
@@ -130,7 +130,7 @@
     border-radius: 35px 0px 35px 0px;
     -moz-border-radius: 35px 0px 35px 0px;
     -webkit-border-radius: 35px 0px 35px 0px;
-    border: 8px solid #ff5f00;
+    border: 8px solid #248CCD;
     
   
 }
@@ -185,7 +185,7 @@
     height: 2em;
     width: 2em;
     line-height: 1.5em;
-    border: .2em solid #FF3C00;
+    border: .2em solid #248CCD;
     text-align: center;
     font-weight: bold;
     border-radius: 2em;
