@@ -18,7 +18,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!DOCTYPE html>
 
 <?= $this->Html->css('adminDescription.css') ?>
-<?= $this->Html->css('admin.css') ?>
+
 
 <div class="help-tip">
 	<p>
@@ -63,7 +63,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="input_fields_wrap">
 			<button type="button" class="btn btn-success" id="botonAgregar" style="background-color : #3299bb; border-color : #3299bb;">Agregar</button>
 			<?php for($i = 1; $i < count($text); $i++): ?>    
-			    <div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>" id="<?php echo uniqid(); ?>" value="<?php echo $text[$i]->description; ?>"> <a href="#" class="remove_field" id="botonEliminar">Eliminar</a></div>
+			    <div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>" id="<?php echo uniqid(); ?>" value="<?php echo $text[$i]->description; ?>"> <button href="#" class="btn btn-danger" id="botonEliminar">Eliminar</button></div>
 			<?php endfor; ?>
 		</div>
 		<input type="submit" class="btn btn-primary" value="Aceptar" style="background-color : #3299bb; border-color : #3299bb;">
@@ -88,11 +88,11 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>'+x+'" id="<?php echo uniqid(); ?>'+x+'"/><ahref="#" class="remove_field" id="botonEliminar">Eliminar</a></div>'); //add input box
+            $(wrapper).append('<div id="recSeguridad"><input type="text" class="form-control" name="<?php echo uniqid(); ?>'+x+'" id="<?php echo uniqid(); ?>'+x+'"/><button href="#" class="btn btn-danger" id="botonEliminar">Eliminar</button></div>'); //add input box
         }
     });
     
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+    $(wrapper).on("click","#botonEliminar", function(e){ //user click on remove text
     	e.preventDefault(); 
     	if($("div[id*='recSeguridad']").length > min_length){
         	$(this).parent('div').remove(); x--;
