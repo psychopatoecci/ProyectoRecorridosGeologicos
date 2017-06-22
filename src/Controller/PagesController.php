@@ -260,6 +260,6 @@ class PagesController extends AppController
     //creditos
     public function about()
     {
-
+        $this->set('title', 'Acerca de');
     }
 }
