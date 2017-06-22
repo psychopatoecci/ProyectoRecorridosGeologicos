@@ -18,6 +18,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!DOCTYPE html>
 
 <?= $this->Html->css('adminDescription.css') ?>
+<?= $this->Html->css('admin.css') ?>
 
 
 <div class="help-tip">
