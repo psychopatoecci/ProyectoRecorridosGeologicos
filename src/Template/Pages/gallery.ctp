@@ -28,7 +28,7 @@ $cakeDescription = 'Galería';
     <?php echo $title; ?>
 </title>
     <?php foreach ($images as $image): ?>
-        <img src="<?php echo $image->link_path ;?>">
+        <img data-title="Titulo de la imagen si existe" data-description="en este campo van las descripciones de las imagenes correspondientes a la galleria"  src="<?php echo $image->link_path ;?>">
     <?php endforeach; ?>
 
 </div>
@@ -44,11 +44,12 @@ $cakeDescription = 'Galería';
         this.bind('image', function(e) {
             Galleria.log(e) // the event object may contain custom objects, in this case the main image
             Galleria.log(e.imageTarget) // the current image
-
             // lets make galleria open a lightbox when clicking the main image:
             $(e.imageTarget).click(this.proxy(function() {
                 this.openLightbox();
             }));
+
+
         });
      }   
   });
@@ -59,5 +60,27 @@ $cakeDescription = 'Galería';
 <style type="text/css">
     body, html {
     background: white;
+	}
+
+    .galleria-theme-classic .galleria-info-link {
+	    background-position: -659px 4px !important;
+	    filter: alpha(opacity=90) !important;
+	    position: absolute !important;
+	    width: 40px !important;
+	    height: 40px !important;
+	    cursor: pointer;
+	    background-color: #0C6CAE !important;
+	    border-radius: 20px !important;
+	    zoom: 1.4 !important;
+	    content: "Joe's Task:";
+	}
+
+	.galleria-theme-classic .galleria-info-text {
+	    background-color: gray;
+	    padding: 12px;
+	    display: none;
+	    zoom: 1.2;
+	}
+
 }
 </style>
