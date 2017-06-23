@@ -343,7 +343,10 @@ header{
 		display: none;
 	}
 
-	.row .header-title a img.img_app_responsive {  }
+	.row .header-title a img.img_app_responsive { 
+		margin-top: 14px; 
+		margin-bottom: 11px;
+ 	}
 
 	.row .header-title a img.img_ucr_responsive {  }
 }
@@ -363,7 +366,9 @@ header{
 
 	.row .header-title a img.img_app_responsive 
 	{ 
-		width: 82%;
+		width: 79%;
+		margin-top: 14px; 
+		margin-bottom: 11px;
 	}
 
 	.row .header-title a img.img_ucr_responsive 
