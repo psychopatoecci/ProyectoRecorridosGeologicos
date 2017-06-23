@@ -43,7 +43,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 <body>
    <div class="background">
-		<header class="row ">
+		<header class="row">
 			<div class="row header-title" >
 				<div class="col-sm-12 col-md-12">
 						<a  title="Universidad de Costa Rica" href="https://www.ucr.ac.cr/"><img class ="img_ucr_responsive" src="/img/logo_ucr_full_responsive.png" alt="logo_aplicacion"/></a>
@@ -365,9 +365,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 						<p class="footertext derechos_text"> &copy;<em>&#8194;2017 Centro de Investigación en Ciencias Geológicas </em></p>
 				</div>
 				<div class="col-md-6 derechos_reservados_right" style="padding-bottom: 10px;">
-				<center class="centering">	
+				<center class="centering">
+					<a title="Canal Oficial de Youtube" href="/" ><img src="/img/logo_youtube_white.png" alt="logo_youtube" style="margin-left: 5px;"/></a>	
 					<a title="Facebook Oficial del Sitio" href="/"><img src="/img/logo_facebook_white.png" alt="logo_facebook"/></a>
-					<a title="Canal Oficial de Youtube" href="/"><img src="/img/logo_youtube_white.png" alt="logo_youtube"/></a>
 				</center>
 				</div>
 			</div>
