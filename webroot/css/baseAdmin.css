@@ -34,7 +34,7 @@ header{
 
 .barra_encabezado
 {
-	background-color: #0C6CAE; 
+	background-color: transparent; 
 	height: 50px;
 	background-image: url("../img/barra_imagen.png");
     background-repeat: repeat-y;
