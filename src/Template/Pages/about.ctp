@@ -17,12 +17,6 @@ $cakeDescription = 'Acerca de';
 ?>
 <!DOCTYPE html>
 
-<style>
-	.list{
-		list-style-image: url('../img/people.png');
-	}
-</style>
-
 <div class="container-fluid" >
 	<div class="container" style=" padding:25px;">
 		<div class="page-header">   

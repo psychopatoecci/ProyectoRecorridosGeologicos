@@ -18,7 +18,7 @@ class PagesController extends AppController
     public function beforeFilter (Event $event) 
     {
         parent::beforeFilter ($event);
-        $this->Auth->allow (['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact']);
+        $this->Auth->allow (['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact', 'about']);
     }
     /**
      * Home method.
