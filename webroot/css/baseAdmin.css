@@ -184,6 +184,10 @@ header{
 	font-weight: bold;
 }
 
+.barra
+{
+	text-align: center !important;
+}
 
 .responsive_2 
 {
@@ -209,9 +213,9 @@ header{
   width: 100%;
   padding-left:0;
   padding-right:0;
-  padding-bottom:0;
-  padding-top:8px;
-  margin-bottom:8px;
+  padding-bottom:0px;
+  padding-top:0px;
+  margin-bottom:0px;
   height: auto;
   background-color: #005DA4;
   color: white;
@@ -409,6 +413,59 @@ header{
 }
 
 /* Estilos responsive del footer */
+@media (min-width: 0px){
+
+	.responsive_1 
+	{
+	    width: 50% !important;
+	    float: left !important;
+	}
+}
+
+/* Estilos responsive del footer */
+@media (min-width: 1095px)
+{
+	#footer
+	{
+		display: block;
+	}
+
+	#footer_responsive_1
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del footer */
+@media (max-width: 1094px) and  (min-width: 676px)
+{
+	#footer
+	{
+		display: none;
+	}
+
+	#footer_responsive_1
+	{
+		display: block;
+	}
+}
+
+
+/* Estilos responsive del footer */
+@media (max-width: 675px) and  (min-width: 0px)
+{
+	#footer
+	{
+		display: block;
+	}
+
+	#footer_responsive_1
+	{
+		display: none;
+	}
+}
+
+/* Estilos responsive del footer */
 @media (min-width: 992px) { 
 
 	.row .col-md-6 .centering a img
@@ -445,132 +502,5 @@ header{
 	}
 }
 
-/* Estilos responsive del footer */
-@media (min-width: 492px){
 
-	.responsive_2 {
-	    width: 25% !important;
-	    float: left !important;
-	}
-	.responsive_3 {
-	    width: 49% !important;
-	    float: left !important;
-	}
-}
 
-/* Estilos responsive del footer */
-@media (min-width: 1000px){
-	.normal_footer {
-	    width: 13.66666667% !important;
-	}
-}
-
-/* Estilos responsive del footer */
-@media (min-width: 1760px)
-{
-	#footer
-	{
-		display: block;
-	}
-
-	#footer_responsive_1
-	{
-		display: none;
-	}
-	#footer_responsive_2
-	{
-		display: none;
-	}
-	#footer_responsive_3
-	{
-		display: none;
-	}
-}
-
-/* Estilos responsive del footer */
-@media (max-width:  1759px) and  (min-width: 1000px)
-{
-	#footer
-	{
-		display: none;
-	}
-
-	#footer_responsive_1
-	{
-		display: block;
-	}
-	#footer_responsive_2
-	{
-		display: none;
-	}
-	#footer_responsive_3
-	{
-		display: none;
-	}
-}
-
-/* Estilos responsive del footer */
-@media (max-width:  999px) and  (min-width: 900px)
-{
-	#footer
-	{
-		display: none;
-	}
-
-	#footer_responsive_1
-	{
-		display: none;
-	}
-	#footer_responsive_2
-	{
-		display: block;
-	}
-	#footer_responsive_3
-	{
-		display: none;
-	}
-}
-
-/* Estilos responsive del footer */
-@media (max-width:  900px) and  (min-width: 556px)
-{
-	#footer
-	{
-		display: none;
-	}
-
-	#footer_responsive_1
-	{
-		display: none;
-	}
-	#footer_responsive_2
-	{
-		display: none;
-	}
-	#footer_responsive_3
-	{
-		display: block;
-	}
-}
-
-/* Estilos responsive del footer */
-@media (max-width:  555px) and  (min-width: 0px)
-{
-	#footer
-	{
-		display: block;
-	}
-
-	#footer_responsive_1
-	{
-		display: none;
-	}
-	#footer_responsive_2
-	{
-		display: none;
-	}
-	#footer_responsive_3
-	{
-		display: none;
-	}
-}
