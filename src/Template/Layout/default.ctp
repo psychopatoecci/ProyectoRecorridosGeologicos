@@ -27,7 +27,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     	<?php echo $title; ?>
 	</title>
 
-    <?= $this->Html->meta('icon') ?>
+    <?php echo $this->Html->meta(
+    'ruta_geologica.ico',
+    '/ruta_geologica.ico',
+    array('type' => 'icon')
+	);
+	?>
 
 	<?= $this->Html->script('jquery-3.2.0.min') ?>
     <?= $this->Html->script('bootstrap.min') ?>		
@@ -112,23 +117,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 	<div id="footer">
 		<div class="row">
-			<div>
-				<div class="col-md-2 normal_footer" style="margin-left: 3%;">
-						<center>
-							<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
-							<br>
-							<h5 class="footertext">Vicerrectoría de Investigación</h5>	
-						</center>
-				</div>
-				<div class="col-md-2 normal_footer">
-					<center>
-						<p>&nbsp;</p>
-						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" /></a>
-						<br>
-						<p>&nbsp;</p>
-						<h5 class="footertext">Escuela Centroamericana de Geología</h5>
-					</center>
-				</div>
 				<div class="col-md-2 normal_footer">
 					<center>
 						<p>&nbsp;</p>
@@ -173,22 +161,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	<div id="footer_responsive_1">
 		<div class="row">
 				<div class="col-md-3">
-						<center>
-							<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
-							<br>
-							<h5 class="footertext">Vicerrectoría de Investigación</h5>	
-						</center>
-				</div>
-				<div class="col-md-3">
-					<center>
-						<p>&nbsp;</p>
-						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" /></a>
-						<br>
-						<p>&nbsp;</p>
-						<h5 class="footertext">Escuela Centroamericana de Geología</h5>
-					</center>
-				</div>
-				<div class="col-md-3">
 					<center>
 						<p>&nbsp;</p>
 						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
@@ -232,22 +204,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 	<div id="footer_responsive_2">
 		<div class="row">
-				<div class="col-md-3 responsive_2" style="margin-left: 13%;">
-						<center>
-							<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
-							<br>
-							<h5 class="footertext">Vicerrectoría de Investigación</h5>	
-						</center>
-				</div>
-				<div class="col-md-3 responsive_2" >
-					<center>
-						<p>&nbsp;</p>
-						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" style=" width: 105%;" /></a>
-						<br>
-						<p>&nbsp;</p>
-						<h5 class="footertext">Escuela Centroamericana de Geología</h5>
-					</center>
-				</div>
 				<div class="col-md-3 responsive_2">
 					<center>
 						<p>&nbsp;</p>
@@ -294,24 +250,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	</div>
 
 	<div id="footer_responsive_3">
-		<div class="row">
-				<div class="col-md-6 responsive_3">
-						<center>
-							<a title="Vicerrectoría de Investigación" href="http://www.vinv.ucr.ac.cr/"><img src="/img/logo_vice.png" alt="logo_vice" /></a>
-							<br>
-							<h5 class="footertext">Vicerrectoría de Investigación</h5>	
-						</center>
-				</div>
-				<div class="col-md-6 responsive_3" >
-					<center>
-						<p>&nbsp;</p>
-						<a title="Escuela Centroamericana de Geología" href="http://geologia.ucr.ac.cr/"><img src="/img/logo_geologia.png" alt="logo_ecg" /></a>
-						<br>
-						<p>&nbsp;</p>
-						<h5 class="footertext">Escuela Centroamericana de Geología</h5>
-					</center>
-				</div>
-		</div>
 		<div class="row">
 				<div class="col-md-6 responsive_3">
 					<center>
@@ -361,17 +299,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	<div id="derechos">
 			<div class="row">
 				<br>
-				<div class="col-md-6 derechos_reservados_left" style="padding-top: 6px;">
+				<div class="col-md-6 derechos_reservados_left" >
 						<p class="footertext derechos_text"> &copy;<em>&#8194;2017 Centro de Investigación en Ciencias Geológicas </em></p>
 				</div>
 				<div class="col-md-6 derechos_reservados_right" style="padding-bottom: 10px;">
-				<center class="centering">
-					<a title="Canal Oficial de Youtube" href="/" ><img src="/img/logo_youtube_white.png" alt="logo_youtube" style="margin-left: 5px;"/></a>	
-					<a title="Facebook Oficial del Sitio" href="/"><img src="/img/logo_facebook_white.png" alt="logo_facebook"/></a>
+				<center class="centering">	
+					<a title="Facebook Oficial del Sitio" href="https://www.facebook.com/cicg.ucr?ref=br_tf "><img src="/img/logo_facebook_white.png" alt="logo_facebook" style="margin-left: 5px;"/></a>
+					<a title="Canal Oficial de Youtube" href="https://www.youtube.com/channel/UCoJROKhqBJk-3t6pOMktXnA"><img src="/img/logo_youtube_white.png" alt="logo_youtube"/></a>
 				</center>
 				</div>
 			</div>
-
 	</div>
 </div>
 </body>

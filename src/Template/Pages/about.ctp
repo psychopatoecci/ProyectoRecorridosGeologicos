@@ -28,7 +28,8 @@ $cakeDescription = 'Acerca de';
 		<h3> Créditos</h3>
 		<div class="row" style="padding-top: 0px;">
 			<div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
-				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 8px;">Centro de Investigación en Ciencias Geológicas(CICG)</h4>
+				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;">Centro de Investigación en Ciencias Geológicas(CICG)</h4>
+				<h5 style="padding-top: 0px; padding-bottom: 8px;">Unidad de investigación dedicada al estudio de los procesos geológicos.</h5>
 				<ul class="list">
 					<li>
 						Percy Denyer Chavarría
@@ -38,7 +39,8 @@ $cakeDescription = 'Acerca de';
 					</li>
 				</ul>
 
-				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom: 8px;">Museo + UCR</h4>
+				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom: 1px;">Museo + UCR</h4>
+				<h5 style="padding-top: 0px; padding-bottom: 8px;">Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.</h5>
 				<ul class="list">
 					<li>
 						Eugenia Zavaleta Ochoa
@@ -51,7 +53,8 @@ $cakeDescription = 'Acerca de';
 					</li>
 				</ul>
 
-				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom:8px"> Área de Conservación Guanacaste (ACG)</h4>
+				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom:1px"> Área de Conservación Guanacaste (ACG)</h4>
+				<h5 style="padding-top: 0px; padding-bottom: 8px;">Institución encargada de restaurar y conservar hasta la perpetuidad un ecosistema completo de bosque seco tropical y sus ecosistemas adyacentes en las provincias de Guanacaste y Alajuela.</h5>
 				<ul class="list">
 					<li>
 						Alejandro Masís Cuevillas
@@ -68,7 +71,8 @@ $cakeDescription = 'Acerca de';
 				</ul>
 			</div>		
 			<div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
-				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom: 8px;">Escuela de Ciencias de la Computación e Informática (ECCI)</h4>
+				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom: 1px;">Escuela de Ciencias de la Computación e Informática (ECCI)</h4>
+				<h5 style="padding-top: 0px; padding-bottom: 8px;">Referente nacional en Ciencias de la Computación, Tecnologías de la Información e Ingeniería de Software. </h5>
 				<ul class="list">
 					<li>
 						Alan Calderón Castro
