@@ -117,182 +117,73 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 	<div id="footer">
 		<div class="row">
-				<div class="col-md-2 normal_footer">
-					<center>
-						<p>&nbsp;</p>
-						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
-						<br>
-						<p>&nbsp;</p>
-						<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
-					</center>
-				</div>
-				<div class="col-md-2 normal_footer">
-					<center>
-						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
-						<br>
-						<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
-					</center>					
-				</div>
-				<div class="col-md-2 normal_footer">
-					<center>
-						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
-						<br>
-						<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
-					</center>	
-				</div>
-				<div class="col-md-2 normal_footer">
-					<center>
-						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
-						<br>
-						<h5 class="footertext">Área de Conservación Guanacaste</h5>
-					</center>					
-				</div>
-				<div class="col-md-2 normal_footer">
-					<center>
-						<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
-						<br>
-						<h5 class="footertext">World Heritage</h5>
-					</center>
-				</div>
+			<div class="col-md-3">
+				<center>
+					<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
+					<br>
+					<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
+				</center>					
+			</div>
+			<div class="col-md-3" >
+				<center>
+					<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
+					<br>
+					<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
+				</center>	
+			</div>
+			<div class="col-md-3" >
+				<center>
+					<p>&nbsp;</p>
+					<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
+					<br>
+					<p>&nbsp;</p>
+					<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
+				</center>
+			</div>
+			<div class="col-md-3" >
+				<center>
+					<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" style="margin-top: 12px;" /></a>
+					<br>
+					<h5 class="footertext">Área de Conservación Guanacaste</h5>
+				</center>					
 			</div>
 		</div>
 	</div>
 
 	<div id="footer_responsive_1">
 		<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-6 responsive_1">
+					<center>
+						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
+						<br>
+						<h5 class="footertext barra">Centro de Investigación en Ciencias Geológicas</h5>
+					</center>					
+				</div>
+				<div class="col-md-6 responsive_1">
+					<center>
+						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
+						<br>
+						<h5 class="footertext barra ">Museo de la Universidad de Costa Rica</h5>
+					</center>	
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-md-6 responsive_1">
 					<center>
 						<p>&nbsp;</p>
 						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
 						<br>
 						<p>&nbsp;</p>
-						<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
+						<h5 class="footertext barra">Escuela de Ciencias de la Computación e Informática</h5>
 					</center>
 				</div>
-				<div class="col-md-3">
-					<center>
-						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
-						<br>
-						<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
-					</center>					
-				</div>
-		</div>
-		<div class="row">
-				<div class="col-md-3 col-md-offset-2" style="margin-left: 13%;">
-					<center>
-						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
-						<br>
-						<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
-					</center>	
-				</div>
-				<div class="col-md-3">
+				<div class="col-md-6 responsive_1">
 					<center>
 						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
 						<br>
-						<h5 class="footertext">Área de Conservación Guanacaste</h5>
+						<h5 class="footertext barra">Área de Conservación Guanacaste</h5>
 					</center>					
 				</div>
-				<div class="col-md-3 ">
-					<center>
-						<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
-						<br>
-						<h5 class="footertext">World Heritage</h5>
-					</center>
-				</div>
-		</div>
-	</div>
-
-	<div id="footer_responsive_2">
-		<div class="row">
-				<div class="col-md-3 responsive_2">
-					<center>
-						<p>&nbsp;</p>
-						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
-						<br>
-						<p>&nbsp;</p>
-						<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
-					</center>
-				</div>
-		</div>
-		<div class="row">
-				<div class="col-md-3 responsive_2" style="margin-left: 13%;">
-					<center>
-						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
-						<br>
-						<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
-					</center>					
-				</div>
-				<div class="col-md-3 responsive_2">
-					<center>
-						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
-						<br>
-						<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
-					</center>	
-				</div>
-				<div class="col-md-3 responsive_2">
-					<center>
-						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
-						<br>
-						<h5 class="footertext">Área de Conservación Guanacaste</h5>
-					</center>					
-				</div>
-
-		</div>
-		<div class="row">
-			<div class="col-md-3 responsive_2" style="margin-left: 38%;">
-				<center>
-					<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
-					<br>
-					<h5 class="footertext">World Heritage</h5>
-				</center>
-			</div>
-		</div>
-	</div>
-
-	<div id="footer_responsive_3">
-		<div class="row">
-				<div class="col-md-6 responsive_3">
-					<center>
-						<p>&nbsp;</p>
-						<a title="Escuela de Ciencias de la Computación e Informática" href="http://www.ecci.ucr.ac.cr"><img src="/img/logo_ecci.png" alt="logo_ecci" /></a>
-						<br>
-						<p>&nbsp;</p>
-						<h5 class="footertext">Escuela de Ciencias de la Computación e Informática</h5>
-					</center>
-				</div>
-				<div class="col-md-6 responsive_3">
-					<center>
-						<a title="Centro de Investigación en Ciencias Geológicas" href="http://www.cicg.ucr.ac.cr/"><img src="/img/logo_cicg.png" alt="logo_cicg" /></a>
-						<br>
-						<h5 class="footertext">Centro de Investigación en Ciencias Geológicas</h5>
-					</center>					
-				</div>
-
-		</div>
-		<div class="row">
-				<div class="col-md-6 responsive_3">
-					<center>
-						<a title="Museo de la Universidad de Costa Rica" href="http://museo.ucr.ac.cr/"><img src="/img/logo_museo.png" alt="logo_museo" /></a>
-						<br>
-						<h5 class="footertext">Museo de la Universidad de Costa Rica</h5>
-					</center>	
-				</div>
-				<div class="col-md-6 responsive_3">
-					<center>
-						<a title="Área de Conservación Guanacaste" href="https://www.acguanacaste.ac.cr"><img src="/img/logo_acg.png" alt="logo_acg" /></a>
-						<br>
-						<h5 class="footertext">Área de Conservación Guanacaste</h5>
-					</center>					
-				</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6 responsive_3" style="margin-left: 24%;">
-				<center>
-					<a title="World Heritage" href="http://whc.unesco.org/"><img src="/img/logo_world_heritage.png" alt="logo_world_heritage" /></a>
-					<br>
-					<h5 class="footertext">World Heritage</h5>
-				</center>
-			</div>
 		</div>
 	</div>
 
