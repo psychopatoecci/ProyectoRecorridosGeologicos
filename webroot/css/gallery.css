@@ -1,4 +1,6 @@
 
+/*----------------------------------------------- Galleria estilos personalizados --------------------------------------------- */
+
 /* Definición de tamaño inicial, debe ir primero */
 .galleria{ 
 	max-width: auto; 
@@ -6,10 +8,12 @@
 	background: white;
 }
 
+/* Fondo de la página*/
 body, html {
 	background: white;
 }
 
+/*Fondo de galleria*/
 .background {
 	background-color: white;
 }
@@ -30,7 +34,7 @@ body, html {
 	height: 31px;
 	width: 31px;
 	font: 33px/33px arial,sans-serif;
-	z-index: 199999;
+	z-index: 1;
 }
 
 /* Estilos del contador de la ventana */
@@ -38,6 +42,52 @@ body, html {
 	float: right;
 	margin-left: 8px;
 	font: 17px/17px arial,sans-serif;
+}
+
+/* Estilo de la ventana principal: Evita la sobreposición en overflow*/
+.galleria-theme-classic {
+    position: relative;
+    overflow: visible !important;
+    background: #000;
+} 
+
+/* Estilo del botón informativo de galleria*/
+.galleria-theme-classic .galleria-info-link {
+	background-position: -660px 4px !important;
+	filter: alpha(opacity=90) !important;
+	position: absolute !important;
+	width: 37px !important;
+	height: 37px !important;
+	cursor: pointer;
+	background-color: #248CCD !important;
+	border-radius: 20px !important;
+	zoom: 1.4 !important;
+}
+
+/* Estilo del cuadro de texto informativo*/
+.galleria-theme-classic .galleria-info-text {
+	background-color: #1E2021;
+	font-family: sans-serif;
+	color: black;
+	padding: 12px;
+	display: none;
+	zoom: 1.2;
+}
+
+/* Titulo del texto informativo*/
+.galleria-theme-classic .galleria-info-title {
+    color: white;
+}
+
+/* Cuerpo del texto informativo*/
+.galleria-theme-classic .galleria-info-description {
+    color: white;
+    font: bold 12px/1.4 sans-serif;
+}
+
+/* Botón de cierre*/
+.galleria-info-close {
+	zoom:1.2;
 }
 
 /* Estilos responsive de la galeria */
@@ -102,5 +152,103 @@ body, html {
 	}
 }
 
+/*----------------------------------------------- Botón de ayuda --------------------------------------------- */
+
+.help-tip{
+    float:right;
+    margin:16px;
+    text-align: center;
+    background-color: #92CAD9;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+    line-height: 48px;
+    cursor: default;
+    z-index: 2;
+    position: relative;
+}
+    
+.help-tip:before{
+    content:'?';
+    font-weight: bold;
+    color:#fff;
+    z-index: 1;
+}
+
+.help-tip:hover p{
+    display:block;
+    transform-origin: 100% 10%;
+    -webkit-animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.help-tip p{    /* The tooltip */
+    display: none;
+    text-align: left;
+    background-color: #1E2021;
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    right:0px;
+    color: #FFF;
+    font-size: 17px;
+    line-height: 1.4;
+    z-index: 1;
+}
+
+.help-tip p:before{ /* The pointer of the tooltip */
+    position: fixed;
+    content: '';
+    width:0;
+    height: 0;
+    border:6px solid transparent;
+    border-bottom-color:#1E2021;
+    right:10px;
+    top:-12px;
+    z-index: 1;
+}
+
+.help-tip p:after{ /* Prevents the tooltip from being hidden */
+    width:100%;
+    height:40px;
+    content:'';
+    position: fixed;
+    top:-40px;
+    left:0;
+    z-index: 1;
+}
+
+.help-tip2 {
+    position:relative;
+    top:0;
+    right:0;
+}
+
+/* CSS animation */
+@-webkit-keyframes fadeIn {
+    0% { 
+        opacity:0; 
+        transform: scale(0.6);
+    }
+
+    100% {
+        opacity:100%;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% { 
+    	opacity:0; 
+    }
+
+    100% { 
+    	opacity:100%; 
+    }
+}
 
 
