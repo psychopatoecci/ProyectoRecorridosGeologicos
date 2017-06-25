@@ -1226,7 +1226,7 @@ class AdminController extends AppController
 	}
 	
 	/**
-	 * Index method for administration of galery
+	 * Index method for administration of gallery
 	 * Created by Andreína Alvarado
 	 * @return \Cake\Network\Response|null
 	 */
@@ -1237,11 +1237,11 @@ class AdminController extends AppController
 		$galleryName = '';
 		$galleryPage = '';
 		if($galleryId == 1){
-			$galleryName = 'SantaElena';
+			$galleryName = 'Bolanos';
 			$galleryPage = 'gallery1';
 		}
 		else{
-			$galleryName = 'Bolanos';
+			$galleryName = 'SantaElena';
 			$galleryPage = 'gallery2';
 		}	
 
@@ -1277,8 +1277,7 @@ class AdminController extends AppController
             if($container_image_new != null){
                 foreach($container_image_new as $image) {
 					$contentImageNew = $pagesController->Pages->Contents->newEntity();
-
-					$path =  WWW_ROOT . 'resources/gallery/'.$galleryName.'/' . $image[1]['name'];
+					$path =  WWW_ROOT . 'resources/gallery/'.$galleryName.'/'. $image[1]['name'];
 					$name_value = $image[1]['name'];
 
 					if (file_exists($path)) {
@@ -1296,12 +1295,12 @@ class AdminController extends AppController
 						}
 					}
 
-					/*if(move_uploaded_file($image[1]['tmp_name'], $path)) { 
-						echo "El fichero es válido y se subió con éxito.\n"; 
+					if(move_uploaded_file($image[1]['tmp_name'], $path)) { 
+						//echo "El fichero es válido y se subió con éxito.\n"; 
 					} 
 					else{ 
-						echo "¡Posible ataque de subida de ficheros!\n"; 
-					}*/
+						//echo "¡Posible ataque de subida de ficheros!\n"; 
+					}
 
 					if($image[0] != ""){
 						/* Componentes de la nueva entidad de contenido */
@@ -1354,9 +1353,7 @@ class AdminController extends AppController
         
 			//$this->Flash->success(__('Las imágenes de la galería han sido modificadas correctamente'));
         }
-		
-		debug('gallery' + $galleryId);
-		$this -> set ('title', ''.($galleryId == 'gallery1' ? 'Administración de la galería de Isla Bola&ntilde;os' : 'Administración de la galería de Pen&iacute;nsula de Santa Elena'));
+		$this -> set ('title', ''.($galleryName == 'Bolanos' ? 'Administración de la galería de Isla Bola&ntilde;os' : 'Administración de la galería de Pen&iacute;nsula de Santa Elena'));
 		
 		$this->set('images', $images);
 		$this->set('galleryId', $galleryId);
