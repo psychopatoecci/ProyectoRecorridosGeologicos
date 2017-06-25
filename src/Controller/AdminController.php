@@ -1224,4 +1224,145 @@ class AdminController extends AppController
 		
 		$this->redirect('/admin/mapindex/'.$tourId);
 	}
+	
+	/**
+	 * Index method for administration of galery
+	 * Created by Andreína Alvarado
+	 * @return \Cake\Network\Response|null
+	 */
+	public function gallery($galleryId)
+	{
+		$this->viewBuilder()->layout("defaultAdmin");
+		$pagesController = new PagesController();
+		$galleryName = '';
+		$galleryPage = '';
+		if($galleryId == 1){
+			$galleryName = 'SantaElena';
+			$galleryPage = 'gallery1';
+		}
+		else{
+			$galleryName = 'Bolanos';
+			$galleryPage = 'gallery2';
+		}	
+
+		$images = $pagesController->Pages->Contents->find('all', array(
+				'conditions' => array('contents.page_id' => $galleryPage)));
+
+        if ($this->request->is('post')) {
+            $container_image_delete = $this->request->data('container_image_delete');
+            $container_image = $this->request->data('container_image');
+            $container_image_new = $this->request->data('container_image_new');
+            
+            /*--------------------------------------------------- Caso de eliminar ----------------------------------------------- */
+            
+            if($container_image_delete != null){
+                foreach($container_image_delete as $image){
+                    $query = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.description' => $image[0], 'Contents.link_path' => $image[1]))); 
+                    $imageContent = $query->first();
+                    
+                    /* Se guarda entidad en la base de datos */
+                    if ($pagesController->Pages->Contents->delete($imageContent))
+                    {
+                        //$this->Flash->success(__('The image has been removed.'));
+                    }
+                    else
+                    {
+                        //$this->Flash->error(__('The image could not be removed. Please, try again.'));     
+                    }
+                }
+            }
+            
+            /*---------------------------------------------------- Caso de agregar ----------------------------------------------- */
+            
+            if($container_image_new != null){
+                foreach($container_image_new as $image) {
+					$contentImageNew = $pagesController->Pages->Contents->newEntity();
+
+					$path =  WWW_ROOT . 'resources/gallery/'.$galleryName.'/' . $image[1]['name'];
+					$name_value = $image[1]['name'];
+
+					if (file_exists($path)) {
+						$invalidate_path = true;
+						$number_sequence = 2;
+
+						while($invalidate_path == true)
+						{
+							$path =  WWW_ROOT . 'resources/gallery/'.$galleryName.'/' . "r".$number_sequence."_".$image[1]['name']; 
+							$name_value = "r".$number_sequence."_".$image[1]['name'];
+							if (file_exists($path)) { $invalidate_path = true; }
+							else{ $invalidate_path = false; }
+
+							$number_sequence = $number_sequence + 1;
+						}
+					}
+
+					/*if(move_uploaded_file($image[1]['tmp_name'], $path)) { 
+						echo "El fichero es válido y se subió con éxito.\n"; 
+					} 
+					else{ 
+						echo "¡Posible ataque de subida de ficheros!\n"; 
+					}*/
+
+					if($image[0] != ""){
+						/* Componentes de la nueva entidad de contenido */
+						$dataImage = [
+							'page_id' => $galleryPage,
+							'link_path' => "../../resources/gallery/".$galleryName."/" .$name_value,
+							'description' => $image[0],
+							'content_type' => "image",
+							'sequence_in_page' => 0 ];
+					}
+
+					/* Se asigna el componente a la nueva entidad de contenido */   
+					$contentImageNew  = $pagesController->Pages->Contents->patchEntity($contentImageNew , $dataImage);
+
+					/* Se guarda entidad en la base de datos */
+					if ($pagesController->Pages->Contents->save($contentImageNew)){ 
+						//$this->Flash->success(__('The image has been saved.')); 
+					}
+					else{ 
+						//$this->Flash->error(__('The image could not be saved. Please, try again.')); 
+					}
+                }
+            }
+            
+            /*-------------------------------------------------- Caso de modificar ----------------------------------------------- */
+            
+            if($container_image != null){
+                $images = $pagesController->Pages->Contents->find('all', array('conditions' => array('Contents.page_id' => $galleryPage, 'Contents.content_type' => 'image'))); 
+                foreach($images as $image){
+                    if (isset($container_image[$image->id])){
+                        if($container_image[$image->id] != null){
+                            if($image->description != $container_image[$image->id][0]){
+                                $image->description = $container_image[$image->id][0];
+                            
+                                /* Se guarda entidad en la base de datos */
+                                if ($pagesController->Pages->Contents->save($image))
+                                {
+                                    //$this->Flash->success(__('The image has been modified.'));
+                                }
+                                else
+                                {
+                                    //$this->Flash->error(__('The image could not be modified. Please, try again.'));     
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        
+			//$this->Flash->success(__('Las imágenes de la galería han sido modificadas correctamente'));
+        }
+		
+		debug('gallery' + $galleryId);
+		$this -> set ('title', ''.($galleryId == 'gallery1' ? 'Administración de la galería de Isla Bola&ntilde;os' : 'Administración de la galería de Pen&iacute;nsula de Santa Elena'));
+		
+		$this->set('images', $images);
+		$this->set('galleryId', $galleryId);
+		//$this->set('userController', 'MapPoints');
+		//$this->set('userAction', 'view/'.$tourId);
+		//$this -> set ('tourId', $tourId);
+		//$this->set('mapPoints',$points);
+	}
 }
