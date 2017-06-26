@@ -28,7 +28,7 @@ $cakeDescription = 'Acerca de';
 		<h3> Créditos</h3>
 		<div class="row" style="padding-top: 0px;">
 			<div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
-				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="www.cicg.ucr.ac.cr">Centro de Investigación en Ciencias Geológicas(CICG)</a></h4>
+				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.cicg.ucr.ac.cr" target="_blank">Centro de Investigación en Ciencias Geológicas(CICG)</a></h4>
 				<h5 style="padding-top: 0px; padding-bottom: 8px;">Unidad de investigación dedicada al estudio de los procesos geológicos.</h5>
 				<ul class="list">
 					<li>
@@ -38,40 +38,8 @@ $cakeDescription = 'Acerca de';
 						Juan Pablo Solano Monge
 					</li>
 				</ul>
-
-				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom: 1px;"><a href="http://museo.ucr.ac.cr/"> Museo + UCR</a></h4>
-				<h5 style="padding-top: 0px; padding-bottom: 8px;">Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.</h5>
-				<ul class="list">
-					<li>
-						Eugenia Zavaleta Ochoa
-					</li>
-					<li>
-						Mariano Chinchilla Chavarría
-					</li>
-					<li>
-						Marco Díaz Segura
-					</li>
-				</ul>
-
-				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom:1px"><a href="https://www.acguanacaste.ac.cr/">Área de Conservación Guanacaste (ACG)</a></h4>
-				<h5 style="padding-top: 0px; padding-bottom: 8px;">Institución encargada de restaurar y conservar hasta la perpetuidad un ecosistema completo de bosque seco tropical y sus ecosistemas adyacentes en las provincias de Guanacaste y Alajuela.</h5>
-				<ul class="list">
-					<li>
-						Alejandro Masís Cuevillas
-					</li>
-					<li>
-						Róger Blanco Segura
-					</li>
-					<li>
-						María Marta Chavarría Díaz
-					</li>
-					<li>
-						Felipe Chavarría Díaz 
-					</li>
-				</ul>
-			</div>		
-			<div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
-				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="www.ecci.ucr.ac.cr">Escuela de Ciencias de la Computación e Informática (ECCI)</a></h4>
+				
+				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.ecci.ucr.ac.cr" target="_blank">Escuela de Ciencias de la Computación e Informática (ECCI)</a></h4>
 				<h5 style="padding-top: 0px; padding-bottom: 8px;">Referente nacional en Ciencias de la Computación, Tecnologías de la Información e Ingeniería de Software. </h5>
 				<ul class="list">
 					<li>
@@ -99,9 +67,58 @@ $cakeDescription = 'Acerca de';
 						José Daniel Sánchez Castillo	
 					</li>
 				</ul>
-
-				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="www.geologia.ucr.ac.cr">Escuela Centroamericana de Geología (ECG)</a></h4>
-				<h5 style="padding-top: 0px; padding-bottom: 8px; text-align: justify;">Referente centroamericano encargado de desarrollar el conocimiento geocientífico de la región de América Central a partir de la formación de profesionales, técnica y éticamente capacitados para la solución de problemas, toma de decisiones y uso adecuado de los recursos naturales, buscando mejorar la calidad de vida de la población, mediante docencia, investigación y acción social, atendiendo las demandas de la sociedad desde una perspectiva de desarrollo sostenible. </h5>
+				
+				<h3> Sitios de interés</h3>
+				<ul class="list">
+					<li>
+						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.geologia.ucr.ac.cr" target="_blank">Escuela Centroamericana de Geología (ECG)</a></h5>
+					</li>
+					<li>
+						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.rsn.ucr.ac.cr/" target="_blank">Red Sismológica Nacional (RSN)</a></h5>
+					</li>
+					<li>
+						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.geologia.ucr.ac.cr/revista/revista-geol.htm" target="_blank">Revista Geológica de América Central (RGAC)</a></h5>
+					</li>
+					<li>
+						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://163.178.105.2:84/" target="_blank">Biblioteca de la Escuela Centroamericana de Geología</a></h5>
+					</li>
+					<li>
+						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="https://www.facebook.com/aceg.geologia/" target="_blank">Asociación Centroamericana de Estudiantes de Geología (ACEG)</a></h5>
+					</li>
+				</ul>
+			</div>		
+			<div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
+				
+				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom: 1px;"><a href="http://museo.ucr.ac.cr/" target="_blank"> Museo + UCR</a></h4>
+				<h5 style="padding-top: 0px; padding-bottom: 8px;">Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.</h5>
+				<ul class="list">
+					<li>
+						Eugenia Zavaleta Ochoa
+					</li>
+					<li>
+						Mariano Chinchilla Chavarría
+					</li>
+					<li>
+						Marco Díaz Segura
+					</li>
+				</ul>
+				
+				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom:1px"><a href="https://www.acguanacaste.ac.cr/" target="_blank">Área de Conservación Guanacaste (ACG)</a></h4>
+				<h5 style="padding-top: 0px; padding-bottom: 8px;">Institución encargada de restaurar y conservar hasta la perpetuidad un ecosistema completo de bosque seco tropical y sus ecosistemas adyacentes en las provincias de Guanacaste y Alajuela.</h5>
+				<ul class="list">
+					<li>
+						Alejandro Masís Cuevillas
+					</li>
+					<li>
+						Róger Blanco Segura
+					</li>
+					<li>
+						María Marta Chavarría Díaz
+					</li>
+					<li>
+						Felipe Chavarría Díaz.
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
