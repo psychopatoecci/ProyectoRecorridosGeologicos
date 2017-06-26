@@ -77,3 +77,55 @@
     padding-right: 1cm;
   
 }
+
+/* ------------- Estilos de imágenes promocionale ------------------*/
+
+.promotion
+{
+    padding-left: 1cm;
+    padding-right: 1cm;
+    margin-top: 15px;
+    margin-bottom: 45px;
+
+}
+
+.image_promotion
+{
+    width: 70%; 
+    border-radius: 15px;
+}
+
+@media (min-width: 680px) and (max-width: 880px)
+{
+    .image_promotion
+    {
+        width: 90%; 
+        border-radius: 15px;
+    }
+}
+
+@media (min-width: 680px)
+{
+    .promotion_space {
+        width: 50% !important;
+        float: left !important;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 679px)
+{
+    .image_promotion
+    {
+        width: 90%; 
+        border-radius: 15px;
+        margin-bottom: 15px;
+    }
+
+    .promotion
+    {
+        margin-top: 0px;
+        margin-bottom: 45px;
+
+    }
+}
+
