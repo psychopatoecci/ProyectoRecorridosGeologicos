@@ -38,7 +38,7 @@ $cakeDescription = 'Contacto';
 <div class="container" style=" padding:25px;">
 <div id="form">
 	<div class = "page-header" >   
-		<h2><?php echo $title; ?></h2>
+		<h2>Contáctenos</h2>
 	</div> 
 
 	<div>
@@ -47,7 +47,7 @@ $cakeDescription = 'Contacto';
 
 		<h4> <strong>Horario:</strong> Lunes a viernes de 8:00-17:00 Teléfono: (506) 2225-1684 (506) 2253-9801 </h4>
 
-		<h4> <strong>Correo electrónico:</strong> <a href="mailto:cicg@ucr.ac.cr">cicg@ucr.ac.cr</a>  <strong>Sitio web:</strong> <a href="http://www.cicg.ucr.ac.cr">www.cicg.ucr.ac.cr</a> </h4>
+		<h4> <strong>Correo electrónico:</strong> <a href="mailto:cicg@ucr.ac.cr">cicg@ucr.ac.cr</a>  <strong>Sitio web:</strong> <a href="http://www.cicg.ucr.ac.cr" target='_blank'>www.cicg.ucr.ac.cr</a> </h4>
 
 		<h4> O envíenos un correo por medio del formulario y se le estará respondiendo lo más pronto posible. </h4>
 	</div>

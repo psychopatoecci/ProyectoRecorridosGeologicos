@@ -16,10 +16,12 @@
 $cakeDescription = 'Acerca de';
 ?>
 <!DOCTYPE html>
-<?= $this->Html->css('about.css') ?>
+<?= $this->Html->css('information.css') ?>
+
 <div class="help-tip">
 	<p>En esta página usted encontrará información de los participantes en el desarrollo del proyecto, así como enlaces a otros sitios de interés.</p>
 </div>
+
 <div class="container-fluid" >
 	<div class="container" style=" padding:25px;">
 		<div class="page-header">   
