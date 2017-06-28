@@ -74,8 +74,8 @@ VALUES
 	-- Imagen ilustrativa de recomendaciones
 	('toursDescription', '../resources/travel/general/security.png', '', 'image', 0),
 	-- URLs apps Android
-	('toursDescription', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','Recorrido isla Bolaños', 'url', 0),
-	('toursDescription', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','Recorrido península de Santa Elena', 'url', 0);
+	('toursDescription', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RIB', 'url', 0), -- Bolaños
+	('toursDescription', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RSE', 'url', 0); -- Santa Elena
 
 -- Contenido de la página de recorrido isla Bolaños
 INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
