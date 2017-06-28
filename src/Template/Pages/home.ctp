@@ -58,12 +58,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <center>
 <div class="row promotion">
 	<div class="col-md-6 promotion_space">
-		<a  title="Obtener aplicación para dispositivos Android" href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps">
+		<a  title="Obtener aplicación para dispositivos Android" href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target='_blank'>
 			<img class ="image_promotion" src="/img/Bolanos_Android.png" align="center">  
 		</a>
 	</div>
 	<div class="col-md-6 promotion_space">
-		<a title="Obtener aplicación para dispositivos Android" href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps">
+		<a title="Obtener aplicación para dispositivos Android" href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target='_blank'>
 			<img class ="image_promotion" src="/img/Santa_Elena_Android.png" align="center">
 		</a>    
 	</div>

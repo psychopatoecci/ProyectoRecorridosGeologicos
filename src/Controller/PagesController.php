@@ -177,7 +177,7 @@ class PagesController extends AppController
         ]);
     }
     
-    	/**
+    /**
      * toursDescription method.
      * Created by Jean Carlo Lara.
      * This method get the general tours information paths from 
@@ -221,7 +221,8 @@ class PagesController extends AppController
 	
 	/**
      * Gallery method.
-     * As of now it doesn't need logic.
+     * Created by Jose Daniel Sánchez y Adrián Madrigal
+     * This method shows photos about tours.
      *
      * @return \Cake\Network\Response|null
      */
@@ -272,7 +273,14 @@ class PagesController extends AppController
         }
     }
 
-    //creditos
+    /**
+     * About method.
+     * Created by Jean Carlo Lara
+     * This method shows the names of people and organizations 
+     * that collaborate to developed this application.
+     *
+     * @return \Cake\Network\Response|null
+     */
     public function about()
     {
         $this->set('title', 'Acerca de');
