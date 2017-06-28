@@ -44,7 +44,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         filter: alpha(opacity=0);
     }
     .divtabla{
-        width: 100%;
+        width: 95%;
         overflow-x:scroll;
     }
 
@@ -138,6 +138,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?= $this->Form->create ('subir-mensaje') ?>
             <?= $this->Form->textArea ('message', ['value' => $text['description'], 'style' => 'width:65%;']) ?>
             <input type="hidden"  name="id" value='<?= $text['id'] ?>'></input>
+            <div style="margin-top: 10px; margin-bottom: 10px;">
+                <h3>Cambiar enlaces promocionales</h3>
+                <div class="row">
+                    <div class="col-sm-6" style="padding-left: 0px; padding-top: 8px; padding-right: : 0px;">
+                            <label><font color="red"></font>Recorrido Isla Bolaños</label>
+                            <input class = "form-control" type="text" id="url_bolanos" name="url_bolanos" value='<?= $urlBolanos['link_path'] ?>' placeholder="Ingrese la url referente al recorrido">
+                            <input type="hidden"  name="id_bolanos" value='<?= $urlBolanos['id'] ?>'></input>
+                            <span class="error" aria-live="polite" id ="bolanos_validate"></span>
+                    </div>
+                    <div class="col-sm-6" style="padding-left: 0px; padding-top: 8px; padding-right: : 0px;">
+                            <label><font color="red"></font>Recorrido Península de Santa Elena</label>
+                            <input class = "form-control" type="text" id="url_santa_elena" name="url_santa_elena" value='<?= $urlSantaElena['link_path'] ?>' placeholder="Ingrese la url referente al recorrido" >
+                            <input type="hidden"  name="id_santa_elena" value='<?= $urlSantaElena['id'] ?>'></input>
+                            <span class="error" aria-live="polite" id ="santa_elena_validate"></span>
+                    </div>
+                </div>
+            </div>
             <br /><button class="btn btn-primary"  type="submit"> Guardar</button>       
             <?= $this->Form->end () ?>
         </div>

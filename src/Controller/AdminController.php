@@ -219,13 +219,47 @@ class AdminController extends AppController
                         break;
                     }
                 }
-            } else if ( isset ($this->request->data['message']) ) {
-                $toModify = $contentsController -> get ($this->request->data('id'));
-                $toModify -> description = $this->request->data ['message'];
-                if ($contentsController -> save ($toModify)) {
-                    $this->Flash->success(__('Cambios guardados.'));
-                } else {
-                    $this->Flash->error (__('No se pudo cambiar el mensaje.'));
+            } else if ( isset ($this->request->data['message']) || isset ($this->request->data['url_bolanos']) || isset ($this->request->data['url_santa_elena']) ) {
+                
+                $changes_url = false;
+                if(isset ($this->request->data['message']))
+                {
+                    $toModify = $contentsController -> get ($this->request->data('id'));
+                    $toModify -> description = $this->request->data ['message'];
+                    if ($contentsController -> save ($toModify)) {
+                        $this->Flash->success(__('Cambios guardados.'));
+                        $changes_url = true;
+                    } else {
+                        $this->Flash->error (__('No se pudo cambiar el mensaje.'));
+                    }
+                }
+
+                if(isset ($this->request->data['url_bolanos']) && isset ($this->request->data['id_bolanos']) )
+                {
+                    $toModifyBolanos = $contentsController -> get ($this->request->data('id_bolanos'));
+                    $toModifyBolanos -> link_path = $this->request->data ['url_bolanos'];
+                    if ($contentsController -> save ($toModifyBolanos)) {
+                        if($changes_url == false)
+                        {
+                          $this->Flash->success(__('Cambios guardados.'));      
+                        }
+                    } else {
+                        $this->Flash->error (__('No se pudo cambiar la url.'));
+                    }  
+                }
+
+                if(isset ($this->request->data['url_santa_elena']) && isset ($this->request->data['id_santa_elena']))
+                {
+                    $toModifySantaElena = $contentsController -> get ($this->request->data('id_santa_elena'));
+                    $toModifySantaElena -> link_path = $this->request->data ['url_santa_elena'];
+                    if ($contentsController -> save ($toModifySantaElena)) {
+                        if($changes_url == false)
+                        {
+                          $this->Flash->success(__('Cambios guardados.'));      
+                        }
+                    } else {
+                        $this->Flash->error (__('No se pudo cambiar la url.'));
+                    }  
                 }
             }
         }
@@ -234,6 +268,18 @@ class AdminController extends AppController
         $textsQuery = $pagesController->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'home',
                                 'Contents.content_type' => 'text',)
+        ))->toArray ()[0];
+
+        $urlBolanosQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'introduction',
+                                'Contents.content_type' => 'url',
+                                'Contents.description' => 'RIB',)
+        ))->toArray ()[0];      
+        
+        $urlSantaElenaQuery = $pagesController->Pages->Contents->find('all', array(
+            'conditions' => array('Contents.page_id' => 'introduction',
+                                'Contents.content_type' => 'url',
+                                'Contents.description' => 'RSE',)
         ))->toArray ()[0];
 
         $imagesQuery = $pagesController->Pages->Contents->find('all', array(
@@ -245,7 +291,9 @@ class AdminController extends AppController
         $this->set([
             'initialPath' => isset ($agregarImagen) ? '../' : '/',
             'text'      => $textsQuery,       
-            'images'    => $imagesQuery,            
+            'images'    => $imagesQuery,
+            'urlBolanos' => $urlBolanosQuery,
+            'urlSantaElena' => $urlSantaElenaQuery,            
         ]);
     }
     
