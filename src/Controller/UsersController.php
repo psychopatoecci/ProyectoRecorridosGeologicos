@@ -135,7 +135,8 @@ class UsersController extends AppController
         }
     }
     
-    /** recover account method.
+    /** 
+     * Method to send an email to recover the account.
      * Created by Christian Durán.
      * Sends a mail to the admin with a message to recover the account.
      */
@@ -148,16 +149,25 @@ class UsersController extends AppController
         $token -> tokenNum = $tokenNum;
         $token -> created  = Time::now();
         $tokenTable-> save ($token);
-        $email
-            ->transport ('gmail')
-            ->from ('soporte.recorridosgeologicos@gmail.com')
-            ->to ('soporte.recorridosgeologicos@gmail.com')
-            ->emailFormat('html')
-            ->subject ('Reestablecimiento de contraseña')
-            ->send ("Para recuperar la contraseña usar el siguiente enlace:\n"
-                ."http://rutageologica.ucr.ac.cr/users/recover/".$tokenNum);
+        try {
+            $email
+                ->transport ('gmail')
+                ->from ('soporte.recorridosgeologicos@gmail.com')
+                ->to ('soporte.recorridosgeologicos@gmail.com')
+                ->emailFormat('html')
+                ->subject ('Reestablecimiento de contraseña')
+                ->send ("Para recuperar la contraseña usar el siguiente enlace:\n"
+                    ."http://rutageologica.ucr.ac.cr/users/recover/".$tokenNum);
+            $this->set ('sentMessage', true);
+        } catch (\Exception $e) {
+            $this->Flash->error ('No se pudo enviar el correo de recuperación, posiblemente la contraseña de gmail cambió. Pedir a un administrador que coloque la nueva en config/app.php');
+            $this->set ('sentMessage', false);
+        }
     }
 
+    /** 
+     * Method to create a new password for the user.
+     */
     public function recover ($token) {
     // Esta función supone que solo existe la cuenta de administrador.
     // Si se cambia la contraseña de la cuenta de correo hay que cambiarlo
