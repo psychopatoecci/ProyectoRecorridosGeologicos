@@ -186,10 +186,25 @@ return [
             'username' => 'user',
             'password' => 'secret',
             'client' => null,
-            'tls' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
-        ],
-    ],
+			'tls' => null,
+			'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+		],
+		'gmail'=> [
+			'host' => 'ssl://smtp.gmail.com',
+			'port' => 465,
+			'username' => 'soporte.recorridosgeologicos@gmail.com',
+			'password' => '$soporte2017.recorridos',
+			'className' => 'Smtp',
+			'log' => true,
+			'context' => [
+				'ssl' => [
+					'verify_peer' => false,
+					'verify_peer_name' => false,
+					'allow_self_signed' => true
+				]
+			]
+		]
+	],
 
     /**
      * Email delivery profiles
@@ -229,7 +244,7 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
-			'username' => 'user.psychopato',
+            'username' => 'user.psychopato',
             'password' => 'PsychopatoECCI$',
             'database' => 'recorridos_geologicosdb',
             'encoding' => 'utf8',

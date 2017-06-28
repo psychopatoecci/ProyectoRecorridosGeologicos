@@ -80,6 +80,6 @@ class AppController extends Controller
      * without logging in. Only administrators have accounts.
      */
     public function beforeFilter (Event $event) {
-        $this->Auth->allow(['logout', 'login']);
+        $this->Auth->allow(['logout', 'login', 'forgottenPassword', 'recover']);
     }
 }
