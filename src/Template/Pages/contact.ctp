@@ -40,9 +40,19 @@ $cakeDescription = 'Contacto';
 	<div class = "page-header" >   
 		<h2><?php echo $title; ?></h2>
 	</div> 
-		
-	<form method="post" action="/pages/contact" name="formContact" onsubmit="return validateForm()">
 
+	<div>
+		
+		<h4> <strong>Dirección:</strong> Barrio los Profesores (carretera a Sabanilla) de GlaxoSmithKline 50m N y 200m W, casa N. 13, 2060 San Pedro De Montes De Oca, San Jose, Costa Rica.</h4>
+
+		<h4> <strong>Horario:</strong> Lunes a viernes de 8:00-17:00 Teléfono: (506) 2225-1684 (506) 2253-9801 </h4>
+
+		<h4> <strong>Correo electrónico:</strong> <a href="mailto:cicg@ucr.ac.cr">cicg@ucr.ac.cr</a>  <strong>Sitio web:</strong> <a href="http://www.cicg.ucr.ac.cr">www.cicg.ucr.ac.cr</a> </h4>
+
+		<h4> O envíenos un correo por medio del formulario y se le estará respondiendo lo más pronto posible. </h4>
+	</div>
+	
+	<form method="post" action="/pages/contact" name="formContact" onsubmit="return validateForm()">
     </div>
 		<div class="input_fields_wrap">
 			<label id="label"> Nombre <span style="color:red"> *</span></label>
