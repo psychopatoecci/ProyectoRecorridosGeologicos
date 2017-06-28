@@ -1,3 +1,7 @@
+<?= $this->Html->css('information.css') ?> 
+<div class="help-tip">
+    <p>Presione guardar para confirmar los cambios.</p>
+</div>
 <div class="users form">
     <div class="container login">
         <?= $this->Form->create() ?>
