@@ -4,11 +4,16 @@
   */
 ?>
 
+<?= $this->Html->css('information.css') ?> 
+<div class="help-tip">
+    <p>Solo para administradores<br />Escriba sus datos y presione Iniciar Sesi&oacute;n.</p>
+</div>
+
 <div class="users form">
 <?= $this->Flash->render('auth') ?>
     <style rel="stylesheet">
         .login {
-            margin-top: 55px;
+            padding-top: 55px;
         }
     </style>
     <div class="container login">
