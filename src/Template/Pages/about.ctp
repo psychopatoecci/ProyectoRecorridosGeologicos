@@ -16,7 +16,10 @@
 $cakeDescription = 'Acerca de';
 ?>
 <!DOCTYPE html>
-
+<?= $this->Html->css('about.css') ?>
+<div class="help-tip">
+	<p>En esta página usted encontrará información de los participantes en el desarrollo del proyecto, así como enlaces a otros sitios de interés.</p>
+</div>
 <div class="container-fluid" >
 	<div class="container" style=" padding:25px;">
 		<div class="page-header">   
@@ -89,7 +92,7 @@ $cakeDescription = 'Acerca de';
 			</div>		
 			<div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
 				
-				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom: 1px;"><a href="http://museo.ucr.ac.cr/" target="_blank"> Museo + UCR</a></h4>
+				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://museo.ucr.ac.cr/" target="_blank"> Museo + UCR</a></h4>
 				<h5 style="padding-top: 0px; padding-bottom: 8px;">Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.</h5>
 				<ul class="list">
 					<li>
@@ -103,7 +106,7 @@ $cakeDescription = 'Acerca de';
 					</li>
 				</ul>
 				
-				<h4 style="color: #0C6CAE; padding-top: 8px; padding-bottom:1px"><a href="https://www.acguanacaste.ac.cr/" target="_blank">Área de Conservación Guanacaste (ACG)</a></h4>
+				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom:1px"><a href="https://www.acguanacaste.ac.cr/" target="_blank">Área de Conservación Guanacaste (ACG)</a></h4>
 				<h5 style="padding-top: 0px; padding-bottom: 8px;">Institución encargada de restaurar y conservar hasta la perpetuidad un ecosistema completo de bosque seco tropical y sus ecosistemas adyacentes en las provincias de Guanacaste y Alajuela.</h5>
 				<ul class="list">
 					<li>
