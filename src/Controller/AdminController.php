@@ -1263,11 +1263,11 @@ class AdminController extends AppController
                     /* Se guarda entidad en la base de datos */
                     if ($pagesController->Pages->Contents->delete($imageContent))
                     {
-                        //$this->Flash->success(__('The image has been removed.'));
+                        $this->Flash->success(__('La imagen ha sido eliminada exitosamente.'));
                     }
                     else
                     {
-                        //$this->Flash->error(__('The image could not be removed. Please, try again.'));     
+                        $this->Flash->error(__('La imagen no puede ser eliminada. Por favor, intente de nuevo.'));     
                     }
                 }
             }
@@ -1317,10 +1317,10 @@ class AdminController extends AppController
 
 					/* Se guarda entidad en la base de datos */
 					if ($pagesController->Pages->Contents->save($contentImageNew)){ 
-						//$this->Flash->success(__('The image has been saved.')); 
+						$this->Flash->success(__('La imagen ha sido agregada exitosamente')); 
 					}
 					else{ 
-						//$this->Flash->error(__('The image could not be saved. Please, try again.')); 
+						$this->Flash->error(__('No es posible agregar la imagen. Por favor, intente de nuevo.')); 
 					}
                 }
             }
@@ -1338,11 +1338,11 @@ class AdminController extends AppController
                                 /* Se guarda entidad en la base de datos */
                                 if ($pagesController->Pages->Contents->save($image))
                                 {
-                                    //$this->Flash->success(__('The image has been modified.'));
+                                    $this->Flash->success(__('La imagen ha sido modificada exitosamente.'));
                                 }
                                 else
                                 {
-                                    //$this->Flash->error(__('The image could not be modified. Please, try again.'));     
+                                    $this->Flash->error(__('La imagen no puede ser modificada. Por favor, intente de nuevo.'));     
                                 }
                             }
                         }
@@ -1350,16 +1350,10 @@ class AdminController extends AppController
 
                 }
             }
-        
-			//$this->Flash->success(__('Las imágenes de la galería han sido modificadas correctamente'));
         }
-		$this -> set ('title', ''.($galleryName == 'Bolanos' ? 'Administración de la galería de Isla Bola&ntilde;os' : 'Administración de la galería de Pen&iacute;nsula de Santa Elena'));
+		$this -> set ('title', ''.($galleryName == 'Bolanos' ? 'Administración de la galería de isla Bola&ntilde;os' : 'Administración de la galería de pen&iacute;nsula de Santa Elena'));
 		
 		$this->set('images', $images);
 		$this->set('galleryId', $galleryId);
-		//$this->set('userController', 'MapPoints');
-		//$this->set('userAction', 'view/'.$tourId);
-		//$this -> set ('tourId', $tourId);
-		//$this->set('mapPoints',$points);
 	}
 }
