@@ -57,6 +57,9 @@ VALUES
 	('introduction', '../resources/intro/background_images/02.png', '', 'image', 2),
 	('introduction', '../resources/intro/background_images/03.png', '', 'image', 3),
 	('introduction', '../resources/intro/background_images/04.png', '', 'image', 4);
+	-- URLs apps Android
+	('introduction', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RIB', 'url', 0), -- Bolaños
+	('introduction', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RSE', 'url', 0); -- Santa Elena
 
 -- Contenido de la página de descripción general
 INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
@@ -73,9 +76,6 @@ VALUES
 	('toursDescription', '', 'Bajarse del bote solo si el botero se lo indica.', 'text', 0),
 	-- Imagen ilustrativa de recomendaciones
 	('toursDescription', '../resources/travel/general/security.png', '', 'image', 0),
-	-- URLs apps Android
-	('toursDescription', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RIB', 'url', 0), -- Bolaños
-	('toursDescription', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RSE', 'url', 0); -- Santa Elena
 
 -- Contenido de la página de recorrido isla Bolaños
 INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
