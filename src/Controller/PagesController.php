@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\Email;
 
 /**
  * Pages Controller.
@@ -248,13 +249,27 @@ class PagesController extends AppController
 	
 	/**
      * Contact method.
-     * As of now it doesn't need logic.
+     * Created by Adrian Madrigal
+     * This method sends the information contact
+     * by email
      *
      * @return \Cake\Network\Response|null
      */
     public function contact()
     {
-		
+		$this->set('title', 'Contacto');
+        if ($this->request->is(['post'])) {            
+            $email = new Email('default');
+            $email
+                ->transport ('gmail')
+                ->from ('soporte.recorridosgeologicos@gmail.com')
+                ->to ('soporte.recorridosgeologicos@gmail.com')
+                ->emailFormat('text')
+                ->subject ($_POST['asunto'])
+                ->send ("Mensaje enviado por: ".$_POST['nombre']."\nCorreo: ".$_POST['correo']."\n\nMensaje:\n".$_POST['mensaje']);
+
+                $this->Flash->success("Mensaje enviado exitosamente.");                
+        }
     }
 
     //creditos
