@@ -41,7 +41,10 @@ VALUES
 	('home', '../resources/home/carousel/estratos_descartes.png', '', 'image', 0),
 	('home', '../resources/home/carousel/macizo_orosi.png', '', 'image', 0),
 	-- Texto Introductorio
-	('home', '', 'El litoral Pacífico Norte de Costa Rica ofrece sitios turísticos de importancia geológica, como lo son la isla Bolaños y la península de Santa Elena, con diversos orígenes y lugares por conocer.', 'text', 1);
+	('home', '', 'El litoral Pacífico Norte de Costa Rica ofrece sitios turísticos de importancia geológica, como lo son la isla Bolaños y la península de Santa Elena, con diversos orígenes y lugares por conocer.', 'text', 1),
+	-- URLs apps Android
+	('home', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RIB', 'url', 0), -- Bolaños
+	('home', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RSE', 'url', 0); -- Santa Elena
 
 -- Contenido de la página de información
 INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 
@@ -56,10 +59,7 @@ VALUES
 	('introduction', '../resources/intro/background_images/01.png', '', 'image', 1),
 	('introduction', '../resources/intro/background_images/02.png', '', 'image', 2),
 	('introduction', '../resources/intro/background_images/03.png', '', 'image', 3),
-	('introduction', '../resources/intro/background_images/04.png', '', 'image', 4),
-	-- URLs apps Android
-	('introduction', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RIB', 'url', 0), -- Bolaños
-	('introduction', 'https://play.google.com/store/apps/details?id=com.google.android.apps.maps','RSE', 'url', 0); -- Santa Elena
+	('introduction', '../resources/intro/background_images/04.png', '', 'image', 4);
 
 -- Contenido de la página de descripción general
 INSERT INTO contents (page_id, link_path, description, content_type, sequence_in_page) 

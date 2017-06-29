@@ -271,13 +271,13 @@ class AdminController extends AppController
         ))->toArray ()[0];
 
         $urlBolanosQuery = $pagesController->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'introduction',
+            'conditions' => array('Contents.page_id' => 'home',
                                 'Contents.content_type' => 'url',
                                 'Contents.description' => 'RIB',)
         ))->toArray ()[0];      
         
         $urlSantaElenaQuery = $pagesController->Pages->Contents->find('all', array(
-            'conditions' => array('Contents.page_id' => 'introduction',
+            'conditions' => array('Contents.page_id' => 'home',
                                 'Contents.content_type' => 'url',
                                 'Contents.description' => 'RSE',)
         ))->toArray ()[0];
