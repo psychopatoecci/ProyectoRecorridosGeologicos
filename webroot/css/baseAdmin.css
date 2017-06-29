@@ -397,7 +397,7 @@ header{
 	}
 
 	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
-	    position: absolute;
+	    position: initial;
 	    left: 25px;
 
 	}
@@ -503,4 +503,28 @@ header{
 }
 
 
+@media (min-width: 768px){
 
+	.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+	    margin-right: -17px !important;
+	    margin-left: -17px !important;
+	}
+
+	.navbar-right {
+	    float: right!important;
+	    margin-right: 0px !important;
+	}
+
+	.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+		/* margin-right: 0; */
+		/* margin-left: 0; */
+	}
+
+}
+
+@media (max-width: 976px) and (min-width: 767px){
+
+	.container {
+	    width: 100%;
+	}
+}

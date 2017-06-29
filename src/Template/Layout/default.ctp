@@ -93,16 +93,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/contact' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-user">&#8194;</span>Contacto',['controller'=>'pages','action'=> 'contact'],['escape' => false]);?></li>
 							<li class = "<?php if ( $_SERVER['REQUEST_URI'] === '/pages/about' ) {echo "active"; } else  {echo "noactive";}?>"><?= $this->Html->link ('<span class="glyphicon glyphicon-blackboard">&#8194;</span>Acerca de',['controller'=>'pages','action'=> 'about'],['escape' => false]);?></li>
 						</ul>
+			            <?php 
+			                if ($this->request->session()->read('Auth.User')) {
+			                    echo '<ul class = "nav navbar-nav navbar-right">
+			                    <li>'.
+			                    $this->Html->link ('<span class="glyphicon glyphicon-log-out">&#8194;</span>Cerrar sesión',['controller'=>'users','action'=> 'logout'],['escape' => false])
+			                    .'</li></ul>';
+			            } ?>
 					</div>
 				</div>
-                <?php 
-                    if ($this->request->session()->read('Auth.User')) {
-                        echo '<div "collapse navbar-collapse" id="navbar-collapse-4">
-                        <ul class = "nav navbar-nav navbar-right">
-                        <li>'.
-                        $this->Html->link ('<span class="glyphicon glyphicon-log-out">&#8194;</span>Cerrar sesión',['controller'=>'users','action'=> 'logout'],['escape' => false])
-                        .'</li></ul></div>';
-                } ?>
+
 			</nav>
 		</div>
 		
