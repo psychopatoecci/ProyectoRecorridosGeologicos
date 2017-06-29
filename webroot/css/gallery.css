@@ -54,15 +54,16 @@ body, html {
 /* Estilo del botón informativo de galleria*/
 .galleria-theme-classic .galleria-info-link {
 	background-position: -660px 4px !important;
-	filter: alpha(opacity=90) !important;
+    opacity: 1;
 	position: absolute !important;
 	width: 37px !important;
 	height: 37px !important;
 	cursor: pointer;
-	background-color: #248CCD !important;
+	background-color: #92CAD9 !important;
 	border-radius: 20px !important;
 	zoom: 1.4 !important;
 }
+
 
 /* Estilo del cuadro de texto informativo*/
 .galleria-theme-classic .galleria-info-text {

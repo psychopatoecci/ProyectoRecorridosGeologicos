@@ -94,7 +94,7 @@ $cakeDescription = 'Acerca de';
 			</div>		
 			<div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
 				
-				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://museo.ucr.ac.cr/" target="_blank"> Museo + UCR</a></h4>
+				<h4 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://museo.ucr.ac.cr/" target="_blank"> museo + UCR</a></h4>
 				<h5 style="padding-top: 0px; padding-bottom: 8px;">Unidad de investigación que adquiere, conserva, investiga y exhibe el patrimonio natural y cultural.</h5>
 				<ul class="list">
 					<li>

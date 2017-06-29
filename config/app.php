@@ -193,7 +193,7 @@ return [
 			'host' => 'ssl://smtp.gmail.com',
 			'port' => 465,
 			'username' => 'soporte.recorridosgeologicos@gmail.com',
-			'password' => '$soporte2017.recorridos',
+			'password' => '$geologicos$4223',
 			'className' => 'Smtp',
 			'log' => true,
 			'context' => [

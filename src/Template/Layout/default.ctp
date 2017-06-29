@@ -42,8 +42,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
-
-    <?= $this->Html->script('jquery-3.2.0.min') ?>
 </head>
 
 <body>

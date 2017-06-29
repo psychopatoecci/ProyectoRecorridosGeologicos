@@ -43,8 +43,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 
-    <?= $this->Html->script('jquery-3.2.0.min') ?>
-
 </head>
 
 <body>
@@ -101,7 +99,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							</li>
                             <?php 
                                 if (isset ($userController) && isset ($userAction)) {
-                                    echo '<li>'.$this->Html->link ('<span class="glyphicon glyphicon-eye-open">&#8194;</span>Ver cambios',['controller'=>$userController,'action'=> $userAction],['escape' => false]).'</li>';
+                                    echo '<li>'.$this->Html->link ('<span class="glyphicon glyphicon-eye-open">&#8194;</span>Ver cambios',['controller'=>$userController,'action'=> $userAction],['escape' => false, 'target' => '_blank']).'</li>';
                                 }
                             ?>
 						</ul>

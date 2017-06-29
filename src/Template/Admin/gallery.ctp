@@ -98,7 +98,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			document.getElementById("i"+id).style.display = "none";
 			
 			var buttonVer = "<button class = \"btn btn-info\" onclick = \" verImagen('" + document.getElementById("container_image_temp" + id).value + "');\" type=\"button\" style = \"font-size:12px; margin-top: 25px; margin-right: 3px;\"> Ver </button>" ;
-			var buttonEliminar = "<button class = \"btn btn-info\" onclick = \" eliminarImagenNueva('" + id + "');\" type=\"button\" style=\"font-size:12px; margin-top: 25px; \"> Eliminar  </button>" ;
+			var buttonEliminar = "<button class = \"btn btn-danger\" onclick = \" eliminarImagenNueva('" + id + "');\" type=\"button\" style=\"font-size:12px; margin-top: 25px; \"> Eliminar  </button>" ;
 
 			$("#element_row_buttons_" + id).append(buttonVer);
 			$("#element_row_buttons_" + id).append(buttonEliminar);
@@ -176,7 +176,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					"</div>" +
 					"<div class=\"col-sm-2\">" +
 						"<button class = \"btn btn-info\" onclick = \" verImagen('" + imagen + "');\" type=\"button\"  style=\"margin-top:25px; margin-right:3px; font-size: 12px;\" > Ver </button>" +
-						"<button class=\"btn btn-info\" type=\"button\" style=\"margin-top:25px; font-size: 12px;\" name=\"initial\" id=\"" + id + "\" onclick=\"eliminarImagen(this.id)\" > Eliminar</button>" +
+						"<button class=\"btn btn-danger\" type=\"button\" style=\"margin-top:25px; font-size: 12px;\" name=\"initial\" id=\"" + id + "\" onclick=\"eliminarImagen(this.id)\" > Eliminar</button>" +
 					"</div>" +
 				"</div>" +
 

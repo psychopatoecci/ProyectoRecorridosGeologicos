@@ -113,10 +113,10 @@ function initialize() {
         }
         echo "</p>'";
         if (count ($point ['images']) > 0) {
-            echo '+ \'<button class = \\"btn btn-warning\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_image(this.id);\\" style = \\"height: 45px;\\"><p class=\\"marker_options\\" ><i class=\\"glyphicon glyphicon-picture\\" id=\\"iconoImagen\\"></i> Imágenes</p></button>\'+\'&nbsp&nbsp&nbsp\'';
+            echo '+ \'<button class = \\"btn btn-warning\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_image(this.id);\\" style = \\"height: 45px; background-color: #248CCD; border-color: #248CCD;\\"><p class=\\"marker_options\\" ><i class=\\"glyphicon glyphicon-picture\\" id=\\"iconoImagen\\"></i> Imágenes</p></button>\'+\'&nbsp&nbsp&nbsp\'';
         }
         if (count ($point ['videos']) > 0) {
-            echo '+ \'<button class = \\"btn btn-primary\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_video(this.id);\\" style = \\"height: 45px;\\"><p class =\\"marker_options\\" ><i class=\\"glyphicon glyphicon-film\\" id=\\"iconoImagen\\"></i> Videos</p></button>\'';
+            echo '+ \'<button class = \\"btn btn-primary\\" id=\\"\'+$n+\'\\" onclick = \\"show_content_video(this.id);\\" style = \\"height: 45px; background-color: #248CCD; border-color: #248CCD;\\"><p class =\\"marker_options\\" ><i class=\\"glyphicon glyphicon-film\\" id=\\"iconoImagen\\"></i> Videos</p></button>\'';
         }
     ?>
     + '</div>' +
