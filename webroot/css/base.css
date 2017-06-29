@@ -471,8 +471,8 @@ header{
 	}
 
 	.navbar-right {
-	    float: right!important;
-	    margin-right: 0px !important;
+	    float: right !important;
+	    /*margin-right: 0px !important;*/
 	}
 
 	.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {

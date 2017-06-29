@@ -59,7 +59,7 @@ header{
 	font-size: 15px;
 	font-weight: bold;
 	border-style: solid;
-    border-color: #3D8CC9 #005DA4 #3D8CC9 #005DA4 ;
+    border-color: black #005DA4 black #005DA4;
 }
 
 .navbar-inverse
@@ -512,7 +512,7 @@ header{
 
 	.navbar-right {
 	    float: right!important;
-	    margin-right: 0px !important;
+	    /*margin-right: 0px !important;*/
 	}
 
 	.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
