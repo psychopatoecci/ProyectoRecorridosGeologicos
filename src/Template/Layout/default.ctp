@@ -60,7 +60,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="barra_encabezado"></div>
 		<div class="container-fluid">  
 			<nav class="navbar navbar-inverse">
-				<div class="container">
+				<div class="container nav_element">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
 							<span class="sr-only">Toggle navigation</span>
