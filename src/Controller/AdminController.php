@@ -52,7 +52,7 @@ class AdminController extends AppController
             return array("extension" => $extension);
            
         } else {
-            $msj_error = "Error al intentar subir la imagen '". $_FILES[$imgName]['tmp_name']."'. Pudo haber ocurrido un ataque.";;
+            $msj_error = "Error al intentar subir la imagen '". $_FILES[$imgName]['tmp_name']."'. Pudo haber ocurrido un ataque.";
             return array("error" => $msj_error);
         }
     }
@@ -104,25 +104,29 @@ class AdminController extends AppController
                         }
                     }
                 }
-            }
+                if (isset($_POST['text_id'])) {
+                    $text = $this->Pages->Contents->get($_POST['text_id']);
+                    $text->description = $_POST['descripcion'];
+                    if ($this->Pages->Contents->save($text)) {
+                        $this->Flash->success("Cambios guardados exitosamente.");
+                    }
 
-            if (isset($_POST['text_id'])) {
-                $text = $this->Pages->Contents->get($_POST['text_id']);
-                $text->description = $_POST['descripcion'];
-                if ($this->Pages->Contents->save($text)) {
-                    $this->Flash->success("Cambios guardados exitosamente.");
+                    if (isset($_POST['text2_id'])) {
+                        $text = $this->Pages->Contents->get($_POST['text2_id']);
+                        $text->description = $_POST['descripcion2'];
+                        $this->Pages->Contents->save($text);
+                    }
+
+                }else{
+                    $this->Flash->error("Error al intentar guardar el texto.");
                 }
-
-                if (isset($_POST['text2_id'])) {
-                    $text = $this->Pages->Contents->get($_POST['text2_id']);
-                    $text->description = $_POST['descripcion2'];
-                    $this->Pages->Contents->save($text);
+            } else {
+                $msj_error = 'Error subiendo imagen';
+                if ($_FILES['imagen_fondo']['error'] == 1) {
+                    $msj_error = $msj_error.': Imagen muy pesada';
                 }
-
-            }else{
-                $this->Flash->error("Error al intentar guardar el texto.");
+                $this->Flash->error ($msj_error);
             }
-
         }
         
         //Crea el objeto query con la consulta especificada.
@@ -195,6 +199,12 @@ class AdminController extends AppController
                             } // Fin if se metió en base.
                         } // Fin if se subió.
                     }
+                } else {
+                    $msj_error = 'Error subiendo imagen';
+                    if ($_FILES['image']['error'] == 1) {
+                        $msj_error = $msj_error.': Imagen muy pesada';
+                    }
+                    $this->Flash->error ($msj_error);
                 }
             // No se están subiendo imágenes.
             } else if (isset($this->request->data['removing'])) {
@@ -502,7 +512,13 @@ class AdminController extends AppController
                         }
                     }
                 }
-            }
+            } else {
+                    $msj_error = 'Error subiendo imagen';
+                    if ($_FILES['imagen_fondo']['error'] == 1) {
+                        $msj_error = $msj_error.': Imagen muy pesada';
+                    }
+                    $this->Flash->error ($msj_error);
+                }
 
             if (isset($_POST['text_id'])) {
                 $text = $this->Pages->Contents->get($_POST['text_id']);
@@ -593,18 +609,22 @@ class AdminController extends AppController
                         }
                     }
                 }
-            }
-
-            if (isset($_POST['text_id'])) {
-                $text = $this->Pages->Contents->get($_POST['text_id']);
-                $text->description = $_POST['descripcion'];
-                if ($this->Pages->Contents->save($text)) {
-                    $this->Flash->success("Cambios guardados exitosamente.");
+                if (isset($_POST['text_id'])) {
+                    $text = $this->Pages->Contents->get($_POST['text_id']);
+                    $text->description = $_POST['descripcion'];
+                    if ($this->Pages->Contents->save($text)) {
+                        $this->Flash->success("Cambios guardados exitosamente.");
+                    }
+                }else{
+                    $this->Flash->error("Error al intentar guardar el texto.");
                 }
-            }else{
-                $this->Flash->error("Error al intentar guardar el texto.");
-            }
-
+            } else {
+                $msj_error = 'Error subiendo imagen';
+                    if ($_FILES['imagen_fondo']['error'] == 1) {
+                        $msj_error = $msj_error.': Imagen muy pesada';
+                    }
+                    $this->Flash->error ($msj_error);
+                }
         }
 
         //Crea el objeto query con la consulta especificada.
