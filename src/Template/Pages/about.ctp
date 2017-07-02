@@ -73,24 +73,6 @@ $cakeDescription = 'Acerca de';
 					</li>
 				</ul>
 				
-				<h3> Sitios de interés</h3>
-				<ul class="list">
-					<li>
-						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.geologia.ucr.ac.cr" target="_blank">Escuela Centroamericana de Geología (ECG)</a></h5>
-					</li>
-					<li>
-						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.rsn.ucr.ac.cr/" target="_blank">Red Sismológica Nacional (RSN)</a></h5>
-					</li>
-					<li>
-						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.geologia.ucr.ac.cr/revista/revista-geol.htm" target="_blank">Revista Geológica de América Central (RGAC)</a></h5>
-					</li>
-					<li>
-						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://163.178.105.2:84/" target="_blank">Biblioteca de la Escuela Centroamericana de Geología</a></h5>
-					</li>
-					<li>
-						<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="https://www.facebook.com/aceg.geologia/" target="_blank">Asociación Centroamericana de Estudiantes de Geología (ACEG)</a></h5>
-					</li>
-				</ul>
 			</div>		
 			<div class="col-sm-6" style="padding-left: 0px; padding-right: : 0px;">
 				
@@ -125,6 +107,26 @@ $cakeDescription = 'Acerca de';
 					</li>
 				</ul>
 			</div>
+		</div>
+		<div class="row">
+			<h3> Sitios de interés</h3>
+			<ul class="list">
+				<li>
+					<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.geologia.ucr.ac.cr" target="_blank">Escuela Centroamericana de Geología (ECG)</a></h5>
+				</li>
+				<li>
+					<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.rsn.ucr.ac.cr/" target="_blank">Red Sismológica Nacional (RSN)</a></h5>
+				</li>
+				<li>
+					<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://www.geologia.ucr.ac.cr/revista/revista-geol.htm" target="_blank">Revista Geológica de América Central (RGAC)</a></h5>
+				</li>
+				<li>
+					<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="http://163.178.105.2:84/" target="_blank">Biblioteca de la Escuela Centroamericana de Geología</a></h5>
+				</li>
+				<li>
+					<h5 style="color: #0C6CAE; padding-top: 0px; padding-bottom: 1px;"><a href="https://www.facebook.com/aceg.geologia/" target="_blank">Asociación Centroamericana de Estudiantes de Geología (ACEG)</a></h5>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
