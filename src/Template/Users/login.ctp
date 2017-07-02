@@ -29,3 +29,15 @@
         </form>
     </div>
 </div>
+
+<style >
+   .error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+} 
+</style>
