@@ -1304,13 +1304,17 @@ class AdminController extends AppController
 		$pagesController = new PagesController();
 		$galleryName = '';
 		$galleryPage = '';
+		
+		$this->set('userController', 'Pages');
 		if($galleryId == 1){
 			$galleryName = 'Bolanos';
 			$galleryPage = 'gallery1';
+			$this->set('userAction', 'gallery/1');
 		}
 		else{
 			$galleryName = 'SantaElena';
 			$galleryPage = 'gallery2';
+			$this->set('userAction', 'gallery/2');
 		}	
 
 		$images = $pagesController->Pages->Contents->find('all', array(
