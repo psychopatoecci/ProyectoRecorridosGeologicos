@@ -533,7 +533,7 @@ header{
     }
 }
 
-@media (min-width: 776px) and (max-width: 965px) {
+@media (min-width: 760px) and (max-width: 965px) {
 	.navbar-nav .open .dropdown-menu {
 	    position: static;
 	    height: inherit;
