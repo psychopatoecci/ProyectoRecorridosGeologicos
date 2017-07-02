@@ -43,13 +43,20 @@ $cakeDescription = 'Contacto';
 
 	<div>
 		
-		<h4> <strong>Dirección:</strong> Barrio los Profesores (carretera a Sabanilla) de GlaxoSmithKline 50m N y 200m W, casa N. 13, 2060 San Pedro De Montes De Oca, San Jose, Costa Rica.</h4>
+		<h4 align="justify"><strong>Dirección:</strong> Barrio los Profesores (carretera a Sabanilla) de GlaxoSmithKline 50m N y 200m W, casa N. 13, 2060 San Pedro De Montes De Oca, San Jose, Costa Rica.</h4>
 
-		<h4> <strong>Horario:</strong> Lunes a viernes de 8:00-17:00 Teléfono: (506) 2225-1684 (506) 2253-9801 </h4>
+		<h4 align="justify"> <strong>Horario:</strong> Lunes a viernes de 8:00-17:00 Teléfono: (506) 2225-1684 (506) 2253-9801 </h4>
 
-		<h4> <strong>Correo electrónico:</strong> <a href="mailto:cicg@ucr.ac.cr">cicg@ucr.ac.cr</a>  <strong>Sitio web:</strong> <a href="http://www.cicg.ucr.ac.cr" target='_blank'>www.cicg.ucr.ac.cr</a> </h4>
+		<div class="row" style=" margin-top: -8px; margin-bottom: -8px;">
+			<div class="col-sm-5" style="padding-right: 6px; padding-left: 0px;">
+				<h4> <strong>Correo electrónico:</strong> <a href="mailto:cicg@ucr.ac.cr">cicg@ucr.ac.cr</a></h4>
+			</div>
+			<div class="col-sm-4" style="padding-right: 0px; padding-left: 0px;">
+		  		<h4> <strong>Sitio web:</strong> <a href="http://www.cicg.ucr.ac.cr" target='_blank'>www.cicg.ucr.ac.cr</a> </h4>
+			</div>
+		</div>
 
-		<h4> O envíenos un correo por medio del formulario y se le estará respondiendo lo más pronto posible. </h4>
+		<h4 align="justify"> O envíenos un correo por medio del formulario y se le estará respondiendo lo más pronto posible. </h4>
 	</div>
 	
 	<form method="post" action="/pages/contact" name="formContact" onsubmit="return validateForm()">
@@ -85,3 +92,29 @@ function validateForm() {
     }
 }		
 </script>
+
+<style>
+	@media (min-width: 740px) and (max-width: 991px){
+
+		.col-sm-5 {
+		    width: 50% !important;
+		}
+		.col-sm-4 {
+		    width: 50% !important;
+		}
+	}
+
+	@media (min-width: 1201px){
+
+		.col-sm-5 {
+		    width: 29.66666667% !important;
+		}
+	}
+
+	@media (max-width: 1200px) and (min-width: 991px){
+
+		.col-sm-5 {
+			width: 35.66666667% !important;
+		}
+	}
+</style>
