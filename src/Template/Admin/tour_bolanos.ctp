@@ -92,9 +92,9 @@ $cakeDescription = 'Recorrido Isla Bolaños';
 	<div class="row" id="linkInput<?= $i ?>">
 	    <div class="col-md-9 links">
 	    	<label>Descripción</label>
-	    	<?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'placeholder'=>'Descripción', 'id' => 'descripcion']); ?>
+	    	<?php echo $this->Form->text('description'.$i, ['value'=>$url[$i]->description, 'placeholder'=>'Descripción', 'required', 'id' => 'descripcion']); ?>
 	    	<label>URL</label>
-	    	<?php echo $this->Form->url('url'.$i, ['value'=>$url[$i]->link_path, 'placeholder'=>'Enlace', 'id' => 'enlace']); ?>
+	    	<?php echo $this->Form->url('url'.$i, ['value'=>$url[$i]->link_path, 'placeholder'=>'Enlace', 'required', 'id' => 'enlace']); ?>
 	    	<?php echo $this->Form->button('Eliminar', ['class'=>'btn btn-danger', 'type'=>'button', 'onclick'=>'eliminar(linkInput'.$i.')']); ?>
 		</div>
 	</div>
@@ -143,7 +143,7 @@ $cakeDescription = 'Recorrido Isla Bolaños';
     	$(container).append('<div class="row" id="linkInput'+ current_length + '">\
 							<div class="col-md-9 links">\
                  			<label>Descripción</label>\
-                 			<input name="description'+ current_length + '" class="form-control" type="text" placeholder="Descripción">\
+                 			<input name="description'+ current_length + '" class="form-control" type="text" required placeholder="Descripción">\
                  			<label>URL</label>\
                  			<input name="url'+ current_length + '" class="form-control" type="url" required pattern="https?://.+" placeholder="Enlace">\
                 			<button class="btn btn-danger" type="button" onclick="eliminar(linkInput'+current_length+')">Eliminar</button>\
