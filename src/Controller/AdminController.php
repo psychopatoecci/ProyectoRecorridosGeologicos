@@ -635,18 +635,19 @@ class AdminController extends AppController
                     $writeText = false;
                 }
             } // Fin del if error == 4.
-        }
-        if ($writeText) {
-            if (isset($_POST['text_id'])) {
-                $text = $this->Pages->Contents->get($_POST['text_id']);
-                $text->description = $_POST['descripcion'];
-                if ($this->Pages->Contents->save($text)) {
-                    $this->Flash->success("Cambios guardados exitosamente.");
+            if ($writeText) {
+                if (isset($_POST['text_id'])) {
+                    $text = $this->Pages->Contents->get($_POST['text_id']);
+                    $text->description = $_POST['descripcion'];
+                    if ($this->Pages->Contents->save($text)) {
+                        $this->Flash->success("Cambios guardados exitosamente.");
+                    }
+                }else{
+                    $this->Flash->error("Error al intentar guardar el texto.");
                 }
-            }else{
-                $this->Flash->error("Error al intentar guardar el texto.");
             }
         }
+
         //Crea el objeto query con la consulta especificada.
         $textQuery = $this->Pages->Contents->find('all', array(
             'conditions' => array('Contents.page_id' => 'tourBolanos',
