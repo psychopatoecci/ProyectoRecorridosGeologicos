@@ -71,61 +71,71 @@ class AdminController extends AppController
         $this->loadModel('Pages');
         $this->set('userController', 'Pages');
         $this->set('userAction', 'information');
-        
+        $writeText = true; 
         if ($this->request->is(['patch', 'post', 'put'])) {
+            if($_FILES['imagen_fondo']['error'] != 4) {
+                // El 4 es que no se subió imagen.
+                // Evita que $writeText se ponga en false si no se subieron archivos.
+                if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
+                    if (isset($_POST['image_id'])) {
+                        $imFile = $this->verify_image_file();
+                        if (isset($imFile["error"])) {
+                            $this->Flash->error($imFile["error"]);
+                            $writeText = false;
 
-            if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
-                if (isset($_POST['image_id'])) {
-                    $imFile = $this->verify_image_file();
-                    if (isset($imFile["error"])) {
-                        $this->Flash->error($imFile["error"]);
+                        } else {
+                            $image = $this->Pages->Contents->get($_POST['image_id']);
+                            $updateLinkPath = !strpos($image->link_path, $imFile["extension"]);
+                            if($updateLinkPath) {
+                                //Si la extension es diferente se debe cambiar
+                                $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                            }
+                            $name = str_replace("../resources/intro/background_images/", "", $image->link_path);
+                            $path = 'resources'.DS.'intro'.DS.'background_images'.DS.$name;
+                            //Se guarda la imagen en el directorio
+                            if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], WWW_ROOT.$path)) {
+                                $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";
+                                $this->Flash->error($msj_error);
+                                $writeText = false;
 
-                    } else {
-                        $image = $this->Pages->Contents->get($_POST['image_id']);
-                        $updateLinkPath = !strpos($image->link_path, $imFile["extension"]);
-                        if($updateLinkPath) {
-                            //Si la extension es diferente se debe cambiar
-                            $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
-                        }
-                        $name = str_replace("../resources/intro/background_images/", "", $image->link_path);
-                        $path = 'resources'.DS.'intro'.DS.'background_images'.DS.$name;
-                        //Se guarda la imagen en el directorio
-                        if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], WWW_ROOT.$path)) {
-                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";
-                            $this->Flash->error($msj_error);
+                            }
 
-                        }
-
-                         else if($updateLinkPath) {
-                            //Se actualiza la base con la nueva extension si es necesario
-                            if (!$this->Pages->Contents->save($image)) {
-                                $this->Flash->error("Error al intentar guardar la imagen.");
+                             else if($updateLinkPath) {
+                                //Se actualiza la base con la nueva extension si es necesario
+                                if (!$this->Pages->Contents->save($image)) {
+                                    $this->Flash->error("Error al intentar guardar la imagen.");
+                                    $writeText = false;
+                                }
                             }
                         }
                     }
-                }
-                if (isset($_POST['text_id'])) {
-                    $text = $this->Pages->Contents->get($_POST['text_id']);
-                    $text->description = $_POST['descripcion'];
-                    if ($this->Pages->Contents->save($text)) {
-                        $this->Flash->success("Cambios guardados exitosamente.");
+                    
+                } else {
+                    $msj_error = 'Error subiendo imagen';
+                    if ($_FILES['imagen_fondo']['error'] == 1) {
+                        $msj_error = $msj_error.': Imagen muy pesada';
                     }
-
-                    if (isset($_POST['text2_id'])) {
-                        $text = $this->Pages->Contents->get($_POST['text2_id']);
-                        $text->description = $_POST['descripcion2'];
-                        $this->Pages->Contents->save($text);
-                    }
-
-                }else{
-                    $this->Flash->error("Error al intentar guardar el texto.");
+                    $this->Flash->error ($msj_error);
+                    $writeText = false;
                 }
-            } else {
-                $msj_error = 'Error subiendo imagen';
-                if ($_FILES['imagen_fondo']['error'] == 1) {
-                    $msj_error = $msj_error.': Imagen muy pesada';
+            } // Fin de if error != 4.
+        }
+        if ($writeText) {
+            if (isset($_POST['text_id'])) {
+                $text = $this->Pages->Contents->get($_POST['text_id']);
+                $text->description = $_POST['descripcion'];
+                if ($this->Pages->Contents->save($text)) {
+                    $this->Flash->success("Cambios guardados exitosamente.");
                 }
-                $this->Flash->error ($msj_error);
+
+                if (isset($_POST['text2_id'])) {
+                    $text = $this->Pages->Contents->get($_POST['text2_id']);
+                    $text->description = $_POST['descripcion2'];
+                    $this->Pages->Contents->save($text);
+                }
+
+            }else{
+                $this->Flash->error("Error al intentar guardar el texto.");
             }
         }
         
