@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\Email;
 
 /**
  * Pages Controller.
@@ -18,7 +19,7 @@ class PagesController extends AppController
     public function beforeFilter (Event $event) 
     {
         parent::beforeFilter ($event);
-        $this->Auth->allow (['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact']);
+        $this->Auth->allow (['home', 'information', 'tourSantaElena', 'tourBolanos', 'description', 'gallery', 'contact', 'about']);
     }
     /**
      * Home method.
@@ -176,7 +177,7 @@ class PagesController extends AppController
         ]);
     }
     
-    	/**
+    /**
      * toursDescription method.
      * Created by Jean Carlo Lara.
      * This method get the general tours information paths from 
@@ -220,7 +221,8 @@ class PagesController extends AppController
 	
 	/**
      * Gallery method.
-     * As of now it doesn't need logic.
+     * Created by Jose Daniel Sánchez y Adrián Madrigal
+     * This method shows photos about tours.
      *
      * @return \Cake\Network\Response|null
      */
@@ -248,13 +250,40 @@ class PagesController extends AppController
 	
 	/**
      * Contact method.
-     * As of now it doesn't need logic.
+     * Created by Adrian Madrigal
+     * This method sends the information contact
+     * by email
      *
      * @return \Cake\Network\Response|null
      */
     public function contact()
     {
-		
+		$this->set('title', 'Contacto');
+        if ($this->request->is(['post'])) {            
+            $email = new Email('default');
+            $email
+                ->transport ('gmail')
+                ->from ('soporte.recorridosgeologicos@gmail.com')
+                ->to ('soporte.recorridosgeologicos@gmail.com')
+                ->emailFormat('text')
+                ->subject ($_POST['asunto'])
+                ->send ("Mensaje enviado por: ".$_POST['nombre']."\nCorreo: ".$_POST['correo']."\n\nMensaje:\n".$_POST['mensaje']);
+
+                $this->Flash->success("Mensaje enviado exitosamente.");                
+        }
+    }
+
+    /**
+     * About method.
+     * Created by Jean Carlo Lara
+     * This method shows the names of people and organizations 
+     * that collaborate to developed this application.
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function about()
+    {
+        $this->set('title', 'Acerca de');
     }
 }
 

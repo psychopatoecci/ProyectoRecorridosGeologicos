@@ -2,6 +2,10 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Mailer\Email;
+use Cake\Network\Exception\SocketException;
+use Cake\ORM\TableRegistry;
+use Cake\I18n\Time; 
 
 /**
  * Users Controller
@@ -103,9 +107,9 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('Se eliminó el usuario.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('No se pudo eliminar el usuario, favor inténtelo nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -114,12 +118,12 @@ class UsersController extends AppController
     /**
      * login method.
      * Created by Christian Durán.
-     * This method login Administrative site
+     * Allows logging in for administrative purposes.
      * @return \Cake\Network\Response|null
      */
     public function login()
     {
-        $this -> set ('title', 'Iniciar sesi&oacute;n');
+        $this -> set ('title', 'Iniciar sesión');
         $this -> viewBuilder() -> layout ('defaultAdmin');
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
@@ -128,6 +132,80 @@ class UsersController extends AppController
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__('Datos erróneos, intente nuevamente.'));
+        }
+    }
+    
+    /** 
+     * Method to send an email to recover the account.
+     * Created by Christian Durán.
+     * Sends a mail to the admin with a message to recover the account.
+     */
+    public function forgottenPassword () {
+        $this->set('title', 'Contraseña olvidada');
+        $email = new Email('default');
+        $tokenNum = bin2hex(random_bytes(32));
+        $tokenTable = TableRegistry::get ('tokens');
+        $token = $tokenTable->newEntity();
+        $token -> tokenNum = $tokenNum;
+        $token -> created  = Time::now();
+        $tokenTable-> save ($token);
+        try {
+            $email
+                ->transport ('gmail')
+                ->from ('soporte.recorridosgeologicos@gmail.com')
+                ->to ('soporte.recorridosgeologicos@gmail.com')
+                ->emailFormat('html')
+                ->subject ('Reestablecimiento de contraseña')
+                ->send ("Para recuperar la contraseña usar el siguiente enlace:\n"
+                    ."http://rutageologica.ucr.ac.cr/users/recover/".$tokenNum);
+            $this->set ('sentMessage', true);
+        } catch (\Exception $e) {
+            $this->Flash->error ('No se pudo enviar el correo de recuperación, posiblemente la contraseña de gmail cambió. Pedir a un administrador que coloque la nueva en config/app.php');
+            $this->set ('sentMessage', false);
+        }
+    }
+
+    /** 
+     * Method to create a new password for the user.
+     */
+    public function recover ($token) {
+    // Esta función supone que solo existe la cuenta de administrador.
+    // Si se cambia la contraseña de la cuenta de correo hay que cambiarlo
+    // en config/app.php o no se van a poder enviar los correos.
+        $this->set('title', 'Recuperar contraseña');
+        $tokenTable = TableRegistry::get ('tokens');
+        $tokens = $tokenTable -> find ('all')->toArray ();
+        $isCorrect = false;
+        foreach ($tokens as $tokenToCheck) {
+            if ($tokenToCheck -> created >= new Time('yesterday') && ($tokenToCheck -> tokenNum == $token)) {
+                // Token correcto.
+                $isCorrect = true;
+            }
+        }
+        if (!$isCorrect) {
+            $this->redirect (['controller' => 'Users', 'action' => 'login']);
+        } else {
+            if ($this->request->is('post')) {
+               if (isset($this->request->data ['Contraseña'])) {
+                    $admins = $this->Users->find('all')->toArray();
+                    assert (count($admins) == 1);
+                    $admin = $admins [0];
+                    //assert ($admin -> username == 'admin');
+                    $admin -> password = $this->request->data ['Contraseña'];
+                    if ($this -> Users -> save ($admin)) {
+                        // Se borran los tokens:
+                        // Ojo que si luego se agregan usuarios esto borraría los de todos.
+                        // Tampoco permite tener una bitácora de los tokens.
+                        foreach ($tokens as $token) {
+                            $tokenTable -> delete ($token);
+                        }
+                        $this -> redirect (['controller' => 'Users', 'action' => 'login']);
+                        $this -> Flash -> success (__('Contraseña cambiada correctamente'));
+                    } else {
+                        $this -> Flash -> error (__('Error cambiando contraseña, favor intentar nuevamente.'));
+                    }
+                }
+            }
         }
     }
 
