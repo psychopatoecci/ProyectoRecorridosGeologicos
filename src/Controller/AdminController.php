@@ -486,60 +486,70 @@ class AdminController extends AppController
         $this->set('title', 'Administración del recorrido de la Península de Santa Elena');
         $this->viewBuilder()->layout("defaultAdmin"); 
         $this->loadModel('Pages');
-        
+        $writeText = true; 
         $this->set('userController', 'Pages');
         $this->set('userAction', 'tourSantaElena');
 
         if ($this->request->is(['patch', 'post', 'put'])) {
 
-            if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
-                if (isset($_POST['image_id'])) {
-                    $imFile = $this->verify_image_file();
-                    if (isset($imFile["error"])) {
-                        $this->Flash->error($imFile["error"]);
+            if($_FILES['imagen_fondo']['error'] != 4) {
+                // El 4 es que no se subió imagen.
+                // Evita que $writeText se ponga en false si no se subieron archivos.
+                if(is_uploaded_file($_FILES['imagen_fondo']['tmp_name'])) {
+                    if (isset($_POST['image_id'])) {
+                        $imFile = $this->verify_image_file();
+                        if (isset($imFile["error"])) {
+                            $this->Flash->error($imFile["error"]);
+                            $writeText = false;
 
-                    } else {
+                        } else {
 
-                        $image = $this->Pages->Contents->get($_POST['image_id']);
-                        $updateLinkPath = !strpos($image->link_path, $imFile["extension"]);
-                        if($updateLinkPath) {
-                            //Si la extension es diferente se debe cambiar
-                            $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
-                        }
-                        $name = str_replace("../resources/travel/santa_elena/", "", $image->link_path);
-                        $path = 'resources'.DS.'travel'.DS.'santa_elena'.DS.$name;
-                        //Se guarda la imagen en el directorio
-                        if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], WWW_ROOT.$path)) {
-                            $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";
-                            $this->Flash->error($msj_error);
+                            $image = $this->Pages->Contents->get($_POST['image_id']);
+                            $updateLinkPath = !strpos($image->link_path, $imFile["extension"]);
+                            if($updateLinkPath) {
+                                //Si la extension es diferente se debe cambiar
+                                $image->link_path = preg_replace('/(png|jpg)$/i', $imFile["extension"], $image->link_path);
+                            }
+                            $name = str_replace("../resources/travel/santa_elena/", "", $image->link_path);
+                            $path = 'resources'.DS.'travel'.DS.'santa_elena'.DS.$name;
+                            //Se guarda la imagen en el directorio
+                            if (!move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], WWW_ROOT.$path)) {
+                                $msj_error = "Error al intentar subir la imagen '". $_FILES['imagen_fondo']['tmp_name']."'. Pudo haber ocurrido un ataque.";
+                                $this->Flash->error($msj_error);
+                                $writeText = false;
 
-                        }
+                            }
 
-                         else if($updateLinkPath) {
-                            //Se actualiza la base con la nueva extension si es necesario
-                            if (!$this->Pages->Contents->save($image)) {
-                                $this->Flash->error("Error al intentar guardar la imagen");
+                            else if($updateLinkPath) {
+                                //Se actualiza la base con la nueva extension si es necesario
+                                if (!$this->Pages->Contents->save($image)) {
+                                    $this->Flash->error("Error al intentar guardar la imagen");
+                                    $writeText = false;
+                                }
                             }
                         }
                     }
-                }
-            } else {
+                } else {
                     $msj_error = 'Error subiendo imagen';
                     if ($_FILES['imagen_fondo']['error'] == 1) {
                         $msj_error = $msj_error.': Imagen muy pesada';
                     }
                     $this->Flash->error ($msj_error);
+                    $writeText = false;
                 }
+            }
 
-            if (isset($_POST['text_id'])) {
-                $text = $this->Pages->Contents->get($_POST['text_id']);
-                $text->description = $_POST['descripcion'];
-                if ($this->Pages->Contents->save($text)) {
-                    $this->Flash->success("Cambios guardados");
+            if ($writeText) {
+                if (isset($_POST['text_id'])) {
+                    $text = $this->Pages->Contents->get($_POST['text_id']);
+                    $text->description = $_POST['descripcion'];
+                    if ($this->Pages->Contents->save($text)) {
+                        $this->Flash->success("Cambios guardados");
+                    }
+
+                }else{
+                    $this->Flash->error("Error al intentar guardar el texto.");
                 }
-
-            }else{
-                $this->Flash->error("Error al intentar guardar el texto.");
             }
 
         }
