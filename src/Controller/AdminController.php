@@ -1349,7 +1349,7 @@ class AdminController extends AppController
 		}	
 
 		$images = $pagesController->Pages->Contents->find('all', array(
-				'conditions' => array('contents.page_id' => $galleryPage)));
+				'conditions' => array('Contents.page_id' => $galleryPage)));
 
         if ($this->request->is('post')) {
             $container_image_delete = $this->request->data('container_image_delete');
