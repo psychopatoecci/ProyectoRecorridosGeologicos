@@ -285,4 +285,16 @@ class PagesController extends AppController
     {
         $this->set('title', 'Acerca de');
     }
+
+    /**
+     * Error method.
+     * Created by Jose Daniel
+     * This method shows a message error
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function error()
+    {
+        $this->set('title', 'Error');
+    }
 }
